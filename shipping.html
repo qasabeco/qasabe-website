@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QASABE | Shipping Details</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#071827;
+  --gold:#c99b3b;
+  --cream:#fff8ef;
+  --soft:#f7efe5;
+  --text:#111827;
+  --muted:#6b7280;
+  --red:#ff3b3b;
+}
+*{
+  box-sizing:border-box;
+}
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f6f6f6;
+  color:var(--text);
+}
+.top-bar{
+  background:var(--navy);
+  color:white;
+  font-size:11px;
+  text-align:center;
+  padding:7px;
+}
+.top-bar a{
+  color:white;
+  text-decoration:underline;
+}
+.navbar{
+  background:white;
+  padding:18px 0;
+  border-bottom:1px solid #eee;
+}
+/* Aligned Logo Style mengikut index.html */
+.brand-logo{
+  display:flex;
+  align-items:center;
+  gap:1px;
+  text-decoration:none;
+}
+.brand-logo img{
+  width:65px;
+  height:65px;
+  object-fit:contain;
+}
+.brand-logo span{
+  font-family:'Cormorant Garamond', serif;
+  font-size:38px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:var(--navy);
+}
+.navbar-nav .nav-link{
+    color: var(--navy);
+    font-weight: 500;
+    font-size: 16px;
+    transition: .3s;
+    margin: 0 8px;
+}
+.navbar-nav .nav-link:hover{
+    color: var(--gold);
+}
+
+/* Penyelarasan Search Wrapper & Suggestions mengikut index.html */
+.search-container {
+  position: relative;
+}
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 1050;
+  display: none;
+  margin-top: 5px;
+}
+.suggestion-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--navy);
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+.suggestion-item:hover {
+  background: #f5f5f5;
+  color: var(--gold);
+}
+.suggestion-item img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: #fdfaf6;
+}
+
+/* Aligned Icons Button Style mengikut index.html */
+.nav-icons{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+.icon-btn{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    font-size:22px;
+    text-decoration:none;
+    color:var(--navy);
+    transition:.3s;
+}
+.icon-btn:hover{
+  background:var(--gold);
+  color:white;
+  transform:translateY(-4px) scale(1.1);
+  box-shadow:0 0 15px rgba(201,155,59,0.5);
+}
+.cart-count,
+.wishlist-count{
+  background:var(--gold);
+  color:white;
+  font-size:11px;
+  border-radius:50%;
+  padding:2px 6px;
+  position:absolute;
+  top: 5px;
+  right: 2px;
+}
+
+.page-section{
+  background:white;
+  min-height:100vh;
+}
+.breadcrumb-custom{
+  font-size:12px;
+  color:#777;
+  padding-top:25px;
+  margin-bottom:18px;
+}
+.shipping-layout {
+  display: grid;
+  grid-template-columns: 1.4fr .85fr;
+  gap: 35px;
+  align-items: start;
+  padding-bottom: 45px;
+  width: 100%;
+}
+.page-title {
+  font-size: 34px;
+  font-weight: 900;
+  color: #111;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px 28px;
+}
+.form-group.full{
+  grid-column:1 / -1;
+}
+.form-group label{
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:6px;
+  color:#111;
+}
+.form-control,
+.form-select{
+  height:34px;
+  border-radius:5px;
+  border:1px solid #cfcfcf;
+  font-size:13px;
+  box-shadow:none;
+}
+.form-control:focus,
+.form-select:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(201,155,59,.15);
+}
+.divider{
+  border-top:1px solid #ddd;
+  margin:28px 0 18px;
+}
+.payment-box{
+  margin-top:10px;
+}
+.payment-details{
+  background:#fafafa;
+  border:1px solid #eee;
+  border-radius:12px;
+  padding:18px;
+  margin-top:15px;
+  display:none;
+}
+.payment-details.active{
+  display:block;
+}
+.payment-details h6{
+  font-weight:900;
+  color:var(--navy);
+  margin-bottom:12px;
+}
+.small-note{
+  color:#666;
+  font-size:12px;
+  margin-top:8px;
+}
+.order-side{
+  position:sticky;
+  top:20px;
+}
+.mini-cart{
+  background:white;
+  border:1px solid #eee;
+  border-radius:15px;
+  overflow:hidden;
+  margin-bottom:14px;
+}
+.mini-item{
+  display:grid;
+  grid-template-columns:80px 1fr 90px;
+  gap:12px;
+  padding:14px;
+  border-bottom:1px solid #eee;
+  position:relative;
+  align-items:center;
+}
+.mini-item:last-child{
+  border-bottom:none;
+}
+.mini-img-box{
+  width:70px;
+  height:70px;
+  background:#f8f8f8;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.mini-img-box img{
+  width:60px;
+  height:60px;
+  object-fit:contain;
+}
+.mini-name{
+  font-size:12px;
+  font-weight:900;
+  color:#111;
+  margin-bottom:3px;
+}
+.mini-detail{
+  font-size:10.5px;
+  color:#555;
+  margin-bottom:1px;
+}
+.mini-price{
+  font-size:16px;
+  font-weight:900;
+  margin-top:7px;
+}
+.delete-btn{
+  position:absolute;
+  right:12px;
+  top:10px;
+  border:none;
+  background:transparent;
+  color:var(--red);
+  font-size:13px;
+}
+.qty-box{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f1f1f1;
+  border-radius:20px;
+  width:76px;
+  padding:4px;
+  gap:9px;
+  margin-top:28px;
+}
+.qty-box button{
+  border:none;
+  background:transparent;
+  font-weight:900;
+  font-size:13px;
+}
+.qty-box span{
+  font-size:12px;
+  font-weight:800;
+}
+.summary-card{
+  background:white;
+  border:1px solid #eee;
+  border-radius:15px;
+  padding:23px;
+  box-shadow:0 8px 25px rgba(0,0,0,.04);
+}
+.summary-card h4{
+  font-size:20px;
+  font-weight:900;
+  margin-bottom:18px;
+  color:#111;
+}
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
+  font-size:14px;
+}
+.summary-row span:first-child{
+  color:#666;
+}
+.summary-row strong{
+  color:#111;
+}
+.discount-text{
+  color:#ff3b3b !important;
+}
+.total-row{
+  border-top:1px solid #eee;
+  padding-top:18px;
+  margin-top:12px;
+  font-size:17px;
+  font-weight:900;
+}
+.promo-box{
+  display:grid;
+  grid-template-columns:1fr 75px;
+  gap:8px;
+  margin:20px 0;
+}
+.promo-box input{
+  border:none;
+  background:#f1f1f1;
+  border-radius:25px;
+  padding:11px 15px;
+  font-size:12px;
+  outline:none;
+}
+.promo-box button{
+  border:none;
+  background:var(--gold);
+  color:white;
+  border-radius:25px;
+  font-size:12px;
+  font-weight:800;
+}
+.place-btn{
+  width:100%;
+  border:none;
+  background:var(--gold);
+  color:white;
+  border-radius:25px;
+  padding:14px;
+  font-size:13px;
+  font-weight:900;
+  transition:.3s;
+}
+.place-btn:hover{
+  background:var(--navy);
+  transform:translateY(-2px);
+}
+.back-cart{
+  display:block;
+  text-align:center;
+  margin-top:12px;
+  color:var(--navy);
+  font-size:13px;
+  font-weight:800;
+  text-decoration:none;
+}
+.back-cart:hover{
+  color:var(--gold);
+}
+.footer{
+  background:#f2f2f2;
+  padding:45px 0 25px;
+}
+.footer-brand h3{
+  color:var(--navy);
+  font-size:26px;
+  font-weight:900;
+}
+.footer-brand p{
+  font-size:12px;
+  color:#666;
+  width:180px;
+}
+.socials i{
+  width:26px;
+  height:26px;
+  background:white;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-right:6px;
+  font-size:12px;
+  color:#111;
+}
+.footer h6{
+  font-size:12px;
+  letter-spacing:3px;
+  font-weight:900;
+  color:#111;
+  margin-bottom:15px;
+}
+.footer a{
+  display:block;
+  color:#666;
+  text-decoration:none;
+  font-size:12px;
+  margin-bottom:9px;
+}
+.footer-bottom{
+  border-top:1px solid #ddd;
+  padding-top:18px;
+  margin-top:25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:11px;
+  color:#777;
+}
+.payment-icons span{
+  background:white;
+  border-radius:4px;
+  padding:5px 8px;
+  margin-left:5px;
+  font-size:10px;
+  font-weight:900;
+}
+.success-icon{
+  width:78px;
+  height:78px;
+  background:#e7f8ee;
+  color:#15803d;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:42px;
+  margin:0 auto 18px;
+}
+.modal-title-custom{
+  font-weight:900;
+  color:var(--navy);
+}
+@media(max-width:992px){
+  .shipping-layout{
+    grid-template-columns:1fr;
+  }
+  .order-side{
+    position:static;
+  }
+  .search-container{
+    width:100%;
+  }
+}
+@media(max-width:576px){
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+  .mini-item{
+    grid-template-columns:70px 1fr;
+  }
+  .mini-item > div:last-child{
+    grid-column:1 / -1;
+  }
+  .footer-bottom{
+    flex-direction:column;
+    gap:12px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page-section">
+  <div class="top-bar">
+    Sign up and get 20% off your first order. <a href="#">Sign Up Now</a>
+  </div>
+  
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand brand-logo" href="index.html">
+        <img src="images/logor.png" alt="QASABE Logo">
+        <span>QASABE</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav mx-auto align-items-center gap-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#story">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Products</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="Category.html?cat=drinks">Sugarcane Drinks</a></li>
+              <li><a class="dropdown-item" href="Category.html?cat=skincare">Sugarcane Skincare</a></li>
+              <li><a class="dropdown-item" href="Category.html?cat=wellness">Sugarcane Wellness</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="Category.html">All Products</a></li>
+            </ul>
+          </li>
+          
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+        </ul>
+        
+        <div class="d-flex align-items-center gap-3 ms-auto">
+          <div class="d-none d-lg-block search-container">
+            <input type="text" id="searchBar" class="form-control rounded-pill" style="width:280px; padding:9px 16px; font-size:13px;" placeholder="Find sugarcane products..." onkeypress="handleSearch(event)" oninput="showSuggestions(this.value)">
+            <div id="suggestionBox" class="search-suggestions"></div>
+          </div>
+          
+          <div class="nav-icons">
+            <a href="wishlist.html" class="icon-btn">
+              <i class="bi bi-heart"></i>
+              <span id="wishCount" class="wishlist-count">0</span>
+            </a>
+            <a href="cart.html" class="icon-btn">
+              <i class="bi bi-cart"></i>
+              <span id="cartCount" class="cart-count">0</span>
+            </a>
+            <a href="profile.html" class="icon-btn">
+              <i class="bi bi-person-circle"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-3"> 
+    <div class="breadcrumb-custom">
+      Cart &nbsp;›&nbsp; Shipping
+    </div>
+    
+    <section class="shipping-layout">
+       <div>
+        <h1 class="page-title">SHIPPING DETAILS</h1>
+        <form id="shippingForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" class="form-control" id="firstName" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" class="form-control" id="lastName" required>
+            </div>
+            <div class="form-group full">
+              <label>Address</label>
+              <input type="text" class="form-control" id="address1" required>
+            </div>
+            <div class="form-group full">
+              <label>Address 2</label>
+              <input type="text" class="form-control" id="address2">
+            </div>
+            <div class="form-group">
+  			      <label>Shipping Region</label>
+  			      <select class="form-select" id="country" onchange="updateSummary()" required>
+    		        <option value="west">West Malaysia</option>
+    		        <option value="east">Sabah & Sarawak</option>
+    		        <option value="international">International</option>
+  	          </select>
+            </div>
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" class="form-control" id="city" required>
+            </div>
+            <div class="form-group">
+              <label>Postal Code</label>
+              <input type="text" class="form-control" id="postalCode" required>
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" class="form-control" id="phone" required>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="payment-box">
+            <label class="fw-bold small mb-2">Payment Method</label>
+            <select class="form-select" id="paymentMethod" onchange="showPaymentDetails()" required>
+              <option value="online">Online Banking / FPX</option>
+              <option value="ewallet">E-Wallet</option>
+              <option value="card">Credit / Debit Card</option>
+              <option value="cod">Cash on Delivery</option>
+            </select>
+            <div class="payment-details active" id="onlineBox">
+              <h6><i class="bi bi-bank me-1"></i> Online Banking / FPX</h6>
+              <div class="form-group mb-2">
+                <label>Select Bank</label>
+                <select class="form-select" id="bankName">
+                  <option>Maybank2u</option>
+                  <option>CIMB Clicks</option>
+                  <option>Bank Islam</option>
+                  <option>RHB Now</option>
+                  <option>Public Bank</option>
+                  <option>Hong Leong Bank</option>
+                </select>
+              </div>
+              <p class="small-note">You will see a payment confirmation after placing the order. No external banking page will open.</p>
+            </div>
+            <div class="payment-details" id="ewalletBox">
+              <h6><i class="bi bi-wallet2 me-1"></i> E-Wallet</h6>
+              <div class="form-group mb-2">
+                <label>Select E-Wallet</label>
+                <select class="form-select" id="walletName">
+                  <option>Touch 'n Go eWallet</option>
+                  <option>GrabPay</option>
+                  <option>Boost</option>
+                  <option>ShopeePay</option>
+                </select>
+              </div>
+              <p class="small-note">Payment will be recorded as pending confirmation for prototype purpose.</p>
+            </div>
+            <div class="payment-details" id="cardBox">
+              <h6><i class="bi bi-credit-card me-1"></i> Card Payment</h6>
+              <div class="form-group full mb-2">
+                <label>Cardholder Name</label>
+                <input type="text" class="form-control" id="cardName" placeholder="Name on card">
+              </div>
+              <div class="form-group full mb-2">
+                <label>Card Number</label>
+                <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <label>Expiry Date</label>
+                  <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY">
+                </div>
+                <div class="col-6">
+                  <label>CVV</label>
+                  <input type="password" class="form-control" id="cvv" placeholder="123" maxlength="3">
+                </div>
+              </div>
+              <p class="small-note">This is only a prototype payment form. No real payment will be processed.</p>
+            </div>
+            <div class="payment-details" id="codBox">
+              <h6><i class="bi bi-cash-coin me-1"></i> Cash on Delivery</h6>
+              <p class="small-note mb-0">
+                Pay directly to the rider when your order arrives. Please prepare the exact amount shown in the order summary.
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+      <aside class="order-side">
+        <div class="mini-cart" id="miniCart"></div>
+        <div class="summary-card">
+          <h4>Order Summary</h4>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <strong id="subtotal">RM 0.00</strong>
+          </div>
+          <div class="summary-row">
+            <span>Discount</span>
+            <strong class="discount-text" id="discount">-RM 0.00</strong>
+          </div>
+          <div class="summary-row">
+            <span>Delivery Fee</span>
+            <strong id="delivery">RM 5.00</strong>
+          </div>
+          <div class="summary-row total-row">
+            <span>Total</span>
+            <strong id="total">RM 0.00</strong>
+          </div>
+          <div class="promo-box">
+            <input type="text" id="promoCode" placeholder="Add promo code">
+            <button type="button" onclick="applyPromo()">Apply</button>
+          </div>
+          <button type="button" class="place-btn" onclick="placeOrder()">
+            Place Order
+          </button>
+          <a href="cart.html" class="back-cart">
+            <i class="bi bi-arrow-left"></i> Back to Cart
+          </a>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-md-3 footer-brand">
+          <h3>QASABE</h3>
+          <p>The perfect fit for a healthier, greener you.</p>
+          <div class="socials">
+            <i class="bi bi-twitter-x"></i>
+            <i class="bi bi-facebook"></i>
+            <i class="bi bi-instagram"></i>
+            <i class="bi bi-github"></i>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <h6>COMPANY</h6>
+          <a href="#">About</a>
+          <a href="#">Features</a>
+          <a href="#">Works</a>
+        </div>
+        <div class="col-md-2">
+          <h6>HELP</h6>
+          <a href="#">Customer Support</a>
+          <a href="#">Delivery Details</a>
+          <a href="#">Terms & Conditions</a>
+        </div>
+        <div class="col-md-2">
+          <h6>FAQ</h6>
+          <a href="#">Account</a>
+          <a href="#">Manage Deliveries</a>
+          <a href="#">Orders</a>
+        </div>
+        <div class="col-md-3">
+          <h6>RESOURCES</h6>
+          <a href="#">Free eBooks</a>
+          <a href="#">Development Tutorial</a>
+          <a href="#">How to - Blog</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Qasabe.co © 2026–2027, All Rights Reserved</span>
+        <div class="payment-icons">
+          <span>VISA</span>
+          <span>MC</span>
+          <span>PayPal</span>
+          <span>Apple</span>
+          <span>GPay</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+<div class="modal fade" id="orderModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 rounded-4">
+      <div class="modal-body text-center p-5">
+        <div class="success-icon">
+          <i class="bi bi-check-lg"></i>
+        </div>
+        <h3 class="modal-title-custom">Order Placed Successfully!</h3>
+        <p class="text-muted mt-2 mb-4">
+          Thank you for shopping with QASABE. Your order has been recorded for this prototype.
+        </p>
+        <div class="bg-light rounded-4 p-3 text-start mb-4">
+          <div class="d-flex justify-content-between mb-2">
+            <span>Order ID</span>
+            <strong id="modalOrderId">QSB0001</strong>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span>Payment Method</span>
+            <strong id="modalPayment">Online Banking</strong>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span>Total Paid</span>
+            <strong id="modalTotal">RM 0.00</strong>
+          </div>
+        </div>
+        <button class="btn w-100 rounded-pill text-white fw-bold py-2" style="background:#c99b3b;" onclick="finishOrder()">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const products = {
+  "juice": {
+    name:"Sugarcane Juice Original (500ml)",
+    size:"Large",
+    color:"White",
+    price:50.00,
+    image:"images/juicel.png"
+  },
+  "toner": {
+    name:"Sugarcane Toner",
+    size:"Medium",
+    color:"Red",
+    price:30.00,
+    image:"images/tonerl.png"
+  },
+  "energy-snack": {
+    name:"Sugarcane Energy Snack",
+    size:"Large",
+    color:"Blue",
+    price:15.00,
+    image:"images/snackl.png"
+  },
+  "herbal-drink": {
+    name:"Sugarcane Herbal Drink",
+    size:"Medium",
+    color:"Gold",
+    price:32.00,
+    image:"images/hdrinkl.png"
+  },
+  "organic-cube": {
+    name:"Organic Sugarcane Cube",
+    size:"Small",
+    color:"Brown",
+    price:25.00,
+    image:"images/cubel.png"
+  },
+  "liquid-drop": {
+    name:"Sweetener Liquid Drop",
+    size:"Small",
+    color:"Navy",
+    price:11.90,
+    image:"images/ldropsl.png"
+  },
+  "sleep-mist": {
+    name:"Sugarcane Sleep Mist",
+    size:"Medium",
+    color:"Lavender",
+    price:49.90,
+    image:"images/smistl.png"
+  },
+  "aha-toner": {
+    name:"Sugarcane AHA Toner",
+    size:"Medium",
+    color:"White",
+    price:30.00,
+    image:"images/tonerl.png"
+  },
+  "shampoo": {
+    name:"Sugarcane Shampoo",
+    size:"Large",
+    color:"White",
+    price:45.00,
+    image:"images/shampool.png"
+  },
+  "body-scrub": {
+    name:"Body Scrub",
+    size:"Medium",
+    color:"Cream",
+    price:50.00,
+    image:"images/bscrubl.png"
+  },
+  "bagasse-packaging": {
+    name:"Bagasse Packaging",
+    size:"Large",
+    color:"Natural",
+    price:12.00,
+    image:"images/packagingl.png"
+  }
+};
+
+// Data list sinkronisasi suggestion mengikut availableProducts index.html
+const availableProducts = [
+  { id: "aha-toner", name: "Sugarcane Glow Toner", img: "images/AHA toner (L).png" },
+  { id: "sleep-mist", name: "Sugarcane Sleep Mist", img: "images/sleep-mist (L).png" },
+  { id: "energy-snack", name: "Sugarcane Energy Snack", img: "images/energy snack (L).png" }
+];
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let promoApplied = false; 
+let currentTotal = 0;
+
+// SUGGESTION LOGIC SINKRONISASI DENGAN INDEX.HTML
+function showSuggestions(val) {
+  const box = document.getElementById("suggestionBox");
+  if (!val || !val.trim()) {
+    box.style.display = "none";
+    return;
+  }
+  
+  const query = val.toLowerCase();
+  const matches = availableProducts.filter(p => p.name.toLowerCase().includes(query));
+  
+  if (matches.length === 0) {
+    box.style.display = "none";
+    return;
+  }
+  
+  box.innerHTML = matches.map(p => `
+    <div class="suggestion-item" onclick="selectSuggestion('${p.id}', '${p.name}')">
+      <img src="${p.img}" alt="${p.name}">
+      <span>${p.name}</span>
+    </div>
+  `).join("");
+  
+  box.style.display = "block";
+}
+
+function selectSuggestion(id, name) {
+  document.getElementById("searchBar").value = name;
+  document.getElementById("suggestionBox").style.display = "none";
+  window.location.href = `product-detail.html?id=${id}`;
+}
+
+function handleSearch(event) {
+  if (event.key === "Enter") {
+    let query = document.getElementById("searchBar").value.trim();
+    if (query !== "") {
+      const exactMatch = availableProducts.find(p => p.name.toLowerCase() === query.toLowerCase());
+      if(exactMatch) {
+         window.location.href = `product-detail.html?id=${exactMatch.id}`;
+      } else {
+         window.location.href = `Category.html?search=${encodeURIComponent(query)}`;
+      }
+    }
+  }
+}
+
+document.addEventListener("click", function(e) {
+  if (e.target.id !== "searchBar") {
+    const box = document.getElementById("suggestionBox");
+    if(box) box.style.display = "none";
+  }
+});
+
+function saveCart(){
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+function updateBadges(){
+  const totalQty = cart.reduce((sum,item) => sum + item.qty, 0);
+  document.getElementById("cartCount").textContent = totalQty;
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  document.getElementById("wishCount").textContent = wishlist.length;
+}
+function renderMiniCart(){
+  const miniCart = document.getElementById("miniCart");
+  if(!cart || cart.length === 0){
+    miniCart.innerHTML = `
+      <div class="text-center p-4">
+        <i class="bi bi-bag-x fs-1 text-warning"></i>
+        <h6 class="fw-bold mt-2">Your cart is empty</h6>
+        <a href="Category.html" class="text-decoration-none fw-bold" style="color:#c99b3b;">Shop Now</a>
+      </div>
+    `;
+    updateSummary();
+    updateBadges();
+    return;
+  }
+  miniCart.innerHTML = cart.map(item => {
+    let product = products[item.id] || products[item.id.toLowerCase()];
+    if (!product) {
+      const keys = Object.keys(products);
+      product = products[keys[0]];
+    }
+    
+    return `
+      <div class="mini-item">
+        <div class="mini-img-box">
+          <img src="${product.image}" alt="${product.name}">
+        </div>
+        <div>
+          <div class="mini-name">${product.name}</div>
+          <div class="mini-detail">Size: ${product.size}</div>
+          <div class="mini-detail">Color: ${product.color}</div>
+          <div class="mini-price">RM ${product.price.toFixed(2)}</div>
+        </div>
+        <div>
+          <button type="button" class="delete-btn" onclick="removeItem('${item.id}')">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+          <div class="qty-box">
+            <button type="button" onclick="changeQty('${item.id}', -1)">−</button>
+            <span>${item.qty}</span>
+            <button type="button" onclick="changeQty('${item.id}', 1)">+</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join("");
+  
+  updateSummary();
+  updateBadges();
+}
+function changeQty(id, amount){
+  const item = cart.find(i => i.id === id);
+  if(!item) return;
+  item.qty += amount;
+  if(item.qty <= 0){
+    cart = cart.filter(i => i.id !== id);
+  }
+  saveCart();
+  renderMiniCart();
+}
+function removeItem(id){
+  cart = cart.filter(i => i.id !== id);
+  saveCart();
+  renderMiniCart();
+}
+function updateSummary(){
+  const subtotal = cart.reduce((sum,item) => {
+    let product = products[item.id] || products[item.id.toLowerCase()];
+    if (!product) {
+      const keys = Object.keys(products);
+      product = products[keys[0]];
+    }
+    return sum + (product.price * item.qty);
+  }, 0);
+  
+  const discount = promoApplied ? subtotal * 0.20 : 0;
+  let delivery = 0;
+  const region = document.getElementById("country");
+  
+  if(cart.length > 0 && region){
+    if(region.value === "west"){
+      delivery = 5;
+    }
+    else if(region.value === "east"){
+      delivery = 12;
+    }
+    else if(region.value === "international"){
+      delivery = 25;
+    }
+  }
+  
+  const total = subtotal - discount + delivery;
+  currentTotal = total;
+  
+  document.getElementById("subtotal").textContent = "RM " + subtotal.toFixed(2);
+  document.getElementById("discount").textContent = "-RM " + discount.toFixed(2);
+  document.getElementById("delivery").textContent = "RM " + delivery.toFixed(2);
+  document.getElementById("total").textContent = "RM " + total.toFixed(2);
+}
+function applyPromo(){
+  const code = document.getElementById("promoCode").value.trim().toUpperCase();
+  if(code === "QASABE20"){
+    promoApplied = true;
+    alert("Promo code applied! 20% discount added.");
+  }else{
+    promoApplied = false;
+    alert("Invalid promo code. Discount removed.");
+  }
+  updateSummary();
+}
+function showPaymentDetails(){
+  const method = document.getElementById("paymentMethod").value;
+  document.getElementById("onlineBox").classList.remove("active");
+  document.getElementById("ewalletBox").classList.remove("active");
+  document.getElementById("cardBox").classList.remove("active");
+  document.getElementById("codBox").classList.remove("active");
+  if(method === "online") document.getElementById("onlineBox").classList.add("active");
+  if(method === "ewallet") document.getElementById("ewalletBox").classList.add("active");
+  if(method === "card") document.getElementById("cardBox").classList.add("active");
+  if(method === "cod") document.getElementById("codBox").classList.add("active");
+}
+function getPaymentLabel(){
+  const method = document.getElementById("paymentMethod").value;
+  if(method === "online") return "Online Banking / FPX";
+  if(method === "ewallet") return "E-Wallet";
+  if(method === "card") return "Credit / Debit Card";
+  return "Cash on Delivery";
+}
+function autofillDefaultAddress() {
+  const savedAddresses = JSON.parse(localStorage.getItem("userAddresses")) || [];
+  const defaultAddr = savedAddresses.find(addr => addr.isDefault) || savedAddresses[0];
+  if (defaultAddr) {
+    const nameParts = defaultAddr.fullname.trim().split(" ");
+    const firstName = nameParts[0] || "";
+    const lastName = nameParts.slice(1).join(" ") || ".";
+    
+    document.getElementById("firstName").value = firstName;
+    document.getElementById("lastName").value = lastName;
+    document.getElementById("address1").value = defaultAddr.address;
+    document.getElementById("phone").value = defaultAddr.phone;
+    const postalMatch = defaultAddr.address.match(/\b\d{5}\b/);
+    if(postalMatch) {
+      document.getElementById("postalCode").value = postalMatch[0];
+    }
+    
+    if(defaultAddr.address.toLowerCase().includes("skudai") || defaultAddr.address.toLowerCase().includes("johor")) {
+      document.getElementById("city").value = "Skudai";
+    }
+  }
+}
+function placeOrder(){
+  const form = document.getElementById("shippingForm");
+  if(cart.length === 0){
+    alert("Your cart is empty.");
+    return;
+  }
+  if(!form.checkValidity()){
+    form.reportValidity();
+    return;
+  }
+  const method = document.getElementById("paymentMethod").value;
+  if(method === "card"){
+    const cardName = document.getElementById("cardName").value.trim();
+    const cardNumber = document.getElementById("cardNumber").value.trim();
+    const expiryDate = document.getElementById("expiryDate").value.trim();
+    const cvv = document.getElementById("cvv").value.trim();
+    if(cardName === "" || cardNumber === "" || expiryDate === "" || cvv === ""){
+      alert("Please complete your card payment details.");
+      return;
+    }
+  }
+  
+  const orderId = "QSB" + Math.floor(1000 + Math.random() * 9000);
+  document.getElementById("modalOrderId").textContent = orderId;
+  document.getElementById("modalPayment").textContent = getPaymentLabel();
+  document.getElementById("modalTotal").textContent = "RM " + currentTotal.toFixed(2);
+  const fName = document.getElementById("firstName").value;
+  const lName = document.getElementById("lastName").value;
+  const add1 = document.getElementById("address1").value;
+  const add2 = document.getElementById("address2").value ? document.getElementById("address2").value + ", " : "";
+  const cityStr = document.getElementById("city").value;
+  const pCode = document.getElementById("postalCode").value;
+  const regionSelect = document.getElementById("country");
+  const regionText = regionSelect.options[regionSelect.selectedIndex].text;
+  const phoneNum = document.getElementById("phone").value;
+  const fullAddressHTML = `
+    <strong>${fName} ${lName}</strong> <span class="badge bg-warning text-dark ms-1">Default</span><br>
+    ${add1}, ${add2}${pCode} ${cityStr}, ${regionText}<br>
+    Malaysia<br><br>
+    <strong>${phoneNum}</strong>
+  `;
+  const orderData = {
+    orderId: orderId,
+    customer: fName + " " + lName,
+    address: fullAddressHTML,
+    city: cityStr,
+    phone: phoneNum,
+    payment: getPaymentLabel(),
+    total: currentTotal.toFixed(2),
+    items: cart
+  };
+  
+  let matchedProd = products[cart[0].id] || products[cart[0].id.toLowerCase()];
+  if (!matchedProd) {
+    const keys = Object.keys(products);
+    matchedProd = products[keys[0]];
+  }
+  
+  let today = new Date().toLocaleDateString('en-GB', {
+      day: 'numeric', month: 'short', year: 'numeric'
+  });
+  let newProfileOrder = {
+      orderId: orderId, 
+      productName: matchedProd ? matchedProd.name : "Qasabe Sugarcane Product", 
+      image: matchedProd ? matchedProd.image : "images/logor.png", 
+      date: today,
+      price: "RM " + currentTotal.toFixed(2), 
+      address: fullAddressHTML, 
+      status: "Processing" 
+  };
+  let recentOrders = JSON.parse(localStorage.getItem("recentOrders")) || [];
+  recentOrders.unshift(newProfileOrder);
+  localStorage.setItem("recentOrders", JSON.stringify(recentOrders));
+  localStorage.setItem("qasabeLastOrder", JSON.stringify(orderData));
+  
+  const modal = new bootstrap.Modal(document.getElementById("orderModal"));
+  modal.show();
+}
+function finishOrder(){
+  cart = [];
+  saveCart();
+  localStorage.setItem("qasabeHasOrdered", "true");
+  window.location.href = "Category.html";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderMiniCart();
+  showPaymentDetails();
+  autofillDefaultAddress();
+});
+</script>
+</body>
+</html>
