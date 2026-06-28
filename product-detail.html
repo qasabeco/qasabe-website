@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QASABE | Product Details</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy:#071827;
+      --cream:#fff7f3;
+      --gold:#c99b3b;
+      --gold-light:#f4d58d;
+      --soft:#f8f5ef;
+      --text:#1f2937;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family: Arial, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+    }
+
+    /* TOP BAR */
+    .top-bar{
+      background: var(--navy);
+      color:white;
+      font-size:12px;
+      padding:8px;
+      text-align:center;
+    }
+
+    .top-bar u{
+      cursor: pointer;
+    }
+
+    /* NAVBAR MATCHING INDEX */
+    .navbar-nav .nav-link{
+        color: var(--navy);
+        font-weight: 500;
+        font-size: 16px;
+        transition: .3s;
+    }
+    .dropdown-menu .dropdown-item:hover {
+      background-color: var(--gold);
+      color: white !important;
+      transition: 0.2s;
+    }
+    .dropdown-toggle::after {
+      vertical-align: middle;
+      color: var(--gold); 
+    }
+    .navbar-nav .nav-link:hover{
+        color: var(--gold);
+    }
+    .navbar-collapse{
+        align-items: center;
+    }
+    .brand-logo{
+      display:flex;
+      align-items:center;
+      gap:1px;
+      text-decoration:none;
+    }
+    .brand-logo img{
+      width:65px;
+      height:65px;
+      object-fit:contain;
+    }
+    .brand-logo span{
+      font-family:'Cormorant Garamond', serif;
+      font-size:38px;
+      font-weight:700;
+      letter-spacing:1px;
+      color:var(--navy);
+    }
+    .nav-icons{
+      display:flex;
+      align-items:center;
+      gap:15px;
+      margin-left: 20px;
+    }
+    .icon-btn{
+        width:50px;
+        height:50px;
+        border-radius:50%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        position:relative;
+        font-size:22px;
+        text-decoration:none;
+        color:var(--navy);
+        transition:.3s;
+    }
+    .icon-btn:hover{
+      background:var(--gold);
+      color:white;
+      transform:translateY(-4px) scale(1.1);
+      box-shadow:0 0 15px rgba(201,155,59,0.5);
+    }
+    .cart-count,
+    .wishlist-count{
+      background:var(--gold);
+      color:white;
+      font-size:11px;
+      border-radius:50%;
+      padding:2px 6px;
+      position:relative;
+      top:-10px;
+      right:8px;
+    }
+
+    /* PRODUCT HERO */
+    .product-section{
+      padding:60px 0;
+      background:
+        radial-gradient(circle at top left, rgba(201,155,59,0.15), transparent 35%),
+        linear-gradient(135deg, #fff7f3 0%, #ffffff 55%, #f7efe0 100%);
+    }
+
+    .breadcrumb-area{
+      font-size:14px;
+      margin-bottom:25px;
+    }
+
+    .breadcrumb-area a{
+      color:var(--navy);
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    .product-card{
+      background:white;
+      border-radius:30px;
+      padding:35px;
+      box-shadow:0 25px 60px rgba(7,24,39,0.08);
+      overflow:hidden;
+    }
+
+    .product-image-box{
+      aspect-ratio:1/1;
+      width: 100%;
+      min-height:auto;
+      height:auto; 
+      position: relative;
+    }
+ 
+    .product-image-box::before{
+      content:"";
+      position:absolute;
+      width:360px;
+      height:360px;
+      background:rgba(201,155,59,0.15);
+      border-radius:50%;
+      top:-90px;
+      left:-100px;
+      pointer-events: none;
+    }
+
+    .product-image-box::after{
+      content:"QASABE";
+      position:absolute;
+      bottom:25px;
+      right:28px;
+      color:rgba(7,24,39,0.04);
+      font-size:72px;
+      font-weight:900;
+      letter-spacing:5px;
+      pointer-events: none;
+    }
+
+    .product-image-box img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      transition:.4s;
+    }
+
+    .product-image-box:hover img{
+      transform:scale(1.04) rotate(-2deg);
+    }
+
+    .thumb-box{
+      margin-top:18px;
+      display:flex;
+      gap:15px;
+    }
+
+    .thumb{
+      width:90px;
+      height:90px;
+      background:white;
+      border:2px solid #eee;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .thumb.active,
+    .thumb:hover{
+      border-color:var(--gold);
+      box-shadow:0 10px 25px rgba(201,155,59,.25);
+    }
+
+    .thumb img{
+      width:75%;
+      height:75%;
+      object-fit:contain;
+    }
+
+    .product-tag{
+      display:inline-block;
+      background:rgba(201,155,59,0.16);
+      color:var(--gold);
+      padding:8px 18px;
+      border-radius:30px;
+      font-weight:700;
+      font-size:13px;
+      margin-bottom:18px;
+    }
+
+    .product-title{
+      color:var(--navy);
+      font-size:38px;
+      font-weight:800;
+      line-height:1.2;
+      margin-bottom:15px;
+      font-family: Georgia, serif;
+    }
+
+    .rating-header{
+      color:#ffc107;
+      font-size:20px;
+      margin-bottom:14px;
+    }
+
+    .rating-header span{
+      color:#6b7280;
+      font-size:14px;
+      margin-left:8px;
+    }
+
+    .price{
+      font-size:34px;
+      color:var(--navy);
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .old-price{
+      font-size:18px;
+      color:#9ca3af;
+      text-decoration:line-through;
+      margin-left:10px;
+    }
+
+    .stock{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:#e7f8ee;
+      color:#15803d;
+      font-weight:700;
+      padding:8px 16px;
+      border-radius:25px;
+      margin-bottom:22px;
+    }
+
+    .product-desc{
+      color:#5b6472;
+      line-height:1.8;
+      margin:18px 0 25px;
+      font-size:16px;
+    }
+
+    .value-box{
+      background:var(--soft);
+      border-radius:22px;
+      padding:22px;
+      margin-bottom:25px;
+      border-left:5px solid var(--gold);
+    }
+
+    .value-box h5{
+      color:var(--navy);
+      font-weight:800;
+      margin-bottom:16px;
+    }
+
+    .value-item{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:12px;
+      color:#374151;
+      font-weight:500;
+    }
+
+    .value-item i{
+      color:var(--gold);
+      font-size:20px;
+    }
+
+    .quantity-box{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin:25px 0;
+    }
+
+    .qty-control{
+      display:flex;
+      align-items:center;
+      border:1px solid #ddd;
+      border-radius:30px;
+      overflow:hidden;
+      background:white;
+    }
+
+    .qty-control button{
+      width:45px;
+      height:45px;
+      border:none;
+      background:white;
+      color:var(--navy);
+      font-size:20px;
+      font-weight:700;
+    }
+
+    .qty-control span{
+      width:50px;
+      text-align:center;
+      font-weight:700;
+    }
+
+    .btn-qasabe{
+      border:none;
+      border-radius:30px;
+      padding:14px 26px;
+      font-weight:700;
+      transition:.3s;
+    }
+
+    .btn-gold{
+      background:var(--gold);
+      color:white;
+    }
+
+    .btn-gold:hover{
+      background:var(--navy);
+      color:white;
+      transform:translateY(-3px);
+      box-shadow:0 12px 25px rgba(7,24,39,.25);
+    }
+
+    .btn-navy{
+      background:var(--navy);
+      color:white;
+    }
+
+    .btn-navy:hover{
+      background:var(--gold);
+      color:white;
+      transform:translateY(-3px);
+    }
+
+    .btn-outline-q{
+      background:white;
+      color:var(--navy);
+      border:1px solid var(--navy);
+    }
+
+    .btn-outline-q:hover{
+      background:var(--navy);
+      color:white;
+    }
+
+    .detail-tabs{
+      margin-top:70px;
+    }
+
+    .nav-pills .nav-link{
+      border-radius:30px;
+      color:var(--navy);
+      background:white;
+      margin-right:10px;
+      font-weight:700;
+      box-shadow:0 5px 15px rgba(7,24,39,.08);
+    }
+
+    .nav-pills .nav-link.active{
+      background:var(--navy);
+      color:white;
+    }
+
+    .tab-content{
+      background:white;
+      padding:35px;
+      border-radius:25px;
+      margin-top:20px;
+      box-shadow:0 15px 40px rgba(7,24,39,.08);
+      line-height:1.8;
+    }
+
+    /* RELATED PRODUCTS */
+    .related-section{
+      padding:70px 0;
+      background:white;
+    }
+
+    .section-title{
+      text-align:center;
+      color:var(--navy);
+      font-size:38px;
+      font-weight:800;
+      font-family:Georgia, serif;
+      margin-bottom:45px;
+    }
+
+    .related-card{
+      background:var(--cream);
+      border-radius:24px;
+      padding:25px;
+      text-align:center;
+      transition:.3s;
+      height:100%;
+      border:1px solid #f0e8dc;
+    }
+
+    .related-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 18px 35px rgba(7,24,39,.12);
+    }
+
+    .related-card img{
+      width:160px;
+      height:160px;
+      object-fit:contain;
+      margin-bottom:18px;
+    }
+
+    .related-card h5{
+      color:var(--navy);
+      font-weight:800;
+    }
+
+    /* REVIEWS AND PRODUCT FEEDBACKS SECTION */
+    .reviews-section {
+      background: var(--soft);
+      padding: 70px 0;
+    }
+    .review-item-box {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+      border-left: 4px solid var(--gold);
+    }
+    .user-avatar-initial {
+      width: 45px;
+      height: 45px;
+      background: var(--navy);
+      color: white;
+      font-weight: bold;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .star-rating-select {
+      font-size: 24px;
+      color: #ddd;
+      cursor: pointer;
+    }
+    .star-rating-select .bi-star-fill.active {
+      color: #ffc107;
+    }
+    .submit-review-card {
+      background: white;
+      border-radius: 24px;
+      padding: 35px;
+      box-shadow: 0 10px 30px rgba(7,24,39,0.05);
+    }
+
+    /* THANK YOU BOX MATCHING INDEX.HTML */
+    .q-thanks-box {
+      background: var(--cream);
+      padding: 40px 0;
+      border-top: 1px dashed rgba(201, 155, 59, 0.3);
+      text-align: center;
+    }
+    .q-thanks-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--navy);
+    }
+
+    /* FOOTER MATCHING INDEX.HTML STYLE */
+    footer{
+      background:var(--navy);
+      color:white;
+      padding:40px 0 20px;
+      font-size:13px;
+    }
+    footer p {
+      margin: 0;
+    }
+
+    @media(max-width:991px){
+      .navbar-collapse {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      }
+      .nav-icons {
+        margin-left: 0;
+        margin-top: 15px;
+        justify-content: center;
+      }
+      .product-title{
+        font-size:30px;
+      }
+      .product-image-box{
+        min-height:320px;
+        margin-bottom:30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-bar">
+    Sign up and get 20% off your first order. <u>Sign Up Now</u>
+  </div>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand brand-logo" href="index.html">
+        <img src="images/logor.png" alt="QASABE Logo">
+        <span>QASABE</span>
+      </a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav mx-auto gap-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown" style="background-color: var(--cream);">
+              <li><a class="dropdown-item py-2" href="Category.html?cat=food-beverages" style="color: var(--navy); font-weight: 500;">Food & Beverages</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=health" style="color: var(--navy); font-weight: 500;">Health</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=personal-care" style="color: var(--navy); font-weight: 500;">Personal Care & Wellness</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=packaging" style="color: var(--navy); font-weight: 500;">Food Packaging & Containers</a></li>
+            </ul>
+          </li>
+          
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+        </ul>
+        
+        <input class="form-control rounded-pill w-25 d-none d-lg-block" placeholder="Find sugarcane products...">
+        
+        <div class="nav-icons">
+          <a href="wishlist.html" class="icon-btn">
+            <i class="bi bi-heart"></i>
+            <span id="wishlistCount" class="wishlist-count">0</span>
+          </a>
+          <a href="cart.html" class="icon-btn">
+            <i class="bi bi-cart"></i>
+            <span id="cartCount" class="cart-count">0</span>
+          </a>
+          <a href="profile.html" class="icon-btn">
+            <i class="bi bi-person-circle"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="product-section">
+    <div class="container">
+
+      <div class="breadcrumb-area">
+        <a href="index.html">Home</a> /
+        <a href="Category.html">Products</a> /
+        <span id="breadcrumbName">Product Detail</span>
+      </div>
+
+      <div class="product-card">
+        <div class="row g-5 align-items-start">
+
+          <div class="col-lg-5">
+            <div class="product-image-box">
+              <img id="mainImage" src="images/snack.png" alt="Product Image">
+            </div>
+
+            <div class="thumb-box">
+              <div class="thumb active">
+                <img id="thumb1" src="images/valuesnack.png" alt="Product thumbnail">
+              </div>
+              <div class="thumb">
+                <img id="thumb2" src="images/valuesnack.png" alt="Product thumbnail">
+              </div>
+              <div class="thumb">
+                <img id="thumb3" src="images/valuesnack.png" alt="Product thumbnail">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <span class="product-tag" id="productCategory">Health Product</span>
+
+            <h1 class="product-title" id="productName">Product Name</h1>
+
+            <div class="rating-header">
+              <span id="starsDisplay">★★★★★</span>
+              <span id="ratingText">(4.5 / 5.0 Reviews)</span>
+            </div>
+
+            <div class="price">
+              <span id="productPrice">RM 0.00</span>
+              <span class="old-price" id="oldPrice">RM 0.00</span>
+            </div>
+
+            <div class="stock">
+              <i class="bi bi-check-circle-fill"></i>
+              <span>In Stock</span>
+            </div>
+
+            <p class="product-desc" id="productDesc">Description text...</p>
+
+            <div class="value-box">
+              <h5>Value Added Benefits</h5>
+              <div id="valueBenefits"></div>
+            </div>
+
+            <div class="quantity-box">
+              <strong>Quantity:</strong>
+              <div class="qty-control ms-2">
+                <button onclick="decreaseQty()">−</button>
+                <span id="qty">1</span>
+                <button onclick="increaseQty()">+</button>
+              </div>
+            </div>
+
+            <div class="d-flex gap-3 flex-wrap mt-4">
+              <button class="btn-qasabe btn-gold" onclick="addToCartClick()">
+                <i class="bi bi-cart-plus me-2"></i>Add to Cart
+              </button>
+
+              <button class="btn-qasabe btn-navy" onclick="buyNow()">
+                <i class="bi bi-bag-check me-2"></i>Buy Now
+              </button>
+
+              <button class="btn-qasabe btn-outline-q" onclick="addToWishlistClick()">
+                <i class="bi bi-heart me-2"></i>Add to Wishlist
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-tabs">
+        <ul class="nav nav-pills" id="productTabs">
+          <li class="nav-item">
+            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#description">Description</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#ingredients">Ingredients</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#shipping">Shipping</button>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="description">
+            <h5 class="fw-bold text-dark mb-3">Product Description</h5>
+            <p id="tabDescription"></p>
+          </div>
+
+          <div class="tab-pane fade" id="ingredients">
+            <h5 class="fw-bold text-dark mb-3">Main Ingredients</h5>
+            <p id="tabIngredients"></p>
+          </div>
+
+          <div class="tab-pane fade" id="shipping">
+            <h5 class="fw-bold text-dark mb-3">Shipping Information</h5>
+            <p>
+              Delivery available within Malaysia. Orders will be processed within 1-3 working days. For fragile or fresh products, delivery options may depend on product type.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="reviews-section">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-7">
+          <h3 class="fw-bold text-dark mb-4" style="font-family: Georgia, serif;">Product Feedbacks</h3>
+          <div id="reviewsContainer">
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="submit-review-card">
+            <h4 class="fw-bold text-dark mb-2" style="font-family: Georgia, serif;">Write a Review</h4>
+            <p class="text-muted small mb-4">Share your thoughts and rating for this sugarcane product with others.</p>
+            
+            <form id="reviewForm" onsubmit="handleReviewSubmit(event)">
+              <div class="mb-3">
+                <label class="form-label fw-bold small text-secondary">YOUR RATING</label>
+                <div class="star-rating-select d-flex gap-1" id="starSelector">
+                  <i class="bi bi-star-fill active" data-value="1"></i>
+                  <i class="bi bi-star-fill active" data-value="2"></i>
+                  <i class="bi bi-star-fill active" data-value="3"></i>
+                  <i class="bi bi-star-fill active" data-value="4"></i>
+                  <i class="bi bi-star-fill active" data-value="5"></i>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="reviewUser" class="form-label fw-bold small text-secondary">YOUR NAME</label>
+                <input type="text" class="form-control rounded-3" id="reviewUser" placeholder="e.g. Aina Syazwani" required>
+              </div>
+
+              <div class="mb-4">
+                <label for="reviewComment" class="form-label fw-bold small text-secondary">COMMENTS / FEEDBACK</label>
+                <textarea class="form-control rounded-3" id="reviewComment" rows="4" placeholder="What did you like or dislike about this product?" required></textarea>
+              </div>
+
+              <button type="submit" class="w-100 btn-qasabe btn-gold text-uppercase" style="letter-spacing: 1px;">Submit Feedback</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <div class="container">
+      <h2 class="section-title">You May Also Like</h2>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="related-card">
+            <img src="images/sleep-mist (L).png" alt="Sleep Mist">
+            <h5>Sugarcane Sleep Mist</h5>
+            <p class="text-muted">Relaxing aromatherapy mist.</p>
+            <a href="product-detail.html?id=sleep-mist" class="btn btn-sm btn-outline-dark rounded-pill px-4">View Product</a>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="related-card">
+            <img src="images/AHA toner (L).png" alt="AHA Toner">
+            <h5>Sugarcane Glow Toner</h5>
+            <p class="text-muted">Gentle glow skincare toner.</p>
+            <a href="product-detail.html?id=aha-toner" class="btn btn-sm btn-outline-dark rounded-pill px-4">View Product</a>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="related-card">
+            <img src="images/energy snack (L).png" alt="Sugarcane Energy Snack">
+            <h5>Sugarcane Energy Snack</h5>
+            <p class="text-muted">Natural quick energy snack.</p>
+            <a href="product-detail.html?id=energy-snack" class="btn btn-sm btn-outline-dark rounded-pill px-4">View Product</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="q-thanks-box">
+    <div class="q-thanks-text">Thank you for supporting QASABE ♡</div>
+    <div class="text-uppercase tracking-wider mt-1" style="color: var(--gold); font-size: 11px; letter-spacing: 2px; font-weight: 600;">
+      SUSTAINABLE CHOICES • BETTER TOMORROW
+    </div>
+  </div>
+
+  <footer>
+    <div class="container text-center">
+      <p>©️ 2026 Qasabe. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+// ALL 10 PRODUCTS ARE RESTORED AND FULLY LOADED
+const products = {
+  "juice": {
+    name: "QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage",
+    category: "Refreshing Drink",
+    price: "RM 6.00",
+    oldPrice: "",
+    rating: "(4.2 / 5.0)",
+    stars: "★★★★☆",
+    image: "images/drink (P).jpeg",
+    thumb2: "images/valuedrink.jpeg",
+    thumb3: "images/valuedrink2.png",
+    desc: "QASABE Sugarcane Juice is a refreshing drink made from natural sugarcane extract. It gives a naturally sweet and cooling taste, perfect for hot weather and daily refreshment.",
+    tabDesc: "QASABE Sugarcane Juice highlights the original sweetness of sugarcane in a fresh and simple beverage. It is suitable for cafés, pop-up booths, events and customers who enjoy natural drinks.",
+    ingredients: "Fresh sugarcane extract, purified water, ice, and optional lemon or mint for added freshness.",
+    benefits: ["Naturally refreshing and hydrating", "Best served chilled for a cooling taste", "Contains natural sugarcane minerals", "Fresh drink suitable for daily refreshment"],
+    defaultReviews: [
+      { name: "Khairul A.", rating: 5, comment: "Sangat segar! Minum waktu sejuk memang layan gila.", date: "2026-05-12" },
+      { name: "Siti Nor", rating: 4, comment: "Manis semula jadi, tak ada gula tambahan. Terbaik.", date: "2026-06-01" }
+    ]
+  },
+
+  "energy-snack": {
+    name: "Sugarcane Energy Snack",
+    category: "Energy Snack",
+    price: "RM 15.00",
+    oldPrice: "",
+    rating: "(4.5 / 5.0)",
+    stars: "★★★★★",
+    image: "images/energy snack (P).png",
+    thumb2: "images/valuesnack.png",
+    thumb3: "images/valuesnack2.png",
+    desc: "A clean and convenient sugarcane-based snack made for quick energy during study, work, travel, or outdoor activities.",
+    tabDesc: "QASABE Sugarcane Energy Snack is created for people who need a quick and cleaner energy option. It is suitable for students, workers, travellers, and outdoor lovers who want a simple snack that is easy to carry anywhere.",
+    ingredients: "Sugarcane extract, cereal roll, natural sweetener, and selected minerals.",
+    benefits: ["Natural quick energy", "Supports steadier energy release", "Contains antioxidants & minerals", "Clean, convenient on-the-go snack"],
+    defaultReviews: [
+      { name: "Faiz Subri", rating: 5, comment: "Sesuai bawa pergi hiking. Rasa sedap dan bertenaga!", date: "2026-04-18" }
+    ]
+  },
+
+  "herbal-drink": {
+    name: "QASABE Herbal Drink",
+    category: "Wellness Drink",
+    price: "RM 32.00",
+    oldPrice: "",
+    rating: "(3.8 / 5.0)",
+    stars: "★★★★☆",
+    image: "images/herbal drink (P).png",
+    thumb2: "images/valuehbdrink.png",
+    thumb3: "images/valuehbdrink2.png",
+    desc: "A sugarcane-based herbal drink designed for a refreshing wellness experience.",
+    tabDesc: "QASABE Sugarcane Herbal Drink combines sugarcane with selected herbal ingredients to create a unique wellness beverage for daily refreshment.",
+    ingredients: "Sugarcane extract, selected herbs, purified water, and natural flavour.",
+    benefits: ["Refreshing wellness drink", "Sugarcane-based formulation", "Suitable for daily refreshment", "Natural herbal concept"],
+    defaultReviews: [
+      { name: "Cik Hanim", rating: 4, comment: "Rasa herba tak terlalu kuat, sedap diamalkan setiap pagi.", date: "2026-06-10" }
+    ]
+  },
+
+  "organic-cube": {
+    name: "QASABE Sugarcane Cube",
+    category: "Natural Sweetener",
+    price: "RM 25.00",
+    oldPrice: "",
+    rating: "(4.6 / 5.0)",
+    stars: "★★★★★",
+    image: "images/sugarcube (P).png",
+    thumb2: "images/valuecube.jpeg",
+    thumb3: "images/valuecube2.png",
+    desc: "A natural sugarcane cube sweetener that can be used in drinks, desserts and daily recipes.",
+    tabDesc: "QASABE Organic Sugarcane Cube offers a simple way to sweeten beverages and food using sugarcane-based ingredients.",
+    ingredients: "Organic sugarcane extract.",
+    benefits: ["Natural sweetener", "Easy to use", "Suitable for beverages and desserts", "Organic sugarcane concept"],
+    defaultReviews: [
+      { name: "Zulhelmi", rating: 5, comment: "Sangat senang nak guna bila buat teh o panas dekat pejabat.", date: "2026-05-24" }
+    ]
+  },
+
+  "liquid-drop": {
+    name: "QASABE Liquid Sweetener Drops",
+    category: "Best Deal",
+    price: "RM 11.90",
+    oldPrice: "RM 17.00",
+    rating: "(4.7 / 5.0)",
+    stars: "★★★★★",
+    image: "images/liquid drop (P).jpeg",
+    thumb2: "images/valuedrops.jpeg",
+    thumb3: "images/valuedrops2.png",
+    desc: "A convenient sugarcane liquid sweetener drop for drinks, desserts and daily use.",
+    tabDesc: "QASABE Sweetener Liquid Drop is designed for customers who want an easy and portable sweetener option. Just add a few drops into your drink for a simple sweet taste.",
+    ingredients: "Sugarcane sweetener extract and natural ingredients.",
+    benefits: ["Easy drop format", "Convenient for drinks", "Portable and simple to use", "Less messy compared to powder sweetener"],
+    defaultReviews: [
+      { name: "Amira", rating: 5, comment: "Kecil dan senang masuk poket. Bawa pergi kedai mamak senang gila.", date: "2026-06-12" }
+    ]
+  },
+
+  "sleep-mist": {
+    name: "Sugarcane Sleep Mist",
+    category: "Aromatherapy & Wellness",
+    price: "RM 49.90",
+    oldPrice: "RM 58.80",
+    rating: "(4.8 / 5.0)",
+    stars: "★★★★★",
+    image: "images/sleep-mist (P).png",
+    thumb2: "images/valuesmist.png",
+    thumb3: "images/valuesmist2.png",
+    desc: "QASABE Sugarcane Sleep Mist is a calming room and pillow mist designed to create a relaxing bedtime atmosphere.",
+    tabDesc: "This sleep mist is suitable for customers who want a simple aromatherapy product to support a peaceful environment before sleep.",
+    ingredients: "Sugarcane extract, purified water, essential oil blend, natural fragrance.",
+    benefits: ["Creates a calming bedtime atmosphere", "Helps freshen room and pillow area", "Suitable for relaxation routine", "Soft aromatherapy scent"],
+    defaultReviews: [
+      { name: "Alex K.", rating: 5, comment: "Love the sleep mist so much. The scent feels really calming.", date: "2026-06-14" }
+    ]
+  },
+
+  "aha-toner": {
+    name: "Sugarcane Glow Toner",
+    category: "Skincare",
+    price: "RM 30.00",
+    oldPrice: "",
+    rating: "(4.9 / 5.0)",
+    stars: "★★★★★",
+    image: "images/AHA toner (P).png",
+    thumb2: "images/valuetoner.png",
+    thumb3: "images/valuetoner1.png",
+    desc: "QASABE Sugarcane Toner is a gentle skincare toner inspired by sugarcane-based AHA.",
+    tabDesc: "This toner is suitable for customers who want a lightweight skincare product with a sugarcane-inspired formulation.",
+    ingredients: "Sugarcane extract, AHA blend, purified water, botanical extract.",
+    benefits: ["Helps refresh and tone the skin", "Supports smoother-looking skin texture", "Sugarcane-inspired AHA concept", "Lightweight for daily routine"],
+    defaultReviews: [
+      { name: "Sarah M.", rating: 5, comment: "The sugarcane toner made my skin feel fresh and radiant.", date: "2026-06-20" }
+    ]
+  },
+
+  "shampoo": {
+    name: "QASABE Nourishing Shampoo",
+    category: "Hair Care",
+    price: "RM 45.00",
+    oldPrice: "",
+    rating: "(4.1 / 5.0)",
+    stars: "★★★★☆",
+    image: "images/shampoo (P).png",
+    thumb2: "images/valueshampoo.png",
+    thumb3: "images/valueshampoo2.png",
+    desc: "A sugarcane-inspired shampoo created for daily hair care and a fresh clean feeling.",
+    tabDesc: "QASABE Sugarcane Shampoo is suitable for customers who want a hair care product with a natural sugarcane-inspired concept.",
+    ingredients: "Sugarcane extract, cleansing agent, purified water, and fragrance.",
+    benefits: ["Daily hair care nourishment", "Fresh and clean feeling", "Sugarcane-inspired formulation", "Suitable for regular use"],
+    defaultReviews: [
+      { name: "Nadia Osman", rating: 4, comment: "Rambut kurang gugur dan rasa kulit kepala segar.", date: "2026-05-30" }
+    ]
+  },
+
+  "body-scrub": {
+    name: "QASABE Body Scrub",
+    category: "Body Care",
+    price: "RM 50.00",
+    oldPrice: "",
+    rating: "(4.3 / 5.0)",
+    stars: "★★★★☆",
+    image: "images/bscrub (P).jpeg",
+    thumb2: "images/valuescrubs.jpeg",
+    thumb3: "images/valuescrubs2.png",
+    desc: "A body scrub designed to exfoliate dull skin and support a smoother skin texture.",
+    tabDesc: "QASABE Sugarcane Body Scrub is made for a relaxing self-care routine while promoting soft and refreshed skin.",
+    ingredients: "Sugarcane extract, natural scrub particles, body care blend, and fragrance.",
+    benefits: ["Helps exfoliate skin naturally", "Supports smoother skin texture", "Sugarcane body care concept", "Suitable for weekend self-care"],
+    defaultReviews: [
+      { name: "Farah Diana", rating: 4, comment: "Scrub dia halus, tak sakit kulit. Lepas bilas kulit rasa lembut gila.", date: "2026-06-02" }
+    ]
+  },
+
+  "bagasse-packaging": {
+    name: "QASABE Eco Bagasse Packaging",
+    category: "Eco Packaging",
+    price: "RM 12.00",
+    oldPrice: "",
+    rating: "(4.5 / 5.0)",
+    stars: "★★★★★",
+    image: "images/packaging (P).png",
+    thumb2: "images/valuepackaging.png",
+    thumb3: "images/valuepackaging2.png",
+    desc: "Eco-friendly packaging made from sugarcane bagasse, suitable for food containers and sustainable packaging use.",
+    tabDesc: "QASABE Sugarcane Bagasse Packaging turns sugarcane fibre waste into useful packaging products. It reduces reliance on single-use plastic.",
+    ingredients: "Sugarcane bagasse fibre.",
+    benefits: ["Made from sugarcane bagasse fibre", "Eco-friendly food containers", "Biodegradable concept", "Alternative to single-use plastic"],
+    defaultReviews: [
+      { name: "Ahmad Catering", rating: 5, comment: "Kualiti tegap, tahan minyak panas. Pelanggan kedai suka sebab mesra alam.", date: "2026-05-18" }
+    ]
+  }
+};
+
+// Parse product dynamic ID URL
+const params = new URLSearchParams(window.location.search);
+let productId = params.get("id") || "energy-snack"; 
+const product = products[productId];
+
+if(!product){
+  alert("Product not found. Returning to Homepage.");
+  window.location.href = "index.html";
+}
+
+// Inject static attributes
+document.title = "QASABE | " + product.name;
+document.getElementById("productName").textContent = product.name;
+document.getElementById("breadcrumbName").textContent = product.name;
+document.getElementById("productCategory").textContent = product.category;
+document.getElementById("productPrice").textContent = product.price;
+document.getElementById("oldPrice").textContent = product.oldPrice;
+document.getElementById("starsDisplay").textContent = product.stars;
+document.getElementById("ratingText").textContent = product.rating;
+document.getElementById("productDesc").textContent = product.desc;
+document.getElementById("tabDescription").textContent = product.tabDesc;
+document.getElementById("tabIngredients").textContent = product.ingredients;
+
+document.getElementById("mainImage").src = product.image;
+document.getElementById("mainImage").alt = product.name;
+document.getElementById("thumb1").src = product.image;
+document.getElementById("thumb2").src = product.thumb2;
+document.getElementById("thumb3").src = product.thumb3;
+
+if(product.oldPrice === ""){
+  document.getElementById("oldPrice").style.display = "none";
+} else {
+  document.getElementById("oldPrice").style.display = "inline";
+}
+
+document.getElementById("valueBenefits").innerHTML = product.benefits.map(function(benefit){
+  return `
+    <div class="value-item">
+      <i class="bi bi-check-circle-fill"></i>
+      <span>${benefit}</span>
+    </div>
+  `;
+}).join("");
+
+// Dynamic Shopping Cart & Wishlist Syncing with index.html
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+function updateCounts(){
+  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+  document.getElementById("cartCount").innerText = totalQty;
+  document.getElementById("wishlistCount").innerText = wishlist.length;
+}
+
+let qty = 1;
+function increaseQty(){
+  qty++;
+  document.getElementById("qty").textContent = qty;
+}
+function decreaseQty(){
+  if(qty > 1){
+    qty--;
+    document.getElementById("qty").textContent = qty;
+  }
+}
+
+function addToCartClick(){
+  let existing = cart.find(item => item.id === productId);
+  if(existing){
+    existing.qty += qty;
+  } else {
+    cart.push({ id: productId, qty: qty });
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCounts();
+  alert(product.name + " has been added to cart!");
+}
+
+function addToWishlistClick(){
+  if(!wishlist.includes(productId)){
+    wishlist.push(productId);
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    updateCounts();
+    alert(product.name + " has been added to wishlist!");
+  } else {
+    alert(product.name + " is already in your wishlist.");
+  }
+}
+
+function buyNow(){
+  let existing = cart.find(item => item.id === productId);
+  if(!existing){
+    cart.push({ id: productId, qty: qty });
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+  window.location.href = "cart.html";
+}
+
+// Thumbnails setup 
+const thumbs = document.querySelectorAll(".thumb");
+thumbs.forEach(function(thumb){
+  thumb.addEventListener("click", function(){
+    thumbs.forEach(t => t.classList.remove("active"));
+    this.classList.add("active");
+    const imgSrc = this.querySelector("img").src;
+    document.getElementById("mainImage").src = imgSrc;
+  });
+});
+
+// FEEDBACK & REVIEWS SYSTEM
+let currentSelectedRating = 5;
+const starStars = document.querySelectorAll("#starSelector i");
+
+starStars.forEach(star => {
+  star.addEventListener("click", function() {
+    currentSelectedRating = parseInt(this.getAttribute("data-value"));
+    starStars.forEach(s => {
+      if(parseInt(s.getAttribute("data-value")) <= currentSelectedRating) {
+        s.classList.add("active");
+      } else {
+        s.classList.remove("active");
+      }
+    });
+  });
+});
+
+function loadReviews() {
+  let allStoredReviews = JSON.parse(localStorage.getItem("qasabe_feedbacks_" + productId)) || product.defaultReviews;
+  const container = document.getElementById("reviewsContainer");
+  
+  if(allStoredReviews.length === 0) {
+    container.innerHTML = `<p class="text-muted">No reviews yet for this product. Be the first to review!</p>`;
+    return;
+  }
+
+  container.innerHTML = allStoredReviews.map(rev => {
+    let starString = "";
+    for(let i=1; i<=5; i++) {
+      starString += i <= rev.rating ? "★" : "☆";
+    }
+    const initial = rev.name ? rev.name.charAt(0).toUpperCase() : "U";
+    
+    return `
+      <div class="review-item-box">
+        <div class="d-flex align-items-center gap-3 mb-2">
+          <div class="user-avatar-initial">${initial}</div>
+          <div>
+            <h6 class="fw-bold mb-0 text-dark">${rev.name}</h6>
+            <small class="text-muted" style="font-size:11px;">Posted on ${rev.date || '2026-06-25'}</small>
+          </div>
+          <div class="ms-auto text-warning fw-bold" style="font-size: 14px;">
+            ${starString}
+          </div>
+        </div>
+        <p class="mb-0 text-secondary" style="font-size: 14px; line-height:1.5;">${rev.comment}</p>
+      </div>
+    `;
+  }).join("");
+}
+
+function handleReviewSubmit(e) {
+  e.preventDefault();
+  const userName = document.getElementById("reviewUser").value;
+  const userComment = document.getElementById("reviewComment").value;
+  const today = new Date().toISOString().split('T')[0];
+
+  let allStoredReviews = JSON.parse(localStorage.getItem("qasabe_feedbacks_" + productId)) || [...product.defaultReviews];
+  
+  allStoredReviews.unshift({
+    name: userName,
+    rating: currentSelectedRating,
+    comment: userComment,
+    date: today
+  });
+
+  localStorage.setItem("qasabe_feedbacks_" + productId, JSON.stringify(allStoredReviews));
+  
+  // Reset Form UI
+  document.getElementById("reviewForm").reset();
+  currentSelectedRating = 5;
+  starStars.forEach(s => s.classList.add("active"));
+
+  loadReviews();
+  alert("Thank you! Your product feedback has been submitted successfully.");
+}
+
+// Initial fire
+updateCounts();
+loadReviews();
+  </script>
+
+</body>
+</html>
