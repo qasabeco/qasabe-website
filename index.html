@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qasabe Homepage</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#071827;
+  --cream:#fff7f3;
+  --gold:#c99b3b;
+}
+body{
+  margin:0;
+  background:var(--cream);
+  font-family:Arial, sans-serif;
+  color:#111;
+}
+h1,h2,h3{
+  font-family:Georgia, serif;
+  font-weight:700;
+}
+/* TOP BAR STYLE */
+.top-bar{
+  background:var(--navy);
+  color:white;
+  font-size:12px;
+  padding:8px;
+  text-align:center;
+  display: none;
+}
+.navbar-nav .nav-link{
+    color: var(--navy);
+    font-weight: 500;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: var(--gold);
+  color: white !important;
+  transition: 0.2s;
+}
+.dropdown-toggle::after {
+  vertical-align: middle;
+  color: var(--gold); 
+}
+
+.navbar-nav .nav-link:hover{
+    color: var(--gold);
+}
+.navbar-collapse{
+    align-items: center;
+}
+.brand-logo{
+  display:flex;
+  align-items:center;
+  gap:1px;
+  text-decoration:none;
+}
+.brand-logo img{
+  width:65px;
+  height:65px;
+  object-fit:contain;
+}
+.brand-logo span{
+  font-family:'Cormorant Garamond', serif;
+  font-size:38px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:var(--navy);
+}
+.nav-icons{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+.icon-btn{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    font-size:22px;
+    text-decoration:none;
+    color:var(--navy);
+    transition:.3s;
+}
+.icon-btn:hover{
+  background:var(--gold);
+  color:white;
+  transform:translateY(-4px) scale(1.1);
+  box-shadow:0 0 15px rgba(201,155,59,0.5);
+}
+.cart-count,
+.wishlist-count{
+  background:var(--gold);
+  color:white;
+  font-size:11px;
+  border-radius:50%;
+  padding:2px 6px;
+  position:relative;
+  top:-10px;
+  right:8px;
+}
+
+.search-container {
+  position: relative;
+}
+.suggestion-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 1050;
+  max-height: 250px;
+  overflow-y: auto;
+  display: none;
+  margin-top: 5px;
+}
+.suggestion-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--navy);
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+.suggestion-item:hover {
+  background: #f5f5f5;
+  color: var(--gold);
+}
+.suggestion-item img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: #fdfaf6;
+}
+
+.hero{
+  background: url('images/background.jpeg') no-repeat center center;
+  background-size: cover;
+  color:white;
+  padding:30px 0 10px;
+}
+.hero h1{
+  font-size:50px;
+  line-height:1.05;
+}
+.small-word{
+  font-size:36px;
+  font-weight:600;
+  color:white;
+}
+.hero-line{
+  width:260px;
+  height:1px;
+  background:var(--gold);
+  margin:14px 0 16px;
+}
+.hero-subtitle{
+  font-size:17px;
+  line-height:1.6;
+  max-width:520px;
+}
+.leaf{
+  color:var(--gold);
+  font-size:24px;
+  margin-left:4px;
+  position:relative;
+  top:-6px;
+}
+.gold{
+  color:var(--gold);
+}
+.hero-product-img{
+  max-width:600px;
+  width:100%;
+  cursor: pointer;
+}
+.btn-gold{
+  background:var(--gold);
+  color:white;
+  border:none;
+  border-radius:30px;
+  padding:10px 28px;
+  transition: 0.2s;
+}
+.btn-soft{
+  background:#e9e9e9;
+  color:#333;
+  border:none;
+  border-radius:30px;
+  padding:10px 28px;
+  transition: 0.2s;
+}
+.btn-gold:hover, .btn-soft:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+.promo-card{
+  background: rgba(6, 17, 29, 0.85); 
+  border:1px solid var(--gold);
+  border-radius:14px;
+  padding:14px 18px;
+  max-width:430px;
+  margin-top:18px;
+  backdrop-filter: blur(5px); 
+}
+.count-box{
+  border-left:1px solid rgba(255,255,255,.3);
+  padding:0 12px;
+  text-align:center;
+}
+.count-box h5{
+  color:var(--gold);
+  margin:0;
+  font-weight:bold;
+}
+.moving-bar{
+  background:#111;
+  overflow:hidden;
+  white-space:nowrap;
+  padding:12px 0;
+}
+.moving-text{
+  display:inline-block;
+  color:white;
+  font-size:15px;
+  font-weight:bold;
+  animation:moveText 18s linear infinite;
+}
+.moving-text span{
+  margin-right:80px;
+}
+.moving-text i{
+  color:var(--gold);
+  margin-right:10px;
+}
+@keyframes moveText{
+  0%{ transform:translateX(100%); }
+  100%{ transform:translateX(-100%); }
+}
+.section-light{
+  background:var(--cream);
+  padding:60px 0;
+}
+.section-dark{
+  background:var(--navy);
+  color:white;
+  padding:60px 0;
+}
+.product-card{
+  text-align:center;
+}
+.hover-img-box{
+  position:relative;
+  width:100%;
+  height:350px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.hover-img-box img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:14px;
+  position:absolute;
+  top:0;
+  left:0;
+  transition:all 0.45s ease;
+}
+.hover-img-box .main-img{
+  opacity:1;
+  transform:scale(1);
+}
+.hover-img-box .hover-img{
+  opacity:0;
+  transform:scale(1.08);
+}
+.hover-img-box:hover .main-img{
+  opacity:0;
+  transform:scale(0.95);
+}
+.hover-img-box:hover .hover-img{
+  opacity:1;
+  transform:scale(1);
+}
+.hover-img-box:hover{
+  transform:translateY(-8px) scale(1.03);
+  box-shadow:0 0 25px rgba(201,155,59,0.45), 0 15px 35px rgba(0,0,0,0.25);
+  border:2px solid var(--gold);
+}
+.category-card {
+  text-align:center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+.category-card img{
+  width:100%;
+  height:350px;
+  object-fit:cover;
+  border-radius:20px;
+  transition: all 0.3s ease;
+}
+.category-card:hover img {
+  transform:translateY(-8px) scale(1.03);
+  box-shadow:0 0 25px rgba(201,155,59,0.45), 0 15px 35px rgba(0,0,0,0.25);
+  border:2px solid var(--gold);
+}
+.category-card h6{
+  font-size:26px;
+  margin-top:20px;
+  font-weight:600;
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  line-height:1.3;
+}
+.category-card b{
+  font-size:24px;
+}
+.category-card .stars{
+  font-size:18px;
+  color: var(--gold);
+}
+.product-card h6{
+  font-size:26px;
+  margin-top:20px;
+  font-weight:600;
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  line-height:1.3;
+}
+.product-card b{
+  font-size:28px;
+  display:block;
+  min-height:45px;
+}
+.stars{
+  font-size:18px;
+  color: var(--gold);
+}
+.product-card:hover h6,
+.category-card:hover h6{
+  color:var(--gold);
+  transition:0.3s;
+}
+.product-actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:20px;
+  min-height:60px;
+  align-items:center;
+}
+.product-card{
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+}
+.product-card .stars{
+  height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.discount-row{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  margin-top:5px;
+}
+.discount-badge{
+  background:#dc3545;
+  color:white;
+  font-size:12px;
+  padding:4px 8px;
+  border-radius:6px;
+  font-weight:600;
+}
+.invisible{
+  visibility:hidden;
+}
+.wishlist-btn{
+  background:white;
+  color:var(--navy);
+  border:1px solid var(--gold);
+  border-radius:30px;
+  padding:9px 17px;
+  font-size:14px;
+  transition:0.3s;
+}
+.cart-btn{
+  background:var(--gold);
+  color:white;
+  border:none;
+  border-radius:30px;
+  padding:9px 17px;
+  font-size:14px;
+  transition:0.3s;
+}
+.wishlist-btn:hover,
+.cart-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 6px 15px rgba(201,155,59,0.35);
+}
+.review-title {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--navy);
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.review-subtitle {
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.review-card {
+  background: white;
+  border: 1px solid rgba(201, 155, 59, 0.25);
+  border-radius: 20px;
+  padding: 30px 25px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(7, 24, 39, 0.03);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(201, 155, 59, 0.15);
+}
+.quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 65px;
+  color: #f3e5d8;
+  line-height: 1;
+  position: absolute;
+  top: 10px;
+  left: 25px;
+  user-select: none;
+}
+.review-card .stars {
+  color: var(--gold);
+  font-size: 16px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: flex-start;
+}
+.review-card p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+}
+.review-divider {
+  border-top: 1px solid rgba(201, 155, 59, 0.15);
+  margin-bottom: 15px;
+}
+.reviewer-profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.reviewer-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+}
+.reviewer-info h6 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--navy);
+  font-weight: 700;
+  font-family: Georgia, serif;
+}
+.verified-tag {
+  font-size: 12px;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+.verified-tag i {
+  font-size: 12px;
+}
+.story-box{
+  background:#f5f5f5;
+  color:#111;
+  border-radius:30px;
+  padding:50px;
+}
+.video-wrap{
+  position:relative;
+  width:100%;
+}
+.video-thumb{
+  width:100%;
+  height:350px;
+  object-fit:cover;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+.footer-brand{
+  display:flex;
+  align-items:center;
+  gap:3px;
+  margin-bottom:15px;
+}
+.footer-brand img{
+  width:52px;
+  height:52px;
+  object-fit:contain;
+}
+.footer-brand h4{
+  font-family:'Cormorant Garamond', serif;
+  font-size:32px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:white;
+  margin:0;
+}
+footer{
+  background:var(--navy);
+  color:white;
+  padding:50px 0 20px;
+  font-size:13px;
+}
+footer a{
+  color:white;
+  text-decoration:none;
+  display:block;
+  margin-bottom:7px;
+}
+.footer-title{
+  letter-spacing:3px;
+  font-size:12px;
+  margin-bottom:14px;
+}
+.qasabe-contact-section {
+  background: var(--cream);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+.contact-shade-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('images/shadel.png') no-repeat right top;
+  background-size: cover;
+  opacity: 0.2;
+  z-index: 1;
+  pointer-events: none;
+}
+.contact-inner-content {
+  position: relative;
+  z-index: 5;
+}
+.contact-header-title {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--navy);
+  font-size: 56px;
+  font-weight: 700;
+}
+.contact-header-sub {
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+.contact-cursive {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: 28px;
+  margin-top: -10px;
+  margin-bottom: 25px;
+}
+.q-poster-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.q-poster-row {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(201, 155, 59, 0.2);
+  text-align: left;
+}
+.q-poster-row:last-of-type {
+  border-bottom: none;
+}
+.q-poster-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+.circle-email { background: #f3e5d8; color: var(--gold); }
+.circle-wa { background: #71806a; color: white; }
+.circle-social { background: #f9ebe0; color: var(--gold); }
+.q-poster-info { flex-grow: 1; }
+.q-poster-info h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: var(--gold);
+  margin: 0;
+  font-style: italic;
+}
+.q-poster-tag {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #888;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.q-poster-link {
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 22px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.q-poster-link:hover { color: var(--gold); }
+.btn-poster-wa {
+  background: #0f1d26;
+  color: white !important;
+  border: 1px solid var(--gold);
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-size: 15px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(7, 24, 39, 0.3);
+}
+.btn-poster-wa:hover {
+  background: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(201, 155, 59, 0.4);
+}
+.btn-poster-wa i { color: var(--gold); font-size: 18px; }
+.q-social-inline { display: flex; gap: 30px; margin-top: 5px; }
+.q-social-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 16px;
+}
+.q-social-item:hover { color: var(--gold); }
+.q-social-item i { font-size: 20px; color: #111; }
+.q-social-item span {
+  font-size: 13px;
+  color: #777;
+  font-weight: 500;
+  display: block;
+  margin-top: -2px;
+}
+.q-thanks-box {
+  margin-top: 50px;
+  border-top: 1px dashed rgba(201, 155, 59, 0.3);
+  padding-top: 30px;
+}
+.q-thanks-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--navy);
+}
+html { scroll-behavior: smooth; }
+
+.video-scroll-container {
+    /* Menghadkan tinggi kontena kanan supaya separuh/ngam dengan tinggi video tunggal di kiri */
+    max-height: 320px; 
+    overflow-y: auto;
+    padding-right: 8px; /* Mengelakkan video rapat dengan scrollbar */
+  }
+
+  /* Rekaan cantik untuk Scrollbar belah kanan */
+  .video-scroll-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  .video-scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  .video-scroll-container::-webkit-scrollbar-thumb {
+    background: #c99b3b; /* Warna gold tema Qasabe */
+    border-radius: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div id="dynamicTopBar" class="top-bar">
+  Sign up and get 20% off your first order. <a href="profile.html" class="text-white text-decoration-underline ms-1">Sign Up Now</a>
+</div>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand brand-logo" href="index.html">
+      <img src="images/logor.png" alt="QASABE Logo">
+      <span>QASABE</span>
+    </a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav mx-auto gap-3">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Products
+          </a>
+          <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown" style="background-color: var(--cream);">
+            <li><a class="dropdown-item py-2" href="Category.html?cat=food-beverages" style="color: var(--navy); font-weight: 500;">Food & Beverages</a></li>
+            <li><a class="dropdown-item py-2" href="Category.html?cat=health" style="color: var(--navy); font-weight: 500;">Health</a></li>
+            <li><a class="dropdown-item py-2" href="Category.html?cat=personal-care" style="color: var(--navy); font-weight: 500;">Personal Care & Wellness</a></li>
+            <li><a class="dropdown-item py-2" href="Category.html?cat=packaging" style="color: var(--navy); font-weight: 500;">Food Packaging & Containers</a></li>
+          </ul>
+        </li>
+        
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+      
+      <div class="d-none d-lg-block w-25 search-container">
+        <input type="text" id="searchBar" class="form-control rounded-pill" placeholder="Find sugarcane products..." onkeypress="handleSearch(event)" oninput="showSuggestions(this.value)">
+        <div id="suggestionBox" class="suggestion-box"></div>
+      </div>
+      
+      <div class="nav-icons ms-3">
+        <a href="wishlist.html" class="icon-btn">
+          <i class="bi bi-heart"></i>
+          <span id="wishlistCount" class="wishlist-count">0</span>
+        </a>
+        <a href="cart.html" class="icon-btn">
+          <i class="bi bi-cart"></i>
+          <span id="cartCount" class="cart-count">0</span>
+        </a>
+        <a href="profile.html" class="icon-btn">
+          <i class="bi bi-person-circle"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h1>
+          From Cane<br>
+          <span class="small-word">to</span>
+          <span class="gold">Change</span>
+          <span class="leaf">❧</span>
+          <span class="leaf"><i class="bi bi-flower1"></i></span>
+        </h1>
+        <div class="hero-line"></div>
+        <p class="hero-subtitle">
+          Crafted from nature. Inspired by goodness.<br>
+          For you, for the planet, for a better tomorrow.
+        </p>
+        <button class="btn-gold me-2" onclick="window.location.href='Category.html'">Shop Now</button>
+        <button class="btn-soft" onclick="document.getElementById('top-selling').scrollIntoView();">View Best Sellers</button>
+        
+        <div class="promo-card">
+          <div class="row align-items-center">
+            <div class="col-4">
+              <small>LIMITED TIME OFFER</small>
+              <h4>20% OFF</h4>
+              <small>Your First Order</small>
+            </div>
+            <div class="col-8 d-flex justify-content-around">
+              <div class="count-box">
+                <h5 id="days">07</h5>
+                <small>DAYS</small>
+              </div>
+              <div class="count-box">
+                <h5 id="hours">24</h5>
+                <small>HOURS</small>
+              </div>
+              <div class="count-box">
+                <h5 id="minutes">55</h5>
+                <small>MINS</small>
+              </div>
+              <div class="count-box">
+                <h5 id="seconds">32</h5>
+                <small>SECS</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 text-center mt-4 mt-md-0">
+        <div id="heroProductCarousel" class="carousel slide hero-product-slider" data-bs-ride="carousel" data-bs-interval="3000">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="images/mainproducts-luxury.png" class="d-block mx-auto hero-product-img" alt="Main Products">
+              </a>
+            </div>
+            <div class="carousel-item">
+              <a href="product-detail.html?id=aha-toner">
+                <img src="images/toner (NB).png" class="d-block mx-auto hero-product-img" alt="Sugarcane Toner">
+              </a>
+            </div>
+            <div class="carousel-item">
+              <a href="product-detail.html?id=sleep-mist">
+                <img src="images/smist (NB).png" class="d-block mx-auto hero-product-img" alt="Sugarcane Sleep Mist">
+              </a>
+            </div>
+            <div class="carousel-item">
+              <a href="product-detail.html?id=body-scrub">
+                <img src="images/bscrub (NB).png" class="d-block mx-auto hero-product-img" alt="Sugarcane Snack">
+              </a>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#heroProductCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#heroProductCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="moving-bar">
+  <div class="moving-text">
+    <span><i class="bi bi-flower1"></i>100% Natural • No Artificial Additives</span>
+    <span><i class="bi bi-recycle"></i>Sustainable • Zero Waste</span>
+    <span><i class="bi bi-people-fill"></i>Local Farmers • Empowering Community</span>
+    <span><i class="bi bi-shield-check"></i>Secure Payment • Safe & Trusted</span>
+    <span><i class="bi bi-truck"></i>Fast Delivery • Across Malaysia</span>
+  </div>
+</div>
+
+<section class="section-light" id="top-selling">
+  <div class="container">
+    <h2 class="text-center mb-5">TOP SELLING</h2>
+    <div class="row g-5 justify-content-center">
+      
+      <div class="col-md-4 product-card">
+        <div class="hover-img-box" onclick="window.location.href='product-detail.html?id=aha-toner'">
+          <img src="images/AHA toner (L).png" class="main-img" alt="Sugarcane Toner">
+          <img src="images/valuetoner.png" class="hover-img" alt="Sugarcane Toner Value Added">
+        </div>
+        <h6>Sugarcane Glow Toner</h6>
+        <div class="stars">★★★★★ <span class="text-dark">4.5/5</span></div>
+        <b>RM 30.00</b>
+        <div class="discount-row invisible">
+          <del>RM58.80</del>
+          <span class="discount-badge">-20%</span>
+        </div>
+        <div class="product-actions">
+          <button class="wishlist-btn" onclick="addToWishlist('aha-toner')">
+            <i class="bi bi-heart"></i> Wishlist
+          </button>
+          <button class="cart-btn" onclick="addToCart('aha-toner')">
+            <i class="bi bi-cart-plus"></i> Add Cart
+          </button>
+        </div>
+      </div>
+      
+      <div class="col-md-4 product-card">
+        <div class="hover-img-box" onclick="window.location.href='product-detail.html?id=sleep-mist'">
+          <img src="images/sleep-mist (L).png" class="main-img" alt="Sugarcane Sleep Mist">
+          <img src="images/valuesmist.png" class="hover-img" alt="Sugarcane Sleep Mist Value Added">
+        </div>
+        <h6>Sugarcane Sleep Mist</h6>
+        <div class="stars">★★★★★ <span class="text-dark">4.5/5</span></div>
+        <b>RM 49.90</b>
+        <div class="discount-row">
+          <del class="text-muted">RM58.80</del>
+          <span class="discount-badge">-20%</span>
+        </div>
+        <div class="product-actions">
+          <button class="wishlist-btn" onclick="addToWishlist('sleep-mist')">
+            <i class="bi bi-heart"></i> Wishlist
+          </button>
+          <button class="cart-btn" onclick="addToCart('sleep-mist')">
+            <i class="bi bi-cart-plus"></i> Add Cart
+          </button>
+        </div>
+      </div>
+      
+      <div class="col-md-4 product-card">
+        <div class="hover-img-box" onclick="window.location.href='product-detail.html?id=energy-snack'">
+          <img src="images/energy snack (L).png" class="main-img" alt="Sugarcane Energy Snack">
+          <img src="images/valuesnack.png" class="hover-img" alt="Sugarcane Energy Snack Value Added">
+        </div>
+        <h6>Sugarcane Energy Snack</h6>
+        <div class="stars">★★★★★ <span class="text-dark">4.5/5</span></div>
+        <b>RM 15.00</b>
+        <div class="discount-row invisible">
+          <del>RM58.80</del>
+          <span class="discount-badge">-20%</span>
+        </div>
+        <div class="product-actions">
+          <button class="wishlist-btn" onclick="addToWishlist('energy-snack')">
+            <i class="bi bi-heart"></i> Wishlist
+          </button>
+          <button class="cart-btn" onclick="addToCart('energy-snack')">
+            <i class="bi bi-cart-plus"></i> Add Cart
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section class="section-dark" id="categories">
+  <div class="container">
+    <h2 class="text-center mb-5">BEST CATEGORIES</h2>
+    <div class="row g-4">
+      
+      <div class="col-md-3">
+        <a href="Category.html?cat=food-beverages" class="category-card">
+          <img src="images/foods.png" alt="Food and Beverages">
+          <h6>Food & Beverages</h6>
+          <div class="stars">★★★★★</div>
+          <b>RM 24 - RM 45</b>
+        </a>
+      </div>
+      
+      <div class="col-md-3">
+        <a href="Category.html?cat=health" class="category-card">
+          <img src="images/healths.png" alt="Health">
+          <h6>Health</h6>
+          <div class="stars">★★★★☆</div>
+          <b>RM 35 - RM 70</b>
+        </a>
+      </div>
+      
+      <div class="col-md-3">
+        <a href="Category.html?cat=personal-care" class="category-card">
+          <img src="images/personal-care.png" alt="Personal Care">
+          <h6>Personal Care & Wellness</h6>
+          <div class="stars">★★★★☆</div>
+          <b>RM 28 - RM 65</b>
+        </a>
+      </div>
+      
+      <div class="col-md-3">
+        <a href="Category.html?cat=packaging" class="category-card">
+          <img src="images/packaging (P).png" alt="Packaging">
+          <h6>Food Packaging & Containers</h6>
+          <div class="stars">★★★★★</div>
+          <b>RM 12 - RM 40</b>
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section class="section-light" id="reviews">
+  <div class="container text-center">
+    <h2 class="review-title">OUR HAPPY CUSTOMERS</h2>
+    <div class="review-subtitle">REAL REVIEWS. REAL RESULTS. REAL LOVE.</div>
+    
+    <div class="row g-4 mt-4 text-start">
+      <div class="col-md-3">
+        <div class="review-card">
+          <div class="quote-mark">“</div>
+          <div class="stars">★★★★★</div>
+          <p>The sugarcane toner made my skin feel fresh and calming.</p>
+          <div class="review-divider"></div>
+          <div class="reviewer-profile">
+            <img src="images/avatar.jpg" class="reviewer-avatar" alt="Sarah M.">
+            <div class="reviewer-info">
+              <h6>Sarah M.</h6>
+              <div class="verified-tag">Verified Buyer <i class="bi bi-patch-check-fill"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-3">
+        <div class="review-card">
+          <div class="quote-mark">“</div>
+          <div class="stars">★★★★★</div>
+          <p>Love the sleep mist so much. The scent feels really calming.</p>
+          <div class="review-divider"></div>
+          <div class="reviewer-profile">
+            <img src="images/avatar2.jpg" class="reviewer-avatar" alt="Alex K.">
+            <div class="reviewer-info">
+              <h6>Alex K.</h6>
+              <div class="verified-tag">Verified Buyer <i class="bi bi-patch-check-fill"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-3">
+        <div class="review-card">
+          <div class="quote-mark">“</div>
+          <div class="stars">★★★★★</div>
+          <p>The most refreshing natural product I have ever tried.</p>
+          <div class="review-divider"></div>
+          <div class="reviewer-profile">
+            <img src="images/avatar3.jpg" class="reviewer-avatar" alt="Aina L.">
+            <div class="reviewer-info">
+              <h6>Aina L.</h6>
+              <div class="verified-tag">Verified Buyer <i class="bi bi-patch-check-fill"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-3">
+        <div class="review-card">
+          <div class="quote-mark">“</div>
+          <div class="stars">★★★★★</div>
+          <p>Aesthetic packaging and natural smell. Really worth buying.</p>
+          <div class="review-divider"></div>
+          <div class="reviewer-profile">
+            <img src="images/avatar4.jpg" class="reviewer-avatar" alt="Moana R.">
+            <div class="reviewer-info">
+              <h6>Moana R.</h6>
+              <div class="verified-tag">Verified Buyer <i class="bi bi-patch-check-fill"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-dark" id="story">
+  <div class="container">
+    <div class="story-box">
+      <div class="text-center mb-4">
+        <h2>SEE IT TO BELIEVE IT</h2>
+        <p class="text-muted">From digital imagination to real-life action. Dive into our creation below!</p>
+      </div>
+     
+      <div class="row g-4 align-items-stretch">
+  <div class="col-md-6">
+    <video controls class="video-thumb w-100 rounded shadow-sm">
+      <source src="images/video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="col-md-6">
+    <div class="video-scroll-container d-flex flex-column gap-3">
+      <video controls class="video-thumb w-100 rounded shadow-sm">
+        <source src="images/video2.mp4" type="video/mp4">
+      </video>
+      <video controls class="video-thumb w-100 rounded shadow-sm">
+        <source src="images/video2i.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="qasabe-contact-section" id="contact">
+  <div class="contact-shade-bg"></div>
+  <div class="container contact-inner-content text-center">
+    
+    <div class="contact-header-sub">• WE'D LOVE TO HEAR FROM YOU •</div>
+    <h2 class="contact-header-title">Let's Connect</h2>
+    <div class="contact-cursive">We're here to help!</div>
+    
+    <p class="text-muted mx-auto mb-5" style="max-width: 620px; font-size: 15px; line-height: 1.6;">
+      Whether it's an inquiry, collaboration, or placing an order, our team is just a message away. Reach out through your preferred channel below.
+    </p>
+
+    <div class="q-poster-wrapper">
+      
+      <div class="q-poster-row">
+        <div class="q-poster-circle circle-email">
+          <i class="bi bi-envelope"></i>
+        </div>
+        <div class="q-poster-info">
+          <div class="q-poster-tag">FOR INQUIRIES, COLLABORATIONS & ORDERS</div>
+          <h4>Email Us</h4>
+          <a href="mailto:helloqasabe@gmail.com" class="q-poster-link">helloqasabe@gmail.com</a>
+          <div class="small text-muted mt-1">
+            <i class="bi bi-clock-history text-warning"></i> We'll get back to you within <span class="fw-bold text-dark">24 hours</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="q-poster-row">
+        <div class="q-poster-circle circle-wa">
+          <i class="bi bi-whatsapp"></i>
+        </div>
+        <div class="q-poster-info">
+          <div class="q-poster-tag">FASTEST WAY TO GET HELP</div>
+          <h4>WhatsApp</h4>
+          <p class="text-muted small mb-0" style="max-width: 400px;">Chat with our team for product info, orders, or any quick assistance.</p>
+        </div>
+        <div class="flex-shrink-0 mt-3 mt-md-0">
+          <a href="https://wa.me/60111223456" target="_blank" class="btn-poster-wa">
+            <i class="bi bi-whatsapp"></i> Chat with us <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="q-poster-row">
+        <div class="q-poster-circle circle-social">
+          <i class="bi bi-heart"></i>
+        </div>
+        <div class="q-poster-info">
+          <div class="q-poster-tag">STAY UPDATED & BE PART OF QASABE COMMUNITY</div>
+          <h4>Follow Our Journey</h4>
+          
+          <div class="q-social-inline">
+            <a href="https://www.instagram.com/qasabecorp" target="_blank" class="q-social-item">
+              <i class="bi bi-instagram"></i>
+              <div>
+                <strong>@qasabecorp</strong>
+                <span>Instagram</span>
+              </div>
+            </a>
+            <div class="d-none d-md-block" style="border-left: 1px solid rgba(0,0,0,0.1); height: 30px; margin-top: 5px;"></div>
+            <a href="https://www.tiktok.com/@qasabeofficial?_r=1&_t=ZS-97UzucHPqc8" target="_blank" class="q-social-item">
+              <i class="bi bi-tiktok"></i>
+              <div>
+                <strong>@qasabe</strong>
+                <span>TikTok</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="q-thanks-box text-center">
+      <div class="q-thanks-text">Thank you for supporting QASABE ♡</div>
+      <div class="text-uppercase tracking-wider mt-1" style="color: var(--gold); font-size: 11px; letter-spacing: 2px; font-weight: 600;">
+        SUSTAINABLE CHOICES • BETTER TOMORROW
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p class="text-center mb-0">
+      ©️ 2026 Qasabe. All Rights Reserved.
+    </p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// COUNTDOWN TIMER
+let days = 7;
+let hours = 24;
+let minutes = 55;
+let seconds = 32;
+
+function updateCountdown(){
+  seconds--;
+  if(seconds < 0){
+    seconds = 59;
+    minutes--;
+  }
+  if(minutes < 0){
+    minutes = 59;
+    hours--;
+  }
+  if(hours < 0){
+    hours = 23;
+    days--;
+  }
+  if(days < 0){
+    days = 0; hours = 0; minutes = 0; seconds = 0;
+    clearInterval(timer);
+  }
+  if(document.getElementById("days")) document.getElementById("days").innerText = String(days).padStart(2,"0");
+  if(document.getElementById("hours")) document.getElementById("hours").innerText = String(hours).padStart(2,"0");
+  if(document.getElementById("minutes")) document.getElementById("minutes").innerText = String(minutes).padStart(2,"0");
+  if(document.getElementById("seconds")) document.getElementById("seconds").innerText = String(seconds).padStart(2,"0");
+}
+let timer = setInterval(updateCountdown, 1000);
+</script>
+
+<script>
+
+const availableProducts = [
+  { id: "aha-toner", name: "Sugarcane Glow Toner", img: "images/AHA toner (L).png" },
+  { id: "sleep-mist", name: "Sugarcane Sleep Mist", img: "images/sleep-mist (L).png" },
+  { id: "energy-snack", name: "Sugarcane Energy Snack", img: "images/energy snack (L).png" }
+];
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+function updateCounts(){
+  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+  if(document.getElementById("cartCount")) document.getElementById("cartCount").innerText = totalQty;
+  if(document.getElementById("wishlistCount")) document.getElementById("wishlistCount").innerText = wishlist.length;
+}
+
+function addToCart(id){
+  let existing = cart.find(item => item.id === id);
+  if(existing){
+    existing.qty++;
+  }else{
+    cart.push({ id: id, qty: 1 });
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCounts();
+  alert("Added to cart successfully!");
+}
+
+function addToWishlist(id){
+  if(!wishlist.includes(id)){
+    wishlist.push(id);
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    updateCounts();
+    alert("Added to wishlist!");
+  } else {
+    alert("Item is already in your wishlist.");
+  }
+}
+
+// ==========================================
+
+// ==========================================
+function showSuggestions(val) {
+  const box = document.getElementById("suggestionBox");
+  if (!val || !val.trim()) {
+    box.style.display = "none";
+    return;
+  }
+  
+  const query = val.toLowerCase();
+  const matches = availableProducts.filter(p => p.name.toLowerCase().includes(query));
+  
+  if (matches.length === 0) {
+    box.style.display = "none";
+    return;
+  }
+  
+ 
+  box.innerHTML = matches.map(p => `
+    <div class="suggestion-item" onclick="selectSuggestion('${p.id}', '${p.name}')">
+      <img src="${p.img}" alt="${p.name}">
+      <span>${p.name}</span>
+    </div>
+  `).join("");
+  
+  box.style.display = "block";
+}
+
+function selectSuggestion(id, name) {
+  document.getElementById("searchBar").value = name;
+  document.getElementById("suggestionBox").style.display = "none";
+  window.location.href = `product-detail.html?id=${id}`;
+}
+
+
+document.addEventListener("click", function(e) {
+  if (e.target.id !== "searchBar") {
+    const box = document.getElementById("suggestionBox");
+    if(box) box.style.display = "none";
+  }
+});
+
+
+function handleSearch(event) {
+  if (event.key === "Enter") {
+    let query = document.getElementById("searchBar").value.trim();
+    if (query !== "") {
+      const exactMatch = availableProducts.find(p => p.name.toLowerCase() === query.toLowerCase());
+      if(exactMatch) {
+         window.location.href = `product-detail.html?id=${exactMatch.id}`;
+      } else {
+         window.location.href = `Category.html?search=${encodeURIComponent(query)}`;
+      }
+    }
+  }
+}
+
+//==========================================
+
+//==========================================
+function checkLoginStatus() {
+const topBar = document.getElementById("dynamicTopBar");
+if (!topBar) return; 
+
+
+const userLoggedIn = localStorage.getItem("userLoggedIn");
+
+if (userLoggedIn === "true") {
+ topBar.style.display = "none";  
+} else {
+ topBar.style.display = "block"; 
+}
+}
+
+
+window.onload = function() {
+updateCounts();    
+checkLoginStatus(); 
+};
+</script>
+</body>
+</html>
