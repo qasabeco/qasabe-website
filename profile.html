@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile - Qasabe</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #071827;
+  --cream: #fff7f3; 
+  --gold: #c99b3b;
+  --gold-gradient: linear-gradient(135deg, #D9A74A 0%, #ECC880 50%, #C79334 100%);
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+body {
+  background: var(--cream);
+  font-family: Arial, sans-serif;
+  color: #111;
+}
+h1, h2, h3 {
+  font-family: Georgia, serif;
+  font-weight: 700;
+}
+.fs-7 { font-size: 0.875rem !important; }
+.fs-8 { font-size: 0.8rem !important; }
+.fs-9 { font-size: 0.725rem !important; }
+
+/* Top Announcement Bar */
+.top-bar {
+  background: var(--navy);
+  color: white;
+  font-size: 12px;
+  padding: 8px;
+  text-align: center;
+}
+
+/* NAVBAR STYLES FROM INDEX.HTML */
+.navbar-nav .nav-link {
+  color: var(--navy);
+  font-weight: 500;
+  font-size: 16px;
+  transition: .3s;
+}
+.dropdown-menu .dropdown-item:hover {
+  background-color: var(--gold);
+  color: white !important;
+  transition: 0.2s;
+}
+.dropdown-toggle::after {
+  vertical-align: middle;
+  color: var(--gold); 
+}
+.navbar-nav .nav-link:hover {
+  color: var(--gold);
+}
+.navbar-collapse {
+  align-items: center;
+}
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  text-decoration: none;
+}
+.brand-logo img {
+  width: 65px;
+  height: 65px;
+  object-fit: contain;
+}
+.brand-logo span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--navy);
+}
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: 20px;
+}
+.icon-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: 22px;
+  text-decoration: none;
+  color: var(--navy);
+  transition: .3s;
+}
+.icon-btn:hover {
+  background: var(--gold);
+  color: white;
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 0 15px rgba(201,155,59,0.5);
+}
+.cart-count,
+.wishlist-count {
+  background: var(--gold);
+  color: white;
+  font-size: 11px;
+  border-radius: 50%;
+  padding: 2px 6px;
+  position: relative;
+  top: -10px;
+  right: 8px;
+}
+
+/* Profile Content Styles */
+.profile-banner {
+  background: linear-gradient(135deg, #071827 0%, #122A44 100%);
+  border-radius: 24px;
+  padding: 35px;
+  color: white;
+  position: relative;
+}
+.profile-image-container {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 4px solid rgba(217, 167, 74, 0.4);
+  position: relative;
+  flex-shrink: 0;
+  background: #eee;
+}
+.profile-image-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.upload-avatar-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--gold);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid #122A44;
+  transition: 0.2s;
+}
+.upload-avatar-overlay:hover {
+  background: white;
+  color: var(--navy);
+  transform: scale(1.1);
+}
+.gold-badge {
+  background: rgba(217, 167, 74, 0.2);
+  border: 1px solid rgba(217, 167, 74, 0.4);
+  color: #ECC880;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+}
+.progress-box {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 18px;
+  max-width: 320px;
+  width: 100%;
+}
+.progress-bar-custom {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #D9A74A, #ECC880);
+  width: 48%;
+}
+.tier-float-bar {
+  background: var(--gold-gradient);
+  border-radius: 16px;
+  padding: 15px 25px;
+  color: #0A192F;
+  margin-top: 30px;
+}
+.stat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 100%;
+}
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  background: #FDF8EE;
+  color: #C79334;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.content-card {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.card-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.card-header-flex h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-manage {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #4A5568;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.btn-manage:hover {
+  background: #f8f9fa;
+}
+.voucher-box {
+  background: #FDF8EE;
+  border: 1px dashed #ECC880;
+  border-radius: 12px;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.badge-status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+}
+.status-del { background: #E6F4EA; color: #137333; }
+.status-proc { background: #FEF7E0; color: #B06000; }
+
+footer {
+  background: var(--navy);
+  color: white;
+  padding: 40px 0 20px;
+  font-size: 13px;
+  margin-top: 60px;
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  Sign up and get 20% off your first order. <a href="index.html" class="text-white text-decoration-underline ms-1">Sign Up Now</a>
+</div>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand brand-logo" href="index.html">
+      <img src="images/logor.png" alt="QASABE Logo">
+      <span>QASABE</span>
+    </a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav mx-auto gap-3">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#story">About</a></li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Products
+          </a>
+          <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown" style="background-color: var(--cream);">
+            <li><a class="dropdown-item py-2" href="Category.html?cat=food-beverages" style="color: var(--navy); font-weight: 500;">Food & Beverages</a></li>
+            <li><a class="dropdown-item py-2" href="Category.html?cat=health" style="color: var(--navy); font-weight: 500;">Health</a></li>
+            <li><a class="dropdown-item py-2" href="Category.html?cat=personal-care" style="color: var(--navy); font-weight: 500;">Personal Care & Wellness</a></li>
+            <li><a class="dropdown-item py-2" href="Category.html?cat=packaging" style="color: var(--navy); font-weight: 500;">Food Packaging & Containers</a></li>
+          </ul>
+        </li>
+        
+        <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+      </ul>
+      
+      <input id="searchBar" class="form-control rounded-pill w-25 d-none d-lg-block" placeholder="Find sugarcane products..." onkeypress="handleSearch(event)">
+      
+      <div class="nav-icons">
+        <a href="wishlist.html" class="icon-btn">
+          <i class="bi bi-heart"></i>
+          <span id="wishlistCount" class="wishlist-count">0</span>
+        </a>
+        <a href="cart.html" class="icon-btn">
+          <i class="bi bi-cart"></i>
+          <span id="cartCount" class="cart-count">0</span>
+        </a>
+        <a href="profile.html" class="icon-btn">
+          <i class="bi bi-person-circle text-warning"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-5">
+  
+  <div class="profile-banner shadow-sm">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4">
+      <div class="d-flex align-items-center gap-4">
+        <div class="profile-image-container shadow-sm">
+          <img id="profilePreview" src="images/sleep-mist (L).png" alt="Profile">
+          <label for="avatarUploadInput" class="upload-avatar-overlay">
+            <i class="bi bi-camera-fill"></i>
+          </label>
+          <input type="file" id="avatarUploadInput" accept="image/*" class="d-none" onchange="handleAvatarUpload(event)">
+        </div>
+        <div>
+          <small class="text-warning fw-light d-block opacity-75 fs-7">Welcome back,</small>
+          <h2 id="userName" class="text-white m-0 fs-2" style="font-family: Georgia, serif;">Aina Maisarah</h2>
+          <small id="userEmail" class="text-white-50 d-block mb-2 fs-7">aina.maisarah@email.com</small>
+          <span class="gold-badge"><i class="bi bi-crown-fill me-1"></i> GOLD MEMBER</span>
+        </div>
+      </div>
+      <div class="progress-box">
+        <div class="d-flex justify-content-between text-white-50 fs-7 mb-2">
+          <span>Your Progress to <strong class="text-warning">Platinum</strong></span>
+          <span class="text-white fw-medium">240 / 500 points</span>
+        </div>
+        <div class="progress-bar-custom mb-2">
+          <div class="progress-fill"></div>
+        </div>
+        <small class="text-white-50 fs-8 d-block"><i class="bi bi-crown text-warning me-1"></i> 260 points to Platinum Member</small>
+      </div>
+    </div>
+    
+    <div class="tier-float-bar d-flex flex-wrap justify-content-between align-items-center gap-3 shadow-sm">
+      <div>
+        <small class="text-uppercase fw-bold text-muted d-block" style="font-size: 10px; letter-spacing: 1px;">Qasabe Member</small>
+        <span class="fw-black text-uppercase tracking-wide fs-5" style="letter-spacing: 1px; font-weight: 800;">Gold Tier</span>
+      </div>
+      <div class="d-flex gap-5 fs-7">
+        <div>
+          <small class="text-muted text-uppercase d-block" style="font-size: 10px;">Member ID</small>
+          <strong>QSB-2026-001</strong>
+        </div>
+        <div>
+          <small class="text-muted text-uppercase d-block" style="font-size: 10px;">Join Date</small>
+          <strong>12 Jan 2026</strong>
+        </div>
+      </div>
+      <div class="bg-white bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;">
+        <i class="bi bi-award text-dark fs-5"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-3 mt-4">
+    <div class="col-6 col-md-3">
+      <a href="wishlist.html" class="text-decoration-none text-dark h-100 d-block">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="bi bi-heart"></i></div>
+          <div>
+            <h4 id="wishlistTotal" class="m-0 fw-bold fs-4">0</h4>
+            <small class="text-muted fs-7">Wishlist</small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-6 col-md-3">
+      <a href="cart.html" class="text-decoration-none text-dark h-100 d-block">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="bi bi-cart"></i></div>
+          <div>
+            <h4 id="cartTotal" class="m-0 fw-bold fs-4">0</h4>
+            <small class="text-muted fs-7">Cart Items</small>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="bi bi-box-seam"></i></div>
+        <div>
+          <h4 id="ordersTotalCount" class="m-0 fw-bold fs-4">0</h4>
+          <small class="text-muted fs-7">Total Orders</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="bi bi-gem"></i></div>
+        <div>
+          <h4 class="m-0 fw-bold fs-4">240</h4>
+          <small class="text-muted fs-7">Reward Points</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 mt-2">
+    <div class="col-md-4">
+      <div class="content-card">
+        <div>
+          <div class="card-header-flex">
+            <h3>Account Information</h3>
+            <button class="btn-manage" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
+          </div>
+          <div class="fs-7">
+            <div class="mb-3">
+              <span class="text-muted d-block fs-8">Full Name</span>
+              <strong id="fullName" class="text-dark">Aina Maisarah</strong>
+            </div>
+            <div class="mb-3">
+              <span class="text-muted d-block fs-8">Email Address</span>
+              <strong id="fullEmail" class="text-dark">aina.maisarah@email.com</strong>
+            </div>
+            <div class="mb-2">
+              <span class="text-muted d-block fs-8">Phone Number</span>
+              <strong id="fullPhone" class="text-dark">012-345 6789</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="content-card">
+        <div>
+          <div class="card-header-flex">
+            <h3>Shipping Address</h3>
+            <button class="btn-manage" data-bs-toggle="modal" data-bs-target="#manageAddressesModal">Manage</button>
+          </div>
+          <div class="fs-7" id="profileAddressView">
+             </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="content-card">
+        <div>
+          <div class="card-header-flex">
+            <h3>My Vouchers</h3>
+            <a href="#" class="text-muted fs-7 text-decoration-none">View All</a>
+          </div>
+          <div class="voucher-box">
+            <div class="p-3 flex-grow-1 border-end border-secondary border-opacity-25 border-dashed">
+              <strong class="text-dark fs-6 d-block">WELCOME20</strong>
+              <small class="text-muted fs-8 d-block mt-1">20% OFF for all products</small>
+              <small class="text-secondary opacity-75 d-block mt-2 fs-9">Min. spend RM100</small>
+            </div>
+            <div class="p-3 text-center d-flex flex-column justify-content-center bg-warning bg-opacity-10" style="width: 105px; flex-shrink: 0;">
+              <span class="fw-bold text-warning fs-7 d-block">20% OFF</span>
+              <span class="text-muted mt-1 d-block fs-9" style="line-height: 1.2;">Valid until<br>31 Dec 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 mt-2">
+    <div class="col-12">
+      <div class="content-card">
+        <div>
+          <div class="card-header-flex">
+            <h3>Recent Orders</h3>
+            <button class="btn-manage" onclick="alert('Order tracking list is fully operational.')">View All Orders</button>
+          </div>
+          <div id="recentOrdersList">
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-5">
+    <button class="btn btn-outline-danger px-5 py-2 fs-7 fw-semibold shadow-sm" style="border-radius: 12px; max-width: 320px; width:100%;" onclick="logout()">
+      <i class="bi bi-box-arrow-right me-2"></i> Logout Account
+    </button>
+  </div>
+</div>
+
+<div class="modal fade" id="editProfileModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 16px;">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="fw-bold fs-6">Edit Profile</h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                  <label class="form-label fs-8 text-muted">Full Name</label>
+                  <input type="text" id="editName" class="form-control form-control-sm rounded-3">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fs-8 text-muted">Email</label>
+                  <input type="email" id="editEmail" class="form-control form-control-sm rounded-3">
+                </div>
+                <div>
+                  <label class="form-label fs-8 text-muted">Phone Number</label>
+                  <input type="text" id="editPhone" class="form-control form-control-sm rounded-3">
+                </div>
+            </div>
+            <div class="modal-footer border-0 pt-0">
+                <button class="btn btn-dark btn-sm rounded-3 w-100 py-2 fw-semibold" style="background: var(--navy);" onclick="saveProfile()">
+                    Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="manageAddressesModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content border-0 shadow" style="border-radius: 16px;">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="fw-bold fs-6 text-dark"><i class="bi bi-geo-alt-fill text-warning me-2"></i>Manage Addresses</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="newAddressForm" class="bg-light p-3 rounded-3 mb-4" onsubmit="event.preventDefault(); addNewAddress();">
+          <h6 class="fw-bold fs-7 mb-2 text-dark">Add New Address</h6>
+          <div class="row g-2">
+            <div class="col-6 mb-2">
+              <label class="form-label fs-9 text-muted mb-1">Label (e.g., Home, Office)</label>
+              <input type="text" id="addLabel" class="form-control form-control-sm rounded-3" placeholder="Home Address" required>
+            </div>
+            <div class="col-6 mb-2">
+              <label class="form-label fs-9 text-muted mb-1">Recipient Name</label>
+              <input type="text" id="addName" class="form-control form-control-sm rounded-3" placeholder="Aina Maisarah" required>
+            </div>
+          </div>
+          <div class="mb-2">
+            <label class="form-label fs-9 text-muted mb-1">Full Address details</label>
+            <textarea id="addDetails" class="form-control form-control-sm rounded-3" rows="2" placeholder="No. 23, Jalan Mawar 2, Taman Setia Indah, 81300 Skudai, Johor" required></textarea>
+          </div>
+          <div class="row g-2 align-items-end">
+            <div class="col-8">
+              <label class="form-label fs-9 text-muted mb-1">Phone Number</label>
+              <input type="text" id="addPhone" class="form-control form-control-sm rounded-3" placeholder="012-345 6789" required>
+            </div>
+            <div class="col-4">
+              <button type="submit" class="btn btn-sm btn-dark rounded-3 w-100 py-2 fw-semibold fs-8" style="background: var(--navy);">
+                Save Address
+              </button>
+            </div>
+          </div>
+        </form>
+        <h6 class="fw-bold fs-7 mb-2 text-dark">Saved Addresses</h6>
+        <div id="modalAddressesContainer" style="max-height: 250px; overflow-y: auto; padding-right: 5px;">
+           </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p class="text-center mb-0">©️ 2026 Qasabe. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+function updateCounts(){
+  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+  if(document.getElementById("cartCount")) document.getElementById("cartCount").innerText = totalQty;
+  if(document.getElementById("wishlistCount")) document.getElementById("wishlistCount").innerText = wishlist.length;
+  
+  if(document.getElementById("cartTotal")) document.getElementById("cartTotal").innerText = totalQty;
+  if(document.getElementById("wishlistTotal")) document.getElementById("wishlistTotal").innerText = wishlist.length;
+}
+
+// FUNGSI HANDLE SEARCHBAR ALIGNMENT (ENTER TO SEARCH)
+function handleSearch(event) {
+  if (event.key === "Enter") {
+    let query = event.target.value.trim();
+    if (query !== "") {
+      window.location.href = `Category.html?search=${encodeURIComponent(query)}`;
+    }
+  }
+}
+
+function handleAvatarUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const base64ImageString = e.target.result;
+    let user = JSON.parse(localStorage.getItem("customerAccount")) || {};
+    user.avatar = base64ImageString;
+    localStorage.setItem("customerAccount", JSON.stringify(user));
+    document.getElementById("profilePreview").src = base64ImageString;
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveProfile(){
+    let user = JSON.parse(localStorage.getItem("customerAccount")) || {};
+    user.name = document.getElementById("editName").value;
+    user.email = document.getElementById("editEmail").value;
+    user.phone = document.getElementById("editPhone").value;
+    localStorage.setItem("customerAccount", JSON.stringify(user));
+    
+    const modalEl = document.getElementById('editProfileModal');
+    const modalInstance = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+    modalInstance.hide();
+    
+    location.reload();
+}
+
+function logout(){
+    window.location.href = "index.html";
+}
+
+// SHIPPING ADDRESS LOGIC
+let addresses = JSON.parse(localStorage.getItem("userAddresses")) || [
+  {
+    id: 1,
+    label: "Home Address",
+    fullname: "Aina Maisarah",
+    address: "No. 23, Jalan Mawar 2, Taman Setia Indah, 81300 Skudai, Johor, Malaysia",
+    phone: "012-345 6789",
+    isDefault: true
+  }
+];
+
+function renderAddresses() {
+  const profileView = document.getElementById("profileAddressView");
+  const modalContainer = document.getElementById("modalAddressesContainer");
+  
+  if (!profileView || !modalContainer) return;
+  localStorage.setItem("userAddresses", JSON.stringify(addresses));
+  const defaultAddress = addresses.find(addr => addr.isDefault) || addresses[0];
+  if (defaultAddress) {
+    profileView.innerHTML = `
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <strong class="text-dark fs-7">${defaultAddress.label}</strong>
+        <span class="badge bg-warning text-dark fs-9 px-2">Default</span>
+      </div>
+      <p class="text-muted m-0 lh-base fs-7">${defaultAddress.address}</p>
+      <strong class="d-block mt-2 text-dark fs-7">${defaultAddress.phone}</strong>
+    `;
+  } else {
+    profileView.innerHTML = `<p class="text-muted fs-7 m-0">No address saved.</p>`;
+  }
+  if (addresses.length === 0) {
+    modalContainer.innerHTML = `<p class="text-muted fs-8 text-center py-3">No shipping address recorded yet.</p>`;
+    return;
+  }
+  modalContainer.innerHTML = addresses.map(addr => `
+    <div class="p-3 mb-2 rounded-3 border ${addr.isDefault ? 'border-warning bg-light bg-opacity-50' : 'border-light-subtle'}" style="background: #fafafa;">
+      <div class="d-flex align-items-center justify-content-between mb-1">
+        <div class="d-flex align-items-center gap-2">
+          <strong class="fs-7 text-dark">${addr.label}</strong>
+          ${addr.isDefault ? '<span class="badge bg-warning text-dark px-2 py-0 fs-9">Default</span>' : ''}
+        </div>
+        <span class="text-muted fs-8 fw-medium">${addr.fullname}</span>
+      </div>
+      <p class="text-muted fs-8 mb-1 lh-sm">${addr.address}</p>
+      <div class="d-flex align-items-center justify-content-between mt-2 pt-2 border-top border-light">
+        <small class="fw-bold fs-8 text-dark"><i class="bi bi-telephone me-1 text-muted"></i>${addr.phone}</small>
+        <div class="d-flex gap-1">
+          ${!addr.isDefault ? `<button class="btn btn-xs btn-outline-dark py-0 px-2 rounded-2 fs-9" onclick="setDefault(${addr.id})">Set Default</button>` : ''}
+          <button class="btn btn-xs btn-outline-danger py-0 px-2 rounded-2 fs-9" onclick="deleteAddress(${addr.id})"><i class="bi bi-trash"></i></button>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+
+function addNewAddress() {
+  const label = document.getElementById("addLabel").value.trim();
+  const name = document.getElementById("addName").value.trim();
+  const details = document.getElementById("addDetails").value.trim();
+  const phone = document.getElementById("addPhone").value.trim();
+  
+  if(!label || !name || !details || !phone) return;
+  const isFirst = addresses.length === 0;
+  addresses.push({
+    id: Date.now(),
+    label: label,
+    fullname: name,
+    address: details,
+    phone: phone,
+    isDefault: isFirst 
+  });
+  renderAddresses();
+  document.getElementById("newAddressForm").reset();
+}
+
+function setDefault(id) {
+  addresses.forEach(addr => addr.isDefault = (addr.id === id));
+  renderAddresses();
+}
+
+function deleteAddress(id) {
+  const target = addresses.find(a => a.id === id);
+  addresses = addresses.filter(addr => addr.id !== id);
+  if(target && target.isDefault && addresses.length > 0) {
+    addresses[0].isDefault = true;
+  }
+  renderAddresses();
+}
+
+// RECENT ORDERS LOGGER
+function loadRecentOrders() {
+    let orders = JSON.parse(localStorage.getItem("recentOrders"));
+    if(!orders || orders.length === 0) {
+       orders = [
+         { orderId: "QSB-99381", productName: "Sugarcane Sleep Mist", date: "22 June 2026", price: "RM 49.90", status: "Delivered", image: "images/sleep-mist (L).png" },
+         { orderId: "QSB-98240", productName: "Sugarcane Energy Snack", date: "15 June 2026", price: "RM 15.00", status: "Delivered", image: "images/energy snack (L).png" },
+         { orderId: "QSB-97104", productName: "Sugarcane Glow Toner", date: "02 June 2026", price: "RM 30.00", status: "Processing", image: "images/AHA toner (L).png" }
+       ];
+       localStorage.setItem("recentOrders", JSON.stringify(orders));
+    }
+    let ordersContainer = document.getElementById("recentOrdersList");
+    let ordersTotalCount = document.getElementById("ordersTotalCount");
+    if (ordersTotalCount) ordersTotalCount.innerText = orders.length;
+ 
+    let htmlContent = "";
+    orders.forEach(order => {
+        let statusClass = (order.status === "Delivered" || order.status === "Completed") ? "status-del" : "status-proc";
+        htmlContent += `
+        <div class="d-flex align-items-center justify-content-between py-3 border-bottom">
+          <div class="d-flex align-items-center gap-3">
+            <div style="width: 50px; height: 50px; background: #fff; border: 1px solid #eee; border-radius: 8px; flex-shrink:0; display:flex; align-items:center; justify-content:center; padding: 4px;">
+              <img src="${order.image}" style="width:100%; height:100%; object-fit:contain; border-radius:4px;">
+            </div>
+            <div>
+              <strong class="fs-7 text-dark d-block">${order.orderId}</strong>
+              <small class="text-muted fs-8 d-block text-truncate" style="max-width: 200px;">${order.productName}</small>
+              <small class="text-black-50 d-block fs-9">${order.date}</small>
+            </div>
+          </div>
+          <div class="d-flex align-items-center gap-3">
+            <span class="fw-bold fs-7 text-dark">${order.price}</span>
+            <span class="badge-status ${statusClass}">${order.status}</span>
+            <i class="bi bi-chevron-right text-muted fs-7"></i>
+          </div>
+        </div>
+        `;
+    });
+    if(ordersContainer) ordersContainer.innerHTML = htmlContent;
+}
+
+window.onload = function() {
+    let user = JSON.parse(localStorage.getItem("customerAccount"));
+    if(!user) {
+       user = {
+         name: "Aina Maisarah",
+         email: "aina.maisarah@email.com",
+         phone: "012-345 6789",
+         avatar: "images/sleep-mist (L).png"
+       };
+       localStorage.setItem("customerAccount", JSON.stringify(user));
+    }
+    if(user.name) {
+        if(document.getElementById("userName")) document.getElementById("userName").innerText = user.name;
+        if(document.getElementById("fullName")) document.getElementById("fullName").innerText = user.name;
+        if(document.getElementById("editName")) document.getElementById("editName").value = user.name;
+    }
+    if(user.email) {
+        if(document.getElementById("userEmail")) document.getElementById("userEmail").innerText = user.email;
+        if(document.getElementById("fullEmail")) document.getElementById("fullEmail").innerText = user.email;
+        if(document.getElementById("editEmail")) document.getElementById("editEmail").value = user.email;
+    }
+    if(user.phone) {
+        if(document.getElementById("fullPhone")) document.getElementById("fullPhone").innerText = user.phone;
+        if(document.getElementById("editPhone")) document.getElementById("editPhone").value = user.phone;
+    }
+    if(user.avatar) {
+        if(document.getElementById("profilePreview")) document.getElementById("profilePreview").src = user.avatar;
+    }
+    
+    updateCounts();
+    loadRecentOrders();
+    renderAddresses();
+};
+</script>
+</body>
+</html>
