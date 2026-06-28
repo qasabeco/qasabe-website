@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QASABE | Wishlist</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#071827;
+  --cream:#fff7f3;
+  --gold:#c99b3b;
+  --text:#111827;
+  --muted:#6b7280;
+  --red:#ff3b3b;
+}
+*{
+  box-sizing:border-box;
+}
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:var(--cream);
+  color:var(--text);
+}
+.navbar{
+  background:white;
+  padding:10px 0;
+  border-bottom:1px solid #eee;
+}
+.navbar-nav .nav-link{
+  color: var(--navy);
+  font-weight: 500;
+  font-size: 16px;
+  transition: .3s;
+}
+.navbar-nav .nav-link:hover{
+  color: var(--gold);
+}
+.dropdown-menu .dropdown-item:hover {
+  background-color: var(--gold);
+  color: white !important;
+  transition: 0.2s;
+}
+.dropdown-toggle::after {
+  vertical-align: middle;
+  color: var(--gold); 
+}
+.brand-logo{
+  display:flex;
+  align-items:center;
+  gap:1px;
+  text-decoration:none;
+}
+.brand-logo img{
+  width:65px;
+  height:65px;
+  object-fit:contain;
+}
+.brand-logo span{
+  font-family:'Cormorant Garamond', serif;
+  font-size:38px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:var(--navy);
+}
+
+/* --- LOGIK CARIAN & SUGGESTIONS CSS --- */
+.search-container {
+  position: relative;
+  width: 100%;
+}
+.search-box-premium {
+  border-radius: 50px !important;
+  padding: 8px 20px;
+  font-size: 14px;
+  border: 1px solid #ced4da;
+}
+.suggestion-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid rgba(201,155,59,0.25);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(7,24,39,0.08);
+  z-index: 1050;
+  max-height: 250px;
+  overflow-y: auto;
+  display: none;
+  margin-top: 5px;
+}
+.suggestion-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--navy);
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+.suggestion-item:hover {
+  background: var(--cream);
+  color: var(--gold);
+}
+.suggestion-item img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #fff;
+}
+
+/* --- NAV ICONS --- */
+.nav-icons{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-left: 20px;
+}
+.icon-btn{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  font-size:22px;
+  text-decoration:none;
+  color:var(--navy);
+  transition:.3s;
+}
+.icon-btn:hover{
+  background:var(--gold);
+  color:white;
+  transform:translateY(-4px) scale(1.1);
+  box-shadow:0 0 15px rgba(201,155,59,0.5);
+}
+.cart-count,
+.wishlist-count{
+  background:var(--gold);
+  color:white;
+  font-size:11px;
+  border-radius:50%;
+  padding:2px 6px;
+  position:absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* --- WISHLIST CONTENT LAYOUT --- */
+.page-section{
+  min-height:100vh;
+  padding-bottom: 60px;
+}
+.breadcrumb-custom{
+  font-size:13px;
+  color:#777;
+  padding-top:25px;
+  margin-bottom:10px;
+}
+.page-title{
+  font-family: Georgia, serif;
+  font-size:38px;
+  font-weight:700;
+  color:var(--navy);
+  margin-bottom:6px;
+}
+.page-subtitle{
+  color:#555;
+  font-size:15px;
+  margin-bottom:28px;
+}
+.wishlist-layout{
+  display:grid;
+  grid-template-columns:1.5fr .9fr;
+  gap:35px;
+  align-items:start;
+  margin-bottom:45px;
+}
+.wishlist-list{
+  background:#fff;
+  border:1px solid rgba(201,155,59,0.2);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+}
+.wish-item{
+  display:grid;
+  grid-template-columns:95px 1fr 160px;
+  gap:18px;
+  align-items:center;
+  padding:20px;
+  border-bottom:1px solid #eee;
+  position:relative;
+}
+.wish-item:last-child{
+  border-bottom:none;
+}
+.wish-img-box{
+  width:85px;
+  height:85px;
+  background:#fff;
+  border: 1px solid #f3e5d8;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.wish-img-box img{
+  width:75px;
+  height:75px;
+  object-fit:contain;
+}
+.wish-name{
+  font-family: Georgia, serif;
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:4px;
+  color:var(--navy);
+}
+.wish-detail{
+  font-size:12px;
+  color:#666;
+  margin-bottom:2px;
+}
+.wish-price{
+  font-size:16px;
+  font-weight:700;
+  color:var(--gold);
+  margin-top:8px;
+}
+.stock{
+  display:inline-block;
+  background:#e7f8ee;
+  color:#15803d;
+  font-size:11px;
+  font-weight:700;
+  border-radius:20px;
+  padding:4px 10px;
+  margin-top:8px;
+}
+.wish-actions{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.move-btn{
+  border:none;
+  background:var(--gold);
+  color:white;
+  border-radius:30px;
+  padding:10px 14px;
+  font-size:13px;
+  font-weight:600;
+  transition:.3s;
+}
+.move-btn:hover{
+  background:var(--navy);
+  transform: translateY(-2px);
+}
+.view-btn{
+  border:1px solid var(--gold);
+  background:white;
+  color:var(--navy);
+  border-radius:30px;
+  padding:10px 14px;
+  font-size:13px;
+  font-weight:600;
+  text-align:center;
+  text-decoration:none;
+  transition:.3s;
+}
+.view-btn:hover{
+  background:var(--gold);
+  color:white;
+  transform: translateY(-2px);
+}
+.remove-btn{
+  position:absolute;
+  right:18px;
+  top:16px;
+  border:none;
+  background:transparent;
+  color:var(--red);
+  font-size:16px;
+  cursor: pointer;
+}
+.summary-card{
+  background:white;
+  border:1px solid rgba(201,155,59,0.2);
+  border-radius:20px;
+  padding:25px;
+  box-shadow: 0 10px 25px rgba(7,24,39,0.03);
+}
+.summary-card h4{
+  font-family: Georgia, serif;
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:18px;
+  color:var(--navy);
+}
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:13px;
+  font-size:14px;
+}
+.summary-row span:first-child{
+  color:#666;
+}
+.summary-row strong{
+  color:var(--navy);
+}
+.summary-note{
+  background:var(--cream);
+  border:1px solid rgba(201,155,59,0.25);
+  border-radius:14px;
+  padding:14px;
+  font-size:12px;
+  color:#555;
+  margin:18px 0;
+}
+.move-all-btn{
+  width:100%;
+  border:none;
+  background:var(--gold);
+  color:white;
+  border-radius:30px;
+  padding:12px;
+  font-size:14px;
+  font-weight:600;
+  margin-bottom:10px;
+  transition:.3s;
+}
+.move-all-btn:hover{
+  background:var(--navy);
+}
+.clear-btn{
+  width:100%;
+  border:1px solid #ddd;
+  background:white;
+  color:#d62828;
+  border-radius:30px;
+  padding:12px;
+  font-size:14px;
+  font-weight:600;
+  cursor: pointer;
+}
+.clear-btn:hover{
+  background:#d62828;
+  color:white;
+}
+.continue-btn{
+  display:block;
+  text-align:center;
+  margin-top:14px;
+  color:var(--navy);
+  font-weight:600;
+  font-size:14px;
+  text-decoration:none;
+}
+.continue-btn:hover{
+  color:var(--gold);
+}
+.empty-wishlist{
+  text-align:center;
+  padding:60px 20px;
+}
+.empty-wishlist i{
+  font-size:58px;
+  color:var(--gold);
+}
+.empty-wishlist h3{
+  font-family: Georgia, serif;
+  color:var(--navy);
+  font-weight:700;
+  margin-top:10px;
+}
+.empty-wishlist a{
+  display:inline-block;
+  margin-top:12px;
+  background:var(--navy);
+  color:white;
+  text-decoration:none;
+  border-radius:30px;
+  padding:11px 25px;
+  font-weight:600;
+}
+
+/* --- FOOTER --- */
+footer{
+  background:var(--navy);
+  color:white;
+  padding:50px 0 20px;
+  font-size:13px;
+}
+.footer-brand{
+  display:flex;
+  align-items:center;
+  gap:3px;
+  margin-bottom:15px;
+}
+.footer-brand img{
+  width:52px;
+  height:52px;
+  object-fit:contain;
+}
+.footer-brand h4{
+  font-family:'Cormorant Garamond', serif;
+  font-size:32px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:white;
+  margin:0;
+}
+footer a{
+  display:block;
+  color:rgba(255,255,255,0.7);
+  text-decoration:none;
+  margin-bottom:8px;
+}
+footer a:hover{
+  color:var(--gold);
+}
+
+.toast-qasabe{
+  position:fixed;
+  right:25px;
+  bottom:25px;
+  background:var(--navy);
+  color:white;
+  padding:15px 22px;
+  border-radius:18px;
+  box-shadow:0 14px 30px rgba(0,0,0,.25);
+  display:none;
+  z-index:9999;
+  font-size:13px;
+  font-weight:700;
+}
+
+@media(max-width:992px){
+  .wishlist-layout{
+    grid-template-columns:1fr;
+  }
+}
+@media(max-width:576px){
+  .wish-item{
+    grid-template-columns:80px 1fr;
+  }
+  .wish-actions{
+    grid-column:1 / -1;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page-section">
+  
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand brand-logo" href="index.html">
+        <img src="images/logor.png" alt="QASABE Logo">
+        <span>QASABE</span>
+      </a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav mx-auto gap-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown" style="background-color: var(--cream);">
+              <li><a class="dropdown-item py-2" href="Category.html?cat=food-beverages" style="color: var(--navy); font-weight: 500;">Food & Beverages</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=health" style="color: var(--navy); font-weight: 500;">Health</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=personal-care" style="color: var(--navy); font-weight: 500;">Personal Care & Wellness</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=packaging" style="color: var(--navy); font-weight: 500;">Food Packaging & Containers</a></li>
+            </ul>
+          </li>
+          
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+        </ul>
+        
+        <div class="d-none d-lg-block w-25">
+          <div class="search-container">
+            <input type="text" id="searchBar" class="form-control search-box-premium" placeholder="Find sugarcane products..." onkeypress="handleSearch(event)" oninput="showSuggestions(this.value)">
+            <div id="suggestionBox" class="suggestion-box"></div>
+          </div>
+        </div>
+        
+        <div class="nav-icons">
+          <a href="wishlist.html" class="icon-btn">
+            <i class="bi bi-heart-fill" style="color: var(--gold);"></i>
+            <span id="wishlistCount" class="wishlist-count">0</span>
+          </a>
+          <a href="cart.html" class="icon-btn">
+            <i class="bi bi-cart"></i>
+            <span id="cartCount" class="cart-count">0</span>
+          </a>
+          <a href="profile.html" class="icon-btn">
+            <i class="bi bi-person-circle"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <main class="container">
+    <div class="breadcrumb-custom">
+      Home &nbsp;›&nbsp; Wishlist
+    </div>
+    <h1 class="page-title">Your wishlist</h1>
+    <p class="page-subtitle">Save your favourite QASABE products and move them to cart whenever you are ready.</p>
+    
+    <section class="wishlist-layout">
+      <div class="wishlist-list" id="wishlistList"></div>
+      
+      <aside class="summary-card">
+        <h4>Wishlist Summary</h4>
+        <div class="summary-row">
+          <span>Saved Items</span>
+          <strong id="savedCount">0</strong>
+        </div>
+        <div class="summary-row">
+          <span>Total Value</span>
+          <strong id="totalValue">RM 0.00</strong>
+        </div>
+        <div class="summary-row">
+          <span>Availability</span>
+          <strong style="color:#15803d;">In Stock</strong>
+        </div>
+        <div class="summary-note">
+          <i class="bi bi-stars me-1" style="color:#c99b3b;"></i>
+          Items in your wishlist are saved on this device using browser storage.
+        </div>
+        <button class="move-all-btn" onclick="moveAllToCart()">
+          <i class="bi bi-cart-plus me-1"></i> Move All to Cart
+        </button>
+        <button class="clear-btn" onclick="clearWishlist()">
+          <i class="bi bi-trash me-1"></i> Clear Wishlist
+        </button>
+        <a href="Category.html" class="continue-btn">
+          <i class="bi bi-arrow-left"></i> Continue Shopping
+        </a>
+      </aside>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <div class="row gy-4 text-start">
+        <div class="col-md-4">
+          <div class="footer-brand">
+            <img src="images/logor.png" alt="QASABE Logo">
+            <h4>QASABE</h4>
+          </div>
+          <p class="text-white-50">Sustainable choices for a better tomorrow.</p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="text-uppercase tracking-wider text-white mb-3" style="font-size:14px;">Quick Links</h5>
+          <a href="index.html">Home</a>
+          <a href="about-us.html">About Us</a>
+          <a href="Category.html">Products</a>
+        </div>
+        <div class="col-md-4">
+          <h5 class="text-uppercase tracking-wider text-white mb-3" style="font-size:14px;">Contact Us</h5>
+          <p class="text-white-50 mb-1">Email: helloqasabe@gmail.com</p>
+          <p class="text-white-50">WhatsApp: +60111223456</p>
+        </div>
+      </div>
+      <hr style="border-color: rgba(255,255,255,0.15)">
+      <p class="text-center mb-0 text-white-50">
+        ©️ 2026 Qasabe. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+</div>
+
+<div class="toast-qasabe" id="toastBox"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Pangkalan data produk
+const products = {
+  "aha-toner": {
+    name:"Sugarcane Glow Toner",
+    size:"Medium",
+    color:"White",
+    price:30.00,
+    image:"images/AHA toner (L).png"
+  },
+  "sleep-mist": {
+    name:"Sugarcane Sleep Mist",
+    size:"Medium",
+    color:"Lavender",
+    price:49.90,
+    image:"images/sleep-mist (L).png"
+  },
+  "energy-snack": {
+    name:"Sugarcane Energy Snack",
+    size:"Large",
+    color:"Blue",
+    price:15.00,
+    image:"images/energy snack (L).png"
+  }
+};
+
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// Map produk lama kepada format ID baharu
+const productMap = {
+  "Sugarcane Glow Toner":"aha-toner",
+  "Sugarcane Sleep Mist":"sleep-mist",
+  "Sugarcane Energy Snack":"energy-snack"
+};
+wishlist = wishlist.map(item => productMap[item] || item);
+localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+function saveCart(){
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function saveWishlist(){
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+}
+
+function updateCounts(){
+  const totalQty = cart.reduce((sum,item) => sum + (item.qty || 1), 0);
+  document.getElementById("cartCount").innerText = totalQty;
+  document.getElementById("wishlistCount").innerText = wishlist.length;
+}
+
+function renderWishlist(){
+  const wishlistList = document.getElementById("wishlistList");
+  if(wishlist.length === 0){
+    wishlistList.innerHTML = `
+      <div class="empty-wishlist">
+        <i class="bi bi-heartbreak"></i>
+        <h3>Your wishlist is empty</h3>
+        <p class="text-muted">Browse QASABE products and save your favourites here.</p>
+        <a href="Category.html">Explore Products</a>
+      </div>
+    `;
+    updateSummary();
+    updateCounts();
+    saveWishlist();
+    return;
+  }
+  wishlistList.innerHTML = wishlist.map(id => {
+    const product = products[id];
+    if(!product) return ''; 
+    return `
+      <div class="wish-item">
+        <button class="remove-btn" onclick="removeWishlist('${id}')">
+          <i class="bi bi-trash-fill"></i>
+        </button>
+        <div class="wish-img-box">
+          <img src="${product.image}" alt="${product.name}">
+        </div>
+        <div>
+          <div class="wish-name">${product.name}</div>
+          <div class="wish-detail">Size: ${product.size}</div>
+          <div class="wish-detail">Color: ${product.color}</div>
+          <div class="wish-price">RM ${product.price.toFixed(2)}</div>
+          <span class="stock">In Stock</span>
+        </div>
+        <div class="wish-actions">
+          <button class="move-btn" onclick="moveToCart('${id}')">
+            <i class="bi bi-cart-plus me-1"></i> Add to Cart
+          </button>
+          <a href="product-detail.html?id=${id}" class="view-btn">
+            View Details
+          </a>
+        </div>
+      </div>
+    `;
+  }).join("");
+  updateSummary();
+  updateCounts();
+  saveWishlist();
+}
+
+function updateSummary(){
+  const totalValue = wishlist.reduce((sum,id) => {
+    return products[id] ? sum + products[id].price : sum;
+  }, 0);
+  document.getElementById("savedCount").textContent = wishlist.length;
+  document.getElementById("totalValue").textContent = "RM " + totalValue.toFixed(2);
+}
+
+function removeWishlist(id){
+  wishlist = wishlist.filter(productId => productId !== id);
+  showToast("Product removed from wishlist.");
+  renderWishlist();
+}
+
+function moveToCart(id){
+  let existing = cart.find(item => item.id === id);
+  if(existing){
+    existing.qty++;
+  }else{
+    cart.push({id:id, qty:1});
+  }
+  wishlist = wishlist.filter(productId => productId !== id);
+  saveCart();
+  saveWishlist();
+  showToast("Product moved to cart.");
+  renderWishlist();
+}
+
+function moveAllToCart(){
+  if(wishlist.length === 0){
+    showToast("Wishlist is empty.");
+    return;
+  }
+  wishlist.forEach(id => {
+    if(products[id]){
+      let existing = cart.find(item => item.id === id);
+      if(existing){
+        existing.qty++;
+      }else{
+        cart.push({id:id, qty:1});
+      }
+    }
+  });
+  wishlist = [];
+  saveCart();
+  saveWishlist();
+  showToast("All wishlist items moved to cart.");
+  renderWishlist();
+}
+
+function clearWishlist(){
+  if(wishlist.length === 0){
+    showToast("Wishlist is already empty.");
+    return;
+  }
+  wishlist = [];
+  saveWishlist();
+  showToast("Wishlist cleared.");
+  renderWishlist();
+}
+
+// Logik Auto-Suggestion Box & Carian Halaman
+function showSuggestions(query) {
+  const box = document.getElementById("suggestionBox");
+  if (!query.trim()) {
+    box.style.display = "none";
+    return;
+  }
+
+  const lowercaseQuery = query.toLowerCase();
+  let matches = [];
+
+  for (let id in products) {
+    if (products[id].name.toLowerCase().includes(lowercaseQuery)) {
+      matches.push({ id: id, ...products[id] });
+    }
+  }
+
+  if (matches.length === 0) {
+    box.style.display = "none";
+    return;
+  }
+
+  box.innerHTML = matches.map(prod => `
+    <div class="suggestion-item" onclick="selectSuggestion('${prod.id}')">
+      <img src="${prod.image}" alt="">
+      <span>${prod.name}</span>
+    </div>
+  `).join("");
+
+  box.style.display = "block";
+}
+
+function selectSuggestion(id) {
+  window.location.href = `product-detail.html?id=${id}`;
+}
+
+function handleSearch(event) {
+  if (event.key === "Enter") {
+    const query = document.getElementById("searchBar").value.trim();
+    if (query) {
+      window.location.href = `Category.html?search=${encodeURIComponent(query)}`;
+    }
+  }
+}
+
+function showToast(message){
+  const toast = document.getElementById("toastBox");
+  toast.textContent = message;
+  toast.style.display = "block";
+  setTimeout(() => {
+    toast.style.display = "none";
+  }, 1800);
+}
+
+// Sembunyikan carian jika klik di luar
+document.addEventListener("click", function(e) {
+  const box = document.getElementById("suggestionBox");
+  const searchBar = document.getElementById("searchBar");
+  if (box && e.target !== searchBar && !box.contains(e.target)) {
+    box.style.display = "none";
+  }
+});
+
+// Jalankan sistem
+renderWishlist();
+</script>
+</body>
+</html>
