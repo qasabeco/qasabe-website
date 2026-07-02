@@ -44,7 +44,6 @@ body{
   padding:18px 0;
   border-bottom:1px solid #eee;
 }
-/* Aligned Logo Style mengikut index.html */
 .brand-logo{
   display:flex;
   align-items:center;
@@ -73,8 +72,6 @@ body{
 .navbar-nav .nav-link:hover{
     color: var(--gold);
 }
-
-/* Penyelarasan Search Wrapper & Suggestions mengikut index.html */
 .search-container {
   position: relative;
 }
@@ -115,8 +112,6 @@ body{
   border-radius: 4px;
   background: #fdfaf6;
 }
-
-/* Aligned Icons Button Style mengikut index.html */
 .nav-icons{
   display:flex;
   align-items:center;
@@ -152,7 +147,6 @@ body{
   top: 5px;
   right: 2px;
 }
-
 .page-section{
   background:white;
   min-height:100vh;
@@ -570,7 +564,7 @@ body{
     <section class="shipping-layout">
        <div>
         <h1 class="page-title">SHIPPING DETAILS</h1>
-        <form id="shippingForm">
+        <form id="shippingForm" onsubmit="placeOrder(event)">
           <div class="form-grid">
             <div class="form-group">
               <label>First Name</label>
@@ -701,9 +695,7 @@ body{
             <input type="text" id="promoCode" placeholder="Add promo code">
             <button type="button" onclick="applyPromo()">Apply</button>
           </div>
-          <button type="button" class="place-btn" onclick="placeOrder()">
-            Place Order
-          </button>
+          <button type="submit" form="shippingForm" class="place-btn">Place Order</button>
           <a href="cart.html" class="back-cart">
             <i class="bi bi-arrow-left"></i> Back to Cart
           </a>
@@ -798,96 +790,78 @@ body{
 <script>
 const products = {
   "juice": {
-    name:"Sugarcane Juice Original (500ml)",
-    size:"Large",
-    color:"White",
-    price:50.00,
-    image:"images/juicel.png"
-  },
-  "toner": {
-    name:"Sugarcane Toner",
-    size:"Medium",
-    color:"Red",
-    price:30.00,
-    image:"images/tonerl.png"
+    name:"QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage | Natural Hydration & Wellness",
+    variation: "-",
+    price:8.90,
+    image:"images/drink (L).jpeg"
   },
   "energy-snack": {
-    name:"Sugarcane Energy Snack",
-    size:"Large",
-    color:"Blue",
-    price:15.00,
-    image:"images/snackl.png"
+    name:"QASABE Sugarcane Energy Snack | Natural Quick Energy | Healthy On-The-Go Snack",
+    variation: "-",
+    price:19.90,
+    image:"images/energy snack (L).png"
   },
   "herbal-drink": {
-    name:"Sugarcane Herbal Drink",
-    size:"Medium",
-    color:"Gold",
-    price:32.00,
-    image:"images/hdrinkl.png"
+    name:"QASABE Herbal Drink | Traditional Wellness Beverage | Natural Daily Health Support",
+    variation: "-",
+    price:33.90,
+    image:"images/herbal drink (L).png"
   },
   "organic-cube": {
-    name:"Organic Sugarcane Cube",
-    size:"Small",
-    color:"Brown",
-    price:25.00,
-    image:"images/cubel.png"
+    name:"QASABE Sugarcane Cube | Natural Cane Sweetener | Convenient Sugar Alternative",
+    variation: "-",
+    price:14.90,
+    image:"images/sugarcube (L).png"
   },
   "liquid-drop": {
-    name:"Sweetener Liquid Drop",
-    size:"Small",
-    color:"Navy",
-    price:11.90,
-    image:"images/ldropsl.png"
+    name:"QASABE Liquid Sweetener Drops | Zero-Mess Sweetening Solution | Natural Sugarcane Extract",
+    variation: "-",
+    price:16.90,
+    image:"images/liquid drop (L).jpeg"
   },
   "sleep-mist": {
-    name:"Sugarcane Sleep Mist",
-    size:"Medium",
-    color:"Lavender",
-    price:49.90,
-    image:"images/smistl.png"
+    name:"QASABE Sleep Mist | Relaxing Aromatherapy Spray | Better Sleep & Calmness",
+    variation: "-",
+    price:24.90,
+    image:"images/sleep-mist (L).png"
   },
   "aha-toner": {
-    name:"Sugarcane AHA Toner",
-    size:"Medium",
-    color:"White",
-    price:30.00,
-    image:"images/tonerl.png"
+    name:"QASABE AHA Toner | Gentle Exfoliating Toner | Smooth & Radiant Skin",
+    variation: "-",
+    price:26.90,
+    image:"images/AHA toner (L).png"
   },
   "shampoo": {
-    name:"Sugarcane Shampoo",
-    size:"Large",
-    color:"White",
-    price:45.00,
-    image:"images/shampool.png"
+    name:"QASABE Nourishing Shampoo | Sugarcane Hair Care | Healthy & Refreshed Hair",
+    variation: "-",
+    price:49.00,
+    image:"images/shampoo (L).png"
   },
   "body-scrub": {
-    name:"Body Scrub",
-    size:"Medium",
-    color:"Cream",
-    price:50.00,
-    image:"images/bscrubl.png"
+    name:"QASABE Body Scrub | Natural Sugarcane Exfoliator | Soft & Glowing Skin",
+    variation: "-",
+    price:28.90,
+    image:"images/bscrub (L).jpeg"
   },
   "bagasse-packaging": {
-    name:"Bagasse Packaging",
-    size:"Large",
-    color:"Natural",
-    price:12.00,
-    image:"images/packagingl.png"
+    name: "QASABE Eco Bagasse Packaging | Sustainable Food Container | Biodegradable & Plastic-Free",
+    size: "Default",
+    color: "Default",
+    price: 7.90,
+    image: "images/packaging (L).png"
   }
 };
 
-// Data list sinkronisasi suggestion mengikut availableProducts index.html
 const availableProducts = [
-  { id: "aha-toner", name: "Sugarcane Glow Toner", img: "images/AHA toner (L).png" },
-  { id: "sleep-mist", name: "Sugarcane Sleep Mist", img: "images/sleep-mist (L).png" },
-  { id: "energy-snack", name: "Sugarcane Energy Snack", img: "images/energy snack (L).png" }
+  { id: "aha-toner", name: "QASABE AHA Toner | Gentle Exfoliating Toner | Smooth & Radiant Skin", img: "images/AHA toner (L).png" },
+  { id: "sleep-mist", name: "QASABE Sleep Mist | Relaxing Aromatherapy Spray | Better Sleep & Calmness", img: "images/sleep-mist (L).png" },
+  { id: "energy-snack", name: "QASABE Sugarcane Energy Snack | Natural Quick Energy | Healthy On-The-Go Snack", img: "images/energy snack (L).png" }
 ];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let promoApplied = false; 
 let currentTotal = 0;
 
-// SUGGESTION LOGIC SINKRONISASI DENGAN INDEX.HTML
 function showSuggestions(val) {
   const box = document.getElementById("suggestionBox");
   if (!val || !val.trim()) {
@@ -943,12 +917,14 @@ document.addEventListener("click", function(e) {
 function saveCart(){
   localStorage.setItem("cart", JSON.stringify(cart));
 }
+
 function updateBadges(){
   const totalQty = cart.reduce((sum,item) => sum + item.qty, 0);
   document.getElementById("cartCount").textContent = totalQty;
   const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
   document.getElementById("wishCount").textContent = wishlist.length;
 }
+
 function renderMiniCart(){
   const miniCart = document.getElementById("miniCart");
   if(!cart || cart.length === 0){
@@ -963,23 +939,25 @@ function renderMiniCart(){
     updateBadges();
     return;
   }
+  
   miniCart.innerHTML = cart.map(item => {
-    let product = products[item.id] || products[item.id.toLowerCase()];
-    if (!product) {
-      const keys = Object.keys(products);
-      product = products[keys[0]];
-    }
-    
+    let product = products[item.id] || products[item.id.toLowerCase()] || {};
+    let itemName = item.name || product.name || "Sugarcane Product";
+    let itemPrice = item.price !== undefined ? item.price : (product.price || 0);
+    let itemImage = item.image || product.image || "images/logor.png";
+    let itemSize = item.size || product.size || "Standard";
+    let itemColor = item.color || product.color || "Natural";
+
     return `
       <div class="mini-item">
         <div class="mini-img-box">
-          <img src="${product.image}" alt="${product.name}">
+          <img src="${itemImage}" alt="${itemName}">
         </div>
         <div>
-          <div class="mini-name">${product.name}</div>
-          <div class="mini-detail">Size: ${product.size}</div>
-          <div class="mini-detail">Color: ${product.color}</div>
-          <div class="mini-price">RM ${product.price.toFixed(2)}</div>
+          <div class="mini-name">${itemName}</div>
+          <div class="mini-detail">Type/Size: ${itemSize}</div>
+          <div class="mini-detail">Qty/Pack: ${itemColor}</div>
+          <div class="mini-price">RM ${Number(itemPrice).toFixed(2)}</div>
         </div>
         <div>
           <button type="button" class="delete-btn" onclick="removeItem('${item.id}')">
@@ -998,6 +976,7 @@ function renderMiniCart(){
   updateSummary();
   updateBadges();
 }
+  
 function changeQty(id, amount){
   const item = cart.find(i => i.id === id);
   if(!item) return;
@@ -1008,19 +987,18 @@ function changeQty(id, amount){
   saveCart();
   renderMiniCart();
 }
+
 function removeItem(id){
   cart = cart.filter(i => i.id !== id);
   saveCart();
   renderMiniCart();
 }
+  
 function updateSummary(){
-  const subtotal = cart.reduce((sum,item) => {
-    let product = products[item.id] || products[item.id.toLowerCase()];
-    if (!product) {
-      const keys = Object.keys(products);
-      product = products[keys[0]];
-    }
-    return sum + (product.price * item.qty);
+  const subtotal = cart.reduce((sum, item) => {
+    let product = products[item.id] || products[item.id.toLowerCase()] || {};
+    let itemPrice = item.price !== undefined ? item.price : (product.price || 0);
+    return sum + (Number(itemPrice) * item.qty);
   }, 0);
   
   const discount = promoApplied ? subtotal * 0.20 : 0;
@@ -1028,15 +1006,9 @@ function updateSummary(){
   const region = document.getElementById("country");
   
   if(cart.length > 0 && region){
-    if(region.value === "west"){
-      delivery = 5;
-    }
-    else if(region.value === "east"){
-      delivery = 12;
-    }
-    else if(region.value === "international"){
-      delivery = 25;
-    }
+    if(region.value === "west") delivery = 5;
+    else if(region.value === "east") delivery = 12;
+    else if(region.value === "international") delivery = 25;
   }
   
   const total = subtotal - discount + delivery;
@@ -1047,6 +1019,7 @@ function updateSummary(){
   document.getElementById("delivery").textContent = "RM " + delivery.toFixed(2);
   document.getElementById("total").textContent = "RM " + total.toFixed(2);
 }
+
 function applyPromo(){
   const code = document.getElementById("promoCode").value.trim().toUpperCase();
   if(code === "QASABE20"){
@@ -1058,6 +1031,7 @@ function applyPromo(){
   }
   updateSummary();
 }
+
 function showPaymentDetails(){
   const method = document.getElementById("paymentMethod").value;
   document.getElementById("onlineBox").classList.remove("active");
@@ -1069,6 +1043,7 @@ function showPaymentDetails(){
   if(method === "card") document.getElementById("cardBox").classList.add("active");
   if(method === "cod") document.getElementById("codBox").classList.add("active");
 }
+
 function getPaymentLabel(){
   const method = document.getElementById("paymentMethod").value;
   if(method === "online") return "Online Banking / FPX";
@@ -1076,6 +1051,7 @@ function getPaymentLabel(){
   if(method === "card") return "Credit / Debit Card";
   return "Cash on Delivery";
 }
+
 function autofillDefaultAddress() {
   const savedAddresses = JSON.parse(localStorage.getItem("userAddresses")) || [];
   const defaultAddr = savedAddresses.find(addr => addr.isDefault) || savedAddresses[0];
@@ -1098,84 +1074,140 @@ function autofillDefaultAddress() {
     }
   }
 }
-function placeOrder(){
-  const form = document.getElementById("shippingForm");
-  if(cart.length === 0){
-    alert("Your cart is empty.");
-    return;
-  }
-  if(!form.checkValidity()){
-    form.reportValidity();
-    return;
-  }
-  const method = document.getElementById("paymentMethod").value;
-  if(method === "card"){
-    const cardName = document.getElementById("cardName").value.trim();
-    const cardNumber = document.getElementById("cardNumber").value.trim();
-    const expiryDate = document.getElementById("expiryDate").value.trim();
-    const cvv = document.getElementById("cvv").value.trim();
-    if(cardName === "" || cardNumber === "" || expiryDate === "" || cvv === ""){
-      alert("Please complete your card payment details.");
-      return;
-    }
-  }
-  
-  const orderId = "QSB" + Math.floor(1000 + Math.random() * 9000);
-  document.getElementById("modalOrderId").textContent = orderId;
-  document.getElementById("modalPayment").textContent = getPaymentLabel();
-  document.getElementById("modalTotal").textContent = "RM " + currentTotal.toFixed(2);
-  const fName = document.getElementById("firstName").value;
-  const lName = document.getElementById("lastName").value;
-  const add1 = document.getElementById("address1").value;
-  const add2 = document.getElementById("address2").value ? document.getElementById("address2").value + ", " : "";
-  const cityStr = document.getElementById("city").value;
-  const pCode = document.getElementById("postalCode").value;
-  const regionSelect = document.getElementById("country");
-  const regionText = regionSelect.options[regionSelect.selectedIndex].text;
-  const phoneNum = document.getElementById("phone").value;
-  const fullAddressHTML = `
-    <strong>${fName} ${lName}</strong> <span class="badge bg-warning text-dark ms-1">Default</span><br>
-    ${add1}, ${add2}${pCode} ${cityStr}, ${regionText}<br>
-    Malaysia<br><br>
-    <strong>${phoneNum}</strong>
-  `;
-  const orderData = {
-    orderId: orderId,
-    customer: fName + " " + lName,
-    address: fullAddressHTML,
-    city: cityStr,
-    phone: phoneNum,
-    payment: getPaymentLabel(),
-    total: currentTotal.toFixed(2),
-    items: cart
-  };
-  
-  let matchedProd = products[cart[0].id] || products[cart[0].id.toLowerCase()];
-  if (!matchedProd) {
-    const keys = Object.keys(products);
-    matchedProd = products[keys[0]];
-  }
-  
-  let today = new Date().toLocaleDateString('en-GB', {
-      day: 'numeric', month: 'short', year: 'numeric'
-  });
-  let newProfileOrder = {
-      orderId: orderId, 
-      productName: matchedProd ? matchedProd.name : "Qasabe Sugarcane Product", 
-      image: matchedProd ? matchedProd.image : "images/logor.png", 
-      date: today,
-      price: "RM " + currentTotal.toFixed(2), 
-      address: fullAddressHTML, 
-      status: "Processing" 
-  };
-  let recentOrders = JSON.parse(localStorage.getItem("recentOrders")) || [];
-  recentOrders.unshift(newProfileOrder);
-  localStorage.setItem("recentOrders", JSON.stringify(recentOrders));
-  localStorage.setItem("qasabeLastOrder", JSON.stringify(orderData));
-  
-  const modal = new bootstrap.Modal(document.getElementById("orderModal"));
-  modal.show();
+
+// Global safety latch
+let isOrderProcessing = false;
+
+//Pastikan variable ini wujud di luar fungsi (di bahagian atas skrip anda)
+//let isOrderProcessing = false; 
+
+function placeOrder(event){
+// 1. SEKAT SERTA-MERTA jika sistem sedang memproses order sebelumnya
+if (isOrderProcessing) {
+ if (event) event.preventDefault();
+ return false;
 }
+
+// 2. Halang default submit borang
+if (event) {
+ event.preventDefault();
+}
+
+const form = document.getElementById("shippingForm");
+if(cart.length === 0){
+ alert("Your cart is empty.");
+ return false;
+}
+if(!form.checkValidity()){
+ form.reportValidity();
+ return false;
+}
+const method = document.getElementById("paymentMethod").value;
+if(method === "card"){
+ const cardName = document.getElementById("cardName").value.trim();
+ const cardNumber = document.getElementById("cardNumber").value.trim();
+ const expiryDate = document.getElementById("expiryDate").value.trim();
+ const cvv = document.getElementById("cvv").value.trim();
+ if(cardName === "" || cardNumber === "" || expiryDate === "" || cvv === ""){
+   alert("Please complete your card payment details.");
+   return false;
+ }
+}
+
+// 3. KUNCI MATI SISTEM SERTA-MERTA SEBELUM JANA ID DAN SIMPAN DATA
+isOrderProcessing = true;
+
+// Lumpuhkan butang fizikal di UI supaya user tak boleh tekan lagi
+const placeBtn = document.querySelector(".place-btn");
+if (placeBtn) {
+ placeBtn.disabled = true;
+ placeBtn.innerText = "Processing...";
+}
+
+const orderId = "QSB" + Math.floor(1000 + Math.random() * 9000);
+document.getElementById("modalOrderId").textContent = orderId;
+document.getElementById("modalPayment").textContent = getPaymentLabel();
+document.getElementById("modalTotal").textContent = "RM " + currentTotal.toFixed(2);
+
+const fName = document.getElementById("firstName").value;
+const lName = document.getElementById("lastName").value;
+const add1 = document.getElementById("address1").value;
+const add2 = document.getElementById("address2").value ? document.getElementById("address2").value + ", " : "";
+const cityStr = document.getElementById("city").value;
+const pCode = document.getElementById("postalCode").value;
+const regionSelect = document.getElementById("country");
+const regionText = regionSelect.options[regionSelect.selectedIndex].text;
+const phoneNum = document.getElementById("phone").value;
+
+const fullAddressHTML = `
+ <strong>${fName} ${lName}</strong> <span class="badge bg-warning text-dark ms-1">Default</span><br>
+ ${add1}, ${add2}${pCode} ${cityStr}, ${regionText}<br>
+ Malaysia<br><br>
+ <strong>${phoneNum}</strong>
+`;
+
+const orderData = {
+ orderId: orderId,
+ customer: fName + " " + lName,
+ address: fullAddressHTML,
+ city: cityStr,
+ phone: phoneNum,
+ payment: getPaymentLabel(),
+ total: currentTotal.toFixed(2),
+ items: cart
+};
+
+let matchedProd = cart[0] || {};
+if (!matchedProd.id) {
+ const keys = Object.keys(products);
+ matchedProd = products[keys[0]];
+}
+
+let today = new Date().toLocaleDateString('en-GB', {
+   day: 'numeric', month: 'short', year: 'numeric'
+});
+
+let recentOrders = JSON.parse(localStorage.getItem("recentOrders")) || [];
+let adminOrders = JSON.parse(localStorage.getItem("adminOrders")) || [];
+
+// 4. MASUKKAN DATA SECARA BERASINGAN
+let newProfileOrder = {
+   orderId: orderId, 
+   productName: matchedProd.name || "Qasabe Sugarcane Product", 
+   image: matchedProd.image || "images/logor.png", 
+   date: today,
+   price: "RM " + currentTotal.toFixed(2), 
+   address: fullAddressHTML, 
+   status: "Processing" 
+};
+recentOrders.unshift(newProfileOrder);
+localStorage.setItem("recentOrders", JSON.stringify(recentOrders));
+
+adminOrders.unshift({
+   orderId: orderId,
+   customer: fName + " " + lName,
+   product: matchedProd.name || "QASABE Product",
+   amount: currentTotal,
+   status: "Processing",
+   payment: getPaymentLabel(),
+   phone: phoneNum,
+   address: fullAddressHTML,
+   date: today
+});
+localStorage.setItem("adminOrders", JSON.stringify(adminOrders));
+
+localStorage.setItem("qasabeLastOrder", JSON.stringify(orderData));
+
+// 5. PAPAR MODAL RESIT
+const modal = new bootstrap.Modal(document.getElementById("orderModal"));
+modal.show();
+
+// PERINGATAN: Jangan letak setTimeout yang menukar isOrderProcessing kembali ke false di sini!
+// Biarkan ia terus true (lock) sehingga page bertukar.
+
+return false;
+}
+
 function finishOrder(){
   cart = [];
   saveCart();
@@ -1188,6 +1220,8 @@ document.addEventListener("DOMContentLoaded", () => {
   showPaymentDetails();
   autofillDefaultAddress();
 });
+
+localStorage.removeItem("lastOrderToken");
 </script>
 </body>
 </html>
