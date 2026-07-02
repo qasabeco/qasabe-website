@@ -223,17 +223,70 @@ h2, h3, h4, h5, h6{
     background: rgba(255,255,255,0.1);
 }
 /* Jadual Gelap & Pembaikan Warna Font Semasa */
+/* ===========================
+   DARK TABLE (QASABE)
+=========================== */
+
+.table-card{
+    background: var(--card-bg);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:18px;
+    overflow:hidden;
+}
+
+.table-responsive{
+    background:transparent;
+}
+
 .table{
-    color: var(--text-light) !important;
+
+    --bs-table-bg: transparent;
+    --bs-table-color: #fff;
+    --bs-table-border-color: rgba(255,255,255,.08);
+    --bs-table-striped-bg: rgba(255,255,255,.02);
+    --bs-table-striped-color:#fff;
+    --bs-table-hover-bg: rgba(255,255,255,.05);
+    --bs-table-hover-color:#fff;
+
+    background:transparent !important;
+    color:#fff !important;
+    margin-bottom:0;
 }
-.table th{
-    border-bottom: 2px solid rgba(255,255,255,0.15);
-    color: var(--text-muted) !important;
-    font-weight: 600;
+
+.table>:not(caption)>*>*{
+    background:transparent !important;
+    color:#fff !important;
+    box-shadow:none !important;
 }
-.table td{
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    color: var(--text-light) !important;
+
+.table thead{
+    background:#0b2445;
+}
+
+.table thead th{
+    color:#D4A64F !important;
+    font-size:15px;
+    font-weight:700;
+    border-bottom:1px solid rgba(255,255,255,.15);
+    padding:16px;
+}
+
+.table tbody tr{
+    transition:.25s;
+}
+
+.table tbody tr:hover{
+    background:rgba(255,255,255,.04)!important;
+}
+
+.table tbody td{
+    padding:18px 16px;
+    color:#f8f9fa!important;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.table tbody tr:last-child td{
+    border-bottom:none;
 }
 .card h6 {
     color: var(--text-muted);
@@ -318,7 +371,7 @@ h2, h3, h4, h5, h6{
             <div class="card shadow-sm card-custom p-3">
                 <div class="icon-box mb-3"><i class="bi bi-cash-coin"></i></div>
                 <h6>Total Sales</h6>
-                <h3 class="gold" id="totalSales">RM 0.00</h3>
+                <h3 class="gold">RM 12,450</h3>
                 <p class="text-success mb-0">↑ 18% this month</p>
             </div>
         </div>
@@ -326,7 +379,7 @@ h2, h3, h4, h5, h6{
             <div class="card shadow-sm card-custom p-3">
                 <div class="icon-box mb-3"><i class="bi bi-cart-check"></i></div>
                 <h6>Total Orders</h6>
-                <h3 class="gold" id="totalOrders">0</h3>
+                <h3 class="gold">156</h3>
                 <p class="text-success mb-0">↑ 12% this month</p>
             </div>
         </div>
@@ -334,7 +387,7 @@ h2, h3, h4, h5, h6{
             <div class="card shadow-sm card-custom p-3">
                 <div class="icon-box mb-3"><i class="bi bi-box-seam"></i></div>
                 <h6>Products</h6>
-                <h3 class="gold">10</h3>
+                <h3 class="gold">84</h3>
                 <p class="mb-0">5 New Products</p>
             </div>
         </div>
@@ -505,9 +558,34 @@ h2, h3, h4, h5, h6{
                     </tr>
                 </thead>
 
-                <tbody id="orderBody">
+                <tbody>
+                    <tr>
+                        <td>Q001</td>
+                        <td>Aisyah</td>
+                        <td>Sleep Mist</td>
+                        <td>RM55</td>
+                        <td><span class="status-delivered">Delivered</span></td>
+                        <td><button class="btn btn-sm btn-outline-gold" onclick="updateOrder(this)">Update</button></td>
+                    </tr>
 
-</tbody>
+                    <tr>
+                        <td>Q002</td>
+                        <td>Nurul</td>
+                        <td>AHA Toner</td>
+                        <td>RM49</td>
+                        <td><span class="status-processing">Processing</span></td>
+                        <td><button class="btn btn-sm btn-outline-gold" onclick="updateOrder(this)">Update</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>Q003</td>
+                        <td>Fatimah</td>
+                        <td>Energy Snack</td>
+                        <td>RM25</td>
+                        <td><span class="status-shipped">Shipped</span></td>
+                        <td><button class="btn btn-sm btn-outline-gold" onclick="updateOrder(this)">Update</button></td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
@@ -638,44 +716,20 @@ function editProduct(button){
     }
 }
 
-function updateOrder(index){
+function updateOrder(button){
+    let row = button.closest("tr");
+    let statusCell = row.cells[4];
 
-    let adminOrders = JSON.parse(localStorage.getItem("adminOrders")) || [];
-
-    if(adminOrders[index].status === "Processing"){
-
-        adminOrders[index].status = "Shipped";
-
-    }else if(adminOrders[index].status === "Shipped"){
-
-        adminOrders[index].status = "Delivered";
-
+    if(statusCell.innerText === "Processing"){
+        statusCell.innerHTML = '<span class="status-shipped">Shipped</span>';
+    }else if(statusCell.innerText === "Shipped"){
+        statusCell.innerHTML = '<span class="status-delivered">Delivered</span>';
     }else{
-
         alert("Order already delivered!");
         return;
-
     }
 
-    // Save balik admin orders
-    localStorage.setItem("adminOrders", JSON.stringify(adminOrders));
-
-    // Sync status dekat customer profile
-    let recentOrders = JSON.parse(localStorage.getItem("recentOrders")) || [];
-
-    recentOrders.forEach(order => {
-        if(order.orderId === adminOrders[index].orderId){
-            order.status = adminOrders[index].status;
-        }
-    });
-
-    localStorage.setItem("recentOrders", JSON.stringify(recentOrders));
-
-    // Refresh dashboard
-    loadOrders();
-
-    alert("Order status updated successfully!");
-
+    alert("Order status updated!");
 }
 
 function searchTable(){
@@ -702,59 +756,6 @@ function viewAllOrders(){
 function showSettings(){
     alert("Settings page is under development.");
 }
-
-//===============================
-//LOAD ORDERS FROM SHIPPING PAGE
-//===============================
-function loadOrders(){
-
-    const adminOrders = JSON.parse(localStorage.getItem("adminOrders")) || [];
-
-    document.getElementById("totalOrders").textContent = adminOrders.length;
-
-    let totalSales = 0;
-    let tbody = document.getElementById("orderBody");
-
-    tbody.innerHTML = "";
-
-    adminOrders.forEach((order, index) => {
-
-        totalSales += Number(order.amount);
-
-        let badge = "";
-
-        if(order.status === "Processing"){
-            badge = '<span class="status-processing">Processing</span>';
-        }else if(order.status === "Shipped"){
-            badge = '<span class="status-shipped">Shipped</span>';
-        }else{
-            badge = '<span class="status-delivered">Delivered</span>';
-        }
-
-        tbody.innerHTML += `
-        <tr>
-            <td>${order.orderId}</td>
-            <td>${order.customer}</td>
-            <td>${order.product}</td>
-            <td>RM ${Number(order.amount).toFixed(2)}</td>
-            <td>${badge}</td>
-            <td>
-                <button class="btn btn-sm btn-outline-gold"
-                    onclick="updateOrder(${index})">
-                    Update
-                </button>
-            </td>
-        </tr>`;
-    });
-
-    document.getElementById("totalSales").textContent =
-        "RM " + totalSales.toFixed(2);
-
-    document.getElementById("notif-count").textContent =
-        adminOrders.length;
-}
-
-loadOrders();
 </script>
 
 </body>
