@@ -724,25 +724,34 @@ footer a{
 }
 html { scroll-behavior: smooth; }
 
+/* REKAAN BARU KONTENA VIDEO SWIPE */
 .video-scroll-container {
-    /* Menghadkan tinggi kontena kanan supaya separuh/ngam dengan tinggi video tunggal di kiri */
-    max-height: 320px; 
-    overflow-y: auto;
-    padding-right: 8px; /* Mengelakkan video rapat dengan scrollbar */
-  }
+  max-width: 100%; 
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 12px;
+  white-space: nowrap;
+}
 
-  /* Rekaan cantik untuk Scrollbar belah kanan */
-  .video-scroll-container::-webkit-scrollbar {
-    width: 6px;
-  }
-  .video-scroll-container::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-  }
-  .video-scroll-container::-webkit-scrollbar-thumb {
-    background: #c99b3b; /* Warna gold tema Qasabe */
-    border-radius: 10px;
-  }
+.video-scroll-container .video-thumb {
+  width: 85%;
+  flex-shrink: 0;
+  height: 350px;
+  object-fit: cover;
+}
+
+/* Rekaan Scrollbar Bawah */
+.video-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+.video-scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.video-scroll-container::-webkit-scrollbar-thumb {
+  background: #c99b3b;
+  border-radius: 10px;
+}
 </style>
 </head>
 <body>
@@ -855,7 +864,6 @@ html { scroll-behavior: smooth; }
           <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="images/mainproducts-luxury.png" class="d-block mx-auto hero-product-img" alt="Main Products">
-              </a>
             </div>
             <div class="carousel-item">
               <a href="product-detail.html?id=aha-toner">
@@ -1097,23 +1105,25 @@ html { scroll-behavior: smooth; }
       </div>
      
       <div class="row g-4 align-items-stretch">
-  <div class="col-md-6">
-    <video controls class="video-thumb w-100 rounded shadow-sm">
-      <source src="images/video.mp4" type="video/mp4">
-    </video>
-  </div>
+        <div class="col-md-6">
+          <video controls class="video-thumb w-100 rounded shadow-sm">
+            <source src="images/video.mp4" type="video/mp4">
+          </video>
+        </div>
 
-  <div class="col-md-6">
-    <div class="video-scroll-container d-flex flex-column gap-3">
-      <video controls class="video-thumb w-100 rounded shadow-sm">
-        <source src="images/video2.mp4" type="video/mp4">
-      </video>
-      <video controls class="video-thumb w-100 rounded shadow-sm">
-        <source src="images/video2i.mp4" type="video/mp4">
-      </video>
+        <div class="col-md-6">
+          <div class="video-scroll-container d-flex flex-row gap-3">
+            <video controls class="video-thumb rounded shadow-sm">
+              <source src="images/video2.mp4" type="video/mp4">
+            </video>
+            <video controls class="video-thumb rounded shadow-sm">
+              <source src="images/video2i.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 </section>
 
 <section class="qasabe-contact-section" id="contact">
@@ -1243,7 +1253,6 @@ let timer = setInterval(updateCountdown, 1000);
 </script>
 
 <script>
-
 const availableProducts = [
   { id: "aha-toner", name: "Sugarcane Glow Toner", img: "images/AHA toner (L).png" },
   { id: "sleep-mist", name: "Sugarcane Sleep Mist", img: "images/sleep-mist (L).png" },
@@ -1282,9 +1291,6 @@ function addToWishlist(id){
   }
 }
 
-// ==========================================
-
-// ==========================================
 function showSuggestions(val) {
   const box = document.getElementById("suggestionBox");
   if (!val || !val.trim()) {
@@ -1300,7 +1306,6 @@ function showSuggestions(val) {
     return;
   }
   
- 
   box.innerHTML = matches.map(p => `
     <div class="suggestion-item" onclick="selectSuggestion('${p.id}', '${p.name}')">
       <img src="${p.img}" alt="${p.name}">
@@ -1317,14 +1322,12 @@ function selectSuggestion(id, name) {
   window.location.href = `product-detail.html?id=${id}`;
 }
 
-
 document.addEventListener("click", function(e) {
   if (e.target.id !== "searchBar") {
     const box = document.getElementById("suggestionBox");
     if(box) box.style.display = "none";
   }
 });
-
 
 function handleSearch(event) {
   if (event.key === "Enter") {
@@ -1340,27 +1343,22 @@ function handleSearch(event) {
   }
 }
 
-//==========================================
-
-//==========================================
 function checkLoginStatus() {
-const topBar = document.getElementById("dynamicTopBar");
-if (!topBar) return; 
+  const topBar = document.getElementById("dynamicTopBar");
+  if (!topBar) return; 
 
+  const userLoggedIn = localStorage.getItem("userLoggedIn");
 
-const userLoggedIn = localStorage.getItem("userLoggedIn");
-
-if (userLoggedIn === "true") {
- topBar.style.display = "none";  
-} else {
- topBar.style.display = "block"; 
+  if (userLoggedIn === "true") {
+   topBar.style.display = "none";  
+  } else {
+   topBar.style.display = "block"; 
+  }
 }
-}
-
 
 window.onload = function() {
-updateCounts();    
-checkLoginStatus(); 
+  updateCounts();    
+  checkLoginStatus(); 
 };
 </script>
 </body>
