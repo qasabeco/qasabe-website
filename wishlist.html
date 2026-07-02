@@ -596,37 +596,76 @@ footer a:hover{
 <script>
 // Pangkalan data produk
 const products = {
-  "aha-toner": {
-    name:"Sugarcane Glow Toner",
-    size:"Medium",
-    color:"White",
-    price:30.00,
-    image:"images/AHA toner (L).png"
-  },
-  "sleep-mist": {
-    name:"Sugarcane Sleep Mist",
-    size:"Medium",
-    color:"Lavender",
-    price:49.90,
-    image:"images/sleep-mist (L).png"
+  "juice": {
+    name:"QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage | Natural Hydration & Wellness",
+    variation: "-",
+    price:8.90,
+    image:"images/drink (L).jpeg"
   },
   "energy-snack": {
-    name:"Sugarcane Energy Snack",
-    size:"Large",
-    color:"Blue",
-    price:15.00,
+    name:"QASABE Sugarcane Energy Snack | Natural Quick Energy | Healthy On-The-Go Snack",
+    variation: "-",
+    price:19.90,
     image:"images/energy snack (L).png"
+  },
+  "herbal-drink": {
+    name:"QASABE Herbal Drink | Traditional Wellness Beverage | Natural Daily Health Support",
+    variation: "-",
+    price:33.90,
+    image:"images/herbal drink (L).png"
+  },
+  "organic-cube": {
+    name:"QASABE Sugarcane Cube | Natural Cane Sweetener | Convenient Sugar Alternative",
+    variation: "-",
+    price:14.90,
+    image:"images/sugarcube (L).png"
+  },
+  "liquid-drop": {
+    name:"QASABE Liquid Sweetener Drops | Zero-Mess Sweetening Solution | Natural Sugarcane Extract",
+    variation: "-",
+    price:16.90,
+    image:"images/liquid drop (L).jpeg"
+  },
+  "sleep-mist": {
+    name:"QASABE Sleep Mist | Relaxing Aromatherapy Spray | Better Sleep & Calmness",
+    variation: "-",
+    price:24.90,
+    image:"images/sleep-mist (L).png"
+  },
+  "aha-toner": {
+    name:"QASABE AHA Toner | Gentle Exfoliating Toner | Smooth & Radiant Skin",
+    variation: "-",
+    price:26.90,
+    image:"images/AHA toner (L).png"
+  },
+  "shampoo": {
+    name:"QASABE Nourishing Shampoo | Sugarcane Hair Care | Healthy & Refreshed Hair",
+    variation: "-",
+    price:49.00,
+    image:"images/shampoo (L).png"
+  },
+  "body-scrub": {
+    name:"QASABE Body Scrub | Natural Sugarcane Exfoliator | Soft & Glowing Skin",
+    variation: "-",
+    price:28.90,
+    image:"images/bscrub (L).jpeg"
+  },
+  "bagasse-packaging": {
+    name: "QASABE Eco Bagasse Packaging | Sustainable Food Container | Biodegradable & Plastic-Free",
+    size: "Default",
+    color: "Default",
+    price: 7.90,
+    image: "images/packaging (L).png"
   }
 };
-
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // Map produk lama kepada format ID baharu
 const productMap = {
-  "Sugarcane Glow Toner":"aha-toner",
-  "Sugarcane Sleep Mist":"sleep-mist",
-  "Sugarcane Energy Snack":"energy-snack"
+  "QASABE AHA Toner | Gentle Exfoliating Toner | Smooth & Radiant Skin":"aha-toner",
+  "QASABE Sleep Mist | Relaxing Aromatherapy Spray | Better Sleep & Calmness":"sleep-mist",
+  "QASABE Sugarcane Energy Snack | Natural Quick Energy | Healthy On-The-Go Snack":"energy-snack"
 };
 wishlist = wishlist.map(item => productMap[item] || item);
 localStorage.setItem("wishlist", JSON.stringify(wishlist));
