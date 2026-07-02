@@ -6,11 +6,9 @@
 <title>Qasabe Categories</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
-
 <style>
 :root {
   --navy: #071827;
@@ -43,7 +41,6 @@ body{
   padding: 20px 0;
   border-bottom: none !important;
 }
-
 .navbar-nav .nav-link {
   color: var(--navy) !important;
   font-weight: 500;
@@ -51,12 +48,10 @@ body{
   transition: .3s;
   margin: 0 8px;
 }
-
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
   color: var(--gold) !important;
 }
-
 .brand-logo {
   display: flex;
   align-items: center;
@@ -76,7 +71,6 @@ body{
   color: var(--navy);
   line-height: 1 !important;
 }
-
 .navbar .form-control {
   width: 25% !important;
   border-radius: 25px !important;
@@ -85,14 +79,12 @@ body{
   border: 1px solid #ddd !important;
   height: 44px !important; 
 }
-
 .nav-icons {
   display: flex;
   align-items: center;
   gap: 15px;
   margin-left: 20px;
 }
-
 .icon-btn {
   width: 50px !important;
   height: 50px !important;
@@ -108,14 +100,12 @@ body{
   background: transparent !important;
   border: none !important;
 }
-
 .icon-btn:hover {
   background: var(--gold);
   color: white !important;
   transform: translateY(-4px) scale(1.1);
   box-shadow: 0 0 15px rgba(201,155,59,0.5);
 }
-
 .cart-count, .wishlist-count {
   background: var(--gold) !important;
   color: white !important;
@@ -123,7 +113,6 @@ body{
   border-radius: 50% !important;
   padding: 2px 6px !important;
   position: absolute !important;
-  /* Diubah suai kedudukan top & right untuk keseimbangan visual bulatan */
   top: -2px !important; 
   right: -4px !important;
   font-weight: 700 !important;
@@ -132,29 +121,22 @@ body{
   align-items: center !important;
   justify-content: center !important;
 }
-
 .dropdown-menu {
   background-color: #fff7f3 !important; 
   border: 0 !important;
   box-shadow: 0 10px 30px rgba(0,0,0,0.06) !important;
 }
-
 .dropdown-menu .dropdown-item {
   transition: 0.2s;
 }
-
 .dropdown-menu .dropdown-item:hover {
   background-color: var(--gold) !important;
   color: white !important;
 }
-
 .dropdown-toggle::after {
   vertical-align: middle;
   color: var(--gold); 
 }
-
-
-
 .navbar-brand{
   display:flex;
   align-items:center;
@@ -186,26 +168,6 @@ body{
   border:1px solid #ddd;
   padding:10px 16px;
   font-size:14px;
-}
-.icon-wrap{
-  position:relative;
-  font-size:21px;
-  color:#041927;
-}
-.icon-badge{
-  position:absolute;
-  top:-10px;
-  right:-10px;
-  background:var(--gold);
-  color:white;
-  width:17px;
-  height:17px;
-  border-radius:50%;
-  font-size:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:700;
 }
 .catalogue-hero{
   background:
@@ -360,8 +322,6 @@ body{
   font-size:13px;
   color:#555;
 }
-
-
 .product-grid{
   display:grid;
   grid-template-columns:repeat(3, 1fr); 
@@ -383,7 +343,6 @@ body{
   transform:translateY(-6px);
   box-shadow:0 16px 30px rgba(7,24,39,.08);
 }
-
 .hover-img-box{
   position:relative;
   width:100%;
@@ -418,14 +377,12 @@ body{
   opacity:1;
   transform:scale(1);
 }
-
 .product-info-wrap {
   padding: 0 8px 20px 8px; 
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
-
 .product-tag{
   display:inline-block;
   background:#fce7f3; 
@@ -437,7 +394,6 @@ body{
   margin-bottom:10px;
   width:fit-content;
 }
-
 .product-name {
   font-size: 18px;
   font-weight: normal;
@@ -446,11 +402,9 @@ body{
   margin-bottom: 6px;
   display: block;
   overflow: visible;
-
   min-height: 100px; 
   height: auto; 
 }
-
 .product-desc {
   font-size: 13px;
   color: #6b7280;
@@ -458,11 +412,9 @@ body{
   margin-bottom: 10px;
   display: block;
   overflow: visible;
-
   min-height: 38px; 
   height: auto; 
 }
-
 .rating-row {
   height:24px;
   display:flex;
@@ -478,7 +430,6 @@ body{
   font-size:13px;
   margin-left:5px;
 }
-
 .price-row{
   display:flex;
   align-items:center;
@@ -505,7 +456,6 @@ body{
   font-size:11px;
   font-weight:700;
 }
-
 .cart-btn{
   width:100%;
   border:none;
@@ -520,7 +470,6 @@ body{
 .cart-btn:hover{
   background:var(--gold);
 }
-
 .no-result{
   display:none;
   text-align:center;
@@ -545,7 +494,6 @@ body{
   padding-top:15px;
   border-top:1px solid #eee1cf;
 }
-
 @media(max-width:992px){
   .catalogue-layout{
     grid-template-columns:1fr;
@@ -606,20 +554,19 @@ body{
       </ul>
       
       <input class="form-control d-none d-lg-block" id="searchInput" placeholder="Find sugarcane products...">
-
-<div class="nav-icons">
-  <a href="wishlist.html" class="icon-btn">
-    <i class="bi bi-heart"></i>
-    <span id="wishlistCount" class="wishlist-count">0</span>
-  </a>
-  <a href="cart.html" class="icon-btn">
-    <i class="bi bi-cart"></i>
-    <span id="cartCount" class="cart-count">0</span>
-  </a>
-  <a href="profile.html" class="icon-btn">
-    <i class="bi bi-person-circle"></i>
-  </a>
-</div>
+      <div class="nav-icons">
+        <a href="wishlist.html" class="icon-btn">
+          <i class="bi bi-heart"></i>
+          <span id="wishlistCount" class="wishlist-count">0</span>
+        </a>
+        <a href="cart.html" class="icon-btn">
+          <i class="bi bi-cart"></i>
+          <span id="cartCount" class="cart-count">0</span>
+        </a>
+        <a href="profile.html" class="icon-btn">
+          <i class="bi bi-person-circle"></i>
+        </a>
+      </div>
     </div>
   </div>
 </nav>
@@ -671,13 +618,12 @@ body{
         <select class="sort-box" id="sortSelect" onchange="sortProducts()">
         <option value="popular">Most Popular</option>
         <option value="low-high">Price: Low to High</option>
-    <option value="high-low">Price: High to Low</option>
+        <option value="high-low">Price: High to Low</option>
   </select>
 </div>
        <div class="category-heading" id="food">
   <h2 class="section-title">Food & Beverages</h2>
 </div>
-
 <div class="product-grid">
           <div class="product-card">
             <a href="product-detail.html?id=juice" class="product-img-link">
@@ -690,9 +636,9 @@ body{
               <span class="product-tag">New</span>
               <div class="product-name">QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage | Natural Hydration & Wellness</div>
               <div class="product-desc">Refreshing sparkling drink infused with premium sugarcane extract 🥤🌸</div>
-              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">3.5/5</span></div>
+              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.2/5</span></div>
               <div class="price-row">
-                <span class="price">RM 6.00</span>
+                <span class="price">RM 8.90</span>
               </div>
               <button class="cart-btn" onclick="addToCart('juice')">Add to Cart</button>          
             </div>
@@ -708,9 +654,9 @@ body{
               <span class="product-tag">Hot Item</span>
               <div class="product-name">QASABE Sugarcane Energy Snack | Natural Quick Energy | Healthy On-The-Go Snack</div>
               <div class="product-desc">Healthy and spicy traditional crunch with aromatic cane enhancement 🌶️🌸</div>
-              <div class="rating-row"><span class="stars">★★★★★</span><span class="rating">4.5/5</span></div>
+              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.5/5</span></div>
               <div class="price-row">
-                <span class="price">RM 15.00</span>
+                <span class="price">RM 19.90</span>
               </div>
               <button class="cart-btn" onclick="addToCart('energy-snack')">Add to Cart</button>          
             </div>
@@ -731,9 +677,9 @@ body{
               <span class="product-tag">Best Seller</span>
               <div class="product-name">QASABE Herbal Drink | Traditional Wellness Beverage | Natural Daily Health Support</div>
               <div class="product-desc">Calming herbal botanical tea with rich natural properties 🌿🍵</div>
-              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">3.5/5</span></div>
+              <div class="rating-row"><span class="stars">★★★☆☆</span><span class="rating">3.8/5</span></div>
               <div class="price-row">
-                <span class="price">RM 32.00</span>
+                <span class="price">RM 33.90</span>
               </div>
               <button class="cart-btn" onclick="addToCart('herbal-drink')">Add to Cart</button>          
             </div>
@@ -749,9 +695,9 @@ body{
               <span class="product-tag">Organic</span>
               <div class="product-name">QASABE Sugarcane Cube | Natural Cane Sweetener | Convenient Sugar Alternative</div>
               <div class="product-desc">Pure organic sweetener cubes compressed beautifully for daily use 🪵✨</div>
-              <div class="rating-row"><span class="stars">★★★★★</span><span class="rating">4.5/5</span></div>
+              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.5/5</span></div>
               <div class="price-row">
-                <span class="price">RM 25.00</span>
+                <span class="price">RM 14.90</span>
               </div>
               <button class="cart-btn" onclick="addToCart('organic-cube')">Add to Cart</button>          
             </div>
@@ -767,10 +713,10 @@ body{
               <span class="product-tag">Best Deal</span>
               <div class="product-name">QASABE Liquid Sweetener Drops | Zero-Mess Sweetening Solution | Natural Sugarcane Extract</div>
               <div class="product-desc">Highly concentrated healthy liquid drop solution for beverages 💧🍯</div>
-              <div class="rating-row"><span class="stars">★★★★★</span><span class="rating">4.5/5</span></div>
+              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.7/5</span></div>
               <div class="price-row">
-                <span class="price">RM 11.90</span>
-                <span class="old-price">RM 17.00</span>
+                <span class="price">RM 16.90</span>
+                <span class="old-price">RM 20.80</span>
                 <span class="discount">-30%</span>
               </div>
               <button class="cart-btn" onclick="addToCart('liquid-drop')">Add to Cart</button>          
@@ -792,9 +738,9 @@ body{
               <span class="product-tag">Aromatherapy</span>
               <div class="product-name">QASABE Sleep Mist | Relaxing Aromatherapy Spray | Better Sleep & Calmness</div>
               <div class="product-desc">Soothing pillow mist for a deeper and restorative night's rest 🌙✨</div>
-              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.0/5</span></div>
+              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.5/5</span></div>
               <div class="price-row">
-                <span class="price">RM 45.00</span>
+                <span class="price">RM 24.90</span>
               </div>
               <button class="cart-btn" onclick="addToCart('sleep-mist')">Add to Cart</button>         
             </div>
@@ -811,9 +757,9 @@ body{
               <span class="product-tag">Skincare</span>
               <div class="product-name">QASABE AHA Toner | Gentle Exfoliating Toner | Smooth & Radiant Skin</div>
               <div class="product-desc">Natural AHA extracts derived cleanly from pure Malaysian sugarcane 🧴🌿</div>
-              <div class="rating-row"><span class="stars">★★★★★</span><span class="rating">5.0/5</span></div>
+              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.5/5</span></div>
               <div class="price-row">
-                <span class="price">RM 30.00</span>
+                <span class="price">RM 26.90</span>
               </div>
               <button class="cart-btn" onclick="addToCart('aha-toner')">Add to Cart</button>          
             </div>
@@ -831,7 +777,7 @@ body{
               <div class="product-desc">Deep cleansing moisture protection for a smooth shine 💆‍♀️✨</div>
               <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.0/5</span></div>
               <div class="price-row">
-                <span class="price">RM 45.00</span>
+                <span class="price">RM 49.00</span>
               </div>
               <button class="cart-btn" onclick="addToCart('shampoo')">Add to Cart</button>         
             </div>
@@ -847,9 +793,9 @@ body{
               <span class="product-tag">Body Care</span>
               <div class="product-name">QASABE Body Scrub | Natural Sugarcane Exfoliator | Soft & Glowing Skin</div>
               <div class="product-desc">Fine cane sugar crystals designed to gently scrub away impurities 🧼🌸</div>
-              <div class="rating-row"><span class="stars">★★★☆☆</span><span class="rating">3.0/5</span></div>
+              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.3/5</span></div>
               <div class="price-row">
-                <span class="price">RM 50.00</span>
+                <span class="price">RM 28.90</span>
               </div>
               <button class="cart-btn" onclick="addToCart('body-scrub')">Add to Cart</button>          
             </div>
@@ -872,9 +818,9 @@ body{
               <div class="product-desc">100% compostable fiber container crafted directly from bagasse pulp 📦♻️</div>
               <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.2/5</span></div>
               <div class="price-row">
-                <span class="price">RM 12.00</span>
+                <span class="price">RM 7.90</span>
               </div>
-              <button class="cart-btn" onclick="addToCart('bagasse-packaging')">Add to Cart</button>          
+              <button class="cart-btn" onclick="window.location.href='product-detail.html?id=bagasse-packaging'">Select Options</button>          
             </div>
           </div>
         </div>
@@ -909,22 +855,15 @@ body{
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
 function updateCounts(){
-
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
     const cartCount = cart.reduce((sum,item)=>sum+(item.qty||1),0);
-
     const cartBadge=document.getElementById("cartCount");
     const wishlistBadge=document.getElementById("wishlistCount");
-
     if(cartBadge) cartBadge.textContent=cartCount;
     if(wishlistBadge) wishlistBadge.textContent=wishlist.length;
-
 }
-
 function addToCart(id){
   let existing = cart.find(item => item.id === id);
   if(existing){
@@ -939,15 +878,11 @@ function addToCart(id){
   updateCounts();
   alert("Added to cart!");
 }
-
 updateCounts();
 </script>
-
 <script>
 function addToWishlist(id){
-
 	  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
 	  if(!wishlist.includes(id)){
 	      wishlist.push(id);
 	      localStorage.setItem("wishlist", JSON.stringify(wishlist));
@@ -955,45 +890,38 @@ function addToWishlist(id){
 	  }else{
 	      alert("Product already in wishlist.");
 	  }
-
 	  updateCounts();
 	}
 </script>
-
 <script>
 function sortProducts() {
   const sortType = document.getElementById("sortSelect").value;
   const grids = document.querySelectorAll(".product-grid");
-
   grids.forEach(grid => {
    
     const cards = Array.from(grid.querySelectorAll(".product-card"));
-
     cards.sort((a, b) => {
     
-      const priceA = parseFloat(a.querySelector(".price").textContent.replace("RM", "").trim());
-      const priceB = parseFloat(b.querySelector(".price").textContent.replace("RM", "").trim());
-
+      // Ditambah fungsi .replace("From", "") supaya tag "From RM 7.90" boleh dibaca sebagai angka 7.90 dengan tepat oleh sistem tapis!
+      const priceA = parseFloat(a.querySelector(".price").textContent.replace("From", "").replace("RM", "").trim());
+      const priceB = parseFloat(b.querySelector(".price").textContent.replace("From", "").replace("RM", "").trim());
      
       const ratingA = parseFloat(a.querySelector(".rating").textContent.split("/")[0].trim());
       const ratingB = parseFloat(b.querySelector(".rating").textContent.split("/")[0].trim());
-
      
       if (sortType === "low-high") {
-        return priceA - priceB; // Harga rendah ke tinggi
+        return priceA - priceB; 
       } else if (sortType === "high-low") {
-        return priceB - priceA; // Harga tinggi ke rendah
+        return priceB - priceA; 
       } else if (sortType === "popular") {
-        return ratingB - ratingA; // Rating tertinggi dikira paling popular
+        return ratingB - ratingA; 
       }
       return 0;
     });
-
   
     cards.forEach(card => grid.appendChild(card));
   });
 }
-
 </script>
 <script>
   window.addEventListener("DOMContentLoaded", function() {
@@ -1009,7 +937,6 @@ function sortProducts() {
       
       const element = document.getElementById(targetId);
       if (element) {
-        // Beri sedikit delay untuk memastikan browser selesai rendering layout
         setTimeout(() => {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 300);
