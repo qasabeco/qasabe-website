@@ -279,7 +279,7 @@ Confirm Password
         Already have an account?
     </small>
 
-    <a href="admin-login.html"
+    <a href="login.html"
        class="small-link">
        Login Here
     </a>
@@ -313,46 +313,57 @@ Confirm Password
 
 <script>
 
+
 function registerUser(){
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim().toLowerCase();
+    let phone = document.getElementById("phone").value.trim();
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
 
-let name =
-document.getElementById("name").value.trim();
+    if(password !== confirmPassword){
+        alert("Passwords do not match!");
+        return false;
+    }
 
-let email =
-document.getElementById("email").value.trim().toLowerCase();
+    // 1. Simpan user baru yang dinamik ikut apa dia taip
+    let userBaru = {
+        name: name,
+        email: email,
+        phone: phone,
+        avatar: ""
+    };
+    localStorage.setItem("customerAccount", JSON.stringify(userBaru));
+    localStorage.setItem("userLoggedIn", "true");
 
-let phone =
-document.getElementById("phone").value.trim();
+    // 2. PADAMKAN TERUS DATA AINA MAISARAH BIAR KOSONG JADI 0
+    localStorage.removeItem("cart");
+    localStorage.removeItem("wishlist");
+    localStorage.removeItem("recentOrders");
+    localStorage.removeItem("userAddresses");
 
-let password =
-document.getElementById("password").value;
-
-let confirmPassword =
-document.getElementById("confirmPassword").value;
-
-if(password !== confirmPassword){
-
-    alert("Passwords do not match!");
+    alert("Account Created Successfully!");
+    
+    // Terus hantar ke profile untuk check
+    window.location.href="profile.html";
     return false;
 }
 
-localStorage.setItem(
-    "customerAccount",
-    JSON.stringify({
-        name:name,
-        email:email,
-        phone:phone,
-        password:password
-    })
-);
+function prosesRegister() {
+    let nama = document.getElementById("regName").value;
+    let email = document.getElementById("regEmail").value;
 
-alert("Account Created Successfully!");
+    let userBaru = { name: nama, email: email, phone: "", avatar: "" };
+    localStorage.setItem("customerAccount", JSON.stringify(userBaru));
 
-window.location.href="admin-login.html";
+    // ===== PADAM DATA LAMA BIAR JADI 0 =====
+    localStorage.removeItem("cart");
+    localStorage.removeItem("wishlist");
+    localStorage.removeItem("recentOrders");
+    localStorage.removeItem("userAddresses");
 
-return false;
-
-
+    // Pergi ke profile
+    window.location.href = "profile.html";
 }
 
 </script>
