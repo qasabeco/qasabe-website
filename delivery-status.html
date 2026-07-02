@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery Status - Qasabe</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #FCF8F5;
+    }
+    .font-serif {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+    /* Animasi transition lancar semasa zoom */
+    .map-zoom-element {
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      transform-origin: center center;
+    }
+  </style>
+</head>
+<body class="text-[#071827] antialiased">
+
+  <!-- NAVBAR -->
+  <nav class="bg-[#FCF8F5] py-6 px-4 md:px-16 max-w-[1400px] mx-auto flex items-center justify-between">
+    <!-- Kiri: Logo & Tulisan Brand QASABE -->
+    <a href="index.html" class="flex items-center space-x-3 no-underline group">
+      <img src="images/logor.png" alt="Qasabe Logo" class="w-[50px] h-[50px] object-contain">
+      <span class="font-serif text-[34px] font-bold tracking-wide text-[#002140] leading-none">QASABE</span>
+    </a>
+
+    <!-- Tengah: Menu Navigasi Utama -->
+    <ul class="hidden md:flex items-center space-x-9 font-medium text-[15px] text-[#071827]">
+      <li><a href="index.html" class="hover:text-[#c99b3b] transition duration-200">Home</a></li>
+      <li><a href="index.html#story" class="hover:text-[#c99b3b] transition duration-200">About</a></li>
+      <li>
+        <a href="Category.html" class="hover:text-[#c99b3b] transition duration-200 flex items-center gap-1">
+          Products <i class="bi bi-caret-down-fill text-[11px] text-[#c99b3b] mt-0.5"></i>
+        </a>
+      </li>
+      <li><a href="index.html#contact" class="hover:text-[#c99b3b] transition duration-200">Contact</a></li>
+    </ul>
+
+    <!-- Kanan: Bar Carian & Ikon-Ikon Interaktif -->
+    <div class="flex items-center space-x-7">
+      <div class="relative hidden lg:block">
+        <input type="text" placeholder="Find sugarcane products..." class="pl-5 pr-12 py-2.5 bg-white border border-gray-200 rounded-full text-[14px] w-[270px] focus:outline-none focus:border-[#c99b3b] text-[#071827] placeholder-gray-400/90">
+      </div>
+      
+      <div class="flex items-center space-x-6 text-[22px] text-[#071827]">
+        <a href="wishlist.html" class="relative hover:text-[#c99b3b] transition duration-200">
+          <i class="bi bi-heart"></i>
+          <span class="absolute -top-1.5 -right-2 bg-[#c99b3b] text-white text-[9px] font-bold w-[17px] h-[17px] rounded-full flex items-center justify-center">0</span>
+        </a>
+        <a href="cart.html" class="relative hover:text-[#c99b3b] transition duration-200">
+          <i class="bi bi-cart"></i>
+          <span class="absolute -top-1.5 -right-2 bg-[#c99b3b] text-white text-[9px] font-bold w-[17px] h-[17px] rounded-full flex items-center justify-center">0</span>
+        </a>
+        <a href="profile.html" class="text-[#071827] hover:text-[#c99b3b] transition duration-200">
+          <i class="bi bi-person-circle text-[24px]"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-[1400px] mx-auto p-4 md:p-12 pt-8">
+    
+    <!-- HEADER: Title & Order Placed Info -->
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-200/60 pb-6 mb-8 gap-4">
+      <div class="flex items-center space-x-4">
+        <div class="p-3 bg-white border border-gray-100 rounded-xl shadow-sm text-[#c99b3b] text-2xl">
+          <i class="bi bi-box-seam"></i>
+        </div>
+        <div>
+          <h1 class="text-3xl font-serif font-bold text-[#071827]">Delivery Status</h1>
+          <p class="text-xs text-gray-500 font-medium">Real-time tracking of your order</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-3 bg-white/60 py-2 px-4 rounded-xl border border-gray-100 shadow-xs">
+        <div class="w-8 h-8 bg-amber-50 rounded-full flex items-center justify-center text-amber-600"><i class="bi bi-check2-circle text-lg"></i></div>
+        <div>
+          <p class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">Order Placed</p>
+          <p id="orderPlacedTime" class="text-xs font-semibold text-gray-700">12 Jan 2026, 10:24 AM</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN GRID SYSTEM -->
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+      
+      <!-- LEFT SECTION: Map & Timeline Dashboard Container -->
+      <div class="lg:col-span-3 bg-[#0A192F] rounded-2xl overflow-hidden shadow-xl border border-slate-800 flex flex-col">
+        
+        <!-- Top Half: Timeline + Live Map Box -->
+        <div class="grid grid-cols-1 md:grid-cols-3 border-b border-slate-800">
+          
+          <!-- Live Tracking Timeline -->
+          <div class="p-6 bg-[#071324] flex flex-col justify-between space-y-6 relative">
+            <div class="absolute left-[35px] top-10 bottom-10 w-0.5 bg-slate-800 z-0"></div>
+            
+            <div class="flex items-start space-x-4 relative z-10">
+              <div class="w-6 h-6 bg-emerald-500/20 text-emerald-400 rounded-full border border-emerald-500/30 flex items-center justify-center text-xs shadow-sm shadow-emerald-500/20">✓</div>
+              <div>
+                <h5 class="text-xs font-bold text-gray-300">Order Confirmed</h5>
+                <p class="text-[10px] text-gray-500 mt-0.5">12 Jan 2026, 10:24 AM</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4 relative z-10">
+              <div class="w-6 h-6 bg-emerald-500/20 text-emerald-400 rounded-full border border-emerald-500/30 flex items-center justify-center text-xs">✓</div>
+              <div>
+                <h5 class="text-xs font-bold text-gray-300">Preparing Order</h5>
+                <p class="text-[10px] text-gray-500 mt-0.5">12 Jan 2026, 10:35 AM</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4 relative z-10">
+              <div class="w-6 h-6 bg-[#c99b3b] text-black rounded-full flex items-center justify-center text-xs font-bold ring-4 ring-amber-500/20 animate-pulse"><i class="bi bi-bicycle"></i></div>
+              <div>
+                <h5 class="text-xs font-bold text-[#ECC880] flex items-center gap-1.5">Out for Delivery <span class="bg-amber-500 text-black text-[9px] px-1 font-extrabold rounded">LIVE</span></h5>
+                <p class="text-[10px] text-gray-300 mt-0.5">12 Jan 2026, 12:45 PM</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4 relative z-10 opacity-50">
+              <div class="w-6 h-6 bg-slate-800 text-slate-400 rounded-full border border-slate-700 flex items-center justify-center text-[10px]"><i class="bi bi-clock"></i></div>
+              <div>
+                <h5 class="text-xs font-bold text-slate-400">Arriving Soon</h5>
+                <p class="text-[10px] text-slate-500 mt-0.5">Est. 1:50 PM - 2:00 PM</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4 relative z-10 opacity-30">
+              <div class="w-6 h-6 bg-slate-800 text-slate-400 rounded-full border border-slate-700 flex items-center justify-center text-[10px]"><i class="bi bi-patch-check"></i></div>
+              <div>
+                <h5 class="text-xs font-bold text-slate-400">Delivered</h5>
+                <p class="text-[10px] text-slate-500 mt-0.5">Est. 2:00 PM</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Map Module (Ditambah fungsi Zoom) -->
+          <div class="md:col-span-2 relative min-h-[320px] bg-slate-950 flex flex-col justify-between overflow-hidden">
+            
+            <!-- Konten Map Utama yang akan di-zoom -->
+            <div id="mapContainer" class="absolute inset-0 w-full h-full map-zoom-element">
+              <!-- Background Map Peta -->
+              <div class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity" style="background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80');"></div>
+              
+              <!-- Elemen SVG Laluan Kurva -->
+              <div class="absolute inset-0 w-full h-full flex flex-col justify-center">
+                <div class="relative w-full h-24 my-auto">
+                  <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 50,60 Q 180,20 280,70 T 480,50" fill="none" stroke="#c99b3b" stroke-width="3" stroke-dasharray="2 4" stroke-linecap="round"/>
+                  </svg>
+                  
+                  <!-- Ikon Warehouse -->
+                  <div class="absolute left-10 top-10 flex flex-col items-center">
+                    <div class="w-7 h-7 bg-[#071324] border border-amber-500/40 rounded-lg flex items-center justify-center shadow-lg"><i class="bi bi-house-door-fill text-amber-500 text-xs"></i></div>
+                    <span class="text-[9px] font-bold text-gray-400 mt-1 bg-slate-900/80 px-1 rounded">Warehouse</span>
+                  </div>
+                  
+                  <!-- Ikon Scooter (Rider) -->
+                  <div class="absolute left-1/2 top-4 -translate-x-1/2 flex flex-col items-center animate-bounce">
+                    <div class="w-7 h-7 bg-amber-500 text-black rounded-full flex items-center justify-center shadow-lg border border-white/20"><i class="bi bi-scooter text-sm"></i></div>
+                  </div>
+                  
+                  <!-- Ikon Lokasi Anda -->
+                  <div class="absolute right-12 top-6 flex flex-col items-center">
+                    <div class="w-7 h-7 bg-[#c99b3b] text-black rounded-full flex items-center justify-center shadow-lg border-2 border-white"><i class="bi bi-geo-alt-fill text-xs"></i></div>
+                    <span class="text-[9px] font-bold text-[#ECC880] mt-1 bg-slate-900/80 px-1 rounded">Your Location</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lapisan Atas (Butang Interface - Kekal tidak berubah saiznya semasa zoom) -->
+            <div class="absolute inset-0 p-6 flex flex-col justify-between z-20 pointer-events-none">
+              <div class="flex justify-between items-start w-full">
+                <span class="bg-[#071324]/90 backdrop-blur-xs border border-slate-800 text-white text-[10px] font-semibold px-3 py-1.5 rounded-full flex items-center gap-2 pointer-events-auto">
+                  <span class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span> Live Tracking
+                </span>
+                
+                <!-- Kawalan Butang Zoom yang kini berfungsi interaktif -->
+                <div class="flex flex-col space-y-1 pointer-events-auto">
+                  <button id="btnZoomIn" class="w-7 h-7 bg-[#071324]/90 text-white text-base font-bold border border-slate-800 hover:bg-slate-800 flex items-center justify-center rounded-md active:scale-95 transition" title="Zoom In">+</button>
+                  <button id="btnZoomOut" class="w-7 h-7 bg-[#071324]/90 text-white text-base font-bold border border-slate-800 hover:bg-slate-800 flex items-center justify-center rounded-md active:scale-95 transition" title="Zoom Out">-</button>
+                  <button id="btnResetZoom" class="w-7 h-7 bg-[#071324]/90 text-[#c99b3b] text-xs border border-slate-800 hover:bg-slate-800 flex items-center justify-center rounded-md mt-2 active:scale-95 transition" title="Reset View">
+                    <i class="bi bi-crosshairs"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="text-[10px] text-slate-400 font-medium">Updated just now &bull; Alor Setar, Kedah</div>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- Bottom Half: Metrics Dashboard Footer Bar -->
+        <div class="p-6 grid grid-cols-2 md:grid-cols-4 gap-6 bg-[#071324]/50 backdrop-blur-md">
+          <div>
+            <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Estimated Arrival</span>
+            <p class="text-sm font-bold text-[#ECC880] mt-0.5">1:50 PM – 2:00 PM</p>
+            <p class="text-[10px] text-slate-400">12 Jan 2026</p>
+          </div>
+          <div>
+            <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Distance Remaining</span>
+            <p class="text-sm font-bold text-white mt-0.5">2.3 km</p>
+            <p class="text-[10px] text-emerald-400 font-medium">~ 6 mins away</p>
+          </div>
+          <div class="flex items-center space-x-3">
+            <img class="w-9 h-9 rounded-full object-cover border border-slate-700" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Rider">
+            <div>
+              <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500 block">Delivery Partner</span>
+              <h6 class="text-xs font-bold text-white flex items-center gap-1">Ahmad Faris <span class="text-amber-400 text-[10px]"><i class="bi bi-star-fill"></i> 4.9</span></h6>
+            </div>
+            <a href="tel:0123456789" class="w-6 h-6 bg-slate-800 rounded-full flex items-center justify-center text-xs text-slate-300 hover:text-white transition"><i class="bi bi-telephone-fill"></i></a>
+          </div>
+          <div class="md:text-right flex flex-col md:items-end justify-center">
+            <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500 block">Vehicle</span>
+            <p class="text-xs font-bold text-slate-300 mt-0.5">Honda RS150R</p>
+            <span class="text-[10px] bg-slate-800 text-amber-400 px-2 py-0.5 rounded font-mono font-bold mt-1 inline-block">KFA 1234</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SECTION: Order Summary (image_1b5e2e.png) -->
+      <div class="lg:col-span-2 space-y-6">
+        <div class="bg-white p-7 rounded-2xl shadow-xs border border-gray-100/80">
+          <div class="flex justify-between items-center pb-5 border-b border-gray-100 mb-5">
+            <h3 id="displayOrderId" class="font-bold text-gray-800 text-base tracking-tight">Order #QSB-2026-001</h3>
+            <a href="#" class="text-xs font-semibold text-[#c99b3b] hover:underline">View Details ›</a>
+          </div>
+          
+          <div class="space-y-6">
+            <!-- Item 1 -->
+            <div class="flex items-center justify-between text-sm">
+              <div class="flex items-center space-x-4">
+                <div class="w-20 h-20 bg-gray-50 border border-gray-100/90 p-2 rounded-2xl flex items-center justify-center shrink-0 shadow-xs">
+                  <img src="images/AHA toner (L).png" class="max-h-full object-contain">
+                </div>
+                <div>
+                  <p class="font-bold text-gray-800 text-[15px] leading-snug">Sugarcane Glow Toner</p>
+                  <p class="text-gray-400 font-medium text-xs mt-1">Qty: 2</p>
+                </div>
+              </div>
+              <span class="font-bold text-gray-800 text-[16px] whitespace-nowrap">RM60.00</span>
+            </div>
+            
+            <!-- Item 2 -->
+            <div class="flex items-center justify-between text-sm">
+              <div class="flex items-center space-x-4">
+                <div class="w-20 h-20 bg-gray-50 border border-gray-100/90 p-2 rounded-2xl flex items-center justify-center shrink-0 shadow-xs">
+                  <img src="images/sleep-mist (L).png" class="max-h-full object-contain">
+                </div>
+                <div>
+                  <p class="font-bold text-gray-800 text-[15px] leading-snug">Sugarcane Sleep Mist</p>
+                  <p class="text-gray-400 font-medium text-xs mt-1">Qty: 1</p>
+                </div>
+              </div>
+              <span class="font-bold text-gray-800 text-[16px] whitespace-nowrap">RM49.90</span>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="flex items-center justify-between text-sm">
+              <div class="flex items-center space-x-4">
+                <div class="w-20 h-20 bg-gray-50 border border-gray-100/90 p-2 rounded-2xl flex items-center justify-center shrink-0 shadow-xs">
+                  <img src="images/energy snack (L).png" class="max-h-full object-contain">
+                </div>
+                <div>
+                  <p class="font-bold text-gray-800 text-[15px] leading-snug">Sugarcane Energy Snack</p>
+                  <p class="text-gray-400 font-medium text-xs mt-1">Qty: 1</p>
+                </div>
+              </div>
+              <span class="font-bold text-gray-800 text-[16px] whitespace-nowrap">RM15.00</span>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-100 mt-6 pt-5 space-y-3 text-sm">
+            <div class="flex justify-between text-gray-500 font-medium">
+              <span>Subtotal</span><span class="font-semibold text-gray-700">RM124.90</span>
+            </div>
+            <div class="flex justify-between text-gray-500 font-medium">
+              <span>Shipping Fee</span><span class="font-semibold text-gray-700">RM5.90</span>
+            </div>
+            <div class="flex justify-between font-bold text-base text-gray-900 pt-4 border-t border-dashed border-gray-200 mt-2">
+              <span>Total Paid</span><span class="text-[#c99b3b] text-xl font-bold tracking-tight">RM130.80</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- JAVASCRIPT UNTUK INTERAKSI ZOOM MAP -->
+  <script>
+    // Tetapan nilai skala zoom asal (1.0 = 100%)
+    let currentScale = 1.0;
+    const maxScale = 2.2;  // Had maksimum zoom masuk
+    const minScale = 0.7;  // Had minimum zoom keluar
+    const step = 0.25;     // Kadar penambahan atau pengurangan skala setiap kali ditekan
+
+    const mapContainer = document.getElementById('mapContainer');
+    const btnZoomIn = document.getElementById('btnZoomIn');
+    const btnZoomOut = document.getElementById('btnZoomOut');
+    const btnResetZoom = document.getElementById('btnResetZoom');
+
+    // Fungsi untuk mengemaskini paparan zoom
+    function updateMapZoom() {
+      mapContainer.style.transform = `scale(${currentScale})`;
+    }
+
+    // Fungsi klik Butang Zoom In (+)
+    btnZoomIn.addEventListener('click', () => {
+      if (currentScale < maxScale) {
+        currentScale += step;
+        updateMapZoom();
+      }
+    });
+
+    // Fungsi klik Butang Zoom Out (-)
+    btnZoomOut.addEventListener('click', () => {
+      if (currentScale > minScale) {
+        currentScale -= step;
+        updateMapZoom();
+      }
+    });
+
+    // Fungsi klik Butang Reset (Crosshairs) untuk kembalikan ke saiz lalai
+    btnResetZoom.addEventListener('click', () => {
+      currentScale = 1.0;
+      updateMapZoom();
+    });
+
+ // Kod membaca parameter URL Order ID dan memaparkan data dinamik dari LocalStorage
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const orderId = urlParams.get('orderId');
+      
+      if (orderId) {
+        // 1. Kemas kini paparan ID di atas resit
+        document.getElementById('displayOrderId').innerText = `Order #${orderId}`;
+        
+        // 2. Tarik data order daripada recentOrders storage
+        const recentOrders = JSON.parse(localStorage.getItem("recentOrders")) || [];
+        const currentOrder = recentOrders.find(o => o.orderId === orderId);
+        
+        if (currentOrder) {
+          // Kemas kini tarikh pesanan dibuat
+          document.getElementById('orderPlacedTime').innerText = currentOrder.date;
+          
+          // 3. Kemas kini Timeline Status (Mengikut status terkini daripada Admin)
+          // Padam semua lampu highlight lama, kita buat logik ikut status semasa:
+          const timelineContainer = document.querySelector('.p-6.bg-\\[\\#071324\\]');
+          if (timelineContainer) {
+            let status = currentOrder.status; // "Processing", "Shipped", atau "Delivered"
+            
+            let confirmedCheck = '✓';
+            let preparingCheck = '✓';
+            let shippedContent = `<div class="w-6 h-6 bg-slate-800 text-slate-400 rounded-full border border-slate-700 flex items-center justify-center text-[10px]"><i class="bi bg-clock"></i></div>`;
+            let deliveredContent = `<div class="w-6 h-6 bg-slate-800 text-slate-400 rounded-full border border-slate-700 flex items-center justify-center text-[10px]"><i class="bi bi-patch-check"></i></div>`;
+            let shippedOpacity = "opacity-50";
+            let deliveredOpacity = "opacity-30";
+            let liveLabel = "";
+
+            if (status === "Shipped") {
+              shippedContent = `<div class="w-6 h-6 bg-[#c99b3b] text-black rounded-full flex items-center justify-center text-xs font-bold ring-4 ring-amber-500/20 animate-pulse"><i class="bi bi-bicycle"></i></div>`;
+              shippedOpacity = "";
+              liveLabel = `<span class="bg-amber-500 text-black text-[9px] px-1 font-extrabold rounded ms-1.5">LIVE</span>`;
+            } else if (status === "Delivered") {
+              shippedContent = `<div class="w-6 h-6 bg-emerald-500/20 text-emerald-400 rounded-full border border-emerald-500/30 flex items-center justify-center text-xs">✓</div>`;
+              shippedOpacity = "";
+              deliveredContent = `<div class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center text-xs border border-emerald-400 shadow-md shadow-emerald-500/30">✓</div>`;
+              deliveredOpacity = "";
+            }
+
+            timelineContainer.innerHTML = `
+              <div class="absolute left-[35px] top-10 bottom-10 w-0.5 bg-slate-800 z-0"></div>
+              
+              <div class="flex items-start space-x-4 relative z-10">
+                <div class="w-6 h-6 bg-emerald-500/20 text-emerald-400 rounded-full border border-emerald-500/30 flex items-center justify-center text-xs shadow-sm shadow-emerald-500/20">${confirmedCheck}</div>
+                <div>
+                  <h5 class="text-xs font-bold text-gray-300">Order Confirmed</h5>
+                  <p class="text-[10px] text-gray-500 mt-0.5">${currentOrder.date}</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-4 relative z-10">
+                <div class="w-6 h-6 bg-emerald-500/20 text-emerald-400 rounded-full border border-emerald-500/30 flex items-center justify-center text-xs">${preparingCheck}</div>
+                <div>
+                  <h5 class="text-xs font-bold text-gray-300">Preparing Order</h5>
+                  <p class="text-[10px] text-gray-500 mt-0.5">${currentOrder.date}</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-4 relative z-10 ${shippedOpacity}">
+                ${shippedContent}
+                <div>
+                  <h5 class="text-xs font-bold ${status === 'Shipped' ? 'text-[#ECC880]' : 'text-gray-300'} flex items-center">Out for Delivery ${liveLabel}</h5>
+                  <p class="text-[10px] text-gray-400 mt-0.5">${status === 'Shipped' || status === 'Delivered' ? 'Processed' : 'Pending'}</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-4 relative z-10 ${deliveredOpacity}">
+                ${deliveredContent}
+                <div>
+                  <h5 class="text-xs font-bold ${status === 'Delivered' ? 'text-emerald-400' : 'text-slate-400'}">Delivered</h5>
+                  <p class="text-[10px] text-slate-500 mt-0.5">${status === 'Delivered' ? 'Order Completed' : 'Est. Arrival Soon'}</p>
+                </div>
+              </div>
+            `;
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
