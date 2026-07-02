@@ -226,20 +226,16 @@ h2, h3, h4, h5, h6{
 /* ===========================
    DARK TABLE (QASABE)
 =========================== */
-
 .table-card{
     background: var(--card-bg);
     border:1px solid rgba(255,255,255,.12);
     border-radius:18px;
     overflow:hidden;
 }
-
 .table-responsive{
     background:transparent;
 }
-
 .table{
-
     --bs-table-bg: transparent;
     --bs-table-color: #fff;
     --bs-table-border-color: rgba(255,255,255,.08);
@@ -247,22 +243,18 @@ h2, h3, h4, h5, h6{
     --bs-table-striped-color:#fff;
     --bs-table-hover-bg: rgba(255,255,255,.05);
     --bs-table-hover-color:#fff;
-
     background:transparent !important;
     color:#fff !important;
     margin-bottom:0;
 }
-
 .table>:not(caption)>*>*{
     background:transparent !important;
     color:#fff !important;
     box-shadow:none !important;
 }
-
 .table thead{
     background:#0b2445;
 }
-
 .table thead th{
     color:#D4A64F !important;
     font-size:15px;
@@ -270,21 +262,17 @@ h2, h3, h4, h5, h6{
     border-bottom:1px solid rgba(255,255,255,.15);
     padding:16px;
 }
-
 .table tbody tr{
     transition:.25s;
 }
-
 .table tbody tr:hover{
     background:rgba(255,255,255,.04)!important;
 }
-
 .table tbody td{
     padding:18px 16px;
     color:#f8f9fa!important;
     border-bottom:1px solid rgba(255,255,255,.08);
 }
-
 .table tbody tr:last-child td{
     border-bottom:none;
 }
@@ -314,6 +302,20 @@ h2, h3, h4, h5, h6{
     border-color: var(--gold);
     box-shadow: none;
 }
+
+/* --- FIX: PENAMBAHAN KOD UNTUK TEKS PLACEHOLDER MODAL --- */
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.45) !important;
+    opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.45) !important;
+}
+.form-control::-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.45) !important;
+}
+/* -------------------------------------------------------- */
+
 @media(max-width:768px){
     .sidebar{
         min-height: auto;
@@ -344,7 +346,6 @@ h2, h3, h4, h5, h6{
     <a href="#" class="menu-item" onclick="showSettings()"><i class="bi bi-gear"></i> Settings</a>
     <a href="login.html" class="menu-item" onclick="logoutAdmin()"><i class="bi bi-box-arrow-left"></i> Logout</a>
 </div>
-
 <div class="col-md-10 p-4">
     <div class="topbar shadow-sm d-flex justify-content-between align-items-center flex-wrap gap-3">
         <div>
@@ -364,9 +365,7 @@ h2, h3, h4, h5, h6{
             </div>
         </div>
     </div>
-
     <div class="row mt-4 g-4">
-
         <div class="col-md-3">
             <div class="card shadow-sm card-custom p-3">
                 <div class="icon-box mb-3"><i class="bi bi-cash-coin"></i></div>
@@ -387,7 +386,7 @@ h2, h3, h4, h5, h6{
             <div class="card shadow-sm card-custom p-3">
                 <div class="icon-box mb-3"><i class="bi bi-box-seam"></i></div>
                 <h6>Products</h6>
-                <h3 class="gold">10</h3>
+                <h3 class="gold">84</h3>
                 <p class="mb-0">5 New Products</p>
             </div>
         </div>
@@ -400,7 +399,6 @@ h2, h3, h4, h5, h6{
             </div>
         </div>
     </div>
-
     <div class="row mt-4 g-4 align-items-stretch">
         <div class="col-lg-8 col-md-12">
             <div class="chart-box shadow-sm h-100">
@@ -430,7 +428,6 @@ h2, h3, h4, h5, h6{
             </div>
         </div>
     </div>
-
     <div class="row mt-4 g-4">
         <div class="col-md-4">
             <div class="table-card shadow-sm h-100">
@@ -453,7 +450,6 @@ h2, h3, h4, h5, h6{
             <div class="table-card shadow-sm h-100">
                 <h4>Low Stock Alert</h4>
                 <hr>
-
                 <div class="low-stock-item"><b>Sleep Mist</b><br><small class="text-danger">Stock: 4 left</small></div>
                 <div class="low-stock-item"><b>AHA Toner</b><br><small class="text-danger">Stock: 2 left</small></div>
                 <div class="low-stock-item"><b>Energy Snack</b><br><small class="text-warning">Stock: 8 left</small></div>
@@ -476,7 +472,6 @@ h2, h3, h4, h5, h6{
             </div>
         </div>
     </div>
-
     <div class="table-card shadow-sm mt-4" id="products">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h4>Product Management</h4>
@@ -484,7 +479,6 @@ h2, h3, h4, h5, h6{
                  <i class="bi bi-plus"></i> Add Product
             </button>
         </div>
-
         <div class="table-responsive">
             <table class="table align-middle" id="productTable">
                  <thead>
@@ -497,7 +491,6 @@ h2, h3, h4, h5, h6{
                         <th>Action</th>
                     </tr>
                 </thead>
-
                 <tbody id="productBody">
                     <tr>
                         <td>Sleep Mist</td>
@@ -510,8 +503,7 @@ h2, h3, h4, h5, h6{
                             <button class="btn btn-sm btn-outline-danger" onclick="deleteProduct(this)">Delete</button>
                         </td>
                     </tr>
-
-    <tr>
+                    <tr>
                         <td>AHA Toner</td>
                         <td>Skincare</td>
                         <td>RM26.90</td>
@@ -522,7 +514,6 @@ h2, h3, h4, h5, h6{
                             <button class="btn btn-sm btn-outline-danger" onclick="deleteProduct(this)">Delete</button>
                         </td>
                     </tr>
-
                     <tr>
                         <td>Energy Snack</td>
                         <td>Health</td>
@@ -538,13 +529,11 @@ h2, h3, h4, h5, h6{
             </table>
         </div>
     </div>
-
     <div class="table-card shadow-sm mt-4" id="orders">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h4>Recent Orders</h4>
             <button class="btn btn-gold" onclick="viewAllOrders()">View All Orders</button>
         </div>
-
         <div class="table-responsive">
             <table class="table align-middle" id="orderTable">
                 <thead>
@@ -557,7 +546,6 @@ h2, h3, h4, h5, h6{
                         <th>Action</th>
                     </tr>
                 </thead>
-
                 <tbody>
                     <tr>
                         <td>Q001</td>
@@ -567,7 +555,6 @@ h2, h3, h4, h5, h6{
                         <td><span class="status-delivered">Delivered</span></td>
                         <td><button class="btn btn-sm btn-outline-gold" onclick="updateOrder(this)">Update</button></td>
                     </tr>
-
                     <tr>
                         <td>Q002</td>
                         <td>Nurul</td>
@@ -576,7 +563,6 @@ h2, h3, h4, h5, h6{
                         <td><span class="status-processing">Processing</span></td>
                         <td><button class="btn btn-sm btn-outline-gold" onclick="updateOrder(this)">Update</button></td>
                     </tr>
-
                     <tr>
                         <td>Q003</td>
                         <td>Fatimah</td>
@@ -589,42 +575,33 @@ h2, h3, h4, h5, h6{
             </table>
         </div>
     </div>
-
 </div>
 </div>
 </div>
-
 <div class="modal fade" id="addProductModal">
     <div class="modal-dialog">
         <div class="modal-content">
-
             <div class="modal-header">
                 <h5 class="modal-title">Add New Product</h5>
                 <button class="btn-close bg-white" data-bs-dismiss="modal"></button>
             </div>
-
             <div class="modal-body">
                 <input type="text" id="productName" class="form-control mb-3" placeholder="Product name">
                 <input type="text" id="productCategory" class="form-control mb-3" placeholder="Category">
                 <input type="number" id="productPrice" class="form-control mb-3" placeholder="Price">
                 <input type="number" id="productStock" class="form-control mb-3" placeholder="Stock">
             </div>
-
             <div class="modal-footer">
                 <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <button class="btn btn-gold" onclick="addProduct()" data-bs-dismiss="modal">Save Product</button>
             </div>
-
         </div>
     </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
 const ctx = document.getElementById('salesChart');
-
 new Chart(ctx, {
     type: 'line',
     data: {
@@ -648,22 +625,18 @@ new Chart(ctx, {
         }
     }
 });
-
 function addProduct(){
     let name = document.getElementById("productName").value;
     let category = document.getElementById("productCategory").value;
     let price = document.getElementById("productPrice").value;
     let stock = document.getElementById("productStock").value;
-
     if(name === "" || category === "" || price === "" || stock === ""){
         alert("Please fill in all product details!");
         return;
     }
-
     let status = stock <= 5
         ? '<span class="status-processing">Low Stock</span>'
         : '<span class="status-delivered">Active</span>';
-
     let row = `
     <tr>
         <td>${name}</td>
@@ -676,50 +649,40 @@ function addProduct(){
             <button class="btn btn-sm btn-outline-danger" onclick="deleteProduct(this)">Delete</button>
         </td>
     </tr>`;
-
     document.getElementById("productBody").innerHTML += row;
-
     alert("Product added successfully!");
-
     document.getElementById("productName").value = "";
     document.getElementById("productCategory").value = "";
     document.getElementById("productPrice").value = "";
     document.getElementById("productStock").value = "";
 }
-
 function deleteProduct(button){
     if(confirm("Are you sure you want to delete this product?")){
         button.closest("tr").remove();
         alert("Product deleted successfully!");
     }
 }
-
 function editProduct(button){
     let row = button.closest("tr");
     let name = prompt("Edit product name:", row.cells[0].innerText);
     let category = prompt("Edit category:", row.cells[1].innerText);
     let price = prompt("Edit price:", row.cells[2].innerText.replace("RM",""));
     let stock = prompt("Edit stock:", row.cells[3].innerText);
-
     if(name && category && price && stock){
         row.cells[0].innerText = name;
         row.cells[1].innerText = category;
         row.cells[2].innerText = "RM" + price;
         row.cells[3].innerText = stock;
-
         row.cells[4].innerHTML =
         stock <= 5
         ? '<span class="status-processing">Low Stock</span>'
         : '<span class="status-delivered">Active</span>';
-
         alert("Product updated successfully!");
     }
 }
-
 function updateOrder(button){
     let row = button.closest("tr");
     let statusCell = row.cells[4];
-
     if(statusCell.innerText === "Processing"){
         statusCell.innerHTML = '<span class="status-shipped">Shipped</span>';
     }else if(statusCell.innerText === "Shipped"){
@@ -728,35 +691,27 @@ function updateOrder(button){
         alert("Order already delivered!");
         return;
     }
-
     alert("Order status updated!");
 }
-
 function searchTable(){
     let input = document.getElementById("searchInput").value.toLowerCase();
     let rows = document.querySelectorAll("#productTable tbody tr, #orderTable tbody tr");
-
     rows.forEach(row => {
         row.style.display = row.innerText.toLowerCase().includes(input) ? "" : "none";
     });
 }
-
 function generateReport(){
     alert("Sales report generated successfully!");
 }
-
 function changeChart(){
     alert("Chart changed to Last 8 Days view!");
 }
-
 function viewAllOrders(){
     document.getElementById("orders").scrollIntoView({behavior:"smooth"});
 }
-
 function showSettings(){
     alert("Settings page is under development.");
 }
 </script>
-
 </body>
 </html>
