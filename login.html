@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QASABE - Login & Portal</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght=0,600;1,400&display=swap" rel="stylesheet">
+<style>
+body{
+    background:#071B34;
+    color:white;
+    font-family:Arial, sans-serif; /* Kekal asal */
+    scroll-behavior: smooth;
+}
+.navbar-custom{
+    background:#061529;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+.brand-logo-img {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+}
+/* HANYA KACAU FONT BRAND INI SAHAJA JADI NIPIS */
+.logo{
+    color:white;
+    font-family:'Cormorant Garamond', serif;
+    letter-spacing:3px;
+    font-size:28px;
+    font-weight: 300; /* Dibuat nipis premium di sini */
+    text-decoration: none;
+    margin: 0;
+}
+.brand-wrapper:hover .logo {
+    color: #D4A64F;
+}
+.gold{
+    color:#D4A64F;
+}
+.hero{
+    min-height:100vh;
+}
+.left-panel{
+    position:relative;
+    overflow:hidden;
+    background:
+    linear-gradient(
+    to right,
+    rgba(7,27,52,0.2),
+    rgba(7,27,52,0.95)
+    ),
+    linear-gradient(
+    to bottom,
+    rgba(7,27,52,0.2),
+    rgba(7,27,52,0.95)
+    ),
+    url("images/login.png");
+    background-size:cover;
+    background-position:center;
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    padding:80px;
+}
+.left-panel::after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    width:250px;
+    height:100%;
+    background:linear-gradient(
+    to right,
+    transparent,
+    #071B34
+    );
+}
+.left-panel div{
+    position:relative;
+    z-index:2;
+}
+.left-panel h1{
+    font-family:Georgia, serif;
+    font-size:58px;
+    line-height:1.05;
+    font-weight: bold; /* Kekal tebal asal */
+}
+.login-card{
+    background:#111d35;
+    border:1px solid rgba(255,255,255,0.13);
+    border-radius:18px;
+    padding:42px;
+    width:420px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.35);
+}
+.form-control{
+    background:#17243d;
+    border:1px solid rgba(255,255,255,0.2);
+    color:white;
+    padding:13px;
+}
+.form-control::placeholder{
+    color:#8b93a3;
+}
+.form-control:focus{
+    background:#17243d;
+    color:white;
+    border-color:#D4A64F;
+    box-shadow:none;
+}
+.btn-gold{
+    background:#D4A64F;
+    color:#071B34;
+    font-weight:bold; /* Kekal tebal asal */
+    border:none;
+    padding:13px;
+}
+.btn-gold:hover{
+    background:#c39a42;
+    color:#071B34;
+}
+.small-link{
+    color:#D4A64F;
+    text-decoration:none;
+}
+.footer-section{
+    background:#0b1d3a;
+    border-top:1px solid rgba(255,255,255,0.1);
+}
+.role-switch{
+    display:flex;
+    margin-bottom:25px;
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.15);
+}
+.role-tab{
+    flex:1;
+    text-align:center;
+    padding:14px;
+    cursor:pointer;
+    font-weight:bold; /* Kekal tebal asal */
+    background:#0f1f39;
+    color:white;
+    transition:.3s;
+}
+.role-tab.active{
+    background:#D4A64F;
+    color:#071B34;
+    font-weight: bold !important; /* Kekal tebal apabila aktif */
+}
+.nav-link-custom {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold; /* Kekal tebal asal */
+    transition: 0.2s;
+    cursor: pointer;
+}
+.nav-link-custom:hover {
+    color: #D4A64F;
+}
+.modal-content-custom {
+    background: #111d35;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: white;
+}
+.modal-header-custom {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.story-section {
+    background: #0b1726;
+    padding: 60px 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-custom px-5">
+    <a class="brand-wrapper" href="index.html">
+        <img src="images/logor.png" alt="QASABE Logo" class="brand-logo-img">
+        <h1 class="logo">QASABE</h1>
+    </a>
+    <div class="ms-auto d-flex align-items-center gap-4" id="topNavMenu">
+        <a class="nav-link-custom" href="index.html">SHOP</a>
+        <a class="nav-link-custom" href="#our-story">OUR STORY</a>
+        <span class="gold">●</span>
+    </div>
+</nav>
+
+<div class="container-fluid hero">
+    <div class="row">
+        <div class="col-md-6 left-panel">
+            <div>
+                <p id="leftLabel" class="gold fw-bold">CUSTOMER PORTAL</p>
+                <h1 id="leftTitle">Welcome To QASABE,<br><span class="gold">Naturally.</span></h1>
+                <p id="leftDesc" class="mt-4 text-white-50">Shop sugarcane-based products, manage your wishlist and track your orders.</p>
+            </div>
+        </div>
+        <div class="col-md-6 d-flex align-items-center justify-content-center p-5">
+            <div class="login-card">
+                <div class="role-switch">
+                    <div id="customerTab" class="role-tab active" onclick="setRole('customer')">CUSTOMER</div>
+                    <div id="adminTab" class="role-tab" onclick="setRole('admin')">ADMIN</div>
+                </div>
+                <h2 id="loginTitle" class="text-center mb-2" style="font-family:Georgia,serif; font-weight: bold;">Welcome Customer</h2>
+                <p id="loginDesc" class="text-center text-white-50 mb-4">Sign in to continue your QASABE experience.</p>
+                
+                <form onsubmit="return handleFormLogin(event)">
+                    <label class="form-label small text-uppercase text-white-50">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-control mb-3" placeholder="Enter email" required autocomplete="email">
+                   
+                    <label class="form-label small text-uppercase text-white-50">Password</label>
+                    <input type="password" id="password" name="password" class="form-control mb-3" placeholder="Enter password" required autocomplete="current-password">
+                    
+                    <div class="d-flex justify-content-between mb-4">
+                        <div>
+                            <input type="checkbox" id="rememberMe"> <label for="rememberMe" class="small">Remember Me</label>
+                        </div>
+                        <a href="#" class="small-link small" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-gold w-100">LOGIN</button>
+                    
+                    <div id="customerExtras" class="text-center mt-3">
+                        <small class="text-white-50">New Customer?</small>
+                        <a href="register.html" class="small-link">Register Here</a>
+                        <hr class="text-white-50">
+                        <button type="button" class="btn btn-light w-100" style="font-weight: bold;" onclick="googleLogin()">Sign in with Google</button>
+                    </div>
+                </form>
+                <hr class="my-4 text-white-50">
+                <p class="text-center text-white-50 small mb-0">Admin module for QASABE E-Commerce Website</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="our-story" class="story-section text-center">
+    <div class="container" style="max-width: 700px;">
+        <h2 class="gold" style="font-family: Georgia, serif; font-weight: bold;">Our Story</h2>
+        <p class="text-white-50 mt-3">QASABE was founded on the philosophy of transforming raw nature into meaningful modern utilities. Guided by our mantra <em class="gold">"From Cane to Change"</em>, we craft high-quality, eco-conscious products derived from premium sugarcane, helping shape a beautiful and sustainable future.</p>
+    </div>
+</div>
+
+<div class="modal fade" id="contactItModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modal-content-custom">
+            <div class="modal-header modal-header-custom">
+                <h5 class="modal-title gold" style="font-weight: bold;">Submit IT Support Ticket</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form onsubmit="submitItTicket(event)">
+                <div class="modal-body">
+                    <p class="small text-white-50 mb-3">Report login credentials lockdowns, database route changes, or Tomcat deployment errors to the network administrator.</p>
+                    <label class="form-label small text-white-50">Admin Name / ID</label>
+                    <input type="text" class="form-control mb-3" placeholder="e.g., Admin_01" required>
+                    <label class="form-label small text-white-50">Issue Description</label>
+                    <textarea class="form-control mb-3" rows="3" placeholder="Describe the error or credential issue..." required></textarea>
+                </div>
+                <div class="modal-footer modal-header-custom">
+                    <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-gold">Submit Ticket</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="systemNoticeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modal-content-custom">
+            <div class="modal-header modal-header-custom">
+                <h5 class="modal-title gold" style="font-weight: bold;">System Maintenance Notice</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Status:</strong> Tomcat Server backend cluster environment is healthy.</p>
+                <p><strong>Current Clock:</strong> <span id="malaysiaTimeDisplay" class="gold" style="font-weight: bold;"></span> (Malaysia Time)</p>
+                <p><strong>Scheduled Backup Sync:</strong> Every Sunday at 02:00 AM MYT.</p>
+                <p class="text-white-50 small mb-0">If you encounter authorization loop anomalies or browser cache errors, bypass state histories or contact the platform IT branch directly.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modal-content-custom">
+            <div class="modal-header modal-header-custom">
+                <h5 class="modal-title gold" style="font-weight: bold;">Account Recovery</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form onsubmit="handleRecoverySubmit(event)">
+                <div class="modal-body">
+                    <p>Enter your recovery email address below to receive an account password reset link token.</p>
+                    <input type="email" class="form-control mb-3" placeholder="Enter registered email address" required>
+                    <button type="submit" class="btn btn-gold w-100">Send Reset Token</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="footer-section py-4 px-5">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+            <img src="images/logor.png" alt="QASABE Logo" style="height: 25px; width: auto;">
+            <h5 class="logo" style="font-size:22px; cursor: default;">QASABE</h5>
+        </div>
+        <small class="text-white-50">© 2026 QASABE. All rights reserved.</small>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+let currentRole = "customer";
+
+function updateMalaysiaClock() {
+    const timeContainer = document.getElementById("malaysiaTimeDisplay");
+    if (timeContainer) {
+        const options = {
+            timeZone: "Asia/Kuala_Lumpur",
+            year: "numeric", month: "long", day: "numeric",
+            hour: "2-digit", minute: "2-digit", second: "2-digit",
+            hour12: true
+        };
+        timeContainer.innerText = new Date().toLocaleString("en-US", options);
+    }
+}
+setInterval(updateMalaysiaClock, 1000);
+window.addEventListener("DOMContentLoaded", updateMalaysiaClock);
+
+function setRole(role){
+    currentRole = role;
+    
+    let emailInput = document.getElementById("email");
+    let passwordInput = document.getElementById("password");
+    let topNavMenu = document.getElementById("topNavMenu");
+    	
+    if(role === "customer"){
+        document.getElementById("customerTab").classList.add("active");
+        document.getElementById("adminTab").classList.remove("active");
+        	
+        document.getElementById("leftLabel").innerText = "CUSTOMER PORTAL";
+        document.getElementById("leftTitle").innerHTML = "Welcome To QASABE,<br><span class='gold'>Naturally.</span>";
+        document.getElementById("leftDesc").innerText = "Shop sugarcane-based products, manage your wishlist and track your orders.";
+        
+        document.getElementById("loginTitle").innerText = "Welcome Customer";
+        document.getElementById("loginDesc").innerText = "Sign in to continue your QASABE experience.";
+        document.getElementById("customerExtras").style.display = "block";
+        
+        topNavMenu.innerHTML = `
+            <a class="nav-link-custom" href="index.html">SHOP</a>
+            <a class="nav-link-custom" href="#our-story">OUR STORY</a>
+            <span class="gold">●</span>
+        `;
+        
+        emailInput.name = "email";
+        emailInput.placeholder = "Enter email";
+        emailInput.setAttribute("autocomplete", "email");
+        
+        passwordInput.name = "password";
+        passwordInput.placeholder = "Enter password";
+        passwordInput.setAttribute("autocomplete", "current-password");
+        
+        emailInput.value = "";
+        passwordInput.value = "";
+        
+    } else {
+    	document.getElementById("adminTab").classList.add("active");
+    	document.getElementById("customerTab").classList.remove("active");
+    	
+    	document.getElementById("loginTitle").innerText = "Admin Access";
+    	document.getElementById("loginDesc").innerText = "Sign in to access admin dashboard.";
+    	document.getElementById("customerExtras").style.display = "none";
+    	
+        document.getElementById("leftLabel").innerText = "ADMIN ACCESS";
+        document.getElementById("leftTitle").innerHTML = "Manage QASABE,<br><span class='gold'>Beautifully.</span>";
+        document.getElementById("leftDesc").innerText = "Access product management, orders, inventory and sales overview in one clean dashboard.";
+        
+        topNavMenu.innerHTML = `
+            <a class="nav-link-custom" data-bs-toggle="modal" data-bs-target="#contactItModal">CONTACT IT</a>
+            <a class="nav-link-custom" data-bs-toggle="modal" data-bs-target="#systemNoticeModal">SYSTEM NOTICE</a>
+            <span class="gold">●</span>
+        `;
+        
+        emailInput.name = "admin_email_secure";
+        emailInput.placeholder = "Enter admin email";
+        emailInput.setAttribute("autocomplete", "off");
+        
+        passwordInput.name = "admin_password_secure";
+        passwordInput.placeholder = "Enter admin password";
+        passwordInput.setAttribute("autocomplete", "new-password");
+        
+        emailInput.value = "";
+        passwordInput.value = "";
+        updateMalaysiaClock();
+    }
+}
+
+function handleFormLogin(e){
+    if(e) e.preventDefault();
+    let email = document.getElementById("email").value.trim().toLowerCase();
+    let password = document.getElementById("password").value.trim();
+    
+    if(currentRole === "admin"){
+        if(email === "admin@qasabe.com" && password === "admin123"){
+            window.location.href = "admin-dashboard.html";
+        }else{
+            alert("Invalid Admin Credentials!");
+        }
+    }else{
+        // ====== INI BAHAGIAN USER BIASA LOGIN (Wajib tukar ke profile.html terus) ======
+        localStorage.setItem("userLoggedIn", "true");
+        
+        // Ambil depan email buat nama acah-acah user baru
+        let namaUser = email.split('@')[0];
+        namaUser = namaUser.charAt(0).toUpperCase() + namaUser.slice(1);
+        
+        let userLogin = { name: namaUser, email: email, phone: "", avatar: "" };
+        localStorage.setItem("customerAccount", JSON.stringify(userLogin));
+        
+        // CUCI BERSIH-BERSIH 4 BARANG HANTU TU BIAR JADI 0 BALIK
+        localStorage.removeItem("cart");
+        localStorage.removeItem("wishlist");
+        localStorage.removeItem("recentOrders");
+        localStorage.removeItem("userAddresses");
+        
+        // TERUS HANTAR KE PROFILE (Jangan pergi index.html takut kena kacau dengan kod lama)
+        window.location.href = "profile.html";
+    }
+    return false;
+}
+
+function submitItTicket(e) {
+    if(e) e.preventDefault();
+    alert("IT Support Ticket submitted successfully! A systems admin will review your log state shortly.");
+    bootstrap.Modal.getInstance(document.getElementById('contactItModal')).hide();
+}
+
+function handleRecoverySubmit(e) {
+    if(e) e.preventDefault();
+    alert("An account restoration token link has been successfully dispatched to your inbox.");
+    bootstrap.Modal.getInstance(document.getElementById('forgotPasswordModal')).hide();
+}
+
+function googleLogin(){
+    localStorage.setItem("userLoggedIn", "true");
+    window.location.href="index.html";
+}
+
+function prosesLogin() {
+    let email = document.getElementById("loginEmail").value;
+    
+    // Ambil bahagian depan email sebagai nama mock
+    let namaUser = email.split('@')[0]; 
+    namaUser = namaUser.charAt(0).toUpperCase() + namaUser.slice(1);
+
+    let userLogin = { name: namaUser, email: email, phone: "", avatar: "" };
+    localStorage.setItem("customerAccount", JSON.stringify(userLogin));
+
+    // ===== PADAM DATA USER SEBELUM NI BIAR JADI 0 BALIK =====
+    localStorage.removeItem("cart");
+    localStorage.removeItem("wishlist");
+    localStorage.removeItem("recentOrders");
+    localStorage.removeItem("userAddresses");
+
+    // Selepas clear hantar ke profile.html untuk semak
+    window.location.href = "profile.html";
+    return false;
+}
+</script>
+</body>
+</html>
