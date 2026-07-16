@@ -240,6 +240,12 @@ h1, h2, h3, h5, .logo, .stat-number, .modal-title {
     font-size: 12px;
     letter-spacing: 0.5px;
 }
+/* FORCE COLOR UNTUK TRANSACTION ID & TEKS MUTED YANG TENGGELAM */
+#orderTable td.text-muted, 
+#crudProductTable td.text-muted,
+.text-muted {
+    color: #cbd5e1 !important; /* Kelabu keperakan cerah, gerenti nampak jelas! */
+}
 </style>
 </head>
 <body>
@@ -574,24 +580,42 @@ function renderDashboard(products, orders) {
     let totalSales = 0;
     let pendingCount = 0;
 
+    // Ambil info akaun semasa yang sedang login untuk fallback nama customer
+    let activeUser = JSON.parse(localStorage.getItem("customerAccount")) || JSON.parse(localStorage.getItem("userProfile"));
+    let activeName = activeUser ? (activeUser.name || activeUser.username) : "Guest Customer";
+
     orders.forEach(o => {
         let badgeClass = "status-processing";
         if(o.status === "Delivered") badgeClass = "status-delivered";
         if(o.status === "Shipped") badgeClass = "status-shipped";
         
         if(o.status !== "Delivered") pendingCount++;
-        totalSales += parseFloat(o.total || o.totalPrice || 0);
 
-        let itemRefs = (o.items || []).map(item => `${item.name} (x${item.qty})`).join(", ");
-        let customerName = o.customer || "Guest Customer";
+        // --- PEMBETULAN UTAMA: DYNAMIC KEY DETECTION ---
+        // Kira jumlah jualan (Sokong key 'total', 'totalPrice', atau 'amount' lama)
+        let rowTotal = parseFloat(o.total || o.totalPrice || o.amount || 0);
+        totalSales += rowTotal;
+
+        // Baca senarai barangan (Sokong array 'items' atau string 'product' lama)
+        let itemRefs = "";
+        if (o.items && o.items.length > 0) {
+            itemRefs = o.items.map(item => `${item.name || item.title || item.productName || 'Item'} (x${item.qty || item.quantity || 1})`).join(", ");
+        } else if (o.product) {
+            itemRefs = o.product;
+        } else {
+            itemRefs = "General Item";
+        }
+
+        // Tentukan nama customer (Sokong key 'customer' atau fallback ke logged-in user)
+        let customerName = o.customer || activeName;
         let orderIDAttr = o.orderId || o.id;
 
         orderBody.innerHTML += `
             <tr id="row-order-${orderIDAttr}">
-                <td class="text-muted">#${orderIDAttr}</td>
+                <td class="text-muted" style="color: #cbd5e1 !important;">#${orderIDAttr}</td>
                 <td><b>${customerName}</b></td>
-                <td>${itemRefs || 'General Item'}</td>
-                <td class="text-white">RM ${parseFloat(o.total || o.totalPrice || 0).toFixed(2)}</td>
+                <td>${itemRefs}</td>
+                <td class="text-white">RM ${rowTotal.toFixed(2)}</td>
                 <td><span class="${badgeClass}">${o.status || 'Processing'}</span></td>
                 <td>
                     <button class="btn btn-sm btn-outline-gold" onclick="updateOrderStatus('${orderIDAttr}', '${o.status || 'Processing'}')">
@@ -610,7 +634,7 @@ function renderDashboard(products, orders) {
                 <td><img src="${p.image}" style="width:40px; height:40px; object-fit:contain; border-radius:4px; background:#1c242f;"></td>
                 <td>
                     <b>${p.name}</b><br>
-                    <small class="text-muted">${p.id}</small>
+                    <small class="text-muted" style="color: #cbd5e1 !important;">${p.id}</small>
                 </td>
                 <td class="text-capitalize">${p.category}</td>
                 <td>RM ${parseFloat(p.price).toFixed(2)}</td>
