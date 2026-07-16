@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QASABE | Care Policy</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#071827;
+  --cream:#fff7f3;
+  --gold:#c99b3b;
+}
+body{
+  margin:0;
+  background:var(--cream);
+  font-family:Arial, sans-serif;
+  color:#111;
+}
+h1,h2,h3{
+  font-family:Georgia, serif;
+  font-weight:700;
+}
+
+/* TOP BAR STYLE */
+.top-bar{
+  background:var(--navy);
+  color:white;
+  font-size:12px;
+  padding:8px;
+  text-align:center;
+  display: none;
+}
+.navbar-nav .nav-link{
+    color: var(--navy);
+    font-weight: 500;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: var(--gold);
+  color: white !important;
+  transition: 0.2s;
+}
+.dropdown-toggle::after {
+  vertical-align: middle;
+  color: var(--gold); 
+}
+
+.navbar-nav .nav-link:hover{
+    color: var(--gold);
+}
+.navbar-collapse{
+    align-items: center;
+}
+.brand-logo{
+  display:flex;
+  align-items:center;
+  gap:1px;
+  text-decoration:none;
+}
+.brand-logo img{
+  width:65px;
+  height:65px;
+  object-fit:contain;
+}
+.brand-logo span{
+  font-family:'Cormorant Garamond', serif;
+  font-size:38px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:var(--navy);
+}
+.nav-icons{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+.icon-btn{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    font-size:22px;
+    text-decoration:none;
+    color:var(--navy);
+    transition:.3s;
+}
+.icon-btn:hover{
+  background:var(--gold);
+  color:white;
+  transform:translateY(-4px) scale(1.1);
+  box-shadow:0 0 15px rgba(201,155,59,0.5);
+}
+.cart-count,
+.wishlist-count{
+  background:var(--gold);
+  color:white;
+  font-size:11px;
+  border-radius:50%;
+  padding:2px 6px;
+  position:relative;
+  top:-10px;
+  right:8px;
+}
+
+.search-container {
+  position: relative;
+}
+.suggestion-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 1050;
+  max-height: 250px;
+  overflow-y: auto;
+  display: none;
+  margin-top: 5px;
+}
+.suggestion-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--navy);
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+.suggestion-item:hover {
+  background: #f5f5f5;
+  color: var(--gold);
+}
+.suggestion-item img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: #fdfaf6;
+}
+
+
+.policy-hero{
+
+height:520px;
+
+background:
+url("images/policy-bg.png");
+
+background-size:cover;
+background-position:center;
+
+background-repeat:no-repeat;
+
+
+/* CENTER CONTENT */
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+
+.hero-content{
+
+width:650px;
+
+margin:auto;
+
+text-align:center;
+
+color:white;
+
+position:relative;
+
+z-index:2;
+
+}
+
+.hero-content h1{
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:72px;
+
+font-weight:700;
+
+line-height:.9;
+
+}
+
+
+.hero-content span{
+
+color:var(--gold);
+
+font-size:80px;
+
+}
+
+
+.hero-content p{
+
+margin-top:25px;
+
+font-size:17px;
+
+line-height:1.7;
+
+}
+
+
+
+/* BUTTON IKUT INDEX */
+
+.hero-btn{
+
+margin-top:30px;
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+}
+
+
+.hero-btn a{
+
+text-decoration:none;
+
+border-radius:30px;
+
+padding:10px 28px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+
+.hero-btn a:first-child{
+
+background:var(--gold);
+
+color:white;
+
+}
+
+
+.hero-btn a:last-child{
+
+background:#e9e9e9;
+
+color:#333;
+
+}
+
+
+.hero-btn a:hover{
+
+transform:translateY(-2px);
+
+opacity:.9;
+
+}
+
+
+/* POLICY SECTION */
+
+/* POLICY SECTION */
+
+.policy-section{
+
+padding:70px 0;
+
+background:#071827;
+
+}
+
+
+/* CARD */
+
+.policy-card{
+
+height:100%;
+
+background:
+rgba(255,255,255,.04);
+
+border:1px solid var(--gold);
+
+border-radius:28px;
+
+padding:55px 35px 40px;
+
+text-align:center;
+
+color:white;
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.3);
+
+transition:.3s;
+
+}
+
+
+.policy-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:
+0 20px 40px rgba(201,155,59,.25);
+
+}
+
+
+
+/* ICON */
+
+.policy-icon{
+
+width:95px;
+height:95px;
+
+border-radius:50%;
+
+border:1.5px solid var(--gold);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:42px;
+
+color:var(--gold);
+
+margin:0 auto 25px;
+
+}
+
+
+
+/* TITLE */
+
+.policy-card h3{
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:34px;
+
+font-weight:700;
+
+color:white;
+
+margin-bottom:20px;
+
+}
+
+
+
+/* DESCRIPTION */
+
+.policy-card p{
+
+color:#f2f2f2;
+
+font-size:15px;
+
+line-height:1.7;
+
+margin-bottom:25px;
+
+}
+
+
+
+/* LIST */
+
+.policy-card ul{
+
+padding:0;
+
+margin:0;
+
+text-align:left;
+
+}
+
+
+.policy-card li{
+
+list-style:none;
+
+display:flex;
+
+gap:12px;
+
+align-items:flex-start;
+
+color:#ddd;
+
+font-size:14px;
+
+line-height:1.6;
+
+margin-bottom:15px;
+
+}
+
+
+.policy-card li i{
+
+color:var(--gold);
+
+font-size:16px;
+
+margin-top:3px;
+
+}
+
+
+
+
+
+/* HELP BAR */
+
+
+.help-box{
+
+margin-top:60px;
+
+border:1px solid var(--gold);
+
+border-radius:50px;
+
+padding:20px 40px;
+
+display:flex;
+
+justify-content:center;
+
+gap:40px;
+
+flex-wrap:wrap;
+
+}
+
+
+
+.help-box{
+
+margin-top:60px;
+
+border:1px solid var(--gold);
+
+border-radius:50px;
+
+padding:22px 35px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:35px;
+
+flex-wrap:wrap;
+
+color:white;
+
+}
+
+
+.help-box div{
+
+color:white;
+
+}
+
+
+.help-box i{
+
+color:var(--gold);
+
+font-size:22px;
+
+margin-right:10px;
+
+}
+
+
+
+/* FOOTER */
+
+footer{
+
+padding:30px;
+
+text-align:center;
+
+border-top:1px solid rgba(255,255,255,.1);
+
+color:#aaa;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand brand-logo" href="index.html">
+      <img src="images/logor.png" alt="QASABE Logo">
+      <span>QASABE</span>
+    </a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav mx-auto gap-3">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Products
+          </a>
+          <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown" style="background-color: var(--cream);">
+            <li><a class="dropdown-item py-2" href="Category.html?cat=food-beverages" style="color: var(--navy); font-weight: 500;">Food & Beverages</a></li>
+            <li><a class="dropdown-item py-2" href="Category.html?cat=health" style="color: var(--navy); font-weight: 500;">Health</a></li>
+            <li><a class="dropdown-item py-2" href="Category.html?cat=personal-care" style="color: var(--navy); font-weight: 500;">Personal Care & Wellness</a></li>
+            <li><a class="dropdown-item py-2" href="Category.html?cat=packaging" style="color: var(--navy); font-weight: 500;">Food Packaging & Containers</a></li>
+          </ul>
+        </li>
+        
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+      
+      <div class="d-none d-lg-block w-25 search-container">
+        <input type="text" id="searchBar" class="form-control rounded-pill" placeholder="Find sugarcane products..." onkeypress="handleSearch(event)" oninput="showSuggestions(this.value)">
+        <div id="suggestionBox" class="suggestion-box"></div>
+      </div>
+      
+      <div class="nav-icons ms-3">
+        <a href="wishlist.html" class="icon-btn">
+          <i class="bi bi-heart"></i>
+          <span id="wishlistCount" class="wishlist-count">0</span>
+        </a>
+        <a href="cart.html" class="icon-btn">
+          <i class="bi bi-cart"></i>
+          <span id="cartCount" class="cart-count">0</span>
+        </a>
+        <a href="profile.html" class="icon-btn">
+          <i class="bi bi-person-circle"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<!-- HERO -->
+
+<section class="policy-hero">
+
+
+<div class="hero-content">
+
+
+<h1>
+QASABE<br>
+<span>Care Policy</span>
+</h1>
+
+
+<p>
+Your trust matters to us. Learn about our refund,
+shipping and product policies designed to provide
+a safe and sustainable shopping experience.
+</p>
+
+
+<div class="hero-btn">
+
+<a href="#policy">
+View Policies
+</a>
+
+
+<a href="Category.html">
+Shop Now
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+<!-- POLICY CARD -->
+
+
+<section class="policy-section" id="policy">
+
+
+<div class="container">
+
+
+<div class="row g-4 align-items-stretch">
+
+
+
+
+<!-- REFUND -->
+
+<div class="col-md-4" id="refund-policy">
+
+
+<div class="policy-card">
+
+
+<div class="policy-icon">
+
+<i class="bi bi-arrow-counterclockwise"></i>
+
+</div>
+
+
+<h3>Refund Policy</h3>
+
+
+<p>
+We want every customer to be satisfied with
+their QASABE purchase.
+</p>
+
+
+
+<ul>
+
+<li>
+<i class="bi bi-check-circle-fill"></i>
+Refund within 7 days after receiving products.
+</li>
+
+
+<li>
+<i class="bi bi-check-circle-fill"></i>
+Applicable for damaged, leaking or incorrect items.
+</li>
+
+
+<li>
+<i class="bi bi-check-circle-fill"></i>
+Opened products cannot be returned for hygiene reasons.
+</li>
+
+
+</ul>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+<!-- TERMS -->
+
+<div class="col-md-4" id="terms-policy">
+
+
+<div class="policy-card">
+
+
+<div class="policy-icon">
+
+<i class="bi bi-shield-check"></i>
+
+</div>
+
+
+<h3>Terms & Conditions</h3>
+
+
+<p>
+Purchasing QASABE products means agreeing
+to our usage guidelines.
+</p>
+
+
+<ul>
+
+
+<li>
+<i class="bi bi-check-circle-fill"></i>
+Products must be stored properly.
+</li>
+
+
+<li>
+<i class="bi bi-check-circle-fill"></i>
+Results may vary between individuals.
+</li>
+
+
+<li>
+<i class="bi bi-check-circle-fill"></i>
+QASABE is not responsible for misuse.
+</li>
+
+
+</ul>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+<!-- SHIPPING -->
+
+
+<div class="col-md-4" id="shipping-policy">
+
+
+<div class="policy-card">
+
+
+<div class="policy-icon">
+
+<i class="bi bi-truck"></i>
+
+</div>
+
+
+<h3>Shipping Policy</h3>
+
+
+<p>
+Every order is packed carefully to maintain
+product quality.
+</p>
+
+
+
+<ul>
+
+
+<li>
+<i class="bi bi-check-circle-fill"></i>
+Delivery available across Malaysia.
+</li>
+
+
+<li>
+<i class="bi bi-check-circle-fill"></i>
+Processing within 1-3 working days.
+</li>
+
+
+<li>
+<i class="bi bi-check-circle-fill"></i>
+Tracking provided after shipment.
+</li>
+
+
+</ul>
+
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+<div class="help-box">
+
+
+<div>
+
+<i class="bi bi-headset"></i>
+
+Need help? Our customer care is here for you.
+
+</div>
+
+
+
+<div>
+
+<i class="bi bi-envelope"></i>
+
+support@qasabe.com
+
+</div>
+
+
+
+<div>
+
+<i class="bi bi-phone"></i>
+
++60 12-345 6789
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<footer>
+
+© 2026 QASABE. All Rights Reserved.
+
+</footer>
+
+
+
+</body>
+
+</html>
