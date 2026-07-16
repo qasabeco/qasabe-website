@@ -13,7 +13,7 @@
 :root{
   --navy:#071827;
   --gold:#c99b3b;
-  --cream:#fff8ef;
+  --cream:#fff7f3; 
   --soft:#f7efe5;
   --text:#111827;
   --muted:#6b7280;
@@ -24,14 +24,14 @@
 }
 body{
   margin:0;
-  font-family:Arial, sans-serif;
-  background:#f6f6f6;
+  font-family: Arial, sans-serif; /* Ikut wishlist font teks biasa */
+  background:var(--cream);
   color:var(--text);
 }
 .top-bar{
   background:var(--navy);
   color:white;
-  font-size:11px;
+  font-size:12px;
   text-align:center;
   padding:7px;
 }
@@ -81,7 +81,7 @@ body{
   left: 0;
   width: 100%;
   background: white;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(201,155,59,0.25);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   max-height: 250px;
@@ -102,7 +102,7 @@ body{
   text-align: left;
 }
 .suggestion-item:hover {
-  background: #f5f5f5;
+  background: var(--cream);
   color: var(--gold);
 }
 .suggestion-item img {
@@ -110,7 +110,7 @@ body{
   height: 32px;
   object-fit: contain;
   border-radius: 4px;
-  background: #fdfaf6;
+  background: #fff;
 }
 .nav-icons{
   display:flex;
@@ -148,34 +148,41 @@ body{
   right: 2px;
 }
 .page-section{
-  background:white;
+  background:var(--cream); 
   min-height:100vh;
+  padding-bottom: 60px;
 }
 .breadcrumb-custom{
-  font-size:12px;
+  font-size:13px;
   color:#777;
   padding-top:25px;
-  margin-bottom:18px;
+  margin-bottom:10px;
 }
 .shipping-layout {
   display: grid;
   grid-template-columns: 1.4fr .85fr;
-  gap: 35px;
-  align-items: start;
-  padding-bottom: 45px;
+  gap: 10px;
   width: 100%;
+  padding-bottom: 40px;
 }
+
 .page-title {
-  font-size: 34px;
-  font-weight: 900;
-  color: #111;
-  margin-bottom: 22px;
-  text-transform: uppercase;
+  font-family: Georgia, serif; /* Tajuk utama sebiji wishlist */
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+  text-transform: none;
+}
+.page-subtitle {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 28px;
 }
 .form-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:14px 28px;
+  gap:18px 28px;
 }
 .form-group.full{
   grid-column:1 / -1;
@@ -184,226 +191,284 @@ body{
   display:block;
   font-size:12px;
   font-weight:700;
-  margin-bottom:6px;
-  color:#111;
+  margin-bottom:8px;
+  color:var(--navy);
 }
 .form-control,
 .form-select{
-  height:34px;
-  border-radius:5px;
-  border:1px solid #cfcfcf;
-  font-size:13px;
+  height:46px;
+  border-radius:8px;
+  border:1px solid #ced4da;
+  font-size:14px;
+  padding: 0 15px;
   box-shadow:none;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
 }
 .form-control:focus,
 .form-select:focus{
   border-color:var(--gold);
-  box-shadow:0 0 0 3px rgba(201,155,59,.15);
+  box-shadow:0 0 0 4px rgba(201,155,59,.15);
 }
 .divider{
-  border-top:1px solid #ddd;
+  border-top:1px solid rgba(201,155,59,0.2);
   margin:28px 0 18px;
 }
 .payment-box{
   margin-top:10px;
 }
 .payment-details{
-  background:#fafafa;
-  border:1px solid #eee;
-  border-radius:12px;
-  padding:18px;
+  background:#fff;
+  border:1px solid rgba(201,155,59,0.2);
+  border-radius:20px;
+  padding:20px;
   margin-top:15px;
   display:none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.03);
 }
 .payment-details.active{
   display:block;
 }
 .payment-details h6{
-  font-weight:900;
+  font-family: Georgia, serif;
+  font-weight:700;
   color:var(--navy);
-  margin-bottom:12px;
+  margin-bottom:15px;
+  font-size: 16px;
 }
 .small-note{
   color:#666;
   font-size:12px;
   margin-top:8px;
 }
+
 .order-side{
-  position:sticky;
-  top:20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-.mini-cart{
-  background:white;
-  border:1px solid #eee;
-  border-radius:15px;
-  overflow:hidden;
-  margin-bottom:14px;
+/* ====== MINI CART & SUMMARY GLOW UP ====== */
+.mini-cart {
+  background: white;
+  border: 1px solid rgba(201,155,59,0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+  margin-bottom: 20px;
+  padding: 8px;
 }
-.mini-item{
-  display:grid;
-  grid-template-columns:80px 1fr 90px;
-  gap:12px;
-  padding:14px;
-  border-bottom:1px solid #eee;
-  position:relative;
-  align-items:center;
+.mini-item {
+  display: grid;
+  grid-template-columns: 95px 1fr 110px;
+  gap: 18px;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  align-items: center;
 }
-.mini-item:last-child{
-  border-bottom:none;
+.mini-item:last-child {
+  border-bottom: none;
 }
-.mini-img-box{
-  width:70px;
-  height:70px;
-  background:#f8f8f8;
-  border-radius:8px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.mini-img-box {
+  width: 85px;
+  height: 85px;
+  background: #fff;
+  border: 1px solid #f3e5d8;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.mini-img-box img{
-  width:60px;
-  height:60px;
-  object-fit:contain;
+.mini-img-box img {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
 }
-.mini-name{
-  font-size:12px;
-  font-weight:900;
-  color:#111;
-  margin-bottom:3px;
+.mini-info-layout {
+  display: contents; /* Biar susunan grid dia kekal sebaris macam wishlist */
 }
-.mini-detail{
-  font-size:10.5px;
-  color:#555;
-  margin-bottom:1px;
+.mini-name-price {
+  display: block;
 }
-.mini-price{
-  font-size:16px;
-  font-weight:900;
-  margin-top:7px;
+.mini-name {
+  font-family: Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.4;
+  margin: 0 0 4px 0;
 }
-.delete-btn{
-  position:absolute;
-  right:12px;
-  top:10px;
-  border:none;
-  background:transparent;
-  color:var(--red);
-  font-size:13px;
+.mini-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-top: 8px;
+  display: block;
 }
-.qty-box{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#f1f1f1;
-  border-radius:20px;
-  width:76px;
-  padding:4px;
-  gap:9px;
-  margin-top:28px;
+.mini-detail {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 2px;
 }
-.qty-box button{
-  border:none;
-  background:transparent;
-  font-weight:900;
-  font-size:13px;
+.mini-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
 }
-.qty-box span{
-  font-size:12px;
-  font-weight:800;
+.qty-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f1f1;
+  border-radius: 20px;
+  width: 88px;
+  padding: 5px;
+  gap: 11px;
 }
-.summary-card{
-  background:white;
-  border:1px solid #eee;
-  border-radius:15px;
-  padding:23px;
-  box-shadow:0 8px 25px rgba(0,0,0,.04);
+.qty-box button {
+  border: none;
+  background: transparent;
+  font-weight: 900;
+  font-size: 15px;
+  cursor: pointer;
 }
-.summary-card h4{
-  font-size:20px;
-  font-weight:900;
-  margin-bottom:18px;
-  color:#111;
+.qty-box span {
+  font-size: 13px;
+  font-weight: 800;
 }
-.summary-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:14px;
-  font-size:14px;
+.delete-btn {
+  position: absolute;
+  right: 18px;
+  top: 16px;
+  border: none;
+  background: transparent;
+  color: var(--red);
+  font-size: 16px;
+  cursor: pointer;
 }
-.summary-row span:first-child{
-  color:#666;
+
+/* Summary Card */
+.summary-card {
+  background: white;
+  border: 1px solid rgba(201,155,59,0.2);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(7,24,39,0.03);
 }
-.summary-row strong{
-  color:#111;
+.summary-card h4 {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: var(--navy);
 }
-.discount-text{
-  color:#ff3b3b !important;
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 13px;
+  font-size: 14px;
 }
-.total-row{
-  border-top:1px solid #eee;
-  padding-top:18px;
-  margin-top:12px;
-  font-size:17px;
-  font-weight:900;
+.summary-row span:first-child {
+  color: #666;
 }
-.promo-box{
-  display:grid;
-  grid-template-columns:1fr 75px;
-  gap:8px;
-  margin:20px 0;
+.summary-row strong {
+  color: var(--navy);
 }
-.promo-box input{
-  border:none;
-  background:#f1f1f1;
-  border-radius:25px;
-  padding:11px 15px;
-  font-size:12px;
-  outline:none;
+.total-highlight-box {
+  background: var(--cream);
+  border: 1px solid rgba(201,155,59,0.25);
+  border-radius: 14px;
+  padding: 14px;
+  margin: 18px 0;
 }
-.promo-box button{
-  border:none;
-  background:var(--gold);
-  color:white;
-  border-radius:25px;
-  font-size:12px;
-  font-weight:800;
+.total-row {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
 }
-.place-btn{
-  width:100%;
-  border:none;
-  background:var(--gold);
-  color:white;
-  border-radius:25px;
-  padding:14px;
-  font-size:13px;
-  font-weight:900;
-  transition:.3s;
+.total-row span {
+  color: var(--navy) !important;
 }
-.place-btn:hover{
-  background:var(--navy);
-  transform:translateY(-2px);
+.total-row strong {
+  color: var(--gold);
+}
+.promo-box {
+  display: grid;
+  grid-template-columns: 1fr 75px;
+  gap: 8px;
+  margin: 20px 0 10px 0;
+}
+.promo-box input {
+  border: none;
+  background: #f1f1f1;
+  border-radius: 25px;
+  padding: 11px 15px;
+  font-size: 12px;
+  outline: none;
+}
+.promo-box button {
+  border: none;
+  background: var(--gold);
+  color: white;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.place-btn {
+  width: 100%;
+  border: none;
+  background: var(--gold);
+  color: white;
+  border-radius: 30px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+.place-btn:hover {
+  background: var(--navy);
 }
 .back-cart{
   display:block;
   text-align:center;
-  margin-top:12px;
+  margin-top:14px;
   color:var(--navy);
-  font-size:13px;
-  font-weight:800;
+  font-weight:600;
+  font-size:14px;
   text-decoration:none;
 }
 .back-cart:hover{
   color:var(--gold);
 }
 .footer{
-  background:#f2f2f2;
-  padding:45px 0 25px;
+  background:var(--navy);
+  color:white;
+  padding:50px 0 20px;
+  font-size:13px;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-bottom: 15px;
+}
+.footer-brand img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
 }
 .footer-brand h3{
-  color:var(--navy);
-  font-size:26px;
-  font-weight:900;
+  font-family: 'Cormorant Garamond', serif;
+  color: white;
+  font-size:32px;
+  font-weight:700;
+  letter-spacing:1px;
+  margin: 0;
 }
 .footer-brand p{
   font-size:12px;
@@ -423,28 +488,31 @@ body{
   color:#111;
 }
 .footer h6{
-  font-size:12px;
+  font-size:14px;
   letter-spacing:3px;
   font-weight:900;
-  color:#111;
+  color:white;
   margin-bottom:15px;
 }
 .footer a{
   display:block;
-  color:#666;
+  color:rgba(255,255,255,0.7);
   text-decoration:none;
-  font-size:12px;
-  margin-bottom:9px;
+  margin-bottom:8px;
+  font-size:13px;
+}
+.footer a:hover {
+  color: var(--gold);
 }
 .footer-bottom{
-  border-top:1px solid #ddd;
+  border-top:1px solid rgba(255,255,255,0.15);
   padding-top:18px;
   margin-top:25px;
   display:flex;
   justify-content:space-between;
   align-items:center;
   font-size:11px;
-  color:#777;
+  color:rgba(255,255,255,0.5);
 }
 .payment-icons span{
   background:white;
@@ -453,6 +521,7 @@ body{
   margin-left:5px;
   font-size:10px;
   font-weight:900;
+  color: #111;
 }
 .success-icon{
   width:78px;
@@ -467,7 +536,8 @@ body{
   margin:0 auto 18px;
 }
 .modal-title-custom{
-  font-weight:900;
+  font-family: Georgia, serif;
+  font-weight:700;
   color:var(--navy);
 }
 @media(max-width:992px){
@@ -486,10 +556,12 @@ body{
     grid-template-columns:1fr;
   }
   .mini-item{
-    grid-template-columns:70px 1fr;
+    grid-template-columns:80px 1fr;
   }
-  .mini-item > div:last-child{
-    grid-column:1 / -1;
+  .mini-actions{
+    flex-direction: row;
+    grid-column: 1 / -1;
+    justify-content: space-between;
   }
   .footer-bottom{
     flex-direction:column;
@@ -556,121 +628,179 @@ body{
     </div>
   </nav>
 
-  <main class="container py-3"> 
+  <main class="container"> 
     <div class="breadcrumb-custom">
       Cart &nbsp;›&nbsp; Shipping
     </div>
     
+    <h1 class="page-title">Shipping details</h1>
+    <p class="page-subtitle">Provide your delivery information and choice of gateway networks below.</p>
+
     <section class="shipping-layout">
        <div>
-        <h1 class="page-title">SHIPPING DETAILS</h1>
         <form id="shippingForm" onsubmit="placeOrder(event)">
           <div class="form-grid">
-            <div class="form-group">
-              <label>First Name</label>
-              <input type="text" class="form-control" id="firstName" required>
+            <div class="form-grid full" id="names-grid" style="grid-template-columns: 1fr 1fr; gap: 18px 28px;">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="e.g. Ahmad" required>
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="e.g. Zaki" required>
+              </div>
             </div>
-            <div class="form-group">
-              <label>Last Name</label>
-              <input type="text" class="form-control" id="lastName" required>
+            
+            <div class="form-group full">
+              <label>Email Address</label>
+              <input type="email" class="form-control" id="emailAddress" placeholder="e.g. ahmad.zaki@email.com" required>
             </div>
             <div class="form-group full">
-              <label>Address</label>
-              <input type="text" class="form-control" id="address1" required>
+              <label>Address Line 1</label>
+              <input type="text" class="form-control" id="address1" placeholder="House No, Block, Street Name" required>
             </div>
             <div class="form-group full">
-              <label>Address 2</label>
-              <input type="text" class="form-control" id="address2">
+              <label>Address Line 2 (Optional)</label>
+              <input type="text" class="form-control" id="address2" placeholder="Apartment, Suite, Unit, etc.">
             </div>
+            
             <div class="form-group">
   			      <label>Shipping Region</label>
-  			      <select class="form-select" id="country" onchange="updateSummary()" required>
+  			      <select class="form-select" id="country" onchange="handleRegionChange()" required>
     		        <option value="west">West Malaysia</option>
     		        <option value="east">Sabah & Sarawak</option>
     		        <option value="international">International</option>
   	          </select>
             </div>
-            <div class="form-group">
-              <label>City</label>
-              <input type="text" class="form-control" id="city" required>
+
+            <!-- Dynamic Country Field for International -->
+            <div class="form-group" id="internationalCountryGroup" style="display: none;">
+              <label>Country Name</label>
+              <input type="text" class="form-control" id="countryName" placeholder="e.g. Singapore">
             </div>
+            
+            <!-- Dynamic State Field Container -->
+            <div class="form-group" id="stateContainer">
+              <label>State / Province</label>
+              <select class="form-select" id="stateSelect" onchange="handleStateChange()" required></select>
+            </div>
+            
+            <!-- Dynamic City Field Container -->
+            <div class="form-group" id="cityContainer">
+              <label>City</label>
+              <select class="form-select" id="citySelect" required></select>
+            </div>
+            
             <div class="form-group">
               <label>Postal Code</label>
-              <input type="text" class="form-control" id="postalCode" required>
+              <input type="text" class="form-control" id="postalCode" placeholder="e.g. 40000" required>
             </div>
-            <div class="form-group">
+            <div class="form-group full">
               <label>Phone Number</label>
-              <input type="tel" class="form-control" id="phone" required>
+              <input type="tel" class="form-control" id="phone" placeholder="e.g. 0123456789" required>
             </div>
           </div>
           <div class="divider"></div>
+          
           <div class="payment-box">
-            <label class="fw-bold small mb-2">Payment Method</label>
-            <select class="form-select" id="paymentMethod" onchange="showPaymentDetails()" required>
+            <label class="fw-bold small mb-3 text-uppercase tracking-wider text-muted">Payment Method</label>
+            <select class="form-select mb-3" id="paymentMethod" onchange="showPaymentDetails()" required>
               <option value="online">Online Banking / FPX</option>
               <option value="ewallet">E-Wallet</option>
               <option value="card">Credit / Debit Card</option>
               <option value="cod">Cash on Delivery</option>
             </select>
+            
+            <!-- FPX BOX DETAILED -->
             <div class="payment-details active" id="onlineBox">
-              <h6><i class="bi bi-bank me-1"></i> Online Banking / FPX</h6>
-              <div class="form-group mb-2">
-                <label>Select Bank</label>
-                <select class="form-select" id="bankName">
-                  <option>Maybank2u</option>
-                  <option>CIMB Clicks</option>
-                  <option>Bank Islam</option>
-                  <option>RHB Now</option>
-                  <option>Public Bank</option>
-                  <option>Hong Leong Bank</option>
-                </select>
+              <h6><i class="bi bi-bank me-2 text-warning"></i> Online Banking / FPX</h6>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-2 mb-md-0">
+                  <label class="small fw-bold text-muted text-uppercase mb-1" style="font-size:10px;">Account Type</label>
+                  <select class="form-select" id="fpxAccountType">
+                    <option value="individual">B2C Retail / Personal Account</option>
+                    <option value="corporate">B2B Corporate Account</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="small fw-bold text-muted text-uppercase mb-1" style="font-size:10px;">Select Bank</label>
+                  <select class="form-select" id="bankName">
+                    <option>Maybank2u</option>
+                    <option>CIMB Clicks</option>
+                    <option>Bank Islam</option>
+                    <option>RHB Now</option>
+                    <option>Public Bank</option>
+                    <option>Hong Leong Bank</option>
+                  </select>
+                </div>
               </div>
-              <p class="small-note">You will see a payment confirmation after placing the order. No external banking page will open.</p>
+              <p class="small-note"><i class="bi bi-shield-lock-fill text-success me-1"></i> Secured by FPX Payment Gateway. You will be redirected to the secure bank portal upon processing.</p>
             </div>
+            
+            <!-- EWALLET BOX DETAILED -->
             <div class="payment-details" id="ewalletBox">
-              <h6><i class="bi bi-wallet2 me-1"></i> E-Wallet</h6>
-              <div class="form-group mb-2">
-                <label>Select E-Wallet</label>
-                <select class="form-select" id="walletName">
-                  <option>Touch 'n Go eWallet</option>
-                  <option>GrabPay</option>
-                  <option>Boost</option>
-                  <option>ShopeePay</option>
-                </select>
+              <h6><i class="bi bi-wallet2 me-2 text-warning"></i> E-Wallet Gateway</h6>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-2 mb-md-0">
+                  <label class="small fw-bold text-muted text-uppercase mb-1" style="font-size:10px;">Select Provider</label>
+                  <select class="form-select" id="walletName">
+                    <option>Touch 'n Go eWallet</option>
+                    <option>GrabPay</option>
+                    <option>Boost</option>
+                    <option>ShopeePay</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="small fw-bold text-muted text-uppercase mb-1" style="font-size:10px;">Registered Mobile Number</label>
+                  <input type="tel" class="form-control" id="ewalletPhone" placeholder="01X-XXXXXXX">
+                </div>
               </div>
-              <p class="small-note">Payment will be recorded as pending confirmation for prototype purpose.</p>
+              <p class="small-note"><i class="bi bi-info-circle me-1"></i> Authorization request will be pushed immediately to your linked e-wallet account application.</p>
             </div>
+            
+            <!-- CREDIT CARD BOX DETAILED -->
             <div class="payment-details" id="cardBox">
-              <h6><i class="bi bi-credit-card me-1"></i> Card Payment</h6>
-              <div class="form-group full mb-2">
-                <label>Cardholder Name</label>
-                <input type="text" class="form-control" id="cardName" placeholder="Name on card">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="m-0"><i class="bi bi-credit-card me-2 text-warning"></i> Card Payment Gateway</h6>
+                <div class="fs-4 text-muted">
+                  <i class="bi bi-credit-card-2-front me-1 text-primary"></i>
+                  <i class="bi bi-credit-card-2-back text-dark"></i>
+                </div>
               </div>
-              <div class="form-group full mb-2">
-                <label>Card Number</label>
-                <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+              <div class="form-group full mb-3">
+                <label class="small fw-bold text-muted mb-1" style="font-size:10px;">Cardholder Name</label>
+                <input type="text" class="form-control" id="cardName" placeholder="Name exactly as printed on card">
               </div>
-              <div class="row">
+              <div class="form-group full mb-3">
+                <label class="small fw-bold text-muted mb-1" style="font-size:10px;">Card Number</label>
+                <div class="position-relative">
+                  <input type="text" class="form-control" id="cardNumber" placeholder="4111 2222 3333 4444" maxlength="19">
+                </div>
+              </div>
+              <div class="row mb-2">
                 <div class="col-6">
-                  <label>Expiry Date</label>
-                  <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY">
+                  <label class="small fw-bold text-muted mb-1" style="font-size:10px;">Expiry Date</label>
+                  <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" maxlength="5">
                 </div>
                 <div class="col-6">
-                  <label>CVV</label>
+                  <label class="small fw-bold text-muted mb-1" style="font-size:10px;">CVV / CVC</label>
                   <input type="password" class="form-control" id="cvv" placeholder="123" maxlength="3">
                 </div>
               </div>
-              <p class="small-note">This is only a prototype payment form. No real payment will be processed.</p>
+              <p class="small-note text-muted"><i class="bi bi-lock-fill text-success me-1"></i> 256-bit SSL Encrypted Connection. Your commercial payment credentials are handled securely via financial networks.</p>
             </div>
+            
+            <!-- COD BOX DETAILED -->
             <div class="payment-details" id="codBox">
-              <h6><i class="bi bi-cash-coin me-1"></i> Cash on Delivery</h6>
-              <p class="small-note mb-0">
-                Pay directly to the rider when your order arrives. Please prepare the exact amount shown in the order summary.
+              <h6><i class="bi bi-cash-coin me-2 text-warning"></i> Cash on Delivery</h6>
+              <p class="small-note mb-0 text-muted">
+                <i class="bi bi-truck me-1"></i> Pay directly to the distribution courier personnel when your package arrives at your designated threshold. Please hold exact token values or cash match shown in summary cards.
               </p>
             </div>
           </div>
         </form>
       </div>
+      
       <aside class="order-side">
         <div class="mini-cart" id="miniCart"></div>
         <div class="summary-card">
@@ -687,10 +817,19 @@ body{
             <span>Delivery Fee</span>
             <strong id="delivery">RM 5.00</strong>
           </div>
-          <div class="summary-row total-row">
-            <span>Total</span>
-            <strong id="total">RM 0.00</strong>
+          
+          <div class="summary-row text-success fw-bold">
+            <span><i class="bi bi-gem me-1"></i> Points Earned</span>
+            <strong id="earnedPointsText">+0 Points</strong>
           </div>
+          
+          <div class="total-highlight-box">
+            <div class="summary-row total-row">
+              <span>Total</span>
+              <strong id="total">RM 0.00</strong>
+            </div>
+          </div>
+          
           <div class="promo-box">
             <input type="text" id="promoCode" placeholder="Add promo code">
             <button type="button" onclick="applyPromo()">Apply</button>
@@ -703,57 +842,38 @@ body{
       </aside>
     </section>
   </main>
+  
   <footer class="footer">
     <div class="container">
-      <div class="row gy-4">
-        <div class="col-md-3 footer-brand">
-          <h3>QASABE</h3>
-          <p>The perfect fit for a healthier, greener you.</p>
-          <div class="socials">
-            <i class="bi bi-twitter-x"></i>
-            <i class="bi bi-facebook"></i>
-            <i class="bi bi-instagram"></i>
-            <i class="bi bi-github"></i>
+      <div class="row gy-4 text-start">
+        <div class="col-md-4">
+          <div class="footer-brand">
+            <img src="images/logor.png" alt="QASABE Logo">
+            <h3>QASABE</h3>
           </div>
+          <p class="text-white-50">Sustainable choices for a better tomorrow.</p>
         </div>
-        <div class="col-md-2">
-          <h6>COMPANY</h6>
-          <a href="#">About</a>
-          <a href="#">Features</a>
-          <a href="#">Works</a>
+        <div class="col-md-4">
+          <h5 class="text-uppercase tracking-wider text-white mb-3" style="font-size:14px;">Quick Links</h5>
+          <a href="index.html">Home</a>
+          <a href="about-us.html">About Us</a>
+          <a href="Category.html">Products</a>
         </div>
-        <div class="col-md-2">
-          <h6>HELP</h6>
-          <a href="#">Customer Support</a>
-          <a href="#">Delivery Details</a>
-          <a href="#">Terms & Conditions</a>
-        </div>
-        <div class="col-md-2">
-          <h6>FAQ</h6>
-          <a href="#">Account</a>
-          <a href="#">Manage Deliveries</a>
-          <a href="#">Orders</a>
-        </div>
-        <div class="col-md-3">
-          <h6>RESOURCES</h6>
-          <a href="#">Free eBooks</a>
-          <a href="#">Development Tutorial</a>
-          <a href="#">How to - Blog</a>
+        <div class="col-md-4">
+          <h5 class="text-uppercase tracking-wider text-white mb-3" style="font-size:14px;">Contact Us</h5>
+          <p class="text-white-50 mb-1">Email: helloqasabe@gmail.com</p>
+          <p class="text-white-50">WhatsApp: +60111223456</p>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>Qasabe.co © 2026–2027, All Rights Reserved</span>
-        <div class="payment-icons">
-          <span>VISA</span>
-          <span>MC</span>
-          <span>PayPal</span>
-          <span>Apple</span>
-          <span>GPay</span>
-        </div>
-      </div>
+      <hr style="border-color: rgba(255,255,255,0.15)">
+      <p class="text-center mb-0 text-white-50">
+        ©️ 2026 Qasabe. All Rights Reserved.
+      </p>
     </div>
   </footer>
 </div>
+
+<!-- SUCCESS TRANSACTION MODAL -->
 <div class="modal fade" id="orderModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 rounded-4">
@@ -763,7 +883,7 @@ body{
         </div>
         <h3 class="modal-title-custom">Order Placed Successfully!</h3>
         <p class="text-muted mt-2 mb-4">
-          Thank you for shopping with QASABE. Your order has been recorded for this prototype.
+          Thank you for shopping with QASABE. Your order has been securely recorded and dispatched.
         </p>
         <div class="bg-light rounded-4 p-3 text-start mb-4">
           <div class="d-flex justify-content-between mb-2">
@@ -786,70 +906,42 @@ body{
     </div>
   </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-const products = {
-  "juice": {
-    name:"QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage | Natural Hydration & Wellness",
-    variation: "-",
-    price:8.90,
-    image:"images/drink (L).jpeg"
+const malaysiaData = {
+  west: {
+    "Selangor": ["Shah Alam", "Petaling Jaya", "Subang Jaya", "Klang", "Cheras", "Gombak"],
+    "Kuala Lumpur": ["Kuala Lumpur City", "Setapak", "Wangsa Maju", "Bukit Jalil", "Kepong"],
+    "Johor": ["Johor Bahru", "Skudai", "Batu Pahat", "Muar", "Kluang", "Pasir Gudang"],
+    "Penang": ["Georgetown", "Bayar Lepas", "Butterworth", "Bukit Mertajam"],
+    "Perak": ["Ipoh", "Taiping", "Teluk Intan", "Manjung"],
+    "Negeri Sembilan": ["Seremban", "Port Dickson", "Nilai"],
+    "Melaka": ["Melaka City", "Alor Gajah", "Jasin"],
+    "Kedah": ["Alor Setar", "Sungai Petani", "Kulim", "Langkawi"],
+    "Pahang": ["Kuantan", "Temerloh", "Bentong"],
+    "Kelantan": ["Kota Bharu", "Tanah Merah", "Pasir Mas"],
+    "Terengganu": ["Kuala Terengganu", "Kemaman", "Dungun"],
+    "Perlis": ["Kangar", "Arau"]
   },
-  "energy-snack": {
-    name:"QASABE Sugarcane Energy Snack | Natural Quick Energy | Healthy On-The-Go Snack",
-    variation: "-",
-    price:19.90,
-    image:"images/energy snack (L).png"
-  },
-  "herbal-drink": {
-    name:"QASABE Herbal Drink | Traditional Wellness Beverage | Natural Daily Health Support",
-    variation: "-",
-    price:33.90,
-    image:"images/herbal drink (L).png"
-  },
-  "organic-cube": {
-    name:"QASABE Sugarcane Cube | Natural Cane Sweetener | Convenient Sugar Alternative",
-    variation: "-",
-    price:14.90,
-    image:"images/sugarcube (L).png"
-  },
-  "liquid-drop": {
-    name:"QASABE Liquid Sweetener Drops | Zero-Mess Sweetening Solution | Natural Sugarcane Extract",
-    variation: "-",
-    price:16.90,
-    image:"images/liquid drop (L).jpeg"
-  },
-  "sleep-mist": {
-    name:"QASABE Sleep Mist | Relaxing Aromatherapy Spray | Better Sleep & Calmness",
-    variation: "-",
-    price:24.90,
-    image:"images/sleep-mist (L).png"
-  },
-  "aha-toner": {
-    name:"QASABE AHA Toner | Gentle Exfoliating Toner | Smooth & Radiant Skin",
-    variation: "-",
-    price:26.90,
-    image:"images/AHA toner (L).png"
-  },
-  "shampoo": {
-    name:"QASABE Nourishing Shampoo | Sugarcane Hair Care | Healthy & Refreshed Hair",
-    variation: "-",
-    price:49.00,
-    image:"images/shampoo (L).png"
-  },
-  "body-scrub": {
-    name:"QASABE Body Scrub | Natural Sugarcane Exfoliator | Soft & Glowing Skin",
-    variation: "-",
-    price:28.90,
-    image:"images/bscrub (L).jpeg"
-  },
-  "bagasse-packaging": {
-    name: "QASABE Eco Bagasse Packaging | Sustainable Food Container | Biodegradable & Plastic-Free",
-    size: "Default",
-    color: "Default",
-    price: 7.90,
-    image: "images/packaging (L).png"
+  east: {
+    "Sabah": ["Kota Kinabalu", "Sandakan", "Tawau", "Lahad Datu", "Penampang"],
+    "Sarawak": ["Kuching", "Miri", "Sibu", "Bintulu", "Marmadong"],
+    "Labuan": ["Labuan City"]
   }
+};
+
+const products = {
+  "juice": { name:"QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage", price:8.90, image:"images/drink (L).jpeg" },
+  "energy-snack": { name:"QASABE Sugarcane Energy Snack | Natural Quick Energy", price:19.90, image:"images/energy snack (L).png" },
+  "herbal-drink": { name:"QASABE Herbal Drink | Traditional Wellness Beverage", price:33.90, image:"images/herbal drink (L).png" },
+  "organic-cube": { name:"QASABE Sugarcane Cube | Natural Cane Sweetener", price:14.90, image:"images/sugarcube (L).png" },
+  "liquid-drop": { name:"QASABE Liquid Sweetener Drops | Natural Sugarcane Extract", price:16.90, image:"images/liquid drop (L).jpeg" },
+  "sleep-mist": { name:"QASABE Sleep Mist | Relaxing Aromatherapy Spray", price:24.90, image:"images/sleep-mist (L).png" },
+  "aha-toner": { name:"QASABE AHA Toner | Gentle Exfoliating Toner", price:26.90, image:"images/AHA toner (L).png" },
+  "shampoo": { name:"QASABE Nourishing Shampoo | Sugarcane Hair Care", price:49.00, image:"images/shampoo (L).png" },
+  "body-scrub": { name:"QASABE Body Scrub | Natural Sugarcane Exfoliator", price:28.90, image:"images/bscrub (L).jpeg" },
+  "bagasse-packaging": { name: "QASABE Eco Bagasse Packaging | Sustainable Container", price: 7.90, image: "images/packaging (L).png" }
 };
 
 const availableProducts = [
@@ -862,28 +954,74 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let promoApplied = false; 
 let currentTotal = 0;
 
+function handleRegionChange() {
+  const region = document.getElementById("country").value;
+  const stateContainer = document.getElementById("stateContainer");
+  const cityContainer = document.getElementById("cityContainer");
+  const internationalGroup = document.getElementById("internationalCountryGroup");
+  
+  if (region === "international") {
+    internationalGroup.style.display = "block";
+    document.getElementById("countryName").required = true;
+
+    stateContainer.innerHTML = `
+      <label>State / Province / Region</label>
+      <input type="text" class="form-control" id="stateInput" placeholder="e.g. California / Singapore Region" required>
+    `;
+    cityContainer.innerHTML = `
+      <label>City</label>
+      <input type="text" class="form-control" id="cityInput" placeholder="e.g. Los Angeles / Downtown" required>
+    `;
+  } else {
+    internationalGroup.style.display = "none";
+    document.getElementById("countryName").required = false;
+
+    stateContainer.innerHTML = `
+      <label>State</label>
+      <select class="form-select" id="stateSelect" onchange="handleStateChange()" required></select>
+    `;
+    cityContainer.innerHTML = `
+      <label>City</label>
+      <select class="form-select" id="citySelect" required></select>
+    `;
+    
+    populateStates(region);
+  }
+  updateSummary();
+}
+
+function populateStates(region) {
+  const stateSelect = document.getElementById("stateSelect");
+  const states = Object.keys(malaysiaData[region]);
+  
+  stateSelect.innerHTML = states.map(state => `<option value="${state}">${state}</option>`).join("");
+  handleStateChange();
+}
+
+function handleStateChange() {
+  const region = document.getElementById("country").value;
+  const stateSelect = document.getElementById("stateSelect");
+  if (!stateSelect) return;
+  
+  const selectedState = stateSelect.value;
+  const citySelect = document.getElementById("citySelect");
+  const cities = malaysiaData[region][selectedState] || [];
+  
+  citySelect.innerHTML = cities.map(city => `<option value="${city}">${city}</option>`).join("");
+}
+
 function showSuggestions(val) {
   const box = document.getElementById("suggestionBox");
-  if (!val || !val.trim()) {
-    box.style.display = "none";
-    return;
-  }
-  
+  if (!val || !val.trim()) { box.style.display = "none"; return; }
   const query = val.toLowerCase();
   const matches = availableProducts.filter(p => p.name.toLowerCase().includes(query));
-  
-  if (matches.length === 0) {
-    box.style.display = "none";
-    return;
-  }
-  
+  if (matches.length === 0) { box.style.display = "none"; return; }
   box.innerHTML = matches.map(p => `
     <div class="suggestion-item" onclick="selectSuggestion('${p.id}', '${p.name}')">
       <img src="${p.img}" alt="${p.name}">
       <span>${p.name}</span>
     </div>
   `).join("");
-  
   box.style.display = "block";
 }
 
@@ -898,11 +1036,8 @@ function handleSearch(event) {
     let query = document.getElementById("searchBar").value.trim();
     if (query !== "") {
       const exactMatch = availableProducts.find(p => p.name.toLowerCase() === query.toLowerCase());
-      if(exactMatch) {
-         window.location.href = `product-detail.html?id=${exactMatch.id}`;
-      } else {
-         window.location.href = `Category.html?search=${encodeURIComponent(query)}`;
-      }
+      if(exactMatch) { window.location.href = `product-detail.html?id=${exactMatch.id}`; }
+      else { window.location.href = `Category.html?search=${encodeURIComponent(query)}`; }
     }
   }
 }
@@ -914,9 +1049,7 @@ document.addEventListener("click", function(e) {
   }
 });
 
-function saveCart(){
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
+function saveCart(){ localStorage.setItem("cart", JSON.stringify(cart)); }
 
 function updateBadges(){
   const totalQty = cart.reduce((sum,item) => sum + item.qty, 0);
@@ -926,302 +1059,183 @@ function updateBadges(){
 }
 
 function renderMiniCart(){
-  const miniCart = document.getElementById("miniCart");
-  if(!cart || cart.length === 0){
-    miniCart.innerHTML = `
-      <div class="text-center p-4">
-        <i class="bi bi-bag-x fs-1 text-warning"></i>
-        <h6 class="fw-bold mt-2">Your cart is empty</h6>
-        <a href="Category.html" class="text-decoration-none fw-bold" style="color:#c99b3b;">Shop Now</a>
-      </div>
-    `;
-    updateSummary();
-    updateBadges();
-    return;
-  }
-  
-  miniCart.innerHTML = cart.map(item => {
-    let product = products[item.id] || products[item.id.toLowerCase()] || {};
-    let itemName = item.name || product.name || "Sugarcane Product";
-    let itemPrice = item.price !== undefined ? item.price : (product.price || 0);
-    let itemImage = item.image || product.image || "images/logor.png";
-    let itemSize = item.size || product.size || "Standard";
-    let itemColor = item.color || product.color || "Natural";
+	  const miniCart = document.getElementById("miniCart");
+	  if(!cart || cart.length === 0){
+	    miniCart.innerHTML = `<div class="text-center p-4"><i class="bi bi-bag-x fs-1 text-warning"></i><h6 class="fw-bold mt-2">Your cart is empty</h6><a href="Category.html" class="text-decoration-none fw-bold" style="color:#c99b3b;">Shop Now</a></div>`;
+	    updateSummary(); updateBadges(); return;
+	  }
+	  miniCart.innerHTML = cart.map((item, index) => {
+	    let product = products[item.id] || products[item.id.toLowerCase()] || {};
+	    return `
+	      <div class="mini-item">
+	        <button type="button" class="delete-btn" onclick="removeItem('${item.id}')">
+	          <i class="bi bi-trash-fill"></i>
+	        </button>
+	        <div class="mini-img-box">
+	          <img src="${item.image || product.image}" alt="${item.name || product.name}">
+	        </div>
+	        <div class="mini-info-layout">
+	          <div>
+	            <div class="mini-name-price">
+	              <h5 class="mini-name">${item.name || product.name}</h5>
+	              <div class="mini-detail">Size: ${item.size || "Standard"}</div>
+	              <div class="mini-detail">Color: ${item.color || "Default"}</div>
+	              <span class="mini-price">RM ${Number(item.price || product.price).toFixed(2)}</span>
+	            </div>
+	          </div>
+	          
+	          <div class="mini-actions">
+	            <div class="qty-box">
+	              <button type="button" onclick="changeQty('${item.id}', -1)">−</button>
+	              <span>${item.qty}</span>
+	              <button type="button" onclick="changeQty('${item.id}', 1)">+</button>
+	            </div>
+	          </div>
+	        </div>
+	      </div>`;
+	  }).join("");
+	  updateSummary(); updateBadges();
+	}
 
-    return `
-      <div class="mini-item">
-        <div class="mini-img-box">
-          <img src="${itemImage}" alt="${itemName}">
-        </div>
-        <div>
-          <div class="mini-name">${itemName}</div>
-          <div class="mini-detail">Type/Size: ${itemSize}</div>
-          <div class="mini-detail">Qty/Pack: ${itemColor}</div>
-          <div class="mini-price">RM ${Number(itemPrice).toFixed(2)}</div>
-        </div>
-        <div>
-          <button type="button" class="delete-btn" onclick="removeItem('${item.id}')">
-            <i class="bi bi-trash-fill"></i>
-          </button>
-          <div class="qty-box">
-            <button type="button" onclick="changeQty('${item.id}', -1)">−</button>
-            <span>${item.qty}</span>
-            <button type="button" onclick="changeQty('${item.id}', 1)">+</button>
-          </div>
-        </div>
-      </div>
-    `;
-  }).join("");
-  
-  updateSummary();
-  updateBadges();
-}
-  
 function changeQty(id, amount){
-  const item = cart.find(i => i.id === id);
-  if(!item) return;
-  item.qty += amount;
-  if(item.qty <= 0){
-    cart = cart.filter(i => i.id !== id);
-  }
-  saveCart();
-  renderMiniCart();
+  const item = cart.find(i => i.id === id); if(!item) return;
+  item.qty += amount; if(item.qty <= 0){ cart = cart.filter(i => i.id !== id); }
+  saveCart(); renderMiniCart();
 }
 
-function removeItem(id){
-  cart = cart.filter(i => i.id !== id);
-  saveCart();
-  renderMiniCart();
-}
-  
+function removeItem(id){ cart = cart.filter(i => i.id !== id); saveCart(); renderMiniCart(); }
+
 function updateSummary(){
-  const subtotal = cart.reduce((sum, item) => {
-    let product = products[item.id] || products[item.id.toLowerCase()] || {};
-    let itemPrice = item.price !== undefined ? item.price : (product.price || 0);
-    return sum + (Number(itemPrice) * item.qty);
-  }, 0);
-  
-  const discount = promoApplied ? subtotal * 0.20 : 0;
-  let delivery = 0;
-  const region = document.getElementById("country");
-  
-  if(cart.length > 0 && region){
-    if(region.value === "west") delivery = 5;
-    else if(region.value === "east") delivery = 12;
-    else if(region.value === "international") delivery = 25;
-  }
-  
-  const total = subtotal - discount + delivery;
-  currentTotal = total;
-  
-  document.getElementById("subtotal").textContent = "RM " + subtotal.toFixed(2);
-  document.getElementById("discount").textContent = "-RM " + discount.toFixed(2);
-  document.getElementById("delivery").textContent = "RM " + delivery.toFixed(2);
-  document.getElementById("total").textContent = "RM " + total.toFixed(2);
-}
+	  const subtotal = cart.reduce((sum, item) => {
+	    let product = products[item.id] || products[item.id.toLowerCase()] || {};
+	    return sum + (Number(item.price || product.price) * item.qty);
+	  }, 0);
+	  const discount = promoApplied ? subtotal * 0.20 : 0;
+	  let delivery = 0;
+	  const region = document.getElementById("country").value;
+	  if(cart.length > 0){
+	    if(region === "west") delivery = 5;
+	    else if(region === "east") delivery = 12;
+	    else if(region === "international") delivery = 25;
+	  }
+	  currentTotal = subtotal - discount + delivery;
+	  document.getElementById("subtotal").textContent = "RM " + subtotal.toFixed(2);
+	  document.getElementById("discount").textContent = "-RM " + discount.toFixed(2);
+	  document.getElementById("delivery").textContent = "RM " + delivery.toFixed(2);
+	  document.getElementById("total").textContent = "RM " + currentTotal.toFixed(2);
+
+	  const livePoints = Math.floor(currentTotal);
+	  const pointsTextEl = document.getElementById("earnedPointsText");
+	  if (pointsTextEl) {
+	    pointsTextEl.textContent = "+" + livePoints + " Points";
+	  }
+	}
 
 function applyPromo(){
-  const code = document.getElementById("promoCode").value.trim().toUpperCase();
-  if(code === "QASABE20"){
-    promoApplied = true;
-    alert("Promo code applied! 20% discount added.");
-  }else{
-    promoApplied = false;
-    alert("Invalid promo code. Discount removed.");
-  }
+  if(document.getElementById("promoCode").value.trim().toUpperCase() === "QASABE20"){
+    promoApplied = true; alert("Promo code applied! 20% discount added.");
+  }else{ promoApplied = false; alert("Invalid promo code."); }
   updateSummary();
 }
 
 function showPaymentDetails(){
   const method = document.getElementById("paymentMethod").value;
-  document.getElementById("onlineBox").classList.remove("active");
-  document.getElementById("ewalletBox").classList.remove("active");
-  document.getElementById("cardBox").classList.remove("active");
-  document.getElementById("codBox").classList.remove("active");
-  if(method === "online") document.getElementById("onlineBox").classList.add("active");
-  if(method === "ewallet") document.getElementById("ewalletBox").classList.add("active");
-  if(method === "card") document.getElementById("cardBox").classList.add("active");
-  if(method === "cod") document.getElementById("codBox").classList.add("active");
+  ["onlineBox", "ewalletBox", "cardBox", "codBox"].forEach(id => document.getElementById(id).classList.remove("active"));
+  document.getElementById(method + "Box").classList.add("active");
 }
 
-function getPaymentLabel(){
-  const method = document.getElementById("paymentMethod").value;
-  if(method === "online") return "Online Banking / FPX";
-  if(method === "ewallet") return "E-Wallet";
-  if(method === "card") return "Credit / Debit Card";
-  return "Cash on Delivery";
-}
-
-function autofillDefaultAddress() {
-  const savedAddresses = JSON.parse(localStorage.getItem("userAddresses")) || [];
-  const defaultAddr = savedAddresses.find(addr => addr.isDefault) || savedAddresses[0];
-  if (defaultAddr) {
-    const nameParts = defaultAddr.fullname.trim().split(" ");
-    const firstName = nameParts[0] || "";
-    const lastName = nameParts.slice(1).join(" ") || ".";
-    
-    document.getElementById("firstName").value = firstName;
-    document.getElementById("lastName").value = lastName;
-    document.getElementById("address1").value = defaultAddr.address;
-    document.getElementById("phone").value = defaultAddr.phone;
-    const postalMatch = defaultAddr.address.match(/\b\d{5}\b/);
-    if(postalMatch) {
-      document.getElementById("postalCode").value = postalMatch[0];
-    }
-    
-    if(defaultAddr.address.toLowerCase().includes("skudai") || defaultAddr.address.toLowerCase().includes("johor")) {
-      document.getElementById("city").value = "Skudai";
-    }
-  }
-}
-
-// Global safety latch
 let isOrderProcessing = false;
 
-//Pastikan variable ini wujud di luar fungsi (di bahagian atas skrip anda)
-//let isOrderProcessing = false; 
+function placeOrder(event) {
+  if (event) event.preventDefault();
+  if (isOrderProcessing || cart.length === 0) return false;
 
-function placeOrder(event){
-// 1. SEKAT SERTA-MERTA jika sistem sedang memproses order sebelumnya
-if (isOrderProcessing) {
- if (event) event.preventDefault();
- return false;
-}
+  const form = document.getElementById("shippingForm");
+  if(!form.checkValidity()){ form.reportValidity(); return false; }
 
-// 2. Halang default submit borang
-if (event) {
- event.preventDefault();
-}
+  isOrderProcessing = true;
+  const placeBtn = document.querySelector(".place-btn");
+  placeBtn.disabled = true; 
+  placeBtn.innerText = "Processing Transaction...";
 
-const form = document.getElementById("shippingForm");
-if(cart.length === 0){
- alert("Your cart is empty.");
- return false;
-}
-if(!form.checkValidity()){
- form.reportValidity();
- return false;
-}
-const method = document.getElementById("paymentMethod").value;
-if(method === "card"){
- const cardName = document.getElementById("cardName").value.trim();
- const cardNumber = document.getElementById("cardNumber").value.trim();
- const expiryDate = document.getElementById("expiryDate").value.trim();
- const cvv = document.getElementById("cvv").value.trim();
- if(cardName === "" || cardNumber === "" || expiryDate === "" || cvv === ""){
-   alert("Please complete your card payment details.");
-   return false;
- }
-}
+  const region = document.getElementById("country").value;
+  let stateStr = (region === "international") ? document.getElementById("stateInput").value : document.getElementById("stateSelect").value;
+  let cityStr = (region === "international") ? document.getElementById("cityInput").value : document.getElementById("citySelect").value;
+  let countryStr = (region === "international") ? document.getElementById("countryName").value : "Malaysia";
 
-// 3. KUNCI MATI SISTEM SERTA-MERTA SEBELUM JANA ID DAN SIMPAN DATA
-isOrderProcessing = true;
+  const earnedPoints = Math.floor(currentTotal); 
 
-// Lumpuhkan butang fizikal di UI supaya user tak boleh tekan lagi
-const placeBtn = document.querySelector(".place-btn");
-if (placeBtn) {
- placeBtn.disabled = true;
- placeBtn.innerText = "Processing...";
-}
+  let account = JSON.parse(localStorage.getItem("customerAccount")) || 
+                JSON.parse(localStorage.getItem("userProfile")) || 
+                { name: "Guest User", email: "user@email.com", points: 0 };
+  
+  account.points = (Number(account.points) || 0) + earnedPoints;
+  account.goldPoints = account.points; 
+  
+  localStorage.setItem("customerAccount", JSON.stringify(account));
+  
+  alert(`Congratulations! You have earned ${earnedPoints} Gold Points from this purchase.`);
 
-const orderId = "QSB" + Math.floor(1000 + Math.random() * 9000);
-document.getElementById("modalOrderId").textContent = orderId;
-document.getElementById("modalPayment").textContent = getPaymentLabel();
-document.getElementById("modalTotal").textContent = "RM " + currentTotal.toFixed(2);
+  const orderId = "QSB" + Math.floor(1000 + Math.random() * 9000);
+  document.getElementById("modalOrderId").textContent = orderId;
+  document.getElementById("modalPayment").textContent = document.getElementById("paymentMethod").value.toUpperCase();
+  document.getElementById("modalTotal").textContent = "RM " + currentTotal.toFixed(2);
 
-const fName = document.getElementById("firstName").value;
-const lName = document.getElementById("lastName").value;
-const add1 = document.getElementById("address1").value;
-const add2 = document.getElementById("address2").value ? document.getElementById("address2").value + ", " : "";
-const cityStr = document.getElementById("city").value;
-const pCode = document.getElementById("postalCode").value;
-const regionSelect = document.getElementById("country");
-const regionText = regionSelect.options[regionSelect.selectedIndex].text;
-const phoneNum = document.getElementById("phone").value;
+  let today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  let recentOrders = JSON.parse(localStorage.getItem("recentOrders")) || [];
+  
+  let orderItems = cart.map(item => {
+    let product = products[item.id] || products[item.id.toLowerCase()] || {};
+    return {
+      name: item.name || product.name || "Sugarcane Product",
+      qty: item.qty || 1,
+      price: Number(item.price || product.price || 0)
+    };
+  });
 
-const fullAddressHTML = `
- <strong>${fName} ${lName}</strong> <span class="badge bg-warning text-dark ms-1">Default</span><br>
- ${add1}, ${add2}${pCode} ${cityStr}, ${regionText}<br>
- Malaysia<br><br>
- <strong>${phoneNum}</strong>
-`;
+  const subtotalVal = cart.reduce((sum, item) => {
+    let product = products[item.id] || products[item.id.toLowerCase()] || {};
+    return sum + (Number(item.price || product.price) * item.qty);
+  }, 0);
+  const discountVal = promoApplied ? subtotalVal * 0.20 : 0;
+  
+  let deliveryVal = 0;
+  if(cart.length > 0){
+    if(region === "west") deliveryVal = 5;
+    else if(region === "east") deliveryVal = 12;
+    else if(region === "international") deliveryVal = 25;
+  }
 
-const orderData = {
- orderId: orderId,
- customer: fName + " " + lName,
- address: fullAddressHTML,
- city: cityStr,
- phone: phoneNum,
- payment: getPaymentLabel(),
- total: currentTotal.toFixed(2),
- items: cart
-};
+  recentOrders.unshift({ 
+    orderId: orderId, 
+    id: orderId, 
+    total: currentTotal,
+    totalPrice: currentTotal, 
+    subtotal: (subtotalVal - discountVal),
+    shippingFee: deliveryVal,              
+    date: today, 
+    orderDate: today, 
+    status: "Processing",
+    items: orderItems 
+  });
+  
+  localStorage.setItem("recentOrders", JSON.stringify(recentOrders));
 
-let matchedProd = cart[0] || {};
-if (!matchedProd.id) {
- const keys = Object.keys(products);
- matchedProd = products[keys[0]];
-}
+  const modal = new bootstrap.Modal(document.getElementById("orderModal"));
+  modal.show();
+  return false;
+} 
 
-let today = new Date().toLocaleDateString('en-GB', {
-   day: 'numeric', month: 'short', year: 'numeric'
-});
-
-let recentOrders = JSON.parse(localStorage.getItem("recentOrders")) || [];
-let adminOrders = JSON.parse(localStorage.getItem("adminOrders")) || [];
-
-// 4. MASUKKAN DATA SECARA BERASINGAN
-let newProfileOrder = {
-   orderId: orderId, 
-   productName: matchedProd.name || "Qasabe Sugarcane Product", 
-   image: matchedProd.image || "images/logor.png", 
-   date: today,
-   price: "RM " + currentTotal.toFixed(2), 
-   address: fullAddressHTML, 
-   status: "Processing" 
-};
-recentOrders.unshift(newProfileOrder);
-localStorage.setItem("recentOrders", JSON.stringify(recentOrders));
-
-adminOrders.unshift({
-   orderId: orderId,
-   customer: fName + " " + lName,
-   product: matchedProd.name || "QASABE Product",
-   amount: currentTotal,
-   status: "Processing",
-   payment: getPaymentLabel(),
-   phone: phoneNum,
-   address: fullAddressHTML,
-   date: today
-});
-localStorage.setItem("adminOrders", JSON.stringify(adminOrders));
-
-localStorage.setItem("qasabeLastOrder", JSON.stringify(orderData));
-
-// 5. PAPAR MODAL RESIT
-const modal = new bootstrap.Modal(document.getElementById("orderModal"));
-modal.show();
-
-// PERINGATAN: Jangan letak setTimeout yang menukar isOrderProcessing kembali ke false di sini!
-// Biarkan ia terus true (lock) sehingga page bertukar.
-
-return false;
-}
-
-function finishOrder(){
-  cart = [];
+function finishOrder() {
+  cart = []; 
   saveCart();
-  localStorage.setItem("qasabeHasOrdered", "true");
-  window.location.href = "Category.html";
+  window.location.href = "profile.html"; 
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  handleRegionChange();
   renderMiniCart();
-  showPaymentDetails();
-  autofillDefaultAddress();
 });
-
-localStorage.removeItem("lastOrderToken");
 </script>
 </body>
 </html>
