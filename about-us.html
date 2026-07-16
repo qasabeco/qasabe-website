@@ -7,279 +7,462 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght=300;400;500;600&family=Playfair+Display:ital,wght=0,500;1,400&display=swap" rel="stylesheet">
+  
   <style>
     :root{
-      --navy:#071827;
-      --cream:#fff7f3;
-      --gold:#c99b3b;
+      --navy: #071827;
+      --cream: #fff7f3;
+      --gold: #c99b3b;
+      --light-cream: #fbf8f3;
+      --muted-text: #5a656e;
     }
     
     body{
-      margin:0;
-      background:var(--cream);
-      font-family:Arial, sans-serif;
-      color:#111;
+      margin: 0;
+      background: var(--cream);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--navy);
+      letter-spacing: -0.2px;
     }
     
     html{ scroll-behavior: smooth; }
-    h1,h2,h3,h4{
-      font-family:Georgia, serif;
-      font-weight:700;
+    
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      color: var(--navy);
     }
+    
     /* Top Navigation Styling */
     .top-bar{
-      background:var(--navy);
-      color:white;
-      font-size:12px;
-      padding:8px;
-      text-align:center;
+      background: var(--navy);
+      color: white;
+      font-size: 11px;
+      padding: 10px;
+      text-align: center;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .navbar {
+      padding: 20px 0;
+      background: transparent;
     }
     .navbar-nav .nav-link{
       color: var(--navy);
       font-weight: 500;
-      font-size: 16px;
-      transition: .3s;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      padding: 8px 16px !important;
+      transition: .3s ease;
     }
     .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active{
       color: var(--gold);
     }
+    .dropdown-menu {
+      background-color: var(--cream);
+      border-radius: 12px;
+      padding: 10px;
+    }
     .dropdown-menu .dropdown-item:hover {
       background-color: var(--gold);
       color: white !important;
+      border-radius: 6px;
     }
     .brand-logo{
-      display:flex;
-      align-items:center;
-      gap:1px;
-      text-decoration:none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
     }
     .brand-logo img{
-      width:65px;
-      height:65px;
-      object-fit:contain;
+      width: 55px;
+      height: 55px;
+      object-fit: contain;
     }
     .brand-logo span{
-      font-family:'Cormorant Garamond', serif;
-      font-size:38px;
-      font-weight:700;
-      letter-spacing:1px;
-      color:var(--navy);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--navy);
     }
     .nav-icons{
-      display:flex;
-      align-items:center;
-      gap:15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
     .icon-btn{
-      width:50px;
-      height:50px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      font-size:22px;
-      text-decoration:none;
-      color:var(--navy);
-      transition:.3s;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      font-size: 18px;
+      text-decoration: none;
+      color: var(--navy);
+      transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(7, 24, 39, 0.08);
     }
     .icon-btn:hover{
-      background:var(--gold);
-      color:white;
-      transform:translateY(-4px) scale(1.1);
-      box-shadow:0 0 15px rgba(201,155,59,0.5);
+      background: var(--navy);
+      color: white;
+      transform: translateY(-2px);
     }
     .cart-count, .wishlist-count{
-      background:var(--gold);
-      color:white;
-      font-size:11px;
-      border-radius:50%;
-      padding:2px 6px;
-      position:relative;
-      top:-10px;
-      right:8px;
-    }
-    /* Hero Section - Matching index styling with luxury background */
-    .hero-about {
-      background: url('images/background.jpeg') no-repeat center center;
-      background-size: cover;
+      background: var(--gold);
       color: white;
-      padding: 90px 0;
-      position: relative;
-    }
-    .hero-about::before {
-      content: "";
+      font-size: 10px;
+      border-radius: 50%;
+      padding: 2px 6px;
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(7, 24, 39, 0.6);
-      z-index: 1;
+      top: -5px;
+      right: -5px;
+      font-family: sans-serif;
     }
-    .hero-about .container {
+
+    /* Minimal Aesthetic Hero Section */
+    .hero-about {
+      background: linear-gradient(rgba(7, 24, 39, 0.4), rgba(7, 24, 39, 0.4)), url('images/background.jpeg') center/cover no-repeat;
+      padding: 140px 0;
       position: relative;
-      z-index: 2;
     }
     .hero-about h1 {
-      font-size: 52px;
-      font-family: Georgia, serif;
+      font-size: 64px;
+      color: white;
+      letter-spacing: 1px;
     }
     .hero-cursive {
       font-family: 'Playfair Display', serif;
       font-style: italic;
+      font-weight: 400;
       color: var(--gold);
     }
     .badge-gold {
-      background: var(--gold);
-      color: white;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
       font-weight: 600;
-      letter-spacing: 2px;
+      font-size: 11px;
+      letter-spacing: 3px;
     }
-    /* Content Styling Blocks */
+
+    /* Layout Sections */
     .section-light {
+      padding: 120px 0;
       background: var(--cream);
-      padding: 80px 0;
     }
     .section-dark {
       background: var(--navy);
       color: white;
-      padding: 80px 0;
+      padding: 120px 0;
     }
     
+    .section-tag {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
     .about-title {
       font-family: 'Cormorant Garamond', serif;
       color: var(--navy);
-      font-size: 46px;
-      font-weight: 700;
-      letter-spacing: 1px;
+      font-size: 48px;
+      line-height: 1.15;
+      margin-bottom: 25px;
     }
     
-    /* Premium Grid Cards */
+    /* Asymmetric Image Frame for Company Pic */
+    .image-overlap-container {
+      position: relative;
+      padding: 15px;
+    }
+    .image-overlap-container::before {
+      content: '';
+      position: absolute;
+      inset: 0 30px 30px 0;
+      border: 1px solid var(--gold);
+      border-radius: 24px;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .img-aesthetic {
+      border-radius: 24px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 20px 40px rgba(7, 24, 39, 0.08);
+      transition: transform 0.5s ease;
+    }
+    .image-overlap-container:hover .img-aesthetic {
+      transform: translateY(-5px);
+    }
+
+    /* Premium Floating Cards */
     .card-premium {
       background: white;
-      border: 1px solid rgba(201, 155, 59, 0.25);
-      border-radius: 20px;
-      padding: 35px 25px;
-      box-shadow: 0 10px 25px rgba(7, 24, 39, 0.03);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(201, 155, 59, 0.15);
+      border-radius: 24px;
+      padding: 40px 30px;
+      box-shadow: 0 10px 35px rgba(7, 24, 39, 0.02);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .card-premium:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(201, 155, 59, 0.2);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(201, 155, 59, 0.12);
+      border-color: var(--gold);
     }
-    .card-premium h5 {
-      color: var(--navy);
-      font-weight: 700;
-      margin-top: 10px;
+    .card-premium h4 {
+      font-size: 26px;
+      margin: 15px 0 10px 0;
     }
-    .card-premium .step-tag {
-      font-family: 'Cormorant Garamond', serif;
+    .card-premium p {
+      color: var(--muted-text);
       font-size: 14px;
-      color: var(--gold);
-      letter-spacing: 2px;
-      font-weight: 700;
-      text-transform: uppercase;
+      line-height: 1.7;
     }
-    /* Buttons styling match with homepage */
+    
+    /* Elegant Buttons */
     .btn-gold {
-      background: var(--gold);
+      background: var(--navy);
       color: white;
       border: none;
-      border-radius: 30px;
-      padding: 11px 32px;
-      font-weight: 600;
-      transition: 0.3s;
+      border-radius: 100px;
+      padding: 14px 36px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      transition: .3s ease;
+      display: inline-block;
     }
     .btn-gold:hover {
-      background: #b28830;
+      background: var(--gold);
       color: white;
       transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(201, 155, 59, 0.2);
     }
-    /* Gallery Block */
+    
+    /* Journey Timeline */
+    .journey-step {
+      position: relative;
+      padding: 20px;
+    }
+    .journey-step h4 {
+      font-size: 32px;
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--gold) !important;
+    }
+    .journey-arrow {
+      position: absolute;
+      top: 30%;
+      right: -10%;
+      color: rgba(201, 155, 59, 0.4);
+      font-size: 18px;
+    }
+    
+    /* --- KOD AESTHETIC TIMELINE OUR JOURNEY --- */
+.style-timeline-container .journey-node {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.journey-node .node-dot {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.journey-node h4 {
+  transition: all 0.3s ease;
+}
+
+.journey-node:hover .node-dot {
+  transform: scale(1.4);
+  background: var(--gold) !important;
+  /* Box-shadow ni yang buat dia nampak bercahaya/glowing */
+  box-shadow: 0 0 20px rgba(201, 155, 59, 0.8), 0 0 40px rgba(201, 155, 59, 0.3);
+  border-color: #fff !important;
+}
+
+.journey-node:hover h4 {
+  text-shadow: 0 0 15px rgba(201, 155, 59, 0.6);
+  transform: translateY(-3px);
+}
+    
+    /* Gallery Grid */
     .gallery-box {
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,.15);
-      height: 280px;
+      box-shadow: 0 10px 30px rgba(7,24,39,0.04);
+      height: 250px;
     }
     .gallery-box img {
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
     }
     .gallery-box:hover img {
-      transform: scale(1.05);
+      transform: scale(1.06);
     }
-    /* TikTok Box Frame */
-    .tiktok-wrap {
-      border-radius: 24px;
+    
+    /* Clean Feature Cards */
+    .feature-card-clean {
+      padding: 25px 15px;
+      transition: .3s;
+    }
+    .feature-card-clean i {
+      color: var(--gold);
+      font-size: 2.2rem;
+    }
+    .feature-card-clean h5 {
+      font-size: 20px;
+      margin: 15px 0 8px 0;
+    }
+    .feature-card-clean p {
+      font-size: 13px;
+      color: var(--muted-text);
+      line-height: 1.6;
+    }
+    
+    /* Sustainability Commitment Section */
+    .section-commitment {
+      background-color: var(--light-cream);
+      position: relative;
+      padding: 100px 0;
       overflow: hidden;
-      box-shadow: 0 15px 35px rgba(7, 24, 39, 0.15);
-      border: 1px solid rgba(201, 155, 59, 0.3);
+      border-top: 1px solid rgba(7, 24, 39, 0.03);
+      border-bottom: 1px solid rgba(7, 24, 39, 0.03);
+    }
+    .decor-leaf {
+      position: absolute;
+      bottom: -40px;
+      opacity: 0.06;
+      width: 220px;
+      pointer-events: none;
+    }
+    .decor-left { left: -20px; transform: scaleX(-1) rotate(15deg); }
+    .decor-right { right: -20px; transform: rotate(15deg); }
+    
+    /* Minimalist 2-Column FAQ */
+    .faq-accordion .accordion-item {
+      border: none;
+      background: white;
+      border-radius: 16px !important;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 20px rgba(7,24,39,0.01);
+      border: 1px solid rgba(7,24,39,0.04);
+      overflow: hidden;
+    }
+    .faq-accordion .accordion-button {
+      background: white;
+      color: var(--navy);
+      font-weight: 500;
+      padding: 22px 25px;
+      font-size: 16px;
+      box-shadow: none !important;
+    }
+    .faq-accordion .accordion-button:not(.collapsed) {
+      color: var(--gold);
+      background: white;
+    }
+    .faq-accordion .accordion-body {
+      padding: 0 25px 25px 25px;
+      color: var(--muted-text);
+      font-size: 14px;
+      line-height: 1.7;
     }
 
-    /* Thank you area style from index */
+    /* Video Frame Style */
+    .tiktok-wrap {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(7, 24, 39, 0.1);
+    }
+    
+    /* Thank You Aesthetic Box */
     .q-thanks-box {
-      padding: 60px 0;
+      padding: 100px 0;
       background: var(--cream);
+      border-top: 1px solid rgba(201, 155, 59, 0.15);
     }
     .q-thanks-text {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 36px;
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
       font-style: italic;
       color: var(--navy);
-      font-weight: 600;
+    }
+    
+    .footer-bottom {
+      background: var(--navy);
+      color: rgba(255,255,255,0.6);
+      padding: 30px 0;
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .social-links a {
+      color: white;
+      font-size: 18px;
+      opacity: 0.6;
+      transition: 0.3s;
+    }
+    .social-links a:hover {
+      color: var(--gold);
+      opacity: 1;
+      transform: translateY(-2px);
     }
   </style>
 </head>
 <body>
+
+  <!-- TOP INFO BAR -->
   <div class="top-bar">
     Sign up and get 20% off your first order. <u>Sign Up Now</u>
   </div>
   
-  <nav class="navbar navbar-expand-lg">
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand brand-logo" href="index.html">
         <img src="images/logor.png" alt="QASABE Logo">
         <span>QASABE</span>
       </a>
-      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+      <button class="navbar-toggler border-0" data-bs-toggle="collapse" data-bs-target="#nav">
         <span class="navbar-toggler-icon"></span>
       </button>
       
       <div class="collapse navbar-collapse" id="nav">
-        <ul class="navbar-nav mx-auto gap-3">
+        <ul class="navbar-nav mx-auto gap-2">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link active" href="about-us.html">About</a></li>
-          
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Products
             </a>
-            <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown" style="background-color: var(--cream);">
-              <li><a class="dropdown-item py-2" href="Category.html?cat=food-beverages" style="color: var(--navy); font-weight: 500;">Food & Beverages</a></li>
-              <li><a class="dropdown-item py-2" href="Category.html?cat=health" style="color: var(--navy); font-weight: 500;">Health</a></li>
-              <li><a class="dropdown-item py-2" href="Category.html?cat=personal-care" style="color: var(--navy); font-weight: 500;">Personal Care & Wellness</a></li>
-              <li><a class="dropdown-item py-2" href="Category.html?cat=packaging" style="color: var(--navy); font-weight: 500;">Food Packaging & Containers</a></li>
+            <ul class="dropdown-menu border-0 shadow-lg" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item py-2" href="Category.html?cat=food-beverages">Food & Beverages</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=health">Health</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=personal-care">Personal Care & Wellness</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=packaging">Food Packaging & Containers</a></li>
             </ul>
           </li>
-          
           <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
         </ul>
-        
-        <input class="form-control rounded-pill w-25 d-none d-lg-block" placeholder="Find sugarcane products...">
         
         <div class="nav-icons">
           <a href="wishlist.html" class="icon-btn">
             <i class="bi bi-heart"></i>
-            <span id="wishlistCount" class="wishlist-count">0</span>
+            <span id="wishlistCount" class="wishlist-count">2</span>
           </a>
           <a href="cart.html" class="icon-btn">
             <i class="bi bi-cart"></i>
-            <span id="cartCount" class="cart-count">0</span>
+            <span id="cartCount" class="cart-count">3</span>
           </a>
           <a href="profile.html" class="icon-btn">
             <i class="bi bi-person-circle"></i>
@@ -289,129 +472,517 @@
     </div>
   </nav>
 
+  <!-- HERO HEADER SECTION -->
   <header class="hero-about text-center">
     <div class="container">
-      <span class="badge badge-gold px-3 py-2 rounded-pill text-uppercase mb-3">Our Core Story</span>
-      <h1 class="display-4 fw-bold">From Cane to <span class="hero-cursive">Change</span> ❧</h1>
-      <p class="lead opacity-90 mx-auto mt-3" style="max-width: 650px; font-size: 18px;">
+      <span class="badge badge-gold px-3 py-1 rounded-pill text-uppercase mb-3">Our Core Story</span>
+      <h1 class="display-3 fw-bold">From Cane to <span class="hero-cursive">Change</span> ❧</h1>
+      <p class="lead text-white-50 mx-auto mt-3" style="max-width: 600px; font-size: 16px; font-weight: 300; line-height: 1.8;">
         Pioneering multi-category innovations purely crafted from sustainable, premium local sugarcane culture.
       </p>
     </div>
   </header>
 
+  <!-- SECTION 1 & 2 DUAL SPLIT ROW: WHO WE ARE & PURPOSE -->
   <section class="section-light">
     <div class="container">
       <div class="row g-5 align-items-center">
+        
+        <!-- LEFT COLUMN: WHO WE ARE (WITH IMAGE) -->
         <div class="col-lg-6">
-          <div class="text-uppercase tracking-wider small fw-bold mb-2" style="color: var(--gold); letter-spacing: 2px;">• WHO WE ARE •</div>
-          <h2 class="about-title mb-4">Cultivating Eco-Wellness Innovation</h2>
-          <p class="text-muted" style="line-height: 1.7;">
+          <span class="section-tag">• Who We Are •</span>
+          <h2 class="about-title">Cultivating Eco-Wellness Innovation</h2>
+          
+          <!-- Aesthetic Company Image Frame -->
+          <div class="image-overlap-container mb-4">
+            <img src="images/company.png" class="w-100 img-aesthetic" alt="Qasabe Company">
+          </div>
+
+          <p class="text-muted" style="line-height: 1.8; font-size:14px; margin-top: 25px;">
             Qasabe is established to reshape everyday wellness by transforming nature's humble sugarcane raw botanical into multiple eco-luxury categories — from refreshing personal care to sustainable food packaging essentials.
           </p>
-          <p class="text-muted mb-4" style="line-height: 1.7;">
+          <p class="text-muted mb-4" style="line-height: 1.8; font-size:14px;">
             We strongly believe that local agricultural resources hold the key to global sustainable lifestyles. Every drops of our sugarcane formulations represent our commitment towards zero waste values and premium efficacy.
           </p>
-          <div>
+          <div class="pt-2">
             <a class="btn-gold text-decoration-none" href="index.html#categories">Explore Our Range</a>
           </div>
         </div>
         
-        <div class="col-lg-6">
-          <div class="p-3 bg-white border rounded-4 shadow-sm">
-            <img src="images/mainproducts-luxury.png" class="w-100 rounded-3" 
-                 onerror="this.src='https://picsum.photos/800/600?random=11';" 
-                 alt="Qasabe Collections">
+        <!-- RIGHT COLUMN: MISSION & VISION WITH FLOATING CARDS -->
+        <div class="col-lg-6 ps-lg-5">
+          <div class="mb-5 text-center text-lg-start">
+            <span class="section-tag">• Our Purpose •</span>
+            <h2 class="about-title">Mission & Vision</h2>
           </div>
-        </div> 
+          
+          <div class="row g-4">
+            <div class="col-11 mx-auto mx-lg-0">
+              <div class="card-premium">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <i class="bi bi-bullseye fs-2" style="color:var(--gold);"></i>
+                  <h4 class="m-0">Our Mission</h4>
+                </div>
+                <p class="m-0 mt-2">
+                  To transform locally sourced sugarcane into innovative, sustainable, and high-quality products that promote healthier lifestyles while protecting our environment.
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-11 mx-auto mx-lg-0 offset-lg-1">
+              <div class="card-premium">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <i class="bi bi-eye fs-2" style="color:var(--gold);"></i>
+                  <h4 class="m-0">Our Vision</h4>
+                </div>
+                <p class="m-0 mt-2">
+                  To become Southeast Asia's leading eco-luxury sugarcane brand recognised for sustainability, innovation, and community impact.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <section class="section-light pt-0">
+ <!-- SECTION 3: OUR JOURNEY (HORIZONTAL GLOWING TIMELINE) -->
+  <section class="section-dark" style="background: var(--navy); color: white; padding: 100px 0; position: relative; overflow: hidden;">
     <div class="container">
-      <h2 class="text-center about-title mb-2">Watch Our Story</h2>
-      <p class="text-center text-muted small mb-4">Go behind the scenes of our sustainable sugarcane journey ✨</p>
       
-      <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-12">
-          <div class="bg-white p-3 tiktok-wrap shadow-sm">
-            <div class="ratio ratio-16x9 rounded-4 overflow-hidden">
-              <video controls playsinline style="object-fit: cover;">
-                <source src="images/video3.mov" type="video3/mp4">
-                Your browser does not support the video tag.
+      <!-- Tajuk Section -->
+      <div class="text-center mb-5 pb-4">
+        <span class="text-uppercase fw-bold mb-2 d-block" style="color: var(--gold); letter-spacing: 3px; font-size: 11px;">• PROGRESSION •</span>
+        <h2 class="fw-bold text-white mb-2" style="font-family: 'Cormorant Garamond', serif; font-size: 44px;">Our Journey</h2>
+        <p class="text-white-50 small" style="letter-spacing: 1px; font-size: 12px;">FROM AN IDEA TO SUSTAINABLE INNOVATION</p>
+      </div>
+
+      <!-- Wrapper Timeline Mendatar -->
+      <div class="position-relative mx-auto style-timeline-container" style="max-width: 1000px;">
+        
+        <!-- Garisan Emas Halus (Menyambung Bulatan) -->
+        <div class="position-absolute d-none d-md-block" style="top: 38px; left: 5%; right: 5%; height: 1px; background: rgba(201, 155, 59, 0.3); z-index: 1;"></div>
+        
+        <div class="row g-4 text-center justify-content-between position-relative" style="z-index: 2;">
+          
+          <!-- Fasa 2024 -->
+          <div class="col-md-3 col-sm-6 journey-node">
+            <div class="d-flex flex-column align-items-center">
+              <div class="node-dot mb-3 d-flex align-items-center justify-content-center" style="width: 22px; height: 22px; border-radius: 50%; background: var(--navy); border: 2px solid var(--gold);">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--gold);"></div>
+              </div>
+              <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--gold); font-weight: 600; margin-bottom: 10px;">2024</h4>
+              <p class="text-white-50 px-2" style="font-size: 13.5px; line-height: 1.6; max-width: 200px;">The idea of creating sustainable sugarcane products was born.</p>
+            </div>
+          </div>
+
+          <!-- Fasa 2025 -->
+          <div class="col-md-3 col-sm-6 journey-node">
+            <div class="d-flex flex-column align-items-center">
+              <div class="node-dot mb-3 d-flex align-items-center justify-content-center" style="width: 22px; height: 22px; border-radius: 50%; background: var(--navy); border: 2px solid var(--gold);">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--gold);"></div>
+              </div>
+              <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--gold); font-weight: 600; margin-bottom: 10px;">2025</h4>
+              <p class="text-white-50 px-2" style="font-size: 13.5px; line-height: 1.6; max-width: 200px;">Research and development of sugarcane-based products began.</p>
+            </div>
+          </div>
+
+          <!-- Fasa 2026 -->
+          <div class="col-md-3 col-sm-6 journey-node">
+            <div class="d-flex flex-column align-items-center">
+              <div class="node-dot mb-3 d-flex align-items-center justify-content-center" style="width: 22px; height: 22px; border-radius: 50%; background: var(--navy); border: 2px solid var(--gold);">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--gold);"></div>
+              </div>
+              <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--gold); font-weight: 600; margin-bottom: 10px;">2026</h4>
+              <p class="text-white-50 px-2" style="font-size: 13.5px; line-height: 1.6; max-width: 200px;">Successfully introduced eco-friendly product collections.</p>
+            </div>
+          </div>
+
+          <!-- Fasa Future -->
+          <div class="col-md-3 col-sm-6 journey-node">
+            <div class="d-flex flex-column align-items-center">
+              <div class="node-dot mb-3 d-flex align-items-center justify-content-center" style="width: 22px; height: 22px; border-radius: 50%; background: var(--navy); border: 2px solid var(--gold);">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--gold);"></div>
+              </div>
+              <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--gold); font-weight: 600; margin-bottom: 10px;">Future</h4>
+              <p class="text-white-50 px-2" style="font-size: 13.5px; line-height: 1.6; max-width: 200px;">Expand globally with sustainable innovations.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: WATCH OUR STORY VIDEO -->
+  <section class="section-light">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        
+        <!-- COLUMN KIRI: TEXT & SINGLE BUTTON -->
+        <div class="col-lg-4 text-center text-lg-start">
+          <span class="section-tag">• Behind The Scenes •</span>
+          <h2 class="about-title">Watch Our Story</h2>
+          <p class="text-muted small mb-4" style="line-height: 1.7;">Go behind the scenes of our sustainable sugarcane journey and witness true transformation ✨</p>
+          
+          <!-- SATU BUTANG DENGAN ICON DI DALAM -->
+          <a href="#storyVideoSection" id="watchBtn" class="btn-gold text-decoration-none d-inline-flex align-items-center gap-2">
+            <span>Watch Video</span>
+            <i class="bi bi-play-fill fs-5"></i>
+          </a>
+        </div>
+        
+        <!-- COLUMN KANAN: VIDEO BOX -->
+        <div class="col-lg-8">
+          <div id="storyVideoSection" class="bg-white p-2 tiktok-wrap">
+            <div class="ratio ratio-21x9 overflow-hidden" style="height: 320px;">
+              <video id="storyVideo" controls playsinline style="object-fit: cover; width:100%; height:100%;">
+                <source src="images/video3.mp4" type="video/mp4">
               </video>
             </div>
           </div>
         </div>
+        
       </div>
     </div>
   </section>
 
+  <!-- SECTION 5: FEATURES INFO (4 CARDS GRID) -->
   <section class="section-light pt-0">
     <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-4">
-          <div class="card-premium h-100">
-            <div class="text-warning mb-3 fs-3"><i class="bi bi-flower1" style="color:var(--gold);"></i></div>
-            <h5 class="mb-2">100% Sugarcane AHA</h5>
-            <p class="text-muted small mb-0">Harnessing natural sugarcane extracts packed with premium brightening enzymes and hydration matrices for healthy skincare.</p>
+      <div class="row g-4 text-center text-md-start">
+        <div class="col-md-3 col-sm-6">
+          <div class="feature-card-clean">
+            <i class="bi bi-flower1"></i>
+            <h5>100% Sugarcane AHA</h5>
+            <p>Harnessing natural sugarcane extracts packed with premium brightening enzymes and hydration matrices for healthy skincare.</p>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="card-premium h-100">
-            <div class="text-warning mb-3 fs-3"><i class="bi bi-recycle" style="color:var(--gold);"></i></div>
-            <h5 class="mb-2">Zero-Waste Standard</h5>
-            <p class="text-muted small mb-0">From sugarcane stalks to packaging fibers, we ensure every byproduct is integrated responsibly back into product lines.</p>
+        <div class="col-md-3 col-sm-6">
+          <div class="feature-card-clean">
+            <i class="bi bi-recycle"></i>
+            <h5>Zero-Waste Standard</h5>
+            <p>From sugarcane stalks to packaging fibers, we ensure every byproduct is integrated responsibly back into product lines.</p>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="card-premium h-100">
-            <div class="text-warning mb-3 fs-3"><i class="bi bi-people-fill" style="color:var(--gold);"></i></div>
-            <h5 class="mb-2">Empowering Local Farms</h5>
-            <p class="text-muted small mb-0">Sourcing carefully from regional growers to secure premium ingredients while fostering community economic growth.</p>
+        <div class="col-md-3 col-sm-6">
+          <div class="feature-card-clean">
+            <i class="bi bi-people-fill"></i>
+            <h5>Empowering Local Farms</h5>
+            <p>Sourcing carefully from regional growers to secure premium ingredients while fostering community economic growth.</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="feature-card-clean">
+            <i class="bi bi-heart-fill"></i>
+            <h5>Cruelty-Free & Safe</h5>
+            <p>We never test on animals and ensure safe, effective formulations suitable for everyday use.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section-dark text-center border-top border-secondary">
+  <!-- SECTION 6: GALLERY MOMENTS -->
+  <section class="section-light pt-0">
     <div class="container">
-      <h2 class="fw-bold mb-3" style="font-family: Georgia, serif;">Support Sustainable Solutions ♡</h2>
-      <p class="opacity-75 mb-4 mx-auto" style="max-width: 500px;">Experience premium alternatives engineered meticulously for you, for the planet, for a better tomorrow.</p>
-      <div class="d-flex justify-content-center gap-3">
-        <a class="btn-gold text-decoration-none" href="index.html">Shop Best Sellers</a>
-        <a class="btn btn-outline-light rounded-pill px-4" href="index.html#contact">Get In Touch</a>
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-5">
+        <div class="text-center text-md-start">
+          <span class="section-tag">• Visual Journal •</span>
+          <h2 class="about-title m-0">Our Moments</h2>
+          <p class="text-muted small mt-2">A transparent look inside our sourcing trips.</p>
+        </div>
+        <div class="mt-3 mt-md-0">
+          <a href="#" class="btn-gold text-decoration-none" style="padding: 10px 28px; font-size: 13px; background: transparent; border: 1px solid var(--navy); color: var(--navy);">View Full Gallery</a>
+        </div>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-md-3 col-6">
+          <a href="images/image1.JPG" class="glightbox" data-gallery="gallery1">
+            <div class="gallery-box">
+              <img src="images/image1.JPG" alt="moments">
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-6">
+          <a href="images/image2.JPG" class="glightbox" data-gallery="gallery1">
+            <div class="gallery-box">
+              <img src="images/image2.JPG" alt="moments">
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-6">
+          <a href="images/image7.JPG" class="glightbox" data-gallery="gallery1">
+            <div class="gallery-box">
+              <img src="images/image7.JPG" alt="moments">
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3 col-6">
+          <a href="images/image6.JPG" class="glightbox" data-gallery="gallery1">
+            <div class="gallery-box">
+              <img src="images/image6.JPG" alt="moments">
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- SECTION 7: SUSTAINABILITY COMMITMENT -->
+  <section class="section-commitment text-center">
+    <img src="images/mainproducts-luxury.png" class="decor-leaf decor-left d-none d-md-block" alt="deco">
+    <img src="images/mainproducts-luxury.png" class="decor-leaf decor-right d-none d-md-block" alt="deco">
+    
+    <div class="container position-relative">
+      <span class="section-tag">• Our Promise •</span>
+      <h2 class="about-title mb-5">Our Sustainability Commitment</h2>
+      
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-3 col-6">
+          <div class="px-3">
+            <i class="bi bi-flower3 fs-2 text-success opacity-70 mb-2"></i>
+            <h6 class="fw-bold mb-2">Eco-Friendly Materials</h6>
+            <p class="text-muted small mb-0" style="font-size: 12px; line-height: 1.6;">We use renewable, biodegradable materials that are gentle on your skin and the planet.</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="px-3">
+            <i class="bi bi-recycle fs-2 text-success opacity-70 mb-2"></i>
+            <h6 class="fw-bold mb-2">Zero Waste Production</h6>
+            <p class="text-muted small mb-0" style="font-size: 12px; line-height: 1.6;">We minimize waste at every step of production and repurpose sugarcane byproducts.</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="px-3">
+            <i class="bi bi-people fs-2 text-success opacity-70 mb-2"></i>
+            <h6 class="fw-bold mb-2">Supporting Local Farmers</h6>
+            <p class="text-muted small mb-0" style="font-size: 12px; line-height: 1.6;">We partner with local sugarcane farmers to support communities and ethical agriculture.</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="px-3">
+            <i class="bi bi-globe fs-2 text-success opacity-70 mb-2"></i>
+            <h6 class="fw-bold mb-2">Protecting Environment</h6>
+            <p class="text-muted small mb-0" style="font-size: 12px; line-height: 1.6;">We are committed to reducing our carbon footprint for a healthier, greener future.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: 2-COLUMN FREQUENTLY ASKED QUESTIONS -->
+  <section class="section-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-tag">• Learn More •</span>
+        <h2 class="about-title">Frequently Asked Questions</h2>
+        <p class="text-muted small">Everything you need to know about QASABE and our sustainable sugarcane innovations.</p>
+      </div>
+
+      <div class="accordion faq-accordion" id="faqAccordion">
+        <div class="row g-4">
+          
+          <!-- LEFT COLUMN FAQ -->
+          <div class="col-md-6">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  What is QASABE?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  QASABE is a sustainable lifestyle brand that transforms sugarcane into innovative products, including skincare, food and beverages, health products, and eco-friendly food packaging.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  Are QASABE products environmentally friendly?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Yes. Sustainability is at the heart of our brand. We utilise renewable sugarcane resources and eco-conscious packaging to minimise environmental impact.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  Where do your sugarcane ingredients come from?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Our premium sugarcane is sourced from trusted local Malaysian farmers to ensure freshness, quality, and sustainable agricultural practices.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                  Are your skincare products suitable for sensitive skin?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Our skincare products are formulated using naturally derived sugarcane extracts and are designed to be gentle. However, we always recommend performing a patch test before first use.
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- RIGHT COLUMN FAQ -->
+          <div class="col-md-6">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                  Do you offer delivery throughout Malaysia?
+                </button>
+              </h2>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Yes. We provide nationwide delivery across Malaysia, with secure packaging to ensure every order arrives safely.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                  How can I contact QASABE?
+                </button>
+              </h2>
+              <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  You can contact us through the Contact page on our website, email us, or reach us through our official social media platforms.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                  What makes QASABE different from other brands?
+                </button>
+              </h2>
+              <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  QASABE combines sustainability, innovation, and premium quality by transforming sugarcane into multiple product categories while supporting local farmers and promoting a greener future.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                  Can I track my order after purchasing?
+                </button>
+              </h2>
+              <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Yes. Once your order has been processed, you will receive a confirmation along with tracking information so you can monitor your delivery status.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9: CALL TO ACTION (REDESIGNED AESTHETIC) -->
+  <section class="py-5" style="background: var(--navy); color: white; border-top: 1px solid rgba(255,255,255,0.05); overflow: hidden;">
+    <div class="container py-4">
+      <div class="row align-items-center g-5">
+        
+        <!-- TEXT & BUTTONS -->
+        <div class="col-lg-7 text-lg-start text-center">
+          <span class="text-uppercase tracking-wider small fw-bold mb-2 d-block" style="color: var(--gold); letter-spacing: 2px; font-size: 11px;">• JOIN THE MOVEMENT •</span>
+          <h2 class="fw-bold mb-3 text-white" style="font-family: 'Cormorant Garamond', serif; font-size: 42px; line-height: 1.2;">Support Sustainable Solutions ♡</h2>
+          <p class="text-white-50 mb-4" style="max-width: 500px; font-size: 14.5px; line-height: 1.8;">
+            Experience premium alternatives engineered meticulously for you, for the planet, and for a better tomorrow.
+          </p>
+          <div class="d-flex justify-content-center justify-content-lg-start gap-3">
+            <a class="btn text-decoration-none px-4 py-2.5 fw-500" href="Category.html" style="background: var(--gold); color: white; border-radius: 30px; font-size: 14px; transition: .3s; box-shadow: 0 8px 20px rgba(201, 155, 59, 0.2);" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">Shop Best Sellers</a>
+            <a class="btn btn-outline-light px-4 py-2.5" href="index.html#contact" style="border-radius: 30px; font-size: 14px; transition: .3s;" onmouseover="this.style.background='white'; this.style.color='var(--navy)';" onmouseout="this.style.background='transparent'; this.style.color='white';">Get In Touch</a>
+          </div>
+        </div>
+        
+        <!-- PRODUCT IMAGE (RIGHT SIDE WITH FLOAT EFFECT) -->
+        <div class="col-lg-5 d-none d-lg-block text-center text-lg-end">
+          <div class="position-relative d-inline-block">
+            <!-- Pemanis background bulatan halus belakang produk -->
+            <div class="position-absolute start-50 top-50 translate-middle rounded-circle" style="width: 260px; height: 260px; background: rgba(201, 155, 59, 0.08); filter: blur(20px); z-index: 1;"></div>
+            
+            <img src="images/mainproducts-luxury.png" onerror="this.src='https://picsum.photos/400/300?random=5';" style="max-height: 240px; object-fit: contain; position: relative; z-index: 2; transition: transform 0.5s ease;" onmouseover="this.style.transform='translateY(-8px) scale(1.03)'" onmouseout="this.style.transform='translateY(0) scale(1)'" alt="Qasabe Products Showcase">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- THANK YOU BOX -->
   <div class="q-thanks-box text-center">
     <div class="q-thanks-text">Thank you for supporting QASABE ♡</div>
-    <div class="text-uppercase tracking-wider mt-1" style="color: var(--gold); font-size: 11px; letter-spacing: 2px; font-weight: 600;">
+    <div class="text-uppercase tracking-wider mt-2" style="color: var(--gold); font-size: 11px; letter-spacing: 3px; font-weight: 600;">
       SUSTAINABLE CHOICES • BETTER TOMORROW
     </div>
   </div>
 
-  <footer style="background: var(--navy); color: white; padding: 30px 0;">
-    <div class="container text-center">
-      <p class="mb-0 opacity-75" style="font-size: 13px; letter-spacing: 0.5px;">
-        © 2026 Qasabe. All Rights Reserved.
-      </p>
+  <!-- FOOTER -->
+  <footer class="footer-bottom">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0 opacity-75">
+            © 2026 Qasabe. All Rights Reserved.
+          </p>
+        </div>
+        <div class="col-md-6 text-center text-md-end mt-3 mt-md-0 social-links">
+          <div class="d-flex justify-content-center justify-content-md-end gap-3">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   
   <script>
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
     function updateCounts(){
       const totalQty = cart.reduce((sum,item) => sum + item.qty, 0);
       if(document.getElementById("cartCount")) document.getElementById("cartCount").innerText = totalQty;
       if(document.getElementById("wishlistCount")) document.getElementById("wishlistCount").innerText = wishlist.length;
     }
     updateCounts();
+
+    const lightbox = GLightbox({
+      touchNavigation: true,
+      loop: true,
+      zoomable: true
+    });
+    
+    const watchBtn = document.getElementById("watchBtn");
+    const video = document.getElementById("storyVideo");
+
+    watchBtn.addEventListener("click", function () {
+        setTimeout(() => {
+            video.play();
+        }, 500);
+    });
+
   </script>
 </body>
 </html>
