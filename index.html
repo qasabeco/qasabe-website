@@ -480,6 +480,7 @@ h1,h2,h3{
   display: flex;
   justify-content: flex-start;
 }
+
 .review-card p {
   font-size: 15px;
   color: #444;
@@ -488,6 +489,43 @@ h1,h2,h3{
   margin-bottom: 20px;
   font-family: Arial, sans-serif;
 }
+
+.cert-card{
+  background:white;
+  padding:35px 25px;
+  border-radius:20px;
+  height:100%;
+  border:1px solid rgba(201,155,59,0.3);
+  transition:0.3s;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.cert-card:hover{
+  transform:translateY(-8px);
+  border:2px solid var(--gold);
+  box-shadow:0 15px 30px rgba(201,155,59,0.25);
+}
+
+.cert-card img{
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  margin-bottom:20px;
+}
+
+.cert-card h5{
+  font-family:'Cormorant Garamond', serif;
+  color:var(--navy);
+  font-size:26px;
+  font-weight:700;
+}
+
+.cert-card p{
+  font-size:14px;
+  color:#555;
+  line-height:1.6;
+}
+
 .review-divider {
   border-top: 1px solid rgba(201, 155, 59, 0.15);
   margin-bottom: 15px;
@@ -522,23 +560,47 @@ h1,h2,h3{
 .verified-tag i {
   font-size: 12px;
 }
-.story-box{
-  background:#f5f5f5;
-  color:#111;
-  border-radius:30px;
-  padding:50px;
+
+.story-video-card{
+background:white;
+color:#111;
+border-radius:25px;
+overflow:hidden;
+padding-bottom:25px;
+height:100%;
+box-shadow:0 15px 35px rgba(0,0,0,.25);
+transition:.3s;
 }
-.video-wrap{
-  position:relative;
-  width:100%;
+
+
+.story-video-card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 40px rgba(201,155,59,.35);
 }
-.video-thumb{
-  width:100%;
-  height:350px;
-  object-fit:cover;
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
+
+
+.story-video-card video{
+width:100%;
+height:350px;
+object-fit:cover;
 }
+
+
+.story-video-card h4{
+font-family:'Cormorant Garamond',serif;
+font-size:30px;
+font-weight:700;
+color:var(--navy);
+padding:20px 20px 5px;
+}
+
+
+.story-video-card p{
+font-size:14px;
+color:#555;
+padding:0 20px;
+}
+
 .footer-brand{
   display:flex;
   align-items:center;
@@ -753,6 +815,9 @@ html { scroll-behavior: smooth; }
   border-radius: 10px;
 }
 </style>
+<head>
+    <!-- Code-code awak yang lain -->
+    <link rel="stylesheet" href="ai-chat-v2.css">
 </head>
 <body>
 
@@ -1096,35 +1161,199 @@ html { scroll-behavior: smooth; }
   </div>
 </section>
 
-<section class="section-dark" id="story">
-  <div class="container">
-    <div class="story-box">
-      <div class="text-center mb-4">
-        <h2>SEE IT TO BELIEVE IT</h2>
-        <p class="text-muted">From digital imagination to real-life action. Dive into our creation below!</p>
-      </div>
-     
-      <div class="row g-4 align-items-stretch">
-        <div class="col-md-6">
-          <video controls class="video-thumb w-100 rounded shadow-sm">
-            <source src="images/video.mp4" type="video/mp4">
-          </video>
-        </div>
+<section class="section-light" id="certification">
+  <div class="container text-center">
 
-        <div class="col-md-6">
-          <div class="video-scroll-container d-flex flex-row gap-3">
-            <video controls class="video-thumb rounded shadow-sm">
-              <source src="images/video2.mp4" type="video/mp4">
-            </video>
-            <video controls class="video-thumb rounded shadow-sm">
-              <source src="images/video2i.mp4" type="video/mp4">
-            </video>
-          </div>
+    <div style="
+      color:var(--gold);
+      letter-spacing:3px;
+      font-size:13px;
+      font-weight:600;">
+      • QUALITY YOU CAN TRUST •
+    </div>
+
+    <h2 class="review-title">
+      CERTIFIED & APPROVED
+    </h2>
+
+    <p class="text-muted mx-auto mb-5" 
+       style="max-width:650px;">
+      Every QASABE product is carefully developed with 
+      safety, quality, and sustainability in mind. 
+      Our products follow recognised standards to ensure 
+      customers receive trusted sugarcane-based innovations.
+    </p>
+
+
+    <div class="row g-4 justify-content-center">
+
+
+      <!-- HALAL -->
+      <div class="col-md-3">
+        <div class="cert-card">
+
+          <img src="images/halal.png">
+
+          <h5>HALAL Certified</h5>
+
+          <p>
+            Produced according to halal standards,
+            ensuring ingredients and processes are 
+            safe and suitable for consumers.
+          </p>
+
         </div>
       </div>
+
+
+
+      <!-- GMP -->
+      <div class="col-md-3">
+        <div class="cert-card">
+
+          <img src="images/gmp.png">
+
+          <h5>GMP Standard</h5>
+
+          <p>
+            Manufactured following Good Manufacturing 
+            Practice guidelines to maintain product 
+            hygiene and quality.
+          </p>
+
+        </div>
+      </div>
+
+
+
+      <!-- ECO -->
+      <div class="col-md-3">
+        <div class="cert-card">
+
+          <img src="images/eco.png">
+
+          <h5>Eco Friendly</h5>
+
+          <p>
+            Created from sustainable sugarcane resources 
+            to reduce waste and support environmental care.
+          </p>
+
+        </div>
+      </div>
+
+
+
+      <!-- NATURAL -->
+      <div class="col-md-3">
+        <div class="cert-card">
+
+          <img src="images/npra.png">
+
+          <h5>Made in Malaysia</h5>
+
+          <p>
+            Proudly developed in Malaysia by supporting 
+      local innovation, sustainable production, 
+      and community growth.
+          </p>
+
+        </div>
+      </div>
+
+
     </div>
+
   </div>
 </section>
+
+<section class="section-dark" id="story">
+
+<div class="container">
+
+<div class="text-center mb-5">
+
+<h2>
+QASABE STORIES
+</h2>
+
+<p>
+A journey from nature, innovation and sustainable living.
+Explore how sugarcane inspires every creation.
+</p>
+
+</div>
+
+
+<div class="row g-4">
+
+
+<div class="col-md-4">
+
+<div class="story-video-card">
+
+<video controls>
+<source src="images/video2.mp4" type="video/mp4">
+</video>
+
+<h4>From Nature</h4>
+
+<p>
+Discover the beauty of sugarcane resources and how nature inspires our products.
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-4">
+
+<div class="story-video-card">
+
+<video controls>
+<source src="images/video2i.mp4" type="video/mp4">
+</video>
+
+<h4>Sustainable Innovation</h4>
+
+<p>
+Transforming sugarcane waste into valuable eco-friendly solutions.
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-4">
+
+<div class="story-video-card">
+
+<video controls>
+<source src="images/video2ii.mp4" type="video/mp4">
+</video>
+
+<h4>Better Tomorrow</h4>
+
+<p>
+Creating meaningful products for people and the planet.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
 
 <section class="qasabe-contact-section" id="contact">
   <div class="contact-shade-bg"></div>
@@ -1212,9 +1441,62 @@ html { scroll-behavior: smooth; }
 
 <footer>
   <div class="container">
+    <div class="row gy-4">
+
+      <!-- BRAND -->
+      <div class="col-md-4">
+        <div class="footer-brand">
+          <img src="images/logor.png" alt="QASABE Logo">
+          <h4>QASABE</h4>
+        </div>
+        <p>
+          From Cane to Change. Creating sustainable 
+          sugarcane-based products for a better tomorrow.
+        </p>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="col-md-2">
+        <div class="footer-title">QUICK LINKS</div>
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="Category.html">Products</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <!-- CUSTOMER SERVICE -->
+      <div class="col-md-3">
+        <div class="footer-title">CUSTOMER SERVICE</div>
+        <a href="policy.html#shipping-policy">Shipping Information</a>
+        <a href="policy.html#refund-policy">Refund Policy</a>
+        <a href="policy.html#terms-policy">Terms & Conditions</a>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="col-md-3">
+        <div class="footer-title">CONTACT US</div>
+        <p>
+          <i class="bi bi-envelope"></i>
+          helloqasabe@gmail.com
+        </p>
+        <p>
+          <i class="bi bi-instagram"></i>
+          @qasabecorp
+        </p>
+        <p>
+          <i class="bi bi-leaf"></i>
+          Sustainable Choices
+        </p>
+      </div>
+
+    </div>
+
+    <hr style="border-color:rgba(255,255,255,0.2); margin-top:30px;">
+
     <p class="text-center mb-0">
-      ©️ 2026 Qasabe. All Rights Reserved.
+      ©️ 2026 QASABE. All Rights Reserved.
     </p>
+
   </div>
 </footer>
 
@@ -1269,27 +1551,45 @@ function updateCounts(){
 }
 
 function addToCart(id){
-  let existing = cart.find(item => item.id === id);
-  if(existing){
-    existing.qty++;
-  }else{
-    cart.push({ id: id, qty: 1 });
-  }
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCounts();
-  alert("Added to cart successfully!");
-}
+	  // 🔥 SEKATAN UNTUK GUEST: Check user dah login ke belum
+	  let currentUser = JSON.parse(localStorage.getItem("customerAccount"));
+	  if (!currentUser) {
+	    alert("Oops! You need to login first to add items to the cart.");
+	    window.location.href = "login.html";
+	    return; // Stop fungsi daripada teruskan add to cart
+	  }
 
-function addToWishlist(id){
-  if(!wishlist.includes(id)){
-    wishlist.push(id);
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    updateCounts();
-    alert("Added to wishlist!");
-  } else {
-    alert("Item is already in your wishlist.");
-  }
-}
+	  // Kod asal kau di bawah (berjalan macam biasa kalau dah login)
+	  let existing = cart.find(item => item.id === id);
+	  if(existing){
+	    existing.qty++;
+	  }else{
+	    cart.push({ id: id, qty: 1 });
+	  }
+	  localStorage.setItem("cart", JSON.stringify(cart));
+	  updateCounts();
+	  alert("Added to cart successfully!");
+	}
+
+	function addToWishlist(id){
+	  // 🔥 SEKATAN UNTUK GUEST: Check user dah login ke belum
+	  let currentUser = JSON.parse(localStorage.getItem("customerAccount"));
+	  if (!currentUser) {
+	    alert("Oops! You need to login first to add items to your wishlist.");
+	    window.location.href = "login.html";
+	    return; // Stop fungsi daripada teruskan add to wishlist
+	  }
+
+	  // Kod asal kau di bawah (berjalan macam biasa kalau dah login)
+	  if(!wishlist.includes(id)){
+	    wishlist.push(id);
+	    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+	    updateCounts();
+	    alert("Added to wishlist!");
+	  } else {
+	    alert("Item is already in your wishlist.");
+	  }
+	}
 
 function showSuggestions(val) {
   const box = document.getElementById("suggestionBox");
@@ -1361,5 +1661,9 @@ window.onload = function() {
   checkLoginStatus(); 
 };
 </script>
-</body>
+<body>
+    <!-- Kandungan website awak (Header, Banner, Footer, dll) -->
+    
+    <!-- Letak script kat bawah sekali supaya website loading laju -->
+<script src="ai-chat-v2.js"></script></body>
 </html>
