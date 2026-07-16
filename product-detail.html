@@ -125,8 +125,12 @@
     .thumb img{ width:75%; height:75%; object-fit:contain; }
     .product-tag{ display:inline-block; background:rgba(201,155,59,0.16); color:var(--gold); padding:8px 18px; border-radius:30px; font-weight:700; font-size:13px; margin-bottom:18px; }
     .product-title{ color:var(--navy); font-size:38px; font-weight:800; line-height:1.2; margin-bottom:15px; font-family: Georgia, serif; }
-    .rating-header{ color:#ffc107; font-size:20px; margin-bottom:14px; }
-    .rating-header span{ color:#6b7280; font-size:14px; margin-left:8px; }
+    
+    /* FIX ALIGNMENT RATING PRODUCT MAIN */
+    .rating-header{ display: flex; align-items: center; gap: 6px; margin-bottom:14px; }
+    .rating-header .stars{ color:#ffc107; font-size:18px; }
+    .rating-header span{ color:#6b7280; font-size:14px; font-weight: 600; }
+    
     .price{ font-size:34px; color:var(--navy); font-weight:800; margin-bottom:10px; }
     .old-price{ font-size:18px; color:#9ca3af; text-decoration:line-through; margin-left:10px; }
     .stock{ display:inline-flex; align-items:center; gap:8px; background:#e7f8ee; color:#15803d; font-weight:700; padding:8px 16px; border-radius:25px; margin-bottom:22px; }
@@ -165,12 +169,41 @@
     .related-card:hover{ transform:translateY(-8px); box-shadow:0 18px 35px rgba(7,24,39,.12); }
     .related-card img{ width:160px; height:160px; object-fit:contain; margin-bottom:18px; }
     .related-card h5{ color:var(--navy); font-weight:800; }
-    .reviews-section { background: var(--soft); padding: 70px 0; }
-    .review-item-box { background: white; border-radius: 20px; padding: 25px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); border-left: 4px solid var(--gold); }
-    .user-avatar-initial { width: 45px; height: 45px; background: var(--navy); color: white; font-weight: bold; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-    .star-rating-select { font-size: 24px; color: #ddd; cursor: pointer; }
-    .star-rating-select .bi-star-fill.active { color: #ffc107; }
-    .submit-review-card { background: white; border-radius: 24px; padding: 35px; box-shadow: 0 10px 30px rgba(7,24,39,0.05); }
+
+    /* ==========================================================================
+       PROPER ADVANCED E-COMMERCE REVIEWS & RATING UPGRADE
+       ========================================================================== */
+    .reviews-section { background: #fdfbf7; padding: 80px 0; border-top: 1px solid #ebdccb; }
+    
+    /* Rating Summary Dashboard Card */
+    .rating-summary-card { background: white; border-radius: 24px; padding: 30px; box-shadow: 0 10px 30px rgba(7,24,39,0.04); height: 100%; border: 1px solid #eee; }
+    .big-rating-number { font-size: 56px; font-weight: 800; color: var(--navy); line-height: 1; }
+    .progress-bar-wrapper { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 13px; color: #6b7280; }
+    .progress-bar-wrapper .progress { flex: 1; height: 8px; background-color: #f3f4f6; border-radius: 4px; }
+    .progress-bar-wrapper .progress-bar { background-color: #ffc107; border-radius: 4px; }
+    
+    /* Filter Bar System */
+    .review-filter-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+    .filter-btn { background: white; border: 1px solid #e5e7eb; color: #4b5563; font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 20px; transition: 0.2s; cursor: pointer;}
+    .filter-btn:hover, .filter-btn.active { background: var(--navy); color: white; border-color: var(--navy); }
+    
+    /* Modern Review Item Box */
+    .review-item-box { background: white; border-radius: 20px; padding: 25px; margin-bottom: 20px; box-shadow: 0 4px 20px rgba(7,24,39,0.02); border: 1px solid #f3ece4; transition: 0.3s; }
+    .review-item-box:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(7,24,39,0.05); }
+    .user-avatar-initial { width: 45px; height: 45px; background: linear-gradient(135deg, var(--navy), #1d3549); color: white; font-weight: bold; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: 0 4px 10px rgba(7,24,39,0.15); }
+    .verified-badge { background: #e6f7ed; color: #1f7a42; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 12px; display: inline-flex; align-items: center; gap: 4px; }
+    
+    /* Review Image Placeholders */
+    .review-images-attached { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .review-img-thumb { width: 70px; height: 70px; border-radius: 8px; object-fit: cover; border: 1px solid #e5e7eb; cursor: pointer; transition: 0.2s; }
+    .review-img-thumb:hover { transform: scale(1.05); border-color: var(--gold); }
+    
+    /* Write a Review Styling */
+    .star-rating-select { font-size: 28px; color: #e5e7eb; cursor: pointer; transition: 0.2s; }
+    .star-rating-select i { transition: 0.2s; }
+    .star-rating-select i.active { color: #ffc107; text-shadow: 0 0 5px rgba(255,193,7,0.3); }
+    .submit-review-card { background: white; border-radius: 24px; padding: 35px; box-shadow: 0 15px 40px rgba(7,24,39,0.06); border: 1px solid #eee; sticky-top: 20px; }
+    
     .q-thanks-box { background: var(--cream); padding: 40px 0; border-top: 1px dashed rgba(201, 155, 59, 0.3); text-align: center; }
     .q-thanks-text { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 600; font-style: italic; color: var(--navy); }
     footer{ background:var(--navy); color:white; padding:40px 0 20px; font-size:13px; text-align: center;}
@@ -210,6 +243,7 @@
       </div>
     </div>
   </nav>
+
   <section class="product-section">
     <div class="container">
       <div class="breadcrumb-area">
@@ -230,9 +264,14 @@
           <div class="col-lg-7">
             <span class="product-tag" id="productCategory">Category</span>
             <h1 class="product-title" id="productName">Product Name</h1>
+            
+            <!-- ALIGNED STAR RATING HEADER -->
             <div class="rating-header">
-              <span id="starsDisplay">★★★★★</span> <span id="ratingText">(4.5)</span>
+              <div class="stars" id="starsDisplay">★★★★★</div> 
+              <span id="ratingText">(4.5 / 5.0)</span>
+              <span class="text-muted ms-1">• <u style="cursor:pointer;" onclick="document.getElementById('reviews-anchor').scrollIntoView({behavior: 'smooth'});"><span id="reviewCountBadge">12</span> Reviews</span></u>
             </div>
+
             <div class="price">
               <span id="productPrice">RM 0.00</span>
               <span class="old-price" id="oldPrice"></span>
@@ -276,33 +315,97 @@
           </div>
         </div>
       </div>
+      
       <div class="detail-tabs">
         <ul class="nav nav-pills">
           <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#description">Description</button></li>
           <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#ingredients">Ingredients</button></li>
           <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#shipping">Shipping</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#refund">Refund Policy</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#terms">Terms & Conditions</button></li>
         </ul>
         <div class="tab-content">
           <div class="tab-pane fade show active" id="description"><h5 class="fw-bold text-dark mb-3">Product Description</h5><p id="tabDescription"></p></div>
           <div class="tab-pane fade" id="ingredients"><h5 class="fw-bold text-dark mb-3">Main Ingredients</h5><p id="tabIngredients"></p></div>
           <div class="tab-pane fade" id="shipping"><h5 class="fw-bold text-dark mb-3">Shipping Information</h5><p>Delivery available within Malaysia. Orders will be processed within 1-3 working days.</p></div>
+          <div class="tab-pane fade" id="refund"><h5 class="fw-bold text-dark mb-3"><i class="bi bi-arrow-counterclockwise text-warning"></i> Refund Policy</h5><p id="refundContent"></p></div>
+          <div class="tab-pane fade" id="terms"><h5 class="fw-bold text-dark mb-3"><i class="bi bi-shield-check text-warning"></i> Terms & Conditions</h5><p id="termsContent"></p></div>
         </div>
       </div>
     </div>
   </section>
-  <section class="reviews-section">
+
+  <!-- ======================== UPGRADED REALISTIC REVIEW SECTION ======================== -->
+  <section class="reviews-section" id="reviews-anchor">
     <div class="container">
+      <div class="row g-4 mb-5">
+        <div class="col-12">
+          <h3 class="fw-bold text-dark mb-2" style="font-family: Georgia, serif;">Customer Feedbacks & Reviews</h3>
+          <p class="text-muted">See what our community has to say about their experience.</p>
+        </div>
+        
+        <!-- PROPER ECOMMERCE DASHBOARD SUMMARY -->
+        <div class="col-md-4">
+          <div class="rating-summary-card d-flex flex-column justify-content-center align-items-center text-center">
+            <div class="big-rating-number" id="dashboardAvgRating">4.5</div>
+            <div class="text-warning my-2 fs-4" id="dashboardStars">★★★★★</div>
+            <div class="text-secondary small fw-bold">Based on <span id="dashboardTotalReview">12</span> Reviews</div>
+          </div>
+        </div>
+        
+        <div class="col-md-8">
+          <div class="rating-summary-card d-flex flex-column justify-content-center">
+            <div class="progress-bar-wrapper">
+              <span>5 Stars</span>
+              <div class="progress"><div class="progress-bar" style="width: 75%"></div></div>
+              <span style="width: 30px; text-align: right;">75%</span>
+            </div>
+            <div class="progress-bar-wrapper">
+              <span>4 Stars</span>
+              <div class="progress"><div class="progress-bar" style="width: 15%"></div></div>
+              <span style="width: 30px; text-align: right;">15%</span>
+            </div>
+            <div class="progress-bar-wrapper">
+              <span>3 Stars</span>
+              <div class="progress"><div class="progress-bar" style="width: 8%"></div></div>
+              <span style="width: 30px; text-align: right;">8%</span>
+            </div>
+            <div class="progress-bar-wrapper">
+              <span>2 Stars</span>
+              <div class="progress"><div class="progress-bar" style="width: 2%"></div></div>
+              <span style="width: 30px; text-align: right;">2%</span>
+            </div>
+            <div class="progress-bar-wrapper">
+              <span>1 Stars</span>
+              <div class="progress"><div class="progress-bar" style="width: 0%"></div></div>
+              <span style="width: 30px; text-align: right;">0%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILTER REVIEW CHIPS LIKE REAL E-COMMERCE -->
+      <div class="review-filter-buttons" id="filterBtnGroup">
+        <button class="filter-btn active" data-filter="all">All Reviews</button>
+        <button class="filter-btn" data-filter="5-stars">5 Stars</button>
+        <button class="filter-btn" data-filter="4-stars">4 Stars</button>
+        <button class="filter-btn" data-filter="images">With Images</button>
+      </div>
+
       <div class="row g-5">
+        <!-- REVIEWS LISTING -->
         <div class="col-lg-7">
-          <h3 class="fw-bold text-dark mb-4" style="font-family: Georgia, serif;">Product Feedbacks</h3>
           <div id="reviewsContainer"></div>
         </div>
+        
+        <!-- REVIEW FORM BOX -->
         <div class="col-lg-5">
           <div class="submit-review-card">
-            <h4 class="fw-bold text-dark mb-2" style="font-family: Georgia, serif;">Write a Review</h4>
+            <h4 class="fw-bold text-dark mb-2" style="font-family: Georgia, serif;">Share Your Thoughts</h4>
+            <p class="small text-muted mb-4">Your feedback helps thousands of other buyers make the right decision.</p>
             <form id="reviewForm" onsubmit="handleReviewSubmit(event)">
               <div class="mb-3">
-                <label class="form-label fw-bold small text-secondary">YOUR RATING</label>
+                <label class="form-label fw-bold small text-secondary d-block">YOUR RATING</label>
                 <div class="star-rating-select d-flex gap-1" id="starSelector">
                   <i class="bi bi-star-fill active" data-value="1"></i>
                   <i class="bi bi-star-fill active" data-value="2"></i>
@@ -311,15 +414,27 @@
                   <i class="bi bi-star-fill active" data-value="5"></i>
                 </div>
               </div>
-              <div class="mb-3"><label class="form-label fw-bold small text-secondary">YOUR NAME</label><input type="text" class="form-control rounded-3" id="reviewUser" required></div>
-              <div class="mb-4"><label class="form-label fw-bold small text-secondary">FEEDBACK</label><textarea class="form-control rounded-3" id="reviewComment" rows="4" required></textarea></div>
-              <button type="submit" class="w-100 btn-qasabe btn-gold text-uppercase">Submit Feedback</button>
+              <div class="mb-3">
+                <label class="form-label fw-bold small text-secondary">YOUR NAME</label>
+                <input type="text" class="form-control rounded-3 py-2 border-secondary-subtle" id="reviewUser" placeholder="e.g. Aina Syazwani" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label fw-bold small text-secondary">DETAILED COMMENT</label>
+                <textarea class="form-control rounded-3 border-secondary-subtle" id="reviewComment" rows="4" placeholder="What did you like or dislike about this product? Share details about quality, packaging, delivery..." required></textarea>
+              </div>
+              <div class="mb-4">
+                <label class="form-label fw-bold small text-secondary">ATTACH PHOTO</label>
+                <input type="file" class="form-control rounded-3 fs-7 border-secondary-subtle" id="reviewImage" accept="image/*">
+                <span class="text-muted" style="font-size:11px;">Drop your product photos here to share with everyone!</span>
+              </div>
+              <button type="submit" class="w-100 btn-qasabe btn-gold text-uppercase shadow-sm">Submit Verification & Feedback</button>
             </form>
           </div>
         </div>
       </div>
     </div>
   </section>
+
   <section class="related-section">
     <div class="container">
       <h2 class="section-title">You May Also Like</h2>
@@ -332,180 +447,250 @@
   </section>
   <div class="q-thanks-box"><div class="q-thanks-text">Thank you for supporting QASABE ♡</div></div>
   <footer><p>© 2026 Qasabe. All Rights Reserved.</p></footer>
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-const products = {
-  "juice": { 
-    name: "QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage | Natural Hydration & Wellness", 
-    category: "Refreshing Drink", 
-    price: 8.90, 
-    oldPrice: "", 
-    rating: "(4.2 / 5.0)", 
-    stars: "★★★★☆", 
-    image: "images/drink (P).jpeg", 
-    thumb2: "images/valuedrink.jpeg", 
-    thumb3: "images/valuedrink2.png", 
-    desc: "Experience pure vitality with our raw, premium cold-pressed sugarcane elixir. Crafted carefully to lock in essential enzymes with absolutely zero additives.", 
-    tabDesc: "QASABE Refresh Juice is intentionally engineered to reset your body's hydration levels naturally. Packed with organic antioxidants, key electrolytes, and live minerals, this beverage completely bypasses the typical processed 'sugar crash' while flushing out toxic build-ups and optimizing digestive performance. Best enjoyed ice-cold whenever you crave a pristine, crisp source of daily clean energy.", 
-    ingredients: "100% Pure Premium Cold-Pressed Sugarcane Extract. Zero added processed sugars, completely chemical preservative-free, and no artificial coloring.", 
-    benefits: ["100% Raw & No Added Refined Sugars", "Rich in Live Trace Minerals & Bioflavonoids", "Rapid Cellular Hydration Boost"], 
-    defaultReviews: [{ name: "Khairul A.", rating: 5, comment: "Fresh!", date: "2026-05-12" }] 
-  },
-  "energy-snack": { 
-    name: "QASABE Sugarcane Energy Snack | Natural Quick Energy | Healthy On-The-Go Snack", 
-    category: "Energy Snack", 
-    price: 19.90, 
-    oldPrice: "", 
-    rating: "(4.5 / 5.0)", 
-    stars: "★★★★☆", 
-    image: "images/energy snack (P).png", 
-    thumb2: "images/valuesnack.png", 
-    thumb3: "images/valuesnack2.png", 
-    desc: "A nutrient-dense clean fuel snack built around raw sugarcane goodness. Perfect for keeping your physical and mental stamina dialed in during heavy tasks.", 
-    tabDesc: "QASABE Sugarcane Energy Snack is the ultimate answer for professionals, athletes, and fast-paced individuals who refuse to compromise health for convenience. Seamlessly fusing natural cane sucrose with high-grade complex carbs, this bar delivers sustained metabolic fuel during long drives, endurance hikes, or dense working hours. Keep your physical stamina and cognitive focus firing sharp without synthetic jitter triggers.", 
-    ingredients: "Handpicked concentrated sugarcane bits, premium puffed whole grains, wild-harvested honey, and an artisanal roasted nut blend.", 
-    benefits: ["Compact Pocket-Sized On-the-Go Pack", "Sustained Low-Glycemic Energy Release", "Zero Trans-Fats & Low Saturated Fats"], 
-    defaultReviews: [{ name: "Faiz", rating: 5, comment: "Delicious!", date: "2026-04-18" }] 
-  },
-  "herbal-drink": { 
-    name: "QASABE Herbal Drink | Traditional Wellness Beverage | Natural Daily Health Support", 
-    category: "Wellness Drink", 
-    price: 33.90, 
-    oldPrice: "", 
-    rating: "(3.8 / 5.0)", 
-    stars: "★★★☆☆", 
-    image: "images/herbal drink (P).png", 
-    thumb2: "images/valuehbdrink.png", 
-    thumb3: "images/valuehbdrink2.png", 
-    desc: "A harmonizing botanical blend balancing natural cane base sweetness with centuries-old wellness herbs. Great for overall full-body alignment.", 
-    tabDesc: "QASABE Herbal Drink unites authentic heritage remedies with progressive clean processing tech for comprehensive daily system reinforcement. Formulated to safely downregulate internal heat stress, soothe strained throat tissues, and combat fatigue, this functional tonic works aggressively to clear systemic inflammation. Its light, subtly earthy profile provides a restorative routine for multi-generational household health.", 
-    ingredients: "Select sugarcane base extract, cooling botanical decoctions (including wild-harvested roots and premium chrysanthemums), and ultra-purified structured water.", 
-    benefits: ["Effective Internal Body-Cooling Support", "Helps Modulate Healthy Immune Responses", "Extremely Light & Soothing Botanical Finish"], 
-    defaultReviews: [] 
-  },
-  "organic-cube": { 
-    name: "QASABE Sugarcane Cube | Natural Cane Sweetener | Convenient Sugar Alternative", 
-    category: "Natural Sweetener", 
-    price: 14.90, 
-    oldPrice: "", 
-    rating: "(4.5 / 5.0)", 
-    stars: "★★★★☆", 
-    image: "images/sugarcube (P).png", 
-    thumb2: "images/valuecube.jpeg", 
-    thumb3: "images/valuecube2.png", 
-    desc: "Unrefined raw sugarcane cubes processed entirely without industrial bone-char or heavy chemical sulfur bleaching.", 
-    tabDesc: "QASABE Sugarcane Cube retains the deep, intoxicating molasses-caramel notes completely lost in aggressive standard white table sugar processing. These cubes disintegrate easily under heat, making them an excellent premium upgrades for specialty coffees, artisanal teas, complex baking recipes, or slow-cooked sauces. Because it skips modern heavy processing, it shields vulnerable vital micronutrients.", 
-    ingredients: "100% Certified Organic Unbleached Raw Sugarcane Juice Concentrate.", 
-    benefits: ["Completely Unrefined & Zero Bleaching Agents", "Perfect Pre-Portioned Culinary Control", "Maintains Organic Rich Molasses Taste"], 
-    defaultReviews: [] 
-  },
-  "liquid-drop": { 
-    name: "QASABE Liquid Sweetener Drops | Zero-Mess Sweetening Solution | Natural Sugarcane Extract", 
-    category: "Best Deal", 
-    price: 16.90, 
-    oldPrice: "RM 20.80", 
-    rating: "(4.7 / 5.0)", 
-    stars: "★★★★☆", 
-    image: "images/liquid drop (P).jpeg", 
-    thumb2: "images/valuedrops.jpeg", 
-    thumb3: "images/valuedrops2.png", 
-    desc: "Highly concentrated raw sugarcane extract droplets. Absolute clutter-free, instant integration sweetness that follows you anywhere.", 
-    tabDesc: "QASABE Liquid Sweetener Drops are meticulously structured for individuals seeking total modern convenience without swallowing chemical artificial sweeteners. A subtle drop or two effortlessly spreads custom sweet flavors across any target hot or cold drink. The compact, leak-proof squeeze profile slips into the smallest travel kit or office pouch, instantly elevating your drinks on command.", 
-    ingredients: "Purified concentrated sugarcane nectar, distilled water base, and trace natural food-grade stabilizers.", 
-    benefits: ["Ultra-Concentrated Yield Per Bottle", "Leak-Proof, Pocket-Friendly Travel Build", "Dissolves Instantly in Hot or Freezing Liquids"], 
-    defaultReviews: [] 
-  },
-  "sleep-mist": { 
-    name: "QASABE Sleep Mist | Relaxing Aromatherapy Spray | Better Sleep & Calmness", 
-    category: "Aromatherapy", 
-    price: 24.90, 
-    oldPrice: "RM 31.15", 
-    rating: "(4.5 / 5.0)", 
-    stars: "★★★★☆", 
-    image: "images/sleep-mist (P).png", 
-    thumb2: "images/valuesmist.png", 
-    thumb3: "images/valuesmist2.png", 
-    desc: "A therapeutic-grade aromatherapeutic cloud spray formulated to down-regulate high nervous system energy before bed.", 
-    tabDesc: "QASABE Sleep Mist marries rare, highly potent botanical essential oils specifically chosen to stop sensory overstimulation dead in its tracks. Deliberately spray a fine mist over pillows, luxury linens, or open bedroom spaces right before winding down. This triggers rapid sensory calming pathways, helping shorten the time it takes to enter deep REM cycles so you wake up genuinely restored.", 
-    ingredients: "Premium essential oil distillate of French Lavender, calming Chamomile flower extracts, therapeutic floral hydrosols, and clean botanical stabilizers.", 
-    benefits: ["Accelerates Deep Restful REM Sleep States", "100% Pure Non-Synthetic Botanical Aroma", "Zero Stain, Oil-Free Micro-Diffusion Technology"], 
-    defaultReviews: [] 
-  },
-  "aha-toner": { 
-    name: "QASABE AHA Toner | Gentle Exfoliating Toner | Smooth & Radiant Skin", 
-    category: "Skincare", 
-    price: 26.90, 
-    oldPrice: "", 
-    rating: "(4.5 / 5.0)", 
-    stars: "★★★★☆", 
-    image: "images/AHA toner (P).png", 
-    thumb2: "images/valuetoner.png", 
-    thumb3: "images/valuetoner1.png", 
-    desc: "A gentle daily cell-renewing resurfacing treatment designed to clear dead skin buildup, smooth uneven texture, and refine pore depth.", 
-    tabDesc: "QASABE AHA Toner harnesses sugar-derived chemical exfoliation to safely break down stubborn dead skin bonds without peeling out your skin's moisture barrier. Steady application visibly targets dull acne marks, stubborn blackheads, and micro-texture. This clears the way for subsequent serums to penetrate twice as deep for a healthy skin glow.", 
-    ingredients: "Sugarcane-derived Alpha-Hydroxy Acid (AHA) matrix, organic humectants, soothing Aloe Vera fillet juices, and clean anti-inflammatory compounds.", 
-    benefits: ["Gentle Exfoliation Without Harsh Redness", "Unclogs & Constricts Enlarged Pore Walls", "Evens Out Stubborn Dark Hyperpigmentation"], 
-    defaultReviews: [] 
-  },
-  "shampoo": { 
-    name: "QASABE Nourishing Shampoo | Sugarcane Hair Care | Healthy & Refreshed Hair", 
-    category: "Hair Care", 
-    price: 49.00, 
-    oldPrice: "", 
-    rating: "(4.0 / 5.0)", 
-    stars: "★★★★☆", 
-    image: "images/shampoo (P).png", 
-    thumb2: "images/valueshampoo.png", 
-    thumb3: "images/valueshampoo2.png", 
-    desc: "A luxury sulfate-free scalp clarifying wash infusing organic sugarcane enzymes to strengthen structural roots and combat shedding.", 
-    tabDesc: "QASABE Nourishing Shampoo brings a premium, professional-tier scalp therapy experience straight into your daily shower routine. Utilizing raw sugarcane enzyme complexes, it lifts crusty sebum buildup and flaky dandruff particles without stripping your scalp's vital natural oils. Hair cuticles are left smooth, resilient against split ends, and naturally volumized with a clean scent.", 
-    ingredients: "Bio-active sugarcane moisture extract, Pro-Vitamin B5 (Panthenol), plant-derived micro-keratin structural proteins, and gentle sulfate-free coconut-based surfactants.", 
-    benefits: ["Fortifies Hair Follicles to Reduce Shedding", "100% Free from Sulfates, Parabens, & Silicones", "Maintains Perfect Scalp pH Balance Control"], 
-    defaultReviews: [] 
-  },
-  "body-scrub": { 
-    name: "QASABE Body Scrub | Natural Sugarcane Exfoliator | Soft & Glowing Skin", 
-    category: "Body Care", 
-    price: 28.90, 
-    oldPrice: "", 
-    rating: "(4.3 / 5.0)", 
-    stars: "★★★★☆", 
-    image: "images/bscrub (P).jpeg", 
-    thumb2: "images/valuescrubs.jpeg", 
-    thumb3: "images/valuescrubs2.png", 
-    desc: "An ultra-pampering physical body scrub incorporating fine raw cane crystals to polish skin into an elite, luminous satin texture.", 
-    tabDesc: "QASABE Body Scrub sloughs away rough skin textures and deeply rooted impurities without micro-tearing sensitive skin tissue. Natural glycolic acids embedded within the raw sugarcane juice work to fade stubborn hyperpigmentation on elbows, knees, and underarms. A rich luxury botanical oil glaze ensures your skin feels deeply hydrated and smooth right out of the shower.", 
-    ingredients: "Micro-milled raw sugarcane sugar crystals, organic cold-pressed virgin coconut oil, sweet almond nourishing glaze, Tocopherol (Vitamin E), and bespoke essential oil blends.", 
-    benefits: ["Fine Non-Abrasive Crystals Prevent Skin Irritation", "Natural Glycolic Acid Safely Brightens Dull Areas", "Locks In Hydration with No Greasy After-Feel"], 
-    defaultReviews: [] 
-  },
-  "bagasse-packaging": {
-    name: "QASABE Eco Bagasse Packaging | Sustainable Food Container | Biodegradable & Plastic-Free",
-    category: "Eco Packaging",
-    price: 7.90, 
-    oldPrice: "",
-    rating: "(4.2 / 5.0)",
-    stars: "★★★★☆",
-    image: "images/packaging (P).png",
-    thumb2: "images/valuepackaging.png", 
-    thumb3: "images/valuepackaging2.png",
-    desc: "Premium, heavy-duty commercial food containers molded entirely from 100% repurposed sugarcane bagasse fiber waste.",
-    tabDesc: "QASABE Eco Bagasse Packaging is the ultimate green choice for modern high-volume eco-cafes, pro-catering lines, and conscious home hosts seeking an end to single-use plastics. These containers are physically rigid, structural, and inherently free of harmful chemical liners. Engineered to handle extreme food heat and dense liquids effortlessly, they fully compost naturally without burdening land environments.",
-    ingredients: "100% Unbleached All-Natural Sugarcane Bagasse Fiber Core. Totally chlorine-free processing and zero petroleum plastic contents.",
-    benefits: ["100% Fully Biodegradable & Backyard Compostable", "Highly Oil-Resistant, Waterproof, & Anti-Sogging", "100% Microwave-Safe & Freezer-Stable Construction"],
-    variations: {
-      "eco-food-container": { "25pcs": 7.90, "50pcs": 13.90, "100pcs": 24.90 },
-      "eco-packaging-box": { "25pcs": 7.90, "50pcs": 13.90, "100pcs": 24.90 }
-    },
-    defaultReviews: [{ name: "Ahmad Catering", rating: 5, comment: "Sturdy quality, holds up to oily food perfectly!", date: "2026-05-18" }]
-  }
-};
+  const products = {
+		  "juice": { 
+		    name: "QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage | Natural Hydration & Wellness", 
+		    category: "Refreshing Drink", 
+		    price: 8.90, 
+		    oldPrice: "", 
+		    rating: "(4.6 / 5.0)", 
+		    stars: "★★★★☆", 
+		    image: "images/drink (P).jpeg", 
+		    thumb2: "images/valuedrink.jpeg", 
+		    thumb3: "images/valuedrink2.png", 
+		    desc: "Experience pure vitality with our raw, premium cold-pressed sugarcane elixir. Crafted carefully to lock in essential enzymes with absolutely zero additives.", 
+		    tabDesc: "QASABE Refresh Juice is intentionally engineered to reset your body's hydration levels naturally. Packed with organic antioxidants, key electrolytes, and live minerals, this beverage completely bypasses the typical processed 'sugar crash' while flushing out toxic build-ups and optimizing digestive performance. Best enjoyed ice-cold whenever you crave a pristine, crisp source of daily clean energy.", 
+		    ingredients: "100% Pure Premium Cold-Pressed Sugarcane Extract. Zero added processed sugars, completely chemical preservative-free, and no artificial coloring.", 
+		    benefits: ["100% Raw & No Added Refined Sugars", "Rich in Live Trace Minerals & Bioflavonoids", "Rapid Cellular Hydration Boost"], 
+		    refund:"Refund requests are accepted within 7 days after receiving the product if the item is damaged, expired, leaking, or incorrect. Opened food products cannot be returned for hygiene and safety reasons.",
+		    terms:"Store products according to instructions. QASABE is not responsible for damage caused by improper storage after delivery.",
+		    defaultReviews: [
+		      { name: "Khairul A.", rating: 5, comment: "Pek penghantaran sangat kemas dengan bubble wrap tebal. Air sampai masih sejuk lagi! Rasa tebu asli dia padu tak manis melampau macam air kedai biasa.", date: "2026-05-12", hasImg: true },
+		      { name: "Sarah Jenkins", rating: 5, comment: "Absolutely refreshing! I was skeptical about ordering juice online, but it arrived perfectly chilled and tasted incredibly fresh. No artificial sweetness at all, just pure premium sugarcane. Will definitely subscribe for weekly deliveries!", date: "2026-06-01", hasImg: false },
+		      { name: "Jason Tan", rating: 5, comment: "Super fresh, perfectly low-glycemic feeling. No crash, clean boost for my runs. Highly recommended for active people.", date: "2026-06-18", hasImg: true },
+		      { name: "Melissa K.", rating: 4, comment: "Very refreshing and clean taste. It's hard to find cold-pressed juices that actually taste this natural. Docked one star only because of a minor delivery delay, but customer support was very helpful!", date: "2026-07-02", hasImg: false },
+		      { name: "David L.", rating: 5, comment: "This is the gold standard of sugarcane juice. Tastes like it was pressed right in front of me. Perfectly bottled and sealed.", date: "2026-07-10", hasImg: true }
+		    ] 
+		  },
+		  "energy-snack": { 
+		    name: "QASABE Sugarcane Energy Snack | Natural Quick Energy | Healthy On-The-Go Snack", 
+		    category: "Energy Snack", 
+		    price: 19.90, 
+		    oldPrice: "", 
+		    rating: "(4.5 / 5.0)", 
+		    stars: "★★★★☆", 
+		    image: "images/energy snack (P).png", 
+		    thumb2: "images/valuesnack.png", 
+		    thumb3: "images/valuesnack3.jpeg", 
+		    desc: "A nutrient-dense clean fuel snack built around raw sugarcane goodness. Perfect for keeping your physical and mental stamina dialed in during heavy tasks.", 
+		    tabDesc: "QASABE Sugarcane Energy Snack is the ultimate answer for professionals, athletes, and fast-paced individuals who refuse to compromise health for convenience. Seamlessly fusing natural cane sucrose with high-grade complex carbs, this bar delivers sustained metabolic fuel during long drives, endurance hikes, or dense working hours. Keep your physical stamina and cognitive focus firing sharp without synthetic jitter triggers.", 
+		    ingredients: "Handpicked concentrated sugarcane bits, premium puffed whole grains, wild-harvested honey, and an artisanal roasted nut blend.", 
+		    benefits: ["Compact Pocket-Sized On-the-Go Pack", "Sustained Low-Glycemic Energy Release", "Zero Trans-Fats & Low Saturated Fats"], 
+		    refund:"Refund requests are accepted within 7 days after receiving the product if the item is damaged, expired, leaking, or incorrect. Opened food products cannot be returned for hygiene and safety reasons.",
+		    terms:"Store products according to instructions. QASABE is not responsible for damage caused by improper storage after delivery.",
+		    defaultReviews: [
+		      { name: "Faiz Subri", rating: 5, comment: "Delicious and highly functional! Sangat sesuai bawak pergi hiking. Member sebelah pun pow satu sebab lapar.", date: "2026-04-18", hasImg: false },
+		      { name: "Amira Rosli", rating: 4, comment: "Bagus untuk kunyah-kunyah time jam kat highway. Kenyang tahan lama and crunchiness dia best gila.", date: "2026-05-30", hasImg: true },
+		      { name: "Robert Chen", rating: 5, comment: "Great clean energy bar! Unlike other commercial protein or energy bars that taste chalky or chemical-like, this sugarcane bar tastes real and wholesome. Perfect pre-workout snack.", date: "2026-06-15", hasImg: false },
+		      { name: "Samantha P.", rating: 5, comment: "The combination of grains and sugarcane sweetness is genius. It keeps me awake during long afternoon Zoom meetings without any caffeine jitters. Buying the 3-pack next time!", date: "2026-07-01", hasImg: true },
+		      { name: "Kevin V.", rating: 4, comment: "Very tasty and portable. My kids love it too, which is a big win because it is much healthier than candy bars. Just wish the portion size was slightly bigger!", date: "2026-07-12", hasImg: false }
+		    ] 
+		  },
+		  "herbal-drink": { 
+		    name: "QASABE Herbal Drink | Traditional Wellness Beverage | Natural Daily Health Support", 
+		    category: "Wellness Drink", 
+		    price: 33.90, 
+		    oldPrice: "", 
+		    rating: "(4.0 / 5.0)", 
+		    stars: "★★★★☆", 
+		    image: "images/herbal drink (P).png", 
+		    thumb2: "images/valuehbdrink.png", 
+		    thumb3: "images/valuehbdrink2.png", 
+		    desc: "A harmonizing botanical blend balancing natural cane base sweetness with centuries-old wellness herbs. Great for overall full-body alignment.", 
+		    tabDesc: "QASABE Herbal Drink unites authentic heritage remedies with progressive clean processing tech for comprehensive daily system reinforcement. Formulated to safely downregulate internal heat stress, soothe strained throat tissues, and combat fatigue, this functional tonic works aggressively to clear systemic inflammation. Its light, subtly earthy profile provides a restorative routine for multi-generational household health.", 
+		    ingredients: "Select sugarcane base extract, cooling botanical decoctions (including wild-harvested roots and premium chrysanthemums), and ultra-purified structured water.", 
+		    benefits: ["Effective Internal Body-Cooling Support", "Helps Modulate Healthy Immune Responses", "Extremely Light & Soothing Botanical Finish"], 
+		    refund:"Refund requests are accepted within 7 days after receiving the product if the item is damaged, expired, leaking, or incorrect. Opened food products cannot be returned for hygiene and safety reasons.",
+		    terms:"Store products according to instructions. QASABE is not responsible for damage caused by improper storage after delivery.",
+		    defaultReviews: [
+		      { name: "Mak Cik Salmah", rating: 4, comment: "Sesuai sangat minum waktu cuaca panas terik sekarang ni. Badan rasa ringan sikit and tak ada batuk-batuk dah.", date: "2026-06-11", hasImg: false },
+		      { name: "Grace O'Connor", rating: 5, comment: "Truly therapeutic! I had a scratchy throat for days, and this herbal concoction completely soothed it. The herbal taste is earthy but beautifully balanced by the natural sweetness of sugarcane. Incredible quality.", date: "2026-06-25", hasImg: true },
+		      { name: "Tariq Mahmood", rating: 4, comment: "Excellent herbal remedy. Tastes very traditional yet clean. It really helps cool down the body during heatwaves. Packaging is very professional.", date: "2026-07-04", hasImg: false }
+		    ] 
+		  },
+		  "organic-cube": { 
+		    name: "QASABE Sugarcane Cube | Natural Cane Sweetener | Convenient Sugar Alternative", 
+		    category: "Natural Sweetener", 
+		    price: 14.90, 
+		    oldPrice: "", 
+		    rating: "(4.5 / 5.0)", 
+		    stars: "★★★★☆", 
+		    image: "images/sugarcube (P).png", 
+		    thumb2: "images/valuecube.jpeg", 
+		    thumb3: "images/valuecube3.jpeg", 
+		    desc: "Unrefined raw sugarcane cubes processed entirely without industrial bone-char or heavy chemical sulfur bleaching.", 
+		    tabDesc: "QASABE Sugarcane Cube retains the deep, intoxicating molasses-caramel notes completely lost in aggressive standard white table sugar processing. These cubes disintegrate easily under heat, making them an excellent premium upgrades for specialty coffees, artisanal teas, complex baking recipes, or slow-cooked sauces. Because it skips modern heavy processing, it shields vulnerable vital micronutrients.", 
+		    ingredients: "100% Certified Organic Unbleached Raw Sugarcane Juice Concentrate.", 
+		    benefits: ["Completely Unrefined & Zero Bleaching Agents", "Perfect Pre-Portioned Culinary Control", "Maintains Organic Rich Molasses Taste"], 
+		    refund:"Refund requests are accepted within 7 days after receiving the product if the item is damaged, expired, leaking, or incorrect. Opened food products cannot be returned for hygiene and safety reasons.",
+		    terms:"Store products according to instructions. QASABE is not responsible for damage caused by improper storage after delivery.",
+		    defaultReviews: [
+		      { name: "Farah W.", rating: 5, comment: "Guna untuk baking biskut premium memang wangi dia lain macam. Cepat cair bila kena air panas.", date: "2026-05-24", hasImg: true },
+		      { name: "Jonathan Miller", rating: 5, comment: "These are a game-changer for my morning espresso! They add a rich, deep caramel flavor profile that ordinary white sugar cubes simply cannot match. Plus, they are unrefined. Love this!", date: "2026-06-15", hasImg: false },
+		      { name: "Sophia Zhang", rating: 4, comment: "Great alternative sweetener. They don't leave any chemical aftertaste. Dissolves quite quickly in hot tea. Packing is elegant.", date: "2026-07-02", hasImg: true }
+		    ] 
+		  },
+		  "liquid-drop": { 
+		    name: "QASABE Liquid Sweetener Drops | Zero-Mess Sweetening Solution | Natural Sugarcane Extract", 
+		    category: "Best Deal", 
+		    price: 16.90, 
+		    oldPrice: "RM 20.80", 
+		    rating: "(4.7 / 5.0)", 
+		    stars: "★★★★☆", 
+		    image: "images/liquid drop (P).jpeg", 
+		    thumb2: "images/valuedrops.jpeg", 
+		    thumb3: "images/valuedrops3.jpeg", 
+		    desc: "Highly concentrated raw sugarcane extract droplets. Absolute clutter-free, instant integration sweetness that follows you anywhere.", 
+		    tabDesc: "QASABE Liquid Sweetener Drops are meticulously structured for individuals seeking total modern convenience without swallowing chemical artificial sweeteners. A subtle drop or two effortlessly spreads custom sweet flavors across any target hot or cold drink. The compact, leak-proof squeeze profile slips into the smallest travel kit or office pouch, instantly elevating your drinks on command.", 
+		    ingredients: "Purified concentrated sugarcane nectar, distilled water base, and trace natural food-grade stabilizers.", 
+		    benefits: ["Ultra-Concentrated Yield Per Bottle", "Leak-Proof, Pocket-Friendly Travel Build", "Dissolves Instantly in Hot or Freezing Liquids"], 
+		    refund:"Refund requests are accepted within 7 days after receiving the product if the item is damaged, expired, leaking, or incorrect. Opened food products cannot be returned for hygiene and safety reasons.",
+		    terms:"Store products according to instructions. QASABE is not responsible for damage caused by improper storage after delivery.",
+		    defaultReviews: [
+		      { name: "Danial Hakim", rating: 5, comment: "Senang gila bawak pi office. Picit satu titik dalam kopi O panas terus ngam. Botol tak bocor langsung.", date: "2026-07-02", hasImg: false },
+		      { name: "Clarissa Vance", rating: 5, comment: "So handy! I keep one bottle in my handbag and one at my desk. Just 2 drops is more than enough for my iced tea. It dissolves instantly even in cold drinks, unlike raw honey or crystal sugar.", date: "2026-07-05", hasImg: true },
+		      { name: "Emily Watson", rating: 4, comment: "Super convenient and clean. Glad to have a natural alternative that isn't Stevia (which usually has a weird aftertaste). This tastes exactly like real sugarcane juice. Very concentrated!", date: "2026-07-11", hasImg: false }
+		    ] 
+		  },
+		  "sleep-mist": { 
+			    name: "QASABE Sleep Mist | Relaxing Aromatherapy Spray | Better Sleep & Calmness", 
+			    category: "Aromatherapy", 
+			    price: 24.90, 
+			    oldPrice: "RM 31.15", 
+			    rating: "(4.8 / 5.0)", 
+			    stars: "★★★★★", 
+			    image: "images/sleep-mist (L).png", // TUKAR DARI (P) KEPADA (L)
+			    thumb2: "images/valuesmist.png", 
+			    thumb3: "images/valuesmist3.jpeg", 
+			    desc: "A therapeutic-grade aromatherapeutic cloud spray formulated to down-regulate high nervous system energy before bed.", 
+			    tabDesc: "QASABE Sleep Mist marries rare, highly potent botanical essential oils specifically chosen to stop sensory overstimulation dead in its tracks. Deliberately spray a fine mist over pillows, luxury linens, or open bedroom spaces right before winding down. This triggers rapid sensory calming pathways, helping shorten the time it takes to enter deep REM cycles so you wake up genuinely restored.", 
+			    ingredients: "Premium essential oil distillate of French Lavender, calming Chamomile flower extracts, therapeutic floral hydrosols, and clean botanical stabilizers.", 
+			    benefits: ["Accelerates Deep Restful REM Sleep States", "100% Pure Non-Synthetic Botanical Aroma", "Zero Stain, Oil-Free Micro-Diffusion Technology"], 
+			    refund:"Refund or replacement is available within 7 days for damaged packaging, leakage, or incorrect products received. Used personal care products cannot be returned due to hygiene reasons.",
+			    terms:"Perform a patch test before usage. Stop using if irritation occurs. Results may vary depending on individual skin conditions.",
+			    defaultReviews: [
+			      { name: "Nadia Sofia", rating: 5, comment: "Bau lavender dia premium, bukan bau sintetik murah. Spray kat bantal 10 minit sebelum tido terus lelap lena sampai subuh.", date: "2026-06-20", hasImg: true },
+			      { name: "Zulhafiz", rating: 4, comment: "Memang rileks bila terhidu mist ni. Botol saiz elok, spray nozzle dia halus tak buat bantal basah lencun.", date: "2026-07-05", hasImg: false },
+			      { name: "Victoria B.", rating: 5, comment: "This is a literal lifesaver for my insomnia. The scent throw is incredibly elegant and soothing without being overwhelming. My sleep tracker showed my deep sleep phase increased by 40 minutes since using this!", date: "2026-07-09", hasImg: true },
+			      { name: "Oliver Greenwood", rating: 5, comment: "Smells divine! It has a complex, spa-like scent. Extremely calming routine right before bedtime. The mist is fine and doesn't stain my silk pillowcases.", date: "2026-07-12", hasImg: false }
+			    ] 
+			  },
+		  "aha-toner": { 
+		    name: "QASABE AHA Toner | Gentle Exfoliating Toner | Smooth & Radiant Skin", 
+		    category: "Skincare", 
+		    price: 26.90, 
+		    oldPrice: "", 
+		    rating: "(4.5 / 5.0)", 
+		    stars: "★★★★☆", 
+		    image: "images/AHA toner (P).png", 
+		    thumb2: "images/valuetoner.png", 
+		    thumb3: "images/valuetoner1.png", 
+		    desc: "A gentle daily cell-renewing resurfacing treatment designed to clear dead skin buildup, smooth uneven texture, and refine pore depth.", 
+		    tabDesc: "QASABE AHA Toner harnesses sugar-derived chemical exfoliation to safely break down stubborn dead skin bonds without peeling out your skin's moisture barrier. Steady application visibly targets dull acne marks, stubborn blackheads, and micro-texture. This clears the way for subsequent serums to penetrate twice as deep for a healthy skin glow.", 
+		    ingredients: "Sugarcane-derived Alpha-Hydroxy Acid (AHA) matrix, organic humectants, soothing Aloe Vera fillet juices, and clean anti-inflammatory compounds.", 
+		    benefits: ["Gentle Exfoliation Without Harsh Redness", "Unclogs & Constricts Enlarged Pore Walls", "Evens Out Stubborn Dark Hyperpigmentation"], 
+		    refund:"Refund or replacement is available within 7 days for damaged packaging, leakage, or incorrect products received. Used personal care products cannot be returned due to hygiene reasons.",
+		    terms:"Perform a patch test before usage. Stop using if irritation occurs. Results may vary depending on individual skin conditions.",
+		    defaultReviews: [
+		      { name: "Elena Gilbert", rating: 5, comment: "My skin feels so smooth after 2 weeks! Blackheads around nose area decreasing signficantly. No harsh tingling.", date: "2026-05-19", hasImg: true },
+		      { name: "Hannah Abbott", rating: 4, comment: "Gentle yet very effective. I have super sensitive skin and usually react badly to AHAs, but this sugarcane-derived formula has been soothing. My texture is visibly smoother.", date: "2026-06-22", hasImg: false },
+		      { name: "Dr. Ryan M.", rating: 5, comment: "Excellent formulation. The humectants perfectly buffer the exfoliation process, preventing skin barrier disruption. Highly recommend for dull or congested skin types.", date: "2026-07-01", hasImg: true }
+		    ] 
+		  },
+		  "shampoo": { 
+		    name: "QASABE Nourishing Shampoo | Sugarcane Hair Care | Healthy & Refreshed Hair", 
+		    category: "Hair Care", 
+		    price: 49.00, 
+		    oldPrice: "", 
+		    rating: "(4.2 / 5.0)", 
+		    stars: "★★★★☆", 
+		    image: "images/shampoo (P).png", 
+		    thumb2: "images/valueshampoo.png", 
+		    thumb3: "images/valueshampoo2.png", 
+		    desc: "A luxury sulfate-free scalp clarifying wash infusing organic sugarcane enzymes to strengthen structural roots and combat shedding.", 
+		    tabDesc: "QASABE Nourishing Shampoo brings a premium, professional-tier scalp therapy experience straight into your daily shower routine. Utilizing raw sugarcane enzyme complexes, it lifts crusty sebum buildup and flaky dandruff particles without stripping your scalp's vital natural oils. Hair cuticles are left smooth, resilient against split ends, and naturally volumized with a clean scent.", 
+		    ingredients: "Bio-active sugarcane moisture extract, Pro-Vitamin B5 (Panthenol), plant-derived micro-keratin structural proteins, and gentle sulfate-free coconut-based surfactants.", 
+		    benefits: ["Fortifies Hair Follicles to Reduce Shedding", "100% Free from Sulfates, Parabens, & Silicones", "Maintains Perfect Scalp pH Balance Control"], 
+		    refund:"Refund or replacement is available within 7 days for damaged packaging, leakage, or incorrect products received. Used personal care products cannot be returned due to hygiene reasons.",
+		    terms:"Perform a patch test before usage. Stop using if irritation occurs. Results may vary depending on individual skin conditions.",
+		    defaultReviews: [
+		      { name: "Hafizah Azman", rating: 4, comment: "Rambut kurang gugur lepas 4 kali basuh. Kulit kepala pun dah kurang gatal minyak. Bau wangi soft gila strawberi tebu.", date: "2026-06-29", hasImg: false },
+		      { name: "Cassandra K.", rating: 5, comment: "The best sulfate-free shampoo ever! It lathers surprisingly well despite being clean-formulated. My scalp feels thoroughly cleansed and airy. Hair fall reduced by almost half in just 3 weeks.", date: "2026-07-04", hasImg: true },
+		      { name: "Lucas Vance", rating: 4, comment: "Smells wonderful and leaves my hair feeling incredibly lightweight. Great sebum control on the scalp throughout hot, humid days. Highly recommended.", date: "2026-07-13", hasImg: false }
+		    ] 
+		  },
+		  "body-scrub": { 
+		    name: "QASABE Body Scrub | Natural Sugarcane Exfoliator | Soft & Glowing Skin", 
+		    category: "Body Care", 
+		    price: 28.90, 
+		    oldPrice: "", 
+		    rating: "(4.6 / 5.0)", 
+		    stars: "★★★★☆", 
+		    image: "images/bscrub (P).jpeg", 
+		    thumb2: "images/valuescrubs.jpeg", 
+		    thumb3: "images/valuescrubs2.png", 
+		    desc: "An ultra-pampering physical body scrub incorporating fine raw cane crystals to polish skin into an elite, luminous satin texture.", 
+		    tabDesc: "QASABE Body Scrub sloughs away rough skin textures and deeply rooted impurities without micro-tearing sensitive skin tissue. Natural glycolic acids embedded within the raw sugarcane juice work to fade stubborn hyperpigmentation on elbows, knees, and underarms. A rich luxury botanical oil glaze ensures your skin feels deeply hydrated and smooth right out of the shower.", 
+		    ingredients: "Micro-milled raw sugarcane sugar crystals, organic cold-pressed virgin coconut oil, sweet almond nourishing glaze, Tocopherol (Vitamin E), and bespoke essential oil blends.", 
+		    benefits: ["Fine Non-Abrasive Crystals Prevent Skin Irritation", "Natural Glycolic Acid Safely Brightens Dull Areas", "Locks In Hydration with No Greasy After-Feel"], 
+		    refund:"Refund or replacement is available within 7 days for damaged packaging, leakage, or incorrect products received. Used personal care products cannot be returned due to hygiene reasons.",
+		    terms:"Perform a patch test before usage. Stop using if irritation occurs. Results may vary depending on individual skin conditions.",
+		    defaultReviews: [
+		      { name: "Bella Swan", rating: 5, comment: "Crystals are so fine, they melt smoothly into the skin without scratching. Left my legs glowing like glass skin vibe!", date: "2026-07-01", hasImg: true },
+		      { name: "Rebecca Thorne", rating: 5, comment: "I've tried so many luxury sugar scrubs, but this one tops them all. The oil-to-sugar ratio is perfect, leaving my skin extremely soft and moisturized without feeling sticky or slick after rinsing. Smells like a professional spa!", date: "2026-07-06", hasImg: false },
+		      { name: "Alia Karim", rating: 4, comment: "Kulit jadi sangat lembut lepas pakai! Sel kulit mati tanggal dengan senang. Sesuai gila pakai seminggu 2 kali.", date: "2026-07-10", hasImg: true }
+		    ] 
+		  },
+		  "bagasse-packaging": {
+		    name: "QASABE Eco Bagasse Packaging | Sustainable Food Container | Biodegradable & Plastic-Free",
+		    category: "Eco Packaging",
+		    price: 7.90, 
+		    oldPrice: "",
+		    rating: "(4.7 / 5.0)",
+		    stars: "★★★★☆",
+		    image: "images/packaging (P).png",
+		    thumb2: "images/valuepackaging.png", 
+		    thumb3: "images/valuepackaging2.png",
+		    desc: "Premium, heavy-duty commercial food containers molded entirely from 100% repurposed sugarcane bagasse fiber waste.",
+		    tabDesc: "QASABE Eco Bagasse Packaging is the ultimate green choice for modern high-volume eco-cafes, pro-catering lines, and conscious home hosts seeking an end to single-use plastics. These containers are physically rigid, structural, and inherently free of harmful chemical liners. Engineered to handle extreme food heat and dense liquids effortlessly, they fully compost naturally without burdening land environments.",
+		    ingredients: "100% Unbleached All-Natural Sugarcane Bagasse Fiber Core. Totally chlorine-free processing and zero petroleum plastic contents.",
+		    benefits: ["100% Fully Biodegradable & Backyard Compostable", "Highly Oil-Resistant, Waterproof, & Anti-Sogging", "100% Microwave-Safe & Freezer-Stable Construction"],
+		    variations: {
+		      "eco-food-container": { "25pcs": 7.90, "50pcs": 13.90, "100pcs": 24.90 },
+		      "eco-packaging-box": { "25pcs": 7.90, "50pcs": 13.90, "100pcs": 24.90 }
+		    },
+		    refund:"Refund or exchange is accepted for damaged packaging items, wrong size variation, or manufacturing defects reported within 7 days.",
+		    terms:"Product performance may vary depending on food temperature, storage conditions, and usage method.",
+		    defaultReviews: [
+		      { name: "Ahmad Catering HQ", rating: 5, comment: "Kualiti tebal gila! Letak kuah laksa panas-panas pon tak lembik atau bocor bawah dia. Customer semua puji kedai mesra alam.", date: "2026-05-18", hasImg: true },
+		      { name: "EcoCafe Malacca", rating: 5, comment: "Sangat berpuas hati dengan saiz 100pcs, harga berpatutan untuk peniaga kecil yang nak go green. Servis seller cepat jawab chat.", date: "2026-06-12", hasImg: false },
+		      { name: "Mastura Ibrahim", rating: 4, comment: "Kotak kemas, tak berbau kimia pelik macam polystyrene. Recommended untuk ganti plastik tapau raya.", date: "2026-06-25", hasImg: true },
+		      { name: "Chef Marcus", rating: 5, comment: "Top tier durability. I host private upscale dinners and these compostable boxes fit the premium theme flawlessly while offering top-notch structural strength against oily dressings and hot gravy.", date: "2026-07-02", hasImg: true },
+		      { name: "Emily Rogers", rating: 5, comment: "Love these! They hold up perfectly in the microwave. Unlike paper boxes, these don't get soggy or collapse under steam pressure. Definitely switching our cafe's bulk supplies to Qasabe.", date: "2026-07-08", hasImg: false },
+		      { name: "Adrian Koh", rating: 5, comment: "Excellent biodegradable product. Truly water-resistant and sturdy. Shipment was swift and packaging arrived without dented corners. 10/10.", date: "2026-07-12", hasImg: true }
+		    ]
+		  }
+		};
 const params = new URLSearchParams(window.location.search);
-let productId = params.get("id") || "bagasse-packaging"; // Paksa bagasse sekiranya tiada id di URL
+let productId = params.get("id") || "bagasse-packaging"; 
 const product = products[productId];
 if(!product){ window.location.href = "index.html"; }
 let selectedVariationGlobal = "eco-food-container";
 let selectedPaxSizeGlobal = "25pcs";
+
 // INJECT VALUES
 document.title = "QASABE | " + product.name;
 document.getElementById("productName").textContent = product.name;
@@ -516,21 +701,27 @@ document.getElementById("ratingText").textContent = product.rating;
 document.getElementById("productDesc").textContent = product.desc;
 document.getElementById("tabDescription").textContent = product.tabDesc;
 document.getElementById("tabIngredients").textContent = product.ingredients;
+document.getElementById("refundContent").textContent = product.refund;
+document.getElementById("termsContent").textContent = product.terms;
 document.getElementById("mainImage").src = product.image;
 document.getElementById("thumb1").src = product.image;
 document.getElementById("thumb2").src = product.thumb2 || product.image;
 document.getElementById("thumb3").src = product.thumb3 || product.image;
+
 if(product.oldPrice === ""){ document.getElementById("oldPrice").style.display = "none"; } 
 else { document.getElementById("oldPrice").style.display = "inline"; document.getElementById("oldPrice").textContent = product.oldPrice; }
+
 document.getElementById("valueBenefits").innerHTML = product.benefits.map(b => `
   <div class="value-item"><i class="bi bi-check-circle-fill"></i><span>${b}</span></div>
 `).join("");
+
 if (productId === "bagasse-packaging") {
   document.getElementById("specOptionsArea").style.display = "block";
   updateTikTokPrice();
 } else {
   document.getElementById("productPrice").textContent = "RM " + product.price.toFixed(2);
 }
+
 function selectVariation(value, element) {
   selectedVariationGlobal = value;
   document.querySelectorAll("#variationContainer .tiktok-btn").forEach(btn => btn.classList.remove("active"));
@@ -548,6 +739,7 @@ function updateTikTokPrice() {
   const priceCalc = product.variations[selectedVariationGlobal][selectedPaxSizeGlobal];
   document.getElementById("productPrice").textContent = "RM " + priceCalc.toFixed(2);
 }
+
 // THUMBNAILS ENGINE BILA DIKLIK
 const thumbs = document.querySelectorAll(".thumb");
 thumbs.forEach(function(thumb){
@@ -557,10 +749,12 @@ thumbs.forEach(function(thumb){
     document.getElementById("mainImage").src = this.querySelector("img").src;
   });
 });
+
 // QTY CONTROLS
 let qty = 1;
 function increaseQty(){ qty++; document.getElementById("qty").textContent = qty; }
 function decreaseQty(){ if(qty > 1){ qty--; document.getElementById("qty").textContent = qty; } }
+
 // LOCAL STORAGE INTEGRATION
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -568,42 +762,157 @@ function updateCounts(){
   document.getElementById("cartCount").innerText = cart.reduce((sum, item) => sum + item.qty, 0);
   document.getElementById("wishlistCount").innerText = wishlist.length;
 }
+
 function addToCartClick(){
-  if (productId === "bagasse-packaging") {
-    let existing = cart.find(item => item.id === productId && item.variation === selectedVariationGlobal && item.paxSize === selectedPaxSizeGlobal);
-    if(existing){ existing.qty += qty; } 
-    else { cart.push({ id: productId, variation: selectedVariationGlobal, paxSize: selectedPaxSizeGlobal, qty: qty }); }
-  } else {
-    let existing = cart.find(item => item.id === productId);
-    if(existing){ existing.qty += qty; } else { cart.push({ id: productId, qty: qty }); }
-  }
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCounts();
-  alert("Added to cart!");
+	  // 🔥 SEKATAN GUEST: Check user dah login ke belum
+	  let currentUser = JSON.parse(localStorage.getItem("customerAccount"));
+	  if (!currentUser) {
+	    alert("Oops! You need to login first to buy or add items to the cart.");
+	    window.location.href = "login.html";
+	    return; // Stop fungsi terus
+	  }
+
+	  // Kod asal kau (jalan macam biasa kalau dah login)
+	  if (productId === "bagasse-packaging") {
+	    let existing = cart.find(item => item.id === productId && item.variation === selectedVariationGlobal && item.paxSize === selectedPaxSizeGlobal);
+	    if(existing){ existing.qty += qty; } 
+	    else { cart.push({ id: productId, variation: selectedVariationGlobal, paxSize: selectedPaxSizeGlobal, qty: qty }); }
+	  } else {
+	    let existing = cart.find(item => item.id === productId);
+	    if(existing){ existing.qty += qty; } else { cart.push({ id: productId, qty: qty }); }
+	  }
+	  localStorage.setItem("cart", JSON.stringify(cart));
+	  updateCounts();
+	  alert("Added to cart!");
+	}
+
+	function buyNow(){ 
+	  // Tak payah usik, dia akan automatik sekat sebab dia panggil addToCartClick() di atas
+	  addToCartClick(); 
+	  
+	  // Hanya pergi ke cart kalau user memang dah login
+	  let currentUser = JSON.parse(localStorage.getItem("customerAccount"));
+	  if (currentUser) {
+	    window.location.href = "cart.html"; 
+	  }
+	}
+
+	function addToWishlistClick(){
+	  // 🔥 SEKATAN GUEST: Check user dah login ke belum
+	  let currentUser = JSON.parse(localStorage.getItem("customerAccount"));
+	  if (!currentUser) {
+	    alert("Oops! You need to login first to add items to your wishlist.");
+	    window.location.href = "login.html";
+	    return; // Stop fungsi terus
+	  }
+
+	  // Kod asal kau (jalan macam biasa kalau dah login)
+	  if(!wishlist.includes(productId)){ 
+	    wishlist.push(productId); 
+	    localStorage.setItem("wishlist", JSON.stringify(wishlist)); 
+	    updateCounts(); 
+	    alert("Added to wishlist!"); 
+	  } else { 
+	    alert("Already in wishlist."); 
+	  }
+	}
+
+// ==========================================================================
+// UNIFIED MODERN REVIEW ENGINE (WITH ACTIVE BASE64 REAL IMAGE UPLOAD)
+// ==========================================================================
+let currentFilter = "all";
+
+function getReviewsList() {
+  return JSON.parse(localStorage.getItem("qasabe_feedbacks_" + productId)) || product.defaultReviews;
 }
-function buyNow(){ addToCartClick(); window.location.href = "cart.html"; }
-function addToWishlistClick(){
-  if(!wishlist.includes(productId)){ wishlist.push(productId); localStorage.setItem("wishlist", JSON.stringify(wishlist)); updateCounts(); alert("Added to wishlist!"); } 
-  else { alert("Already in wishlist."); }
-}
-// REVIEWS ENGINE
-function loadReviews() {
-  let stored = JSON.parse(localStorage.getItem("qasabe_feedbacks_" + productId)) || product.defaultReviews;
+
+function loadAndFilterReviews(filterType = "all") {
+  currentFilter = filterType;
+  const allReviews = getReviewsList();
   const container = document.getElementById("reviewsContainer");
-  if(stored.length === 0) { container.innerHTML = `<p class="text-muted">No reviews yet.</p>`; return; }
-  container.innerHTML = stored.map(rev => {
+
+  // Calculate dynamic filter badge counts
+  const totalCount = allReviews.length;
+  const star5Count = allReviews.filter(r => r.rating === 5).length;
+  const star4Count = allReviews.filter(r => r.rating === 4).length;
+  const imageCount = allReviews.filter(r => r.hasImg === true).length;
+
+  // Update DOM badges
+  document.getElementById("reviewCountBadge").textContent = totalCount;
+  document.getElementById("dashboardTotalReview").textContent = totalCount;
+
+  // Update Filter buttons text
+  const filterButtons = document.querySelectorAll("#filterBtnGroup .filter-btn");
+  filterButtons.forEach(btn => {
+    const filterVal = btn.getAttribute("data-filter");
+    if (filterVal === "all") btn.innerText = `All Reviews (${totalCount})`;
+    else if (filterVal === "5-stars") btn.innerText = `5 Stars (${star5Count})`;
+    else if (filterVal === "4-stars") btn.innerText = `4 Stars (${star4Count})`;
+    else if (filterVal === "images") btn.innerText = `With Images (${imageCount})`;
+  });
+
+  // Calculate Average Rating dynamically
+  let rawRating = product.rating.match(/[\d\.]+/);
+  let numericRating = rawRating ? rawRating[0] : "4.5";
+  document.getElementById("dashboardAvgRating").textContent = numericRating;
+  document.getElementById("dashboardStars").textContent = product.stars;
+
+  // Filter application
+  let filteredReviews = [...allReviews];
+  if (filterType === "5-stars") {
+    filteredReviews = filteredReviews.filter(r => r.rating === 5);
+  } else if (filterType === "4-stars") {
+    filteredReviews = filteredReviews.filter(r => r.rating === 4);
+  } else if (filterType === "images") {
+    filteredReviews = filteredReviews.filter(r => r.hasImg === true);
+  }
+
+  if (filteredReviews.length === 0) {
+    container.innerHTML = `<div class="p-4 text-center text-muted bg-white rounded-4 border">No reviews found matching this filter.</div>`;
+    return;
+  }
+
+  // Render list
+  container.innerHTML = filteredReviews.map(rev => {
     let stars = "★".repeat(rev.rating) + "☆".repeat(5 - rev.rating);
+    
+    // Semak jika gambar adalah Base64 baharu atau data lalai (hasImg true)
+    let imageHTML = '';
+    if (rev.uploadedImgUrl) {
+      // Jika user baru upload gambar sendiri
+      imageHTML = `
+        <div class="reviews-images-attached">
+          <img src="${rev.uploadedImgUrl}" class="review-img-thumb" alt="User review attachment">
+        </div>`;
+    } else if (rev.hasImg) {
+      // Gambar default mockup daripada mockup data produk asal
+      imageHTML = `
+        <div class="review-images-attached">
+          <img src="${product.image}" class="review-img-thumb" alt="Review media attachment">
+          <img src="${product.thumb2 || product.image}" class="review-img-thumb" alt="Review media attachment">
+        </div>`;
+    }
+
     return `
       <div class="review-item-box">
         <div class="d-flex align-items-center gap-3 mb-2">
           <div class="user-avatar-initial">${rev.name.charAt(0).toUpperCase()}</div>
-          <div><h6 class="fw-bold mb-0 text-dark">${rev.name}</h6><small class="text-muted">${rev.date || '2026-06-25'}</small></div>
-          <div class="ms-auto text-warning">${stars}</div>
+          <div>
+            <div class="d-flex align-items-center gap-2">
+              <h6 class="fw-bold mb-0 text-dark">${rev.name}</h6>
+              <span class="verified-badge"><i class="bi bi-patch-check-fill"></i> Verified Buyer</span>
+            </div>
+            <small class="text-muted" style="font-size:12px;">${rev.date || '2026-06-25'}</small>
+          </div>
+          <div class="ms-auto text-warning fw-bold">${stars}</div>
         </div>
-        <p class="mb-0 text-secondary" style="font-size:14px;">${rev.comment}</p>
+        <p class="mb-2 text-secondary" style="font-size:14.5px; line-height: 1.6;">${rev.comment}</p>
+        ${imageHTML}
       </div>`;
   }).join("");
 }
+
+// Handling star inputs
 let currentSelectedRating = 5;
 const starStars = document.querySelectorAll("#starSelector i");
 starStars.forEach(star => {
@@ -612,17 +921,72 @@ starStars.forEach(star => {
     starStars.forEach(s => parseInt(s.getAttribute("data-value")) <= currentSelectedRating ? s.classList.add("active") : s.classList.remove("active"));
   });
 });
+
+// Mengendalikan penyerahan borang reviu berserta gambar
 function handleReviewSubmit(e) {
   e.preventDefault();
-  let stored = JSON.parse(localStorage.getItem("qasabe_feedbacks_" + productId)) || [...product.defaultReviews];
-  stored.unshift({ name: document.getElementById("reviewUser").value, rating: currentSelectedRating, comment: document.getElementById("reviewComment").value, date: new Date().toISOString().split('T')[0] });
-  localStorage.setItem("qasabe_feedbacks_" + productId, JSON.stringify(stored));
-  document.getElementById("reviewForm").reset();
-  loadReviews();
-  alert("Feedback submitted!");
+  
+  const nameInput = document.getElementById("reviewUser").value;
+  const commentInput = document.getElementById("reviewComment").value;
+  const fileInput = document.getElementById("reviewImage");
+  const file = fileInput.files[0];
+
+  const proceedSubmit = (base64Image = null) => {
+    let stored = getReviewsList();
+    
+    let newReview = { 
+      name: nameInput, 
+      rating: currentSelectedRating, 
+      comment: commentInput, 
+      date: new Date().toISOString().split('T')[0],
+      hasImg: base64Image ? true : false,
+      uploadedImgUrl: base64Image
+    };
+    
+    stored.unshift(newReview);
+    localStorage.setItem("qasabe_feedbacks_" + productId, JSON.stringify(stored));
+    
+    // Reset Form
+    document.getElementById("reviewForm").reset();
+    starStars.forEach(s => s.classList.add("active"));
+    currentSelectedRating = 5;
+
+    // Refresh UI list
+    loadAndFilterReviews(currentFilter);
+    alert("Thank you! Your verified feedback with image has been submitted successfully.");
+  };
+
+  // Jika user ada pilih fail gambar, tukar ke Base64 dahulu
+  if (file) {
+    const reader = new FileReader();
+    reader.onloadend = function() {
+      proceedSubmit(reader.result); // Simpan sekali gambar berformat string teks
+    };
+    reader.readAsDataURL(file);
+  } else {
+    proceedSubmit(null); // Teruskan tanpa gambar jika tiada fail dipilih
+  }
 }
+
+// Attach Event Listeners to Filter Buttons
+document.addEventListener("DOMContentLoaded", () => {
+  const filterButtons = document.querySelectorAll("#filterBtnGroup .filter-btn");
+
+  filterButtons.forEach(button => {
+    button.addEventListener("click", function() {
+      filterButtons.forEach(btn => btn.classList.remove("active"));
+      this.classList.add("active");
+
+      const selectedFilter = this.getAttribute("data-filter");
+      loadAndFilterReviews(selectedFilter);
+    });
+  });
+
+  loadAndFilterReviews("all");
+});
+
+// INITIAL RUN
 updateCounts();
-loadReviews();
   </script>
 </body>
 </html>
