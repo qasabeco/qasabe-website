@@ -8,45 +8,58 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --navy: #071827;
   --navy2: #0b2438;
   --gold: #c99b3b;
+  --gold-hover: #b4862f;
   --cream: #fff7f3; 
-  --soft: #f7efe5;
-  --text: #111827;
-  --muted: #6b7280;
+  --soft: #fbf7f0;
+  --text: #2d3748;
+  --muted: #718096;
+  --white: #ffffff;
 }
 *{
   box-sizing:border-box;
 }
 body{
   margin:0;
-  font-family:Arial, sans-serif;
-  background:linear-gradient(180deg,#fffaf4 0%,#ffffff 45%,#f8f1e7 100%);
-  color:var(--text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #fdfbf9;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
 }
 .top-bar{
-  background:var(--navy);
-  color:white;
-  font-size:12px;
-  text-align:center;
-  padding:8px;
-  font-weight:600;
+  background: var(--navy);
+  color: white;
+  font-size: 13px;
+  text-align: center;
+  padding: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.top-bar u {
+  color: var(--gold);
+  cursor: pointer;
+  text-underline-offset: 4px;
 }
 .navbar {
-  background: transparent !important; 
-  padding: 20px 0;
-  border-bottom: none !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(7, 24, 39, 0.05) !important;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 .navbar-nav .nav-link {
   color: var(--navy) !important;
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: 600;
+  font-size: 15px;
   transition: .3s;
-  margin: 0 8px;
+  margin: 0 10px;
 }
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
@@ -55,250 +68,307 @@ body{
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 1px;
+  gap: 5px;
   text-decoration: none;
 }
 .brand-logo img {
-  width: 65px;
-  height: 65px;
+  width: 55px;
+  height: 55px;
   object-fit: contain;
 }
 .brand-logo span {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 38px;
+  font-size: 34px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   color: var(--navy);
-  line-height: 1 !important;
+  line-height: 1;
 }
 .navbar .form-control {
-  width: 25% !important;
-  border-radius: 25px !important;
-  padding: 10px 16px !important; 
+  width: 250px !important;
+  border-radius: 30px !important;
+  padding: 10px 20px !important; 
   font-size: 14px !important;
-  border: 1px solid #ddd !important;
-  height: 44px !important; 
+  border: 1px solid rgba(7, 24, 39, 0.1) !important;
+  height: 42px !important; 
+  background-color: #fcf8f5 !important;
+  transition: 0.3s ease;
+}
+.navbar .form-control:focus {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 3px rgba(201, 155, 59, 0.15) !important;
 }
 .nav-icons {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-left: 20px;
+  gap: 10px;
+  margin-left: 15px;
 }
 .icon-btn {
-  width: 50px !important;
-  height: 50px !important;
+  width: 44px !important;
+  height: 44px !important;
   border-radius: 50% !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   position: relative !important;
-  font-size: 22px !important;
+  font-size: 20px !important;
   text-decoration: none !important;
   color: var(--navy) !important;
   transition: .3s !important;
-  background: transparent !important;
+  background: #f7efe5 !important;
   border: none !important;
 }
 .icon-btn:hover {
-  background: var(--gold);
+  background: var(--gold) !important;
   color: white !important;
-  transform: translateY(-4px) scale(1.1);
-  box-shadow: 0 0 15px rgba(201,155,59,0.5);
+  transform: translateY(-3px);
 }
 .cart-count, .wishlist-count {
   background: var(--gold) !important;
   color: white !important;
-  font-size: 11px !important;
+  font-size: 10px !important;
   border-radius: 50% !important;
   padding: 2px 6px !important;
   position: absolute !important;
   top: -2px !important; 
   right: -4px !important;
   font-weight: 700 !important;
-  line-height: 1 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  border: 2px solid white;
 }
-.dropdown-menu {
-  background-color: #fff7f3 !important; 
-  border: 0 !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06) !important;
+.search-container {
+  position: relative;
 }
-.dropdown-menu .dropdown-item {
-  transition: 0.2s;
+.suggestion-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 1050;
+  max-height: 250px;
+  overflow-y: auto;
+  display: none;
+  margin-top: 5px;
 }
-.dropdown-menu .dropdown-item:hover {
-  background-color: var(--gold) !important;
-  color: white !important;
+.suggestion-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--navy);
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
 }
-.dropdown-toggle::after {
-  vertical-align: middle;
-  color: var(--gold); 
+.suggestion-item:hover {
+  background: #f5f5f5;
+  color: var(--gold);
 }
-.navbar-brand{
+.suggestion-item img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: #fdfaf6;
+}
+
+/* HERO VIDEO (Sleek & Curved Border at Bottom) */
+.category-video-hero{
+  position:relative;
+  height: 500px;
+  overflow:hidden;
   display:flex;
   align-items:center;
-  gap:10px;
-  font-size:34px;
-  font-family:Georgia, serif;
-  font-weight:500;
-  color:var(--navy);
-  letter-spacing:1px;
-  text-decoration:none;
+  justify-content:center;
 }
-.navbar-brand img{
-  width:46px;
-  height:auto;
-}
-.nav-link{
-  color:#222;
-  font-size:15px;
-  margin:0 8px;
-  font-weight:500;
-}
-.nav-link:hover,
-.nav-link.active{
-  color:var(--gold);
-}
-.search-box{
-  width:240px;
-  border-radius:25px;
-  border:1px solid #ddd;
-  padding:10px 16px;
-  font-size:14px;
-}
-.catalogue-hero{
-  background:
-    radial-gradient(circle at 15% 15%, rgba(201,155,59,.35), transparent 28%),
-    radial-gradient(circle at 85% 25%, rgba(255,255,255,.18), transparent 30%),
-    linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
-  color:white;
-  border-radius:28px;
-  padding:42px;
-  margin:35px 0;
-  position:relative;
-  overflow:hidden;
-}
-.catalogue-hero::after{
-  content:"";
+.category-video-hero video{
   position:absolute;
-  right:-50px;
-  bottom:-80px;
-  width:270px;
-  height:270px;
-  border:35px solid rgba(201,155,59,.18);
-  border-radius:50%;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  top:0;
+  left:0;
 }
-.breadcrumb-custom{
-  font-size:13px;
-  color:#f4d8a3;
-  margin-bottom:18px;
+.video-overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background: linear-gradient(to bottom, rgba(7,24,39,0.75) 0%, rgba(7,24,39,0.6) 100%);
+  z-index:1;
+}
+.category-hero-content{
   position:relative;
   z-index:2;
+  text-align:center;
+  color:white;
+  max-width:800px;
+  padding:20px;
 }
-.catalogue-hero h1{
-  font-size:46px;
-  font-weight:900;
-  max-width:700px;
-  line-height:1.1;
+.small-title{
+  color:var(--gold);
+  font-size:12px;
+  letter-spacing:4px;
+  font-weight:700;
   margin-bottom:15px;
-  position:relative;
-  z-index:2;
 }
-.catalogue-hero p{
-  color:#f3e8d6;
-  max-width:620px;
-  margin-bottom:26px;
-  position:relative;
-  z-index:2;
+.category-hero-content h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size: 58px;
+  font-weight:700;
+  line-height:1.1;
+  margin-bottom: 15px;
 }
-.hero-btn{
+.category-hero-content p{
+  font-size:16px;
+  line-height:1.6;
+  margin-bottom:25px;
+  opacity: 0.85;
+}
+.category-hero-content button{
   background:var(--gold);
   color:white;
   border:none;
   border-radius:30px;
-  padding:12px 22px;
+  padding: 12px 35px;
   font-weight:700;
-  text-decoration:none;
-  display:inline-block;
-  position:relative;
-  z-index:2;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  transition:.3s;
 }
-.hero-btn:hover{
-  background:#b4862f;
-  color:white;
+.category-hero-content button:hover{
+  background: var(--gold-hover);
+  transform:translateY(-2px);
 }
+
+/* NEW: TRUST-BADGES BAR (Menggantikan catalogue-hero yang semak) */
+.trust-badges-bar {
+  background: var(--white);
+  padding: 25px 0;
+  border-bottom: 1px solid rgba(7, 24, 39, 0.05);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  margin-bottom: 40px;
+}
+.badge-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+.badge-icon {
+  width: 48px;
+  height: 48px;
+  background: #fbf7f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 20px;
+}
+.badge-text h6 {
+  margin: 0;
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 14px;
+}
+.badge-text p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* CATEGORY PILLS (More Modern & Active States) */
 .category-pills{
   display:flex;
   flex-wrap:wrap;
-  gap:12px;
-  margin-bottom:28px;
+  gap:10px;
+  margin-bottom:35px;
+  justify-content: center;
 }
 .category-pill{
-  background:white;
-  color:var(--navy);
-  border:1px solid #eadfce;
-  border-radius:50px;
-  padding:12px 18px;
-  text-decoration:none;
-  font-size:14px;
-  font-weight:700;
-  box-shadow:0 8px 20px rgba(0,0,0,.04);
-  transition:.3s;
+  background: white;
+  color: var(--navy);
+  border: 1px solid rgba(7, 24, 39, 0.08);
+  border-radius: 50px;
+  padding: 10px 22px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: .3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
 }
 .category-pill i{
-  color:var(--gold);
-  margin-right:6px;
+  color: var(--gold);
+  margin-right: 8px;
 }
-.category-pill:hover{
-  background:var(--navy);
-  color:white;
-  transform:translateY(-3px);
+.category-pill:hover, .category-pill.active{
+  background: var(--navy);
+  color: white !important;
+  border-color: var(--navy);
+  transform: translateY(-2px);
 }
+
+/* CATALOGUE LAYOUT */
 .page-wrap{
-  padding-bottom:70px;
+  padding-bottom:80px;
 }
 .catalogue-layout{
   display:grid;
-  grid-template-columns:260px 1fr;
-  gap:30px;
+  grid-template-columns: 280px 1fr;
+  gap:35px;
 }
 .sidebar{
-  background:#ffffff;
-  border-radius:24px;
-  padding:22px;
-  height:max-content;
-  position:sticky;
-  top:25px;
-  box-shadow:0 14px 35px rgba(0,0,0,.07);
-  border:1px solid #f0e5d6;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 25px;
+  height: max-content;
+  position: sticky;
+  top: 110px;
+  box-shadow: 0 10px 30px rgba(7, 24, 39, 0.03);
+  border: 1px solid rgba(7, 24, 39, 0.05);
 }
 .sidebar h5{
-  font-weight:900;
-  margin-bottom:16px;
-  color:var(--navy);
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--navy);
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 10px;
 }
 .side-link{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  color:#555;
-  text-decoration:none;
-  padding:14px 0;
-  border-top:1px solid #f0f0f0;
-  font-size:14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 12px 15px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-bottom: 5px;
 }
-.side-link:hover{
-  color:var(--gold);
+.side-link:hover, .side-link.active{
+  color: var(--navy);
+  background-color: #fcf8f5;
+  padding-left: 20px;
 }
+.side-link i {
+  font-size: 11px;
+}
+
 .catalogue-main{
-  background:rgba(255,255,255,.75);
-  border-radius:28px;
-  padding:26px;
-  box-shadow:0 14px 40px rgba(0,0,0,.05);
-  border:1px solid #f1e7d8;
+  background: var(--white);
+  border-radius:24px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.01);
+  border: 1px solid rgba(7, 24, 39, 0.05);
 }
 .catalogue-top{
   display:flex;
@@ -306,68 +376,102 @@ body{
   align-items:center;
   gap:15px;
   flex-wrap:wrap;
-  margin-bottom:22px;
+  margin-bottom:30px;
+  border-bottom: 1px solid #f0e6da;
+  padding-bottom: 15px;
 }
-.section-title{
-  font-size:30px;
-  font-weight:900;
-  color:var(--navy);
-  margin:0;
+.section-main-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--navy);
 }
 .sort-box{
   background:#fff;
-  border:1px solid #eee;
+  border:1px solid rgba(7, 24, 39, 0.1);
   border-radius:30px;
-  padding:10px 16px;
+  padding:8px 18px;
   font-size:13px;
-  color:#555;
+  font-weight: 500;
+  color: var(--navy);
 }
-.product-grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr); 
-  gap:24px;
-  margin-bottom:38px;
+/* PRICE RANGE FILTER STYLING */
+.price-range-wrap {
+  padding: 10px 5px;
+}
+.price-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 5px;
+  background: #f0e6da;
+  outline: none;
+  margin-bottom: 15px;
+}
+.price-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  transition: 0.2s;
+}
+.price-slider::-webkit-slider-thumb:hover {
+  background: var(--navy);
+  transform: scale(1.1);
+}
+.price-output-box {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  background: #fbf7f0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-align: center;
+}
+/* PRODUCT GRID & CARDS */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* <--- Tukar dari 3 kepada 2 kolum */
+  gap: 30px;                             /* <--- Jarakkan sikit antara kad biar nampak kemas */
+  margin-bottom: 45px;
 }
 .product-card{
   background:#ffffff;
   border:none;
-  border-radius:24px;
+  border-radius:18px;
   padding:0;
-  transition: transform .3s ease, box-shadow .3s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   height:100%;
   display:flex;
   flex-direction:column;
   position:relative;
+  border: 1px solid rgba(7, 24, 39, 0.03);
+  overflow: hidden;
 }
 .product-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 16px 30px rgba(7,24,39,.08);
+  transform:translateY(-8px);
+  box-shadow: 0 15px 35px rgba(7,24,39,.08);
 }
-.hover-img-box{
-  position:relative;
-  width:100%;
-  height:380px; 
-  border-radius:20px;
-  overflow:hidden; 
-  background:#f9f5f0;
-  margin-bottom:14px;
+.hover-img-box {
+  position: relative;
+  width: 100%;
+  height: 380px; /* <--- Saiz ni cun kalau grid ada 2 kolum */
+  overflow: hidden; 
+  background: #fbfaf8;
 }
 .hover-img-box img{
   width:100%;
   height:100%;
   object-fit:cover; 
   position:absolute;
-  top:0;
-  left:0;
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
-.hover-img-box .main-img{
-  opacity:1;
-  transform:scale(1);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
 }
 .hover-img-box .hover-img{
   opacity:0;
-  transform:scale(1.06);
+  transform:scale(1.08);
 }
 .product-card:hover .hover-img-box .main-img{
   opacity:0;
@@ -377,98 +481,144 @@ body{
   opacity:1;
   transform:scale(1);
 }
+
+/* Actions Wrapper on Image Hover */
+.product-actions {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 10;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: 0.3s ease;
+}
+.product-card:hover .product-actions {
+  opacity: 1;
+  transform: translateX(0);
+}
+.action-btn {
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  color: var(--navy);
+  transition: 0.3s;
+  cursor: pointer;
+}
+.action-btn:hover {
+  background: var(--navy);
+  color: white;
+}
+.action-btn.wish-btn:hover {
+  background: #ffe5e5;
+  color: #e63946;
+}
+
 .product-info-wrap {
-  padding: 0 8px 20px 8px; 
+  padding: 25px; 
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 .product-tag{
   display:inline-block;
-  background:#fce7f3; 
-  color:#9d174d;   
-  font-size:12px;
-  padding:4px 12px;
-  border-radius:8px;
-  font-weight:700;
-  margin-bottom:10px;
+  background: #f7efe5; 
+  color: var(--gold);   
+  font-size: 10px;
+  padding: 4px 12px;
+  border-radius: 30px;
+  font-weight: 700;
+  margin-bottom: 12px;
   width:fit-content;
+  text-transform: uppercase;
 }
 .product-name {
-  font-size: 18px;
-  font-weight: normal;
-  color: #111827;
-  line-height: 1.35;
-  margin-bottom: 6px;
-  display: block;
-  overflow: visible;
-  min-height: 100px; 
-  height: auto; 
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.4;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 46px; 
+  text-decoration: none;
 }
 .product-desc {
-  font-size: 13px;
-  color: #6b7280;
+  font-size: 14px;
+  color: var(--muted);
   line-height: 1.4;
-  margin-bottom: 10px;
-  display: block;
-  overflow: visible;
-  min-height: 38px; 
-  height: auto; 
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 40px; 
 }
 .rating-row {
-  height:24px;
   display:flex;
   align-items:center;
-  margin-bottom:10px;
+  margin-bottom:15px;
 }
 .stars{
   color:#ffb400;
-  font-size:14px;
+  font-size:12px;
 }
 .rating{
-  color:#6b7280;
-  font-size:13px;
+  color: var(--muted);
+  font-size:11px;
   margin-left:5px;
+  font-weight: 500;
 }
 .price-row{
   display:flex;
   align-items:center;
   flex-wrap:wrap;
-  gap:6px;
-  margin-bottom:14px;
+  gap:8px;
+  margin-bottom:18px;
   margin-top:auto;
 }
 .price{
-  font-size:24px;
-  font-weight:900;
-  color:var(--navy);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--navy);
 }
 .old-price{
-  color:#9ca3af;
+  color:#a0aec0;
   text-decoration:line-through;
-  font-size:14px;
+  font-size:12px;
 }
 .discount{
-  background:#ffe8ec;
-  color:#e63946;
+  background:#fff5f5;
+  color:#e53e3e;
   border-radius:20px;
   padding:2px 8px;
-  font-size:11px;
+  font-size:10px;
   font-weight:700;
 }
 .cart-btn{
   width:100%;
-  border:none;
-  background:var(--navy);
-  color:white;
-  border-radius:12px;
-  padding:12px;
-  font-size:15px;
-  font-weight:700;
-  transition:.3s;
+  border: 1px solid var(--navy);
+  background: transparent;
+  color: var(--navy);
+  border-radius:30px;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: .3s;
 }
 .cart-btn:hover{
-  background:var(--gold);
+  background: var(--navy);
+  color: white;
 }
 .no-result{
   display:none;
@@ -485,14 +635,34 @@ body{
   color:var(--gold);
   margin-bottom:10px;
 }
-.no-result h4{
-  font-weight:900;
-  margin-bottom:6px;
-}
 .category-heading{
-  margin:20px 0 20px;
-  padding-top:15px;
-  border-top:1px solid #eee1cf;
+  margin: 20px 0 15px;
+  padding-top: 15px;
+}
+.section-title{
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+/* QUICK VIEW MODAL CUSTOMIZATION */
+.modal-content {
+  border-radius: 20px;
+  border: none;
+  overflow: hidden;
+}
+.modal-product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+@media(max-width:1200px){
+  .product-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media(max-width:992px){
   .catalogue-layout{
@@ -501,27 +671,23 @@ body{
   .sidebar{
     position:static;
   }
-  .product-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
   .hover-img-box{
-    height:320px;
+    height:260px;
   }
 }
 @media(max-width:576px){
   .product-grid{
     grid-template-columns:1fr;
   }
-  .hover-img-box{
-    height:360px;
-  }
 }
 </style>
 </head>
 <body>
+
 <div class="top-bar">
   Sign up and get 20% off your first order. <u>Sign Up Now</u>
 </div>
+
 <nav class="navbar navbar-expand-lg">
   <div class="container">
     <a class="navbar-brand brand-logo" href="index.html">
@@ -542,7 +708,7 @@ body{
           <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Products
           </a>
-          <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item py-2" href="Category.html?cat=food-beverages" style="color: var(--navy); font-weight: 500;">Food & Beverages</a></li>
             <li><a class="dropdown-item py-2" href="Category.html?cat=health" style="color: var(--navy); font-weight: 500;">Health</a></li>
             <li><a class="dropdown-item py-2" href="Category.html?cat=personal-care" style="color: var(--navy); font-weight: 500;">Personal Care & Wellness</a></li>
@@ -570,31 +736,91 @@ body{
     </div>
   </div>
 </nav>
-<main class="page-wrap">
+
+<!-- CATEGORY VIDEO HERO -->
+<section class="category-video-hero">
+  <video autoplay muted loop playsinline>
+    <source src="images/video.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+  <div class="category-hero-content">
+    <div class="small-title">
+      • FROM CANE TO CHANGE •
+    </div>
+    <h1>
+      Discover Our <br>
+      Sugarcane Collection
+    </h1>
+    <p>
+      Explore sustainable innovations crafted from nature.
+      From wellness to lifestyle, every QASABE product is
+      created for a better tomorrow.
+    </p>
+    <button onclick="document.getElementById('catalog-content').scrollIntoView({behavior: 'smooth'})">
+      Explore Products <i class="bi bi-chevron-down ms-1"></i>
+    </button>
+  </div>
+</section>
+
+<!-- NEW: TRUST-BADGES BAR (Simple & Elegant Transition) -->
+<section class="trust-badges-bar">
   <div class="container">
-    <section class="catalogue-hero">
-      <div class="breadcrumb-custom">
-        Home <span class="mx-2">›</span> Categories
+    <div class="row g-4">
+      <div class="col-6 col-md-3">
+        <div class="badge-item">
+          <div class="badge-icon"><i class="bi bi-tree"></i></div>
+          <div class="badge-text">
+            <h6>100% Organic</h6>
+            <p>From pure sugarcane</p>
+          </div>
+        </div>
       </div>
-      <h1>Premium Sugarcane Catalogue</h1>
-      <p>
-        Explore QASABE’s curated collection of sugarcane-inspired food, health,
-        personal care and sustainable packaging products.
-      </p>
-      <a href="#food" class="hero-btn">
-        Explore Products <i class="bi bi-arrow-right ms-1"></i>
-      </a>
-    </section>
+      <div class="col-6 col-md-3">
+        <div class="badge-item">
+          <div class="badge-icon"><i class="bi bi-recycle"></i></div>
+          <div class="badge-text">
+            <h6>Eco-Friendly</h6>
+            <p>Sustainable packing</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="badge-item">
+          <div class="badge-icon"><i class="bi bi-award"></i></div>
+          <div class="badge-text">
+            <h6>Premium Quality</h6>
+            <p>Certified standard</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="badge-item">
+          <div class="badge-icon"><i class="bi bi-truck"></i></div>
+          <div class="badge-text">
+            <h6>Nationwide Delivery</h6>
+            <p>Safe & fast shipping</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="page-wrap" id="catalog-content">
+  <div class="container">
+    
+    <!-- Filter Pills di Atas Grid -->
     <div class="category-pills">
-      <a href="#food" class="category-pill"><i class="bi bi-cup-straw"></i>Food & Beverages</a>
+      <a href="#food" class="category-pill active"><i class="bi bi-cup-straw"></i>Food & Beverages</a>
       <a href="#health" class="category-pill"><i class="bi bi-heart-pulse"></i>Health</a>
       <a href="#care" class="category-pill"><i class="bi bi-stars"></i>Personal Care</a>
       <a href="#packaging" class="category-pill"><i class="bi bi-box-seam"></i>Packaging</a>
     </div>
+
     <div class="catalogue-layout">
       <aside class="sidebar">
         <h5>Shop by Category</h5>
-        <a href="#food" class="side-link">
+        <a href="#food" class="side-link active">
           Food & Beverages <i class="bi bi-chevron-right"></i>
         </a>
         <a href="#health" class="side-link">
@@ -606,26 +832,48 @@ body{
         <a href="#packaging" class="side-link">
           Packaging & Container <i class="bi bi-chevron-right"></i>
         </a>
+        
+        <!-- NEW FEATURE: PRICE RANGE FILTER -->
+<div class="sidebar-section">
+  <h5>Filter by Price</h5>
+  <div class="price-range-wrap">
+    <input type="range" class="price-slider" id="priceRange" min="0" max="60" value="60" oninput="filterByPrice()">
+    <div class="price-output-box">
+      Max Price: <span id="priceValue">RM 60.00</span>
+    </div>
+  </div>
+</div>
       </aside>
+      
       <section class="catalogue-main">
-      <div class="no-result" id="noResult">
-      <i class="bi bi-search"></i>
-      <h4>No product found</h4>
-      <p>Try searching another sugarcane product.</p>
-      </div>
-        <div class="d-flex align-items-center gap-2">
-        <span style="font-size: 13px; color: #555;">Sort by:</span>
-        <select class="sort-box" id="sortSelect" onchange="sortProducts()">
-        <option value="popular">Most Popular</option>
-        <option value="low-high">Price: Low to High</option>
-        <option value="high-low">Price: High to Low</option>
-  </select>
-</div>
-       <div class="category-heading" id="food">
-  <h2 class="section-title">Food & Beverages</h2>
-</div>
-<div class="product-grid">
+        <div class="no-result" id="noResult">
+          <i class="bi bi-search"></i>
+          <h4>No product found</h4>
+          <p>Try searching another sugarcane product.</p>
+        </div>
+
+        <div class="catalogue-top">
+          <span class="section-main-title">E-Catalogue Collection</span>
+          <div class="d-flex align-items-center gap-2">
+            <span style="font-size: 13px; color: var(--muted); font-weight: 600;">Sort by:</span>
+            <select class="sort-box" id="sortSelect" onchange="sortProducts()">
+              <option value="popular">Most Popular</option>
+              <option value="low-high">Price: Low to High</option>
+              <option value="high-low">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Food & Beverages -->
+        <div class="category-heading" id="food">
+          <h2 class="section-title">Food & Beverages</h2>
+        </div>
+        <div class="product-grid">
           <div class="product-card">
+            <div class="product-actions">
+              <button class="action-btn wish-btn" onclick="addToWishlist('juice')"><i class="bi bi-heart"></i></button>
+              <button class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" onclick="setQuickView('juice', 'QASABE Refresh Juice', 'images/drink (L).jpeg', 'RM 8.90', 'Refreshing sparkling drink infused with premium sugarcane extract 🥤🌸')"><i class="bi bi-eye"></i></button>
+            </div>
             <a href="product-detail.html?id=juice" class="product-img-link">
               <div class="hover-img-box">
                 <img src="images/drink (L).jpeg" class="main-img" alt="Sugarcane Juice">
@@ -634,9 +882,9 @@ body{
             </a>
             <div class="product-info-wrap">
               <span class="product-tag">New</span>
-              <div class="product-name">QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage | Natural Hydration & Wellness</div>
+              <a href="product-detail.html?id=juice" class="product-name">QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage</a>
               <div class="product-desc">Refreshing sparkling drink infused with premium sugarcane extract 🥤🌸</div>
-              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.2/5</span></div>
+              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.6/5</span></div>
               <div class="price-row">
                 <span class="price">RM 8.90</span>
               </div>
@@ -644,6 +892,10 @@ body{
             </div>
           </div>
           <div class="product-card">
+            <div class="product-actions">
+              <button class="action-btn wish-btn" onclick="addToWishlist('energy-snack')"><i class="bi bi-heart"></i></button>
+              <button class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" onclick="setQuickView('energy-snack', 'QASABE Sugarcane Energy Snack', 'images/energy snack (L).png', 'RM 19.90', 'Healthy and spicy traditional crunch with aromatic cane enhancement 🌶️🌸')"><i class="bi bi-eye"></i></button>
+            </div>
             <a href="product-detail.html?id=energy-snack" class="product-img-link">
               <div class="hover-img-box">
                 <img src="images/energy snack (L).png" class="main-img" alt="Sugarcane Energy Snack">
@@ -652,7 +904,7 @@ body{
             </a>
             <div class="product-info-wrap">
               <span class="product-tag">Hot Item</span>
-              <div class="product-name">QASABE Sugarcane Energy Snack | Natural Quick Energy | Healthy On-The-Go Snack</div>
+              <a href="product-detail.html?id=energy-snack" class="product-name">QASABE Sugarcane Energy Snack | Natural Quick Energy</a>
               <div class="product-desc">Healthy and spicy traditional crunch with aromatic cane enhancement 🌶️🌸</div>
               <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.5/5</span></div>
               <div class="price-row">
@@ -662,11 +914,17 @@ body{
             </div>
           </div>
         </div>
+
+        <!-- Health -->
         <div class="category-heading" id="health">
           <h2 class="section-title">Health</h2>
         </div>
         <div class="product-grid">
           <div class="product-card">
+            <div class="product-actions">
+              <button class="action-btn wish-btn" onclick="addToWishlist('herbal-drink')"><i class="bi bi-heart"></i></button>
+              <button class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" onclick="setQuickView('herbal-drink', 'QASABE Herbal Drink', 'images/herbal drink (L).png', 'RM 33.90', 'Calming herbal botanical tea with rich natural properties 🌿🍵')"><i class="bi bi-eye"></i></button>
+            </div>
             <a href="product-detail.html?id=herbal-drink" class="product-img-link">
               <div class="hover-img-box">
                 <img src="images/herbal drink (L).png" class="main-img" alt="Sugarcane Herbal Drink">
@@ -675,9 +933,9 @@ body{
             </a>            
             <div class="product-info-wrap">
               <span class="product-tag">Best Seller</span>
-              <div class="product-name">QASABE Herbal Drink | Traditional Wellness Beverage | Natural Daily Health Support</div>
+              <a href="product-detail.html?id=herbal-drink" class="product-name">QASABE Herbal Drink | Traditional Wellness Beverage</a>
               <div class="product-desc">Calming herbal botanical tea with rich natural properties 🌿🍵</div>
-              <div class="rating-row"><span class="stars">★★★☆☆</span><span class="rating">3.8/5</span></div>
+              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.0/5</span></div>
               <div class="price-row">
                 <span class="price">RM 33.90</span>
               </div>
@@ -685,7 +943,11 @@ body{
             </div>
           </div>
           <div class="product-card">
-          <a href="product-detail.html?id=organic-cube" class="product-img-link">
+            <div class="product-actions">
+              <button class="action-btn wish-btn" onclick="addToWishlist('organic-cube')"><i class="bi bi-heart"></i></button>
+              <button class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" onclick="setQuickView('organic-cube', 'QASABE Sugarcane Cube', 'images/sugarcube (L).png', 'RM 14.90', 'Pure organic sweetener cubes compressed beautifully for daily use 🪵✨')"><i class="bi bi-eye"></i></button>
+            </div>
+            <a href="product-detail.html?id=organic-cube" class="product-img-link">
               <div class="hover-img-box">
                 <img src="images/sugarcube (L).png" class="main-img" alt="Organic Sugarcane Cube">
                 <img src="images/valuecube.jpeg" class="hover-img" alt="Organic Sugarcane Cube">
@@ -693,7 +955,7 @@ body{
             </a>
             <div class="product-info-wrap">
               <span class="product-tag">Organic</span>
-              <div class="product-name">QASABE Sugarcane Cube | Natural Cane Sweetener | Convenient Sugar Alternative</div>
+              <a href="product-detail.html?id=organic-cube" class="product-name">QASABE Sugarcane Cube | Natural Cane Sweetener</a>
               <div class="product-desc">Pure organic sweetener cubes compressed beautifully for daily use 🪵✨</div>
               <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.5/5</span></div>
               <div class="price-row">
@@ -703,7 +965,11 @@ body{
             </div>
           </div>
           <div class="product-card">
-          <a href="product-detail.html?id=liquid-drop" class="product-img-link">
+            <div class="product-actions">
+              <button class="action-btn wish-btn" onclick="addToWishlist('liquid-drop')"><i class="bi bi-heart"></i></button>
+              <button class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" onclick="setQuickView('liquid-drop', 'QASABE Liquid Sweetener Drops', 'images/liquid drop (L).jpeg', 'RM 16.90', 'Highly concentrated healthy liquid drop solution for beverages 💧🍯')"><i class="bi bi-eye"></i></button>
+            </div>
+            <a href="product-detail.html?id=liquid-drop" class="product-img-link">
               <div class="hover-img-box">
                 <img src="images/liquid drop (L).jpeg" class="main-img" alt="Sweetener Liquid Drop">
                 <img src="images/valuedrops.jpeg" class="hover-img" alt="Sweetener Liquid Drop">
@@ -711,7 +977,7 @@ body{
             </a>
             <div class="product-info-wrap">
               <span class="product-tag">Best Deal</span>
-              <div class="product-name">QASABE Liquid Sweetener Drops | Zero-Mess Sweetening Solution | Natural Sugarcane Extract</div>
+              <a href="product-detail.html?id=liquid-drop" class="product-name">QASABE Liquid Sweetener Drops | Natural Extract</a>
               <div class="product-desc">Highly concentrated healthy liquid drop solution for beverages 💧🍯</div>
               <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.7/5</span></div>
               <div class="price-row">
@@ -723,12 +989,18 @@ body{
             </div>
           </div>
         </div>
+
+        <!-- Personal Care -->
         <div class="category-heading" id="care">
           <h2 class="section-title">Personal Care & Wellness</h2>
         </div>
         <div class="product-grid">
           <div class="product-card">
-          <a href="product-detail.html?id=sleep-mist" class="product-img-link">
+            <div class="product-actions">
+              <button class="action-btn wish-btn" onclick="addToWishlist('sleep-mist')"><i class="bi bi-heart"></i></button>
+              <button class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" onclick="setQuickView('sleep-mist', 'QASABE Sleep Mist', 'images/sleep-mist (L).png', 'RM 24.90', 'Soothing pillow mist for a deeper and restorative nights rest 🌙✨')"><i class="bi bi-eye"></i></button>
+            </div>
+            <a href="product-detail.html?id=sleep-mist" class="product-img-link">
               <div class="hover-img-box">
                 <img src="images/sleep-mist (L).png" class="main-img" alt="Sugarcane Sleep Mist">
                 <img src="images/valuesmist.png" class="hover-img" alt="Sugarcane Sleep Mist">
@@ -736,7 +1008,7 @@ body{
             </a>
             <div class="product-info-wrap">
               <span class="product-tag">Aromatherapy</span>
-              <div class="product-name">QASABE Sleep Mist | Relaxing Aromatherapy Spray | Better Sleep & Calmness</div>
+              <a href="product-detail.html?id=sleep-mist" class="product-name">QASABE Sleep Mist | Relaxing Aromatherapy Spray</a>
               <div class="product-desc">Soothing pillow mist for a deeper and restorative night's rest 🌙✨</div>
               <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.5/5</span></div>
               <div class="price-row">
@@ -745,9 +1017,12 @@ body{
               <button class="cart-btn" onclick="addToCart('sleep-mist')">Add to Cart</button>         
             </div>
           </div>
-            
           <div class="product-card">
-          <a href="product-detail.html?id=aha-toner" class="product-img-link">
+            <div class="product-actions">
+              <button class="action-btn wish-btn" onclick="addToWishlist('aha-toner')"><i class="bi bi-heart"></i></button>
+              <button class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" onclick="setQuickView('aha-toner', 'QASABE AHA Toner', 'images/AHA toner (L).png', 'RM 26.90', 'Natural AHA extracts derived cleanly from pure Malaysian sugarcane 🧴🌿')"><i class="bi bi-eye"></i></button>
+            </div>
+            <a href="product-detail.html?id=aha-toner" class="product-img-link">
               <div class="hover-img-box">
                 <img src="images/AHA toner (L).png" class="main-img" alt="Sugarcane AHA Toner">
                 <img src="images/valuetoner.png" class="hover-img" alt="Sugarcane AHA Toner">
@@ -755,7 +1030,7 @@ body{
             </a>
             <div class="product-info-wrap">
               <span class="product-tag">Skincare</span>
-              <div class="product-name">QASABE AHA Toner | Gentle Exfoliating Toner | Smooth & Radiant Skin</div>
+              <a href="product-detail.html?id=aha-toner" class="product-name">QASABE AHA Toner | Gentle Exfoliating Toner</a>
               <div class="product-desc">Natural AHA extracts derived cleanly from pure Malaysian sugarcane 🧴🌿</div>
               <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.5/5</span></div>
               <div class="price-row">
@@ -765,7 +1040,11 @@ body{
             </div>
           </div>
           <div class="product-card">
-          <a href="product-detail.html?id=shampoo" class="product-img-link">
+            <div class="product-actions">
+              <button class="action-btn wish-btn" onclick="addToWishlist('shampoo')"><i class="bi bi-heart"></i></button>
+              <button class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" onclick="setQuickView('shampoo', 'QASABE Nourishing Shampoo', 'images/shampoo (L).png', 'RM 49.00', 'Deep cleansing moisture protection for a smooth shine 💆‍♀️✨')"><i class="bi bi-eye"></i></button>
+            </div>
+            <a href="product-detail.html?id=shampoo" class="product-img-link">
               <div class="hover-img-box">
                 <img src="images/shampoo (L).png" class="main-img" alt="Sugarcane Shampoo">
                 <img src="images/valueshampoo.png" class="hover-img" alt="Sugarcane Shampoo">
@@ -773,9 +1052,9 @@ body{
             </a>
             <div class="product-info-wrap">
               <span class="product-tag">Hair Care</span>
-              <div class="product-name">QASABE Nourishing Shampoo | Sugarcane Hair Care | Healthy & Refreshed Hair</div>
+              <a href="product-detail.html?id=shampoo" class="product-name">QASABE Nourishing Shampoo | Sugarcane Hair Care</a>
               <div class="product-desc">Deep cleansing moisture protection for a smooth shine 💆‍♀️✨</div>
-              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.0/5</span></div>
+              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.2/5</span></div>
               <div class="price-row">
                 <span class="price">RM 49.00</span>
               </div>
@@ -783,7 +1062,11 @@ body{
             </div>
           </div>
           <div class="product-card">
-          <a href="product-detail.html?id=body-scrub" class="product-img-link">
+            <div class="product-actions">
+              <button class="action-btn wish-btn" onclick="addToWishlist('body-scrub')"><i class="bi bi-heart"></i></button>
+              <button class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" onclick="setQuickView('body-scrub', 'QASABE Body Scrub', 'images/bscrub (L).jpeg', 'RM 28.90', 'Fine cane sugar crystals designed to gently scrub away impurities 🧼🌸')"><i class="bi bi-eye"></i></button>
+            </div>
+            <a href="product-detail.html?id=body-scrub" class="product-img-link">
               <div class="hover-img-box">
                 <img src="images/bscrub (L).jpeg" class="main-img" alt="Sugarcane Body Scrub">
                 <img src="images/valuescrubs.jpeg" class="hover-img" alt="Sugarcane Body Scrub">
@@ -791,9 +1074,9 @@ body{
             </a>  
             <div class="product-info-wrap">
               <span class="product-tag">Body Care</span>
-              <div class="product-name">QASABE Body Scrub | Natural Sugarcane Exfoliator | Soft & Glowing Skin</div>
+              <a href="product-detail.html?id=body-scrub" class="product-name">QASABE Body Scrub | Natural Sugarcane Exfoliator</a>
               <div class="product-desc">Fine cane sugar crystals designed to gently scrub away impurities 🧼🌸</div>
-              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.3/5</span></div>
+              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.6/5</span></div>
               <div class="price-row">
                 <span class="price">RM 28.90</span>
               </div>
@@ -801,12 +1084,18 @@ body{
             </div>
           </div>
         </div>
+
+        <!-- Packaging -->
         <div class="category-heading" id="packaging">
           <h2 class="section-title">Packaging & Container</h2>
         </div>
         <div class="product-grid">
           <div class="product-card">
-          <a href="product-detail.html?id=bagasse-packaging" class="product-img-link">
+            <div class="product-actions">
+              <button class="action-btn wish-btn" onclick="addToWishlist('bagasse-packaging')"><i class="bi bi-heart"></i></button>
+              <button class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" onclick="setQuickView('bagasse-packaging', 'QASABE Eco Bagasse Packaging', 'images/packaging (L).png', 'RM 7.90', '100% compostable fiber container crafted directly from bagasse pulp 📦♻️')"><i class="bi bi-eye"></i></button>
+            </div>
+            <a href="product-detail.html?id=bagasse-packaging" class="product-img-link">
               <div class="hover-img-box">
                 <img src="images/packaging (L).png" class="main-img" alt="Sugarcane Bagasse Packaging">
                 <img src="images/valuepackaging.png" class="hover-img" alt="Sugarcane Bagasse Packaging">
@@ -814,9 +1103,9 @@ body{
             </a>  
             <div class="product-info-wrap">
               <span class="product-tag">Eco Packaging</span>
-              <div class="product-name">QASABE Eco Bagasse Packaging | Sustainable Food Container | Biodegradable & Plastic-Free</div>
+              <a href="product-detail.html?id=bagasse-packaging" class="product-name">QASABE Eco Bagasse Packaging | Sustainable Food Container</a>
               <div class="product-desc">100% compostable fiber container crafted directly from bagasse pulp 📦♻️</div>
-              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.2/5</span></div>
+              <div class="rating-row"><span class="stars">★★★★☆</span><span class="rating">4.7/5</span></div>
               <div class="price-row">
                 <span class="price">RM 7.90</span>
               </div>
@@ -824,14 +1113,45 @@ body{
             </div>
           </div>
         </div>
+      </section>
     </div>
   </div>
 </main>
+
+<!-- NEW FEATURE: QUICK VIEW MODAL (Bootstrap Native) -->
+<div class="modal fade" id="quickViewModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <div class="position-absolute top-0 end-0 p-3" style="z-index: 15;">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="row g-0">
+          <div class="col-md-6">
+            <img id="modalImg" src="" class="modal-product-img" alt="Product Image">
+          </div>
+          <div class="col-md-6 p-4 d-flex flex-column justify-content-center">
+            <span class="product-tag mb-2">QASABE Premium</span>
+            <h3 id="modalTitle" class="mb-2 font-weight-bold" style="font-family:'Cormorant Garamond',serif; font-size:32px;">Product Title</h3>
+            <h4 id="modalPrice" class="text-primary mb-3" style="font-weight: 800; color:var(--navy) !important;">RM 0.00</h4>
+            <p id="modalDesc" class="text-muted mb-4">Product description text goes here.</p>
+            <div class="d-flex gap-2">
+              <button id="modalCartBtn" class="btn btn-dark w-100 py-3 rounded-pill" onclick="">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+  // Search feature with visual highlight
   const searchInput = document.getElementById("searchInput");
   const productCards = document.querySelectorAll(".product-card");
   const noResult = document.getElementById("noResult");
+  
   searchInput.addEventListener("keyup", function(){
     const keyword = searchInput.value.toLowerCase().trim();
     let found = 0;
@@ -845,16 +1165,31 @@ body{
         card.style.display = "none";
       }
     });
-    if(found === 0){
-      noResult.style.display = "block";
-    }else{
-      noResult.style.display = "none";
-    }
+    noResult.style.display = (found === 0) ? "block" : "none";
+  });
+
+  // Dynamic quick-view system
+  function setQuickView(id, title, img, price, desc) {
+    document.getElementById("modalTitle").innerText = title;
+    document.getElementById("modalImg").src = img;
+    document.getElementById("modalPrice").innerText = price;
+    document.getElementById("modalDesc").innerText = desc;
+    document.getElementById("modalCartBtn").setAttribute("onclick", `addToCart('${id}'); $('#quickViewModal').modal('hide');`);
+  }
+
+  // Active state for pills & sidebar highlighting
+  document.querySelectorAll('.category-pill, .side-link').forEach(link => {
+    link.addEventListener('click', function() {
+      document.querySelectorAll('.category-pill, .side-link').forEach(el => el.classList.remove('active'));
+      const targetHref = this.getAttribute('href');
+      document.querySelectorAll(`[href="${targetHref}"]`).forEach(activeEl => activeEl.classList.add('active'));
+    });
   });
 </script>
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
 function updateCounts(){
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -864,48 +1199,59 @@ function updateCounts(){
     if(cartBadge) cartBadge.textContent=cartCount;
     if(wishlistBadge) wishlistBadge.textContent=wishlist.length;
 }
+
 function addToCart(id){
-  let existing = cart.find(item => item.id === id);
-  if(existing){
-    existing.qty++;
-  }else{
-    cart.push({
-      id: id,
-      qty: 1
-    });
-  }
-  localStorage.setItem("cart", JSON.stringify(cart));
+	  // 🔥 SEKATAN UNTUK GUEST: Check user dah login ke belum
+	  let currentUser = JSON.parse(localStorage.getItem("customerAccount"));
+	  if (!currentUser) {
+	    alert("Oops! You need to login first to add items to the cart.");
+	    window.location.href = "login.html";
+	    return; // Stop fungsi daripada teruskan add to cart
+	  }
+
+	  // Kod asal kau di bawah (berjalan macam biasa kalau dah login)
+	  let existing = cart.find(item => item.id === id);
+	  if(existing){
+	    existing.qty++;
+	  }else{
+	    cart.push({ id: id, qty: 1 });
+	  }
+	  localStorage.setItem("cart", JSON.stringify(cart));
+	  updateCounts();
+	  alert("Added to cart successfully!");
+	}
+
+	function addToWishlist(id){
+	  // 🔥 SEKATAN UNTUK GUEST: Check user dah login ke belum
+	  let currentUser = JSON.parse(localStorage.getItem("customerAccount"));
+	  if (!currentUser) {
+	    alert("Oops! You need to login first to add items to your wishlist.");
+	    window.location.href = "login.html";
+	    return; // Stop fungsi daripada teruskan add to wishlist
+	  }
+
+	  // Kod asal kau di bawah (berjalan macam biasa kalau dah login)
+	  if(!wishlist.includes(id)){
+	    wishlist.push(id);
+	    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+	    updateCounts();
+	    alert("Added to wishlist!");
+	  } else {
+	    alert("Item is already in your wishlist.");
+	  }
   updateCounts();
-  alert("Added to cart!");
 }
 updateCounts();
-</script>
-<script>
-function addToWishlist(id){
-	  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-	  if(!wishlist.includes(id)){
-	      wishlist.push(id);
-	      localStorage.setItem("wishlist", JSON.stringify(wishlist));
-	      alert("Product added to wishlist!");
-	  }else{
-	      alert("Product already in wishlist.");
-	  }
-	  updateCounts();
-	}
 </script>
 <script>
 function sortProducts() {
   const sortType = document.getElementById("sortSelect").value;
   const grids = document.querySelectorAll(".product-grid");
   grids.forEach(grid => {
-   
     const cards = Array.from(grid.querySelectorAll(".product-card"));
     cards.sort((a, b) => {
-    
-      // Ditambah fungsi .replace("From", "") supaya tag "From RM 7.90" boleh dibaca sebagai angka 7.90 dengan tepat oleh sistem tapis!
       const priceA = parseFloat(a.querySelector(".price").textContent.replace("From", "").replace("RM", "").trim());
       const priceB = parseFloat(b.querySelector(".price").textContent.replace("From", "").replace("RM", "").trim());
-     
       const ratingA = parseFloat(a.querySelector(".rating").textContent.split("/")[0].trim());
       const ratingB = parseFloat(b.querySelector(".rating").textContent.split("/")[0].trim());
      
@@ -918,31 +1264,92 @@ function sortProducts() {
       }
       return 0;
     });
-  
     cards.forEach(card => grid.appendChild(card));
   });
 }
-</script>
-<script>
-  window.addEventListener("DOMContentLoaded", function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const category = urlParams.get('cat');
+
+//REAL-TIME PRICE & SEARCH FILTER FUNCTION
+function filterByPrice() {
+  const maxPrice = parseFloat(document.getElementById("priceRange").value);
+  document.getElementById("priceValue").innerText = "RM " + maxPrice.toFixed(2);
+  
+  const productCards = document.querySelectorAll(".product-card");
+  const noResult = document.getElementById("noResult");
+  let visibleProducts = 0;
+
+  productCards.forEach(card => {
+    const priceText = card.querySelector(".price").textContent;
+    const priceValue = parseFloat(priceText.replace("RM", "").trim());
     
-    if (category) {
-      let targetId = "";
-      if (category === "food-beverages") targetId = "food";
-      if (category === "health") targetId = "health";
-      if (category === "personal-care") targetId = "care";
-      if (category === "packaging") targetId = "packaging";
-      
-      const element = document.getElementById(targetId);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 300);
-      }
+    // Ambil input dari search bar juga supaya filter tak bertembung
+    const keyword = document.getElementById("searchInput").value.toLowerCase().trim();
+    const productName = card.querySelector(".product-name").textContent.toLowerCase();
+
+    if (priceValue <= maxPrice && (productName.includes(keyword) || keyword === "")) {
+      card.style.display = "flex";
+      visibleProducts++;
+    } else {
+      card.style.display = "none";
     }
   });
+
+  noResult.style.display = (visibleProducts === 0) ? "block" : "none";
+}
+
+// Event listener untuk trigger filter bila user menaip dekat search bar
+document.getElementById("searchInput").addEventListener("keyup", filterByPrice);
+
+function showSuggestions(val) {
+	  const box = document.getElementById("suggestionBox");
+	  if (!val || !val.trim()) {
+	    box.style.display = "none";
+	    return;
+	  }
+	  
+	  const query = val.toLowerCase();
+	  const matches = availableProducts.filter(p => p.name.toLowerCase().includes(query));
+	  
+	  if (matches.length === 0) {
+	    box.style.display = "none";
+	    return;
+	  }
+	  
+	  box.innerHTML = matches.map(p => `
+	    <div class="suggestion-item" onclick="selectSuggestion('${p.id}', '${p.name}')">
+	      <img src="${p.img}" alt="${p.name}">
+	      <span>${p.name}</span>
+	    </div>
+	  `).join("");
+	  
+	  box.style.display = "block";
+	}
+
+	function selectSuggestion(id, name) {
+	  document.getElementById("searchBar").value = name;
+	  document.getElementById("suggestionBox").style.display = "none";
+	  window.location.href = `product-detail.html?id=${id}`;
+	}
+
+	document.addEventListener("click", function(e) {
+	  if (e.target.id !== "searchBar") {
+	    const box = document.getElementById("suggestionBox");
+	    if(box) box.style.display = "none";
+	  }
+	});
+
+	function handleSearch(event) {
+	  if (event.key === "Enter") {
+	    let query = document.getElementById("searchBar").value.trim();
+	    if (query !== "") {
+	      const exactMatch = availableProducts.find(p => p.name.toLowerCase() === query.toLowerCase());
+	      if(exactMatch) {
+	         window.location.href = `product-detail.html?id=${exactMatch.id}`;
+	      } else {
+	         window.location.href = `Category.html?search=${encodeURIComponent(query)}`;
+	      }
+	    }
+	  }
+	}
 </script>
 </body>
 </html>
