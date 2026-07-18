@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght=300;400;500;600&family=Playfair+Display:ital,wght=0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght=300;400;500;600&family=Playfair+Display:ital,wght=0,500;0,600;1,400&display=swap" rel="stylesheet">
   
   <style>
     :root{
@@ -37,97 +37,141 @@
       color: var(--navy);
     }
     
-    /* Top Navigation Styling */
+    /* ==========================================================================
+       HEADER & NAVIGATION STYLING (IKUT SEBIJIK INDEX.HTML)
+       ========================================================================== */
     .top-bar{
-      background: var(--navy);
-      color: white;
-      font-size: 11px;
-      padding: 10px;
-      text-align: center;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      font-weight: 500;
+      background:var(--navy);
+      color:white;
+      font-size:12px;
+      padding:8px;
+      text-align:center;
+      display: none; /* Dikawal oleh JavaScript mengikut status login */
     }
     .navbar {
-      padding: 20px 0;
       background: transparent;
+      padding: 10px 0;
     }
     .navbar-nav .nav-link{
-      color: var(--navy);
-      font-weight: 500;
-      font-size: 15px;
-      letter-spacing: 0.5px;
-      padding: 8px 16px !important;
-      transition: .3s ease;
+        color: var(--navy);
+        font-weight: 500;
+        font-size: 16px;
+        transition: .3s;
     }
     .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active{
-      color: var(--gold);
+        color: var(--gold);
     }
-    .dropdown-menu {
-      background-color: var(--cream);
-      border-radius: 12px;
-      padding: 10px;
+    .navbar-collapse{
+        align-items: center;
     }
     .dropdown-menu .dropdown-item:hover {
       background-color: var(--gold);
       color: white !important;
-      border-radius: 6px;
+      transition: 0.2s;
+    }
+    .dropdown-toggle::after {
+      vertical-align: middle;
+      color: var(--gold); 
     }
     .brand-logo{
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      text-decoration: none;
+      display:flex;
+      align-items:center;
+      gap:1px;
+      text-decoration:none;
     }
     .brand-logo img{
-      width: 55px;
-      height: 55px;
-      object-fit: contain;
+      width:65px;
+      height:65px;
+      object-fit:contain;
     }
     .brand-logo span{
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: var(--navy);
+      font-family:'Cormorant Garamond', serif;
+      font-size:38px;
+      font-weight:700;
+      letter-spacing:1px;
+      color:var(--navy);
     }
     .nav-icons{
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
+    .icon-btn{
+        width:50px;
+        height:50px;
+        border-radius:50%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        position:relative;
+        font-size:22px;
+        text-decoration:none;
+        color:var(--navy);
+        transition:.3s;
+    }
+    .icon-btn:hover{
+      background:var(--gold);
+      color:white;
+      transform:translateY(-4px) scale(1.1);
+      box-shadow:0 0 15px rgba(201,155,59,0.5);
+    }
+    .cart-count,
+    .wishlist-count{
+      background:var(--gold);
+      color:white;
+      font-size:11px;
+      border-radius:50%;
+      padding:2px 6px;
+      position:relative;
+      top:-10px;
+      right:8px;
+    }
+
+    /* SEARCH BAR & SUGGESTION BOX (INDEX.HTML STYLE) */
+    .search-container {
+      position: relative;
+    }
+    .suggestion-box {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      z-index: 1050;
+      max-height: 250px;
+      overflow-y: auto;
+      display: none;
+      margin-top: 5px;
+    }
+    .suggestion-item {
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--navy);
+      transition: background 0.2s;
       display: flex;
       align-items: center;
       gap: 10px;
+      text-align: left;
     }
-    .icon-btn{
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      font-size: 18px;
-      text-decoration: none;
-      color: var(--navy);
-      transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 1px solid rgba(7, 24, 39, 0.08);
+    .suggestion-item:hover {
+      background: #f5f5f5;
+      color: var(--gold);
     }
-    .icon-btn:hover{
-      background: var(--navy);
-      color: white;
-      transform: translateY(-2px);
-    }
-    .cart-count, .wishlist-count{
-      background: var(--gold);
-      color: white;
-      font-size: 10px;
-      border-radius: 50%;
-      padding: 2px 6px;
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      font-family: sans-serif;
+    .suggestion-item img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      border-radius: 4px;
+      background: #fdfaf6;
     }
 
-    /* Minimal Aesthetic Hero Section */
+    /* ==========================================================================
+       ABOUT US PAGE SECTIONS STYLING
+       ========================================================================== */
     .hero-about {
       background: linear-gradient(rgba(7, 24, 39, 0.4), rgba(7, 24, 39, 0.4)), url('images/background.jpeg') center/cover no-repeat;
       padding: 140px 0;
@@ -152,8 +196,6 @@
       font-size: 11px;
       letter-spacing: 3px;
     }
-
-    /* Layout Sections */
     .section-light {
       padding: 120px 0;
       background: var(--cream);
@@ -163,7 +205,6 @@
       color: white;
       padding: 120px 0;
     }
-    
     .section-tag {
       font-size: 12px;
       font-weight: 600;
@@ -180,8 +221,6 @@
       line-height: 1.15;
       margin-bottom: 25px;
     }
-    
-    /* Asymmetric Image Frame for Company Pic */
     .image-overlap-container {
       position: relative;
       padding: 15px;
@@ -205,8 +244,6 @@
     .image-overlap-container:hover .img-aesthetic {
       transform: translateY(-5px);
     }
-
-    /* Premium Floating Cards */
     .card-premium {
       background: white;
       border: 1px solid rgba(201, 155, 59, 0.15);
@@ -229,8 +266,6 @@
       font-size: 14px;
       line-height: 1.7;
     }
-    
-    /* Elegant Buttons */
     .btn-gold {
       background: var(--navy);
       color: white;
@@ -249,53 +284,26 @@
       transform: translateY(-2px);
       box-shadow: 0 10px 20px rgba(201, 155, 59, 0.2);
     }
-    
-    /* Journey Timeline */
-    .journey-step {
-      position: relative;
-      padding: 20px;
+    .style-timeline-container .journey-node {
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
-    .journey-step h4 {
-      font-size: 32px;
-      font-family: 'Cormorant Garamond', serif;
-      color: var(--gold) !important;
+    .journey-node .node-dot {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .journey-arrow {
-      position: absolute;
-      top: 30%;
-      right: -10%;
-      color: rgba(201, 155, 59, 0.4);
-      font-size: 18px;
+    .journey-node h4 {
+      transition: all 0.3s ease;
     }
-    
-    /* --- KOD AESTHETIC TIMELINE OUR JOURNEY --- */
-.style-timeline-container .journey-node {
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.journey-node .node-dot {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.journey-node h4 {
-  transition: all 0.3s ease;
-}
-
-.journey-node:hover .node-dot {
-  transform: scale(1.4);
-  background: var(--gold) !important;
-  /* Box-shadow ni yang buat dia nampak bercahaya/glowing */
-  box-shadow: 0 0 20px rgba(201, 155, 59, 0.8), 0 0 40px rgba(201, 155, 59, 0.3);
-  border-color: #fff !important;
-}
-
-.journey-node:hover h4 {
-  text-shadow: 0 0 15px rgba(201, 155, 59, 0.6);
-  transform: translateY(-3px);
-}
-    
-    /* Gallery Grid */
+    .journey-node:hover .node-dot {
+      transform: scale(1.4);
+      background: var(--gold) !important;
+      box-shadow: 0 0 20px rgba(201, 155, 59, 0.8), 0 0 40px rgba(201, 155, 59, 0.3);
+      border-color: #fff !important;
+    }
+    .journey-node:hover h4 {
+      text-shadow: 0 0 15px rgba(201, 155, 59, 0.6);
+      transform: translateY(-3px);
+    }
     .gallery-box {
       border-radius: 20px;
       overflow: hidden;
@@ -311,8 +319,6 @@
     .gallery-box:hover img {
       transform: scale(1.06);
     }
-    
-    /* Clean Feature Cards */
     .feature-card-clean {
       padding: 25px 15px;
       transition: .3s;
@@ -330,8 +336,6 @@
       color: var(--muted-text);
       line-height: 1.6;
     }
-    
-    /* Sustainability Commitment Section */
     .section-commitment {
       background-color: var(--light-cream);
       position: relative;
@@ -349,8 +353,6 @@
     }
     .decor-left { left: -20px; transform: scaleX(-1) rotate(15deg); }
     .decor-right { right: -20px; transform: rotate(15deg); }
-    
-    /* Minimalist 2-Column FAQ */
     .faq-accordion .accordion-item {
       border: none;
       background: white;
@@ -378,15 +380,11 @@
       font-size: 14px;
       line-height: 1.7;
     }
-
-    /* Video Frame Style */
     .tiktok-wrap {
       border-radius: 28px;
       overflow: hidden;
       box-shadow: 0 30px 60px rgba(7, 24, 39, 0.1);
     }
-    
-    /* Thank You Aesthetic Box */
     .q-thanks-box {
       padding: 100px 0;
       background: var(--cream);
@@ -398,7 +396,6 @@
       font-style: italic;
       color: var(--navy);
     }
-    
     .footer-bottom {
       background: var(--navy);
       color: rgba(255,255,255,0.6);
@@ -421,48 +418,55 @@
 </head>
 <body>
 
-  <!-- TOP INFO BAR -->
-  <div class="top-bar">
-    Sign up and get 20% off your first order. <u>Sign Up Now</u>
+  <!-- TOP INFO BAR (IKUT INDEX.HTML) -->
+  <div id="dynamicTopBar" class="top-bar">
+    Sign up and get 20% off your first order. <a href="profile.html" class="text-white text-decoration-underline ms-1">Sign Up Now</a>
   </div>
   
-  <!-- NAVIGATION BAR -->
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <!-- NAVIGATION BAR (IKUT INDEX.HTML) -->
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
       <a class="navbar-brand brand-logo" href="index.html">
         <img src="images/logor.png" alt="QASABE Logo">
         <span>QASABE</span>
       </a>
-      <button class="navbar-toggler border-0" data-bs-toggle="collapse" data-bs-target="#nav">
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
         <span class="navbar-toggler-icon"></span>
       </button>
       
       <div class="collapse navbar-collapse" id="nav">
-        <ul class="navbar-nav mx-auto gap-2">
+        <ul class="navbar-nav mx-auto gap-3">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link active" href="about-us.html">About</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Products
             </a>
-            <ul class="dropdown-menu border-0 shadow-lg" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item py-2" href="Category.html?cat=food-beverages">Food & Beverages</a></li>
-              <li><a class="dropdown-item py-2" href="Category.html?cat=health">Health</a></li>
-              <li><a class="dropdown-item py-2" href="Category.html?cat=personal-care">Personal Care & Wellness</a></li>
-              <li><a class="dropdown-item py-2" href="Category.html?cat=packaging">Food Packaging & Containers</a></li>
+            <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown" style="background-color: var(--cream);">
+              <li><a class="dropdown-item py-2" href="Category.html?cat=food-beverages" style="color: var(--navy); font-weight: 500;">Food & Beverages</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=health" style="color: var(--navy); font-weight: 500;">Health</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=personal-care" style="color: var(--navy); font-weight: 500;">Personal Care & Wellness</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=packaging" style="color: var(--navy); font-weight: 500;">Food Packaging & Containers</a></li>
             </ul>
           </li>
           <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
         </ul>
+
+        <!-- SEARCH BAR DENGAN SUGGESTION (IKUT INDEX.HTML) -->
+        <div class="d-none d-lg-block w-25 search-container">
+          <input type="text" id="searchBar" class="form-control rounded-pill" placeholder="Find sugarcane products..." onkeypress="handleSearch(event)" oninput="showSuggestions(this.value)">
+          <div id="suggestionBox" class="suggestion-box"></div>
+        </div>
         
-        <div class="nav-icons">
+        <!-- NAV ICONS STYLE (IKUT INDEX.HTML) -->
+        <div class="nav-icons ms-3">
           <a href="wishlist.html" class="icon-btn">
             <i class="bi bi-heart"></i>
-            <span id="wishlistCount" class="wishlist-count">2</span>
+            <span id="wishlistCount" class="wishlist-count">0</span>
           </a>
           <a href="cart.html" class="icon-btn">
             <i class="bi bi-cart"></i>
-            <span id="cartCount" class="cart-count">3</span>
+            <span id="cartCount" class="cart-count">0</span>
           </a>
           <a href="profile.html" class="icon-btn">
             <i class="bi bi-person-circle"></i>
@@ -488,12 +492,11 @@
     <div class="container">
       <div class="row g-5 align-items-center">
         
-        <!-- LEFT COLUMN: WHO WE ARE (WITH IMAGE) -->
+        <!-- LEFT COLUMN: WHO WE ARE -->
         <div class="col-lg-6">
           <span class="section-tag">• Who We Are •</span>
           <h2 class="about-title">Cultivating Eco-Wellness Innovation</h2>
           
-          <!-- Aesthetic Company Image Frame -->
           <div class="image-overlap-container mb-4">
             <img src="images/company.png" class="w-100 img-aesthetic" alt="Qasabe Company">
           </div>
@@ -509,7 +512,7 @@
           </div>
         </div>
         
-        <!-- RIGHT COLUMN: MISSION & VISION WITH FLOATING CARDS -->
+        <!-- RIGHT COLUMN: MISSION & VISION -->
         <div class="col-lg-6 ps-lg-5">
           <div class="mb-5 text-center text-lg-start">
             <span class="section-tag">• Our Purpose •</span>
@@ -547,26 +550,19 @@
     </div>
   </section>
 
- <!-- SECTION 3: OUR JOURNEY (HORIZONTAL GLOWING TIMELINE) -->
+ <!-- SECTION 3: OUR JOURNEY -->
   <section class="section-dark" style="background: var(--navy); color: white; padding: 100px 0; position: relative; overflow: hidden;">
     <div class="container">
-      
-      <!-- Tajuk Section -->
       <div class="text-center mb-5 pb-4">
         <span class="text-uppercase fw-bold mb-2 d-block" style="color: var(--gold); letter-spacing: 3px; font-size: 11px;">• PROGRESSION •</span>
         <h2 class="fw-bold text-white mb-2" style="font-family: 'Cormorant Garamond', serif; font-size: 44px;">Our Journey</h2>
         <p class="text-white-50 small" style="letter-spacing: 1px; font-size: 12px;">FROM AN IDEA TO SUSTAINABLE INNOVATION</p>
       </div>
 
-      <!-- Wrapper Timeline Mendatar -->
       <div class="position-relative mx-auto style-timeline-container" style="max-width: 1000px;">
-        
-        <!-- Garisan Emas Halus (Menyambung Bulatan) -->
         <div class="position-absolute d-none d-md-block" style="top: 38px; left: 5%; right: 5%; height: 1px; background: rgba(201, 155, 59, 0.3); z-index: 1;"></div>
         
         <div class="row g-4 text-center justify-content-between position-relative" style="z-index: 2;">
-          
-          <!-- Fasa 2024 -->
           <div class="col-md-3 col-sm-6 journey-node">
             <div class="d-flex flex-column align-items-center">
               <div class="node-dot mb-3 d-flex align-items-center justify-content-center" style="width: 22px; height: 22px; border-radius: 50%; background: var(--navy); border: 2px solid var(--gold);">
@@ -577,7 +573,6 @@
             </div>
           </div>
 
-          <!-- Fasa 2025 -->
           <div class="col-md-3 col-sm-6 journey-node">
             <div class="d-flex flex-column align-items-center">
               <div class="node-dot mb-3 d-flex align-items-center justify-content-center" style="width: 22px; height: 22px; border-radius: 50%; background: var(--navy); border: 2px solid var(--gold);">
@@ -588,7 +583,6 @@
             </div>
           </div>
 
-          <!-- Fasa 2026 -->
           <div class="col-md-3 col-sm-6 journey-node">
             <div class="d-flex flex-column align-items-center">
               <div class="node-dot mb-3 d-flex align-items-center justify-content-center" style="width: 22px; height: 22px; border-radius: 50%; background: var(--navy); border: 2px solid var(--gold);">
@@ -599,7 +593,6 @@
             </div>
           </div>
 
-          <!-- Fasa Future -->
           <div class="col-md-3 col-sm-6 journey-node">
             <div class="d-flex flex-column align-items-center">
               <div class="node-dot mb-3 d-flex align-items-center justify-content-center" style="width: 22px; height: 22px; border-radius: 50%; background: var(--navy); border: 2px solid var(--gold);">
@@ -609,7 +602,6 @@
               <p class="text-white-50 px-2" style="font-size: 13.5px; line-height: 1.6; max-width: 200px;">Expand globally with sustainable innovations.</p>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -619,21 +611,17 @@
   <section class="section-light">
     <div class="container">
       <div class="row align-items-center g-5">
-        
-        <!-- COLUMN KIRI: TEXT & SINGLE BUTTON -->
         <div class="col-lg-4 text-center text-lg-start">
           <span class="section-tag">• Behind The Scenes •</span>
           <h2 class="about-title">Watch Our Story</h2>
           <p class="text-muted small mb-4" style="line-height: 1.7;">Go behind the scenes of our sustainable sugarcane journey and witness true transformation ✨</p>
           
-          <!-- SATU BUTANG DENGAN ICON DI DALAM -->
           <a href="#storyVideoSection" id="watchBtn" class="btn-gold text-decoration-none d-inline-flex align-items-center gap-2">
             <span>Watch Video</span>
             <i class="bi bi-play-fill fs-5"></i>
           </a>
         </div>
         
-        <!-- COLUMN KANAN: VIDEO BOX -->
         <div class="col-lg-8">
           <div id="storyVideoSection" class="bg-white p-2 tiktok-wrap">
             <div class="ratio ratio-21x9 overflow-hidden" style="height: 320px;">
@@ -643,12 +631,11 @@
             </div>
           </div>
         </div>
-        
       </div>
     </div>
   </section>
 
-  <!-- SECTION 5: FEATURES INFO (4 CARDS GRID) -->
+  <!-- SECTION 5: FEATURES INFO -->
   <section class="section-light pt-0">
     <div class="container">
       <div class="row g-4 text-center text-md-start">
@@ -773,7 +760,7 @@
     </div>
   </section>
 
-  <!-- SECTION 8: 2-COLUMN FREQUENTLY ASKED QUESTIONS -->
+  <!-- SECTION 8: FAQ -->
   <section class="section-light">
     <div class="container">
       <div class="text-center mb-5">
@@ -784,8 +771,6 @@
 
       <div class="accordion faq-accordion" id="faqAccordion">
         <div class="row g-4">
-          
-          <!-- LEFT COLUMN FAQ -->
           <div class="col-md-6">
             <div class="accordion-item">
               <h2 class="accordion-header">
@@ -837,7 +822,6 @@
             </div>
           </div>
           
-          <!-- RIGHT COLUMN FAQ -->
           <div class="col-md-6">
             <div class="accordion-item">
               <h2 class="accordion-header">
@@ -888,18 +872,15 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 9: CALL TO ACTION (REDESIGNED AESTHETIC) -->
-  <section class="py-5" style="background: var(--navy); color: white; border-top: 1px solid rgba(255,255,255,0.05); overflow: hidden;">
+  <!-- SECTION 9: CALL TO ACTION -->
+  <section class="section-dark" style="border-top: 1px solid rgba(255,255,255,0.05); overflow: hidden;">
     <div class="container py-4">
       <div class="row align-items-center g-5">
-        
-        <!-- TEXT & BUTTONS -->
         <div class="col-lg-7 text-lg-start text-center">
           <span class="text-uppercase tracking-wider small fw-bold mb-2 d-block" style="color: var(--gold); letter-spacing: 2px; font-size: 11px;">• JOIN THE MOVEMENT •</span>
           <h2 class="fw-bold mb-3 text-white" style="font-family: 'Cormorant Garamond', serif; font-size: 42px; line-height: 1.2;">Support Sustainable Solutions ♡</h2>
@@ -912,16 +893,12 @@
           </div>
         </div>
         
-        <!-- PRODUCT IMAGE (RIGHT SIDE WITH FLOAT EFFECT) -->
         <div class="col-lg-5 d-none d-lg-block text-center text-lg-end">
           <div class="position-relative d-inline-block">
-            <!-- Pemanis background bulatan halus belakang produk -->
             <div class="position-absolute start-50 top-50 translate-middle rounded-circle" style="width: 260px; height: 260px; background: rgba(201, 155, 59, 0.08); filter: blur(20px); z-index: 1;"></div>
-            
             <img src="images/mainproducts-luxury.png" onerror="this.src='https://picsum.photos/400/300?random=5';" style="max-height: 240px; object-fit: contain; position: relative; z-index: 2; transition: transform 0.5s ease;" onmouseover="this.style.transform='translateY(-8px) scale(1.03)'" onmouseout="this.style.transform='translateY(0) scale(1)'" alt="Qasabe Products Showcase">
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -958,31 +935,114 @@
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   
   <script>
+    // DATA DATA PRODUK UTK FUNGSI SEARCH (DIAMBIL DARI INDEX.HTML)
+    const availableProducts = [
+      { id: "aha-toner", name: "Sugarcane Glow Toner", img: "images/AHA toner (L).png" },
+      { id: "sleep-mist", name: "Sugarcane Sleep Mist", img: "images/sleep-mist (L).png" },
+      { id: "energy-snack", name: "Sugarcane Energy Snack", img: "images/energy snack (L).png" }
+    ];
+
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
+    // UPDATE COUNTER CART & WISHLIST
     function updateCounts(){
       const totalQty = cart.reduce((sum,item) => sum + item.qty, 0);
       if(document.getElementById("cartCount")) document.getElementById("cartCount").innerText = totalQty;
       if(document.getElementById("wishlistCount")) document.getElementById("wishlistCount").innerText = wishlist.length;
     }
-    updateCounts();
 
+    // FUNGSI SUGGESTION BOX (IKUT SEBIJIK INDEX.HTML)
+    function showSuggestions(val) {
+      const box = document.getElementById("suggestionBox");
+      if (!val || !val.trim()) {
+        box.style.display = "none";
+        return;
+      }
+      
+      const query = val.toLowerCase();
+      const matches = availableProducts.filter(p => p.name.toLowerCase().includes(query));
+      
+      if (matches.length === 0) {
+        box.style.display = "none";
+        return;
+      }
+      
+      box.innerHTML = matches.map(p => `
+        <div class="suggestion-item" onclick="selectSuggestion('${p.id}', '${p.name}')">
+          <img src="${p.img}" alt="${p.name}">
+          <span>${p.name}</span>
+        </div>
+      `).join("");
+      
+      box.style.display = "block";
+    }
+
+    function selectSuggestion(id, name) {
+      document.getElementById("searchBar").value = name;
+      document.getElementById("suggestionBox").style.display = "none";
+      window.location.href = `product-detail.html?id=${id}`;
+    }
+
+    // Tutup suggestion box bila klik luar searchbar
+    document.addEventListener("click", function(e) {
+      if (e.target.id !== "searchBar") {
+        const box = document.getElementById("suggestionBox");
+        if(box) box.style.display = "none";
+      }
+    });
+
+    // FUNGSI HANDLE SEARCH ENTER (IKUT INDEX.HTML)
+    function handleSearch(event) {
+      if (event.key === "Enter") {
+        let query = document.getElementById("searchBar").value.trim();
+        if (query !== "") {
+          const exactMatch = availableProducts.find(p => p.name.toLowerCase() === query.toLowerCase());
+          if(exactMatch) {
+             window.location.href = `product-detail.html?id=${exactMatch.id}`;
+          } else {
+             window.location.href = `Category.html?search=${encodeURIComponent(query)}`;
+          }
+        }
+      }
+    }
+
+    // SEMAK STATUS LOGIN UNTUK PAPARKAN TOP BAR (IKUT INDEX.HTML)
+    function checkLoginStatus() {
+      const topBar = document.getElementById("dynamicTopBar");
+      if (!topBar) return; 
+
+      const userLoggedIn = localStorage.getItem("userLoggedIn");
+      if (userLoggedIn === "true") {
+       topBar.style.display = "none";  
+      } else {
+       topBar.style.display = "block"; 
+      }
+    }
+
+    // INITIALIZATION ON LOAD
+    window.onload = function() {
+      updateCounts();    
+      checkLoginStatus(); 
+    };
+
+    // GLIGHTBOX INITIALIZATION
     const lightbox = GLightbox({
       touchNavigation: true,
       loop: true,
       zoomable: true
     });
     
+    // VIDEO ACTION
     const watchBtn = document.getElementById("watchBtn");
     const video = document.getElementById("storyVideo");
-
-    watchBtn.addEventListener("click", function () {
-        setTimeout(() => {
-            video.play();
-        }, 500);
-    });
-
+    if(watchBtn && video) {
+        watchBtn.addEventListener("click", function () {
+            setTimeout(() => {
+                video.play();
+            }, 500);
+        });
+    }
   </script>
 </body>
 </html>
