@@ -8,7 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght=0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
   --navy: #071827;
@@ -31,113 +31,121 @@ body{
   color: var(--text);
   -webkit-font-smoothing: antialiased;
 }
+
+/* ==========================================================================
+   HEADER & NAVIGATION STYLING (IKUT SEBIJIK INDEX.HTML)
+   ========================================================================== */
 .top-bar{
-  background: var(--navy);
-  color: white;
-  font-size: 13px;
-  text-align: center;
-  padding: 10px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-.top-bar u {
-  color: var(--gold);
-  cursor: pointer;
-  text-underline-offset: 4px;
+  background:var(--navy);
+  color:white;
+  font-size:12px;
+  padding:8px;
+  text-align:center;
+  display: none; /* Dikawal oleh JavaScript mengikut status login */
 }
 .navbar {
-  background: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(10px);
-  padding: 15px 0;
-  border-bottom: 1px solid rgba(7, 24, 39, 0.05) !important;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  background: transparent;
+  padding: 10px 0;
+  border-bottom: none !important;
+  position: relative;
 }
-.navbar-nav .nav-link {
-  color: var(--navy) !important;
-  font-weight: 600;
-  font-size: 15px;
-  transition: .3s;
-  margin: 0 10px;
+.navbar-nav .nav-link{
+    color: var(--navy);
+    font-weight: 500;
+    font-size: 16px;
+    transition: .3s;
+    margin: 0;
 }
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link.active {
-  color: var(--gold) !important;
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active{
+    color: var(--gold);
 }
-.brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  text-decoration: none;
+.navbar-collapse{
+    align-items: center;
 }
-.brand-logo img {
-  width: 55px;
-  height: 55px;
-  object-fit: contain;
+.dropdown-menu .dropdown-item:hover {
+  background-color: var(--gold);
+  color: white !important;
+  transition: 0.2s;
 }
-.brand-logo span {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 34px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  color: var(--navy);
-  line-height: 1;
+.dropdown-toggle::after {
+  vertical-align: middle;
+  color: var(--gold); 
 }
-.navbar .form-control {
-  width: 250px !important;
-  border-radius: 30px !important;
-  padding: 10px 20px !important; 
-  font-size: 14px !important;
-  border: 1px solid rgba(7, 24, 39, 0.1) !important;
-  height: 42px !important; 
-  background-color: #fcf8f5 !important;
-  transition: 0.3s ease;
+.brand-logo{
+  display:flex;
+  align-items:center;
+  gap:1px;
+  text-decoration:none;
 }
-.navbar .form-control:focus {
-  border-color: var(--gold) !important;
-  box-shadow: 0 0 0 3px rgba(201, 155, 59, 0.15) !important;
+.brand-logo img{
+  width:65px;
+  height:65px;
+  object-fit:contain;
 }
-.nav-icons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: 15px;
+.brand-logo span{
+  font-family:'Cormorant Garamond', serif;
+  font-size:38px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:var(--navy);
 }
-.icon-btn {
-  width: 44px !important;
-  height: 44px !important;
-  border-radius: 50% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  position: relative !important;
-  font-size: 20px !important;
-  text-decoration: none !important;
-  color: var(--navy) !important;
-  transition: .3s !important;
-  background: #f7efe5 !important;
+.nav-icons{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-left: 0;
+}
+.icon-btn{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    font-size:22px;
+    text-decoration:none;
+    color:var(--navy);
+    transition:.3s;
+    background: transparent !important;
+    border: none !important;
+}
+.icon-btn:hover{
+  background:var(--gold) !important;
+  color:white !important;
+  transform:translateY(-4px) scale(1.1);
+  box-shadow:0 0 15px rgba(201,155,59,0.5);
+}
+.cart-count,
+.wishlist-count{
+  background:var(--gold) !important;
+  color:white !important;
+  font-size:11px !important;
+  border-radius:50% !important;
+  padding:2px 6px !important;
+  position:relative !important;
+  top:-10px !important;
+  right:8px !important;
+  font-weight: normal !important;
   border: none !important;
 }
-.icon-btn:hover {
-  background: var(--gold) !important;
-  color: white !important;
-  transform: translateY(-3px);
-}
-.cart-count, .wishlist-count {
-  background: var(--gold) !important;
-  color: white !important;
-  font-size: 10px !important;
-  border-radius: 50% !important;
-  padding: 2px 6px !important;
-  position: absolute !important;
-  top: -2px !important; 
-  right: -4px !important;
-  font-weight: 700 !important;
-  border: 2px solid white;
-}
+
+/* SEARCH BAR & SUGGESTION BOX (INDEX.HTML STYLE) */
 .search-container {
   position: relative;
+}
+.navbar .form-control {
+  width: 100% !important;
+  border-radius: 50rem !important;
+  padding: .375rem .75rem !important;
+  font-size: 1rem !important;
+  height: auto !important;
+  background-color: #fff !important;
+  border: 1px solid #ced4da !important;
+}
+.navbar .form-control:focus {
+  border-color: #86b7fe !important;
+  box-shadow: 0 0 0 .25rem rgba(13,110,253,.25) !important;
 }
 .suggestion-box {
   position: absolute;
@@ -177,7 +185,9 @@ body{
   background: #fdfaf6;
 }
 
-/* HERO VIDEO (Sleek & Curved Border at Bottom) */
+/* ==========================================================================
+   PAGE SECTIONS STYLING
+   ========================================================================== */
 .category-video-hero{
   position:relative;
   height: 500px;
@@ -244,8 +254,6 @@ body{
   background: var(--gold-hover);
   transform:translateY(-2px);
 }
-
-/* NEW: TRUST-BADGES BAR (Menggantikan catalogue-hero yang semak) */
 .trust-badges-bar {
   background: var(--white);
   padding: 25px 0;
@@ -281,8 +289,6 @@ body{
   font-size: 12px;
   color: var(--muted);
 }
-
-/* CATEGORY PILLS (More Modern & Active States) */
 .category-pills{
   display:flex;
   flex-wrap:wrap;
@@ -312,8 +318,6 @@ body{
   border-color: var(--navy);
   transform: translateY(-2px);
 }
-
-/* CATALOGUE LAYOUT */
 .page-wrap{
   padding-bottom:80px;
 }
@@ -362,7 +366,6 @@ body{
 .side-link i {
   font-size: 11px;
 }
-
 .catalogue-main{
   background: var(--white);
   border-radius:24px;
@@ -395,7 +398,6 @@ body{
   font-weight: 500;
   color: var(--navy);
 }
-/* PRICE RANGE FILTER STYLING */
 .price-range-wrap {
   padding: 10px 5px;
 }
@@ -431,11 +433,10 @@ body{
   border-radius: 8px;
   text-align: center;
 }
-/* PRODUCT GRID & CARDS */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* <--- Tukar dari 3 kepada 2 kolum */
-  gap: 30px;                             /* <--- Jarakkan sikit antara kad biar nampak kemas */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
   margin-bottom: 45px;
 }
 .product-card{
@@ -458,7 +459,7 @@ body{
 .hover-img-box {
   position: relative;
   width: 100%;
-  height: 380px; /* <--- Saiz ni cun kalau grid ada 2 kolum */
+  height: 380px; 
   overflow: hidden; 
   background: #fbfaf8;
 }
@@ -481,8 +482,6 @@ body{
   opacity:1;
   transform:scale(1);
 }
-
-/* Actions Wrapper on Image Hover */
 .product-actions {
   position: absolute;
   top: 15px;
@@ -521,7 +520,6 @@ body{
   background: #ffe5e5;
   color: #e63946;
 }
-
 .product-info-wrap {
   padding: 25px; 
   display: flex;
@@ -645,8 +643,6 @@ body{
   font-weight: 700;
   color: var(--navy);
 }
-
-/* QUICK VIEW MODAL CUSTOMIZATION */
 .modal-content {
   border-radius: 20px;
   border: none;
@@ -684,10 +680,12 @@ body{
 </head>
 <body>
 
-<div class="top-bar">
-  Sign up and get 20% off your first order. <u>Sign Up Now</u>
+<!-- TOP INFO BAR (IKUT INDEX.HTML) -->
+<div id="dynamicTopBar" class="top-bar">
+  Sign up and get 20% off your first order. <a href="profile.html" class="text-white text-decoration-underline ms-1">Sign Up Now</a>
 </div>
 
+<!-- NAVIGATION BAR (IKUT INDEX.HTML) -->
 <nav class="navbar navbar-expand-lg">
   <div class="container">
     <a class="navbar-brand brand-logo" href="index.html">
@@ -702,13 +700,13 @@ body{
     <div class="collapse navbar-collapse" id="nav">
       <ul class="navbar-nav mx-auto gap-3">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#story">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
         
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Products
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown" style="background-color: var(--cream);">
             <li><a class="dropdown-item py-2" href="Category.html?cat=food-beverages" style="color: var(--navy); font-weight: 500;">Food & Beverages</a></li>
             <li><a class="dropdown-item py-2" href="Category.html?cat=health" style="color: var(--navy); font-weight: 500;">Health</a></li>
             <li><a class="dropdown-item py-2" href="Category.html?cat=personal-care" style="color: var(--navy); font-weight: 500;">Personal Care & Wellness</a></li>
@@ -719,8 +717,14 @@ body{
         <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
       </ul>
       
-      <input class="form-control d-none d-lg-block" id="searchInput" placeholder="Find sugarcane products...">
-      <div class="nav-icons">
+      <!-- SEARCH BAR UTK SUGGESTION (IKUT INDEX.HTML) -->
+      <div class="d-none d-lg-block w-25 search-container">
+        <input type="text" id="searchBar" class="form-control rounded-pill" placeholder="Find sugarcane products..." onkeypress="handleSearch(event)" oninput="showSuggestions(this.value)">
+        <div id="suggestionBox" class="suggestion-box"></div>
+      </div>
+      
+      <!-- NAV ICONS STYLE (IKUT INDEX.HTML) -->
+      <div class="nav-icons ms-3">
         <a href="wishlist.html" class="icon-btn">
           <i class="bi bi-heart"></i>
           <span id="wishlistCount" class="wishlist-count">0</span>
@@ -762,7 +766,7 @@ body{
   </div>
 </section>
 
-<!-- NEW: TRUST-BADGES BAR (Simple & Elegant Transition) -->
+<!-- TRUST-BADGES BAR -->
 <section class="trust-badges-bar">
   <div class="container">
     <div class="row g-4">
@@ -809,7 +813,7 @@ body{
 <main class="page-wrap" id="catalog-content">
   <div class="container">
     
-    <!-- Filter Pills di Atas Grid -->
+    <!-- Filter Pills -->
     <div class="category-pills">
       <a href="#food" class="category-pill active"><i class="bi bi-cup-straw"></i>Food & Beverages</a>
       <a href="#health" class="category-pill"><i class="bi bi-heart-pulse"></i>Health</a>
@@ -833,16 +837,16 @@ body{
           Packaging & Container <i class="bi bi-chevron-right"></i>
         </a>
         
-        <!-- NEW FEATURE: PRICE RANGE FILTER -->
-<div class="sidebar-section">
-  <h5>Filter by Price</h5>
-  <div class="price-range-wrap">
-    <input type="range" class="price-slider" id="priceRange" min="0" max="60" value="60" oninput="filterByPrice()">
-    <div class="price-output-box">
-      Max Price: <span id="priceValue">RM 60.00</span>
-    </div>
-  </div>
-</div>
+        <!-- PRICE RANGE FILTER -->
+        <div class="sidebar-section">
+          <h5>Filter by Price</h5>
+          <div class="price-range-wrap">
+            <input type="range" class="price-slider" id="priceRange" min="0" max="60" value="60" oninput="filterByPrice()">
+            <div class="price-output-box">
+              Max Price: <span id="priceValue">RM 60.00</span>
+            </div>
+          </div>
+        </div>
       </aside>
       
       <section class="catalogue-main">
@@ -1118,7 +1122,7 @@ body{
   </div>
 </main>
 
-<!-- NEW FEATURE: QUICK VIEW MODAL (Bootstrap Native) -->
+<!-- QUICK VIEW MODAL -->
 <div class="modal fade" id="quickViewModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
@@ -1147,26 +1151,111 @@ body{
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // Search feature with visual highlight
-  const searchInput = document.getElementById("searchInput");
-  const productCards = document.querySelectorAll(".product-card");
-  const noResult = document.getElementById("noResult");
-  
-  searchInput.addEventListener("keyup", function(){
-    const keyword = searchInput.value.toLowerCase().trim();
-    let found = 0;
-    productCards.forEach(function(card){
-      const productName = card.querySelector(".product-name").textContent.toLowerCase();
-      const productTag = card.querySelector(".product-tag").textContent.toLowerCase();
-      if(productName.includes(keyword) || productTag.includes(keyword)){
-        card.style.display = "flex";
-        found++;
-      }else{
-        card.style.display = "none";
-      }
-    });
-    noResult.style.display = (found === 0) ? "block" : "none";
+//DATA PENUH 10 PRODUK UTK FUNGSI SEARCH SUGGESTION
+const availableProducts = [
+  { id: "aha-toner", name: "Sugarcane Glow Toner", img: "images/AHA toner (L).png" },
+  { id: "sleep-mist", name: "Sugarcane Sleep Mist", img: "images/sleep-mist (L).png" },
+  { id: "energy-snack", name: "Sugarcane Energy Snack", img: "images/energy snack (L).png" },
+  { id: "juice", name: "QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage", img: "images/drink (L).jpeg" },
+  { id: "herbal-drink", name: "QASABE Herbal Drink | Traditional Wellness Beverage", img: "images/herbal drink (L).png" },
+  { id: "organic-cube", name: "QASABE Sugarcane Cube | Natural Cane Sweetener", img: "images/sugarcube (L).png" },
+  { id: "liquid-drop", name: "QASABE Liquid Sweetener Drops | Natural Extract", img: "images/liquid drop (L).jpeg" },
+  { id: "shampoo", name: "QASABE Nourishing Shampoo | Sugarcane Hair Care", img: "images/shampoo (L).png" },
+  { id: "body-scrub", name: "QASABE Body Scrub | Natural Sugarcane Exfoliator", img: "images/bscrub (L).jpeg" },
+  { id: "bagasse-packaging", name: "QASABE Eco Bagasse Packaging | Sustainable Food Container", img: "images/packaging (L).png" }
+];
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  // UPDATE COUNTER CART & WISHLIST
+  function updateCounts(){
+      const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
+      const currentWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      const totalQty = currentCart.reduce((sum,item)=>sum+(item.qty||1),0);
+      
+      const cartBadge = document.getElementById("cartCount");
+      const wishlistBadge = document.getElementById("wishlistCount");
+      
+      if(cartBadge) cartBadge.textContent = totalQty;
+      if(wishlistBadge) wishlistBadge.textContent = currentWishlist.length;
+  }
+
+  // FUNGSI SUGGESTION BOX (IKUT SEBIJIK INDEX.HTML)
+  function showSuggestions(val) {
+    const box = document.getElementById("suggestionBox");
+    if (!val || !val.trim()) {
+      box.style.display = "none";
+      return;
+    }
+    
+    const query = val.toLowerCase();
+    const matches = availableProducts.filter(p => p.name.toLowerCase().includes(query));
+    
+    if (matches.length === 0) {
+      box.style.display = "none";
+      return;
+    }
+    
+    box.innerHTML = matches.map(p => `
+      <div class="suggestion-item" onclick="selectSuggestion('${p.id}', '${p.name}')">
+        <img src="${p.img}" alt="${p.name}">
+        <span>${p.name}</span>
+      </div>
+    `).join("");
+    
+    box.style.display = "block";
+  }
+
+  function selectSuggestion(id, name) {
+    document.getElementById("searchBar").value = name;
+    document.getElementById("suggestionBox").style.display = "none";
+    window.location.href = `product-detail.html?id=${id}`;
+  }
+
+  // Tutup suggestion box bila klik luar searchbar
+  document.addEventListener("click", function(e) {
+    if (e.target.id !== "searchBar") {
+      const box = document.getElementById("suggestionBox");
+      if(box) box.style.display = "none";
+    }
   });
+
+  // FUNGSI HANDLE SEARCH ENTER (IKUT INDEX.HTML)
+  function handleSearch(event) {
+    if (event.key === "Enter") {
+      let query = document.getElementById("searchBar").value.trim();
+      if (query !== "") {
+        const exactMatch = availableProducts.find(p => p.name.toLowerCase() === query.toLowerCase());
+        if(exactMatch) {
+           window.location.href = `product-detail.html?id=${exactMatch.id}`;
+        } else {
+           // Jalankan penapisan real-time katalog jika tiada match penuh
+           document.getElementById("priceRange").value = 60;
+           filterByPrice();
+        }
+      }
+    }
+  }
+
+  // SEMAK STATUS LOGIN UNTUK PAPARKAN TOP BAR (IKUT INDEX.HTML)
+  function checkLoginStatus() {
+    const topBar = document.getElementById("dynamicTopBar");
+    if (!topBar) return; 
+
+    const userLoggedIn = localStorage.getItem("userLoggedIn");
+    if (userLoggedIn === "true") {
+     topBar.style.display = "none";  
+    } else {
+     topBar.style.display = "block"; 
+    }
+  }
+
+  // INITIALIZATION ON LOAD
+  window.onload = function() {
+    updateCounts();    
+    checkLoginStatus(); 
+  };
 
   // Dynamic quick-view system
   function setQuickView(id, title, img, price, desc) {
@@ -1174,7 +1263,7 @@ body{
     document.getElementById("modalImg").src = img;
     document.getElementById("modalPrice").innerText = price;
     document.getElementById("modalDesc").innerText = desc;
-    document.getElementById("modalCartBtn").setAttribute("onclick", `addToCart('${id}'); $('#quickViewModal').modal('hide');`);
+    document.getElementById("modalCartBtn").setAttribute("onclick", `addToCart('${id}'); var modal = bootstrap.Modal.getInstance(document.getElementById('quickViewModal')); modal.hide();`);
   }
 
   // Active state for pills & sidebar highlighting
@@ -1185,171 +1274,102 @@ body{
       document.querySelectorAll(`[href="${targetHref}"]`).forEach(activeEl => activeEl.classList.add('active'));
     });
   });
-</script>
-<script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-function updateCounts(){
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    const cartCount = cart.reduce((sum,item)=>sum+(item.qty||1),0);
-    const cartBadge=document.getElementById("cartCount");
-    const wishlistBadge=document.getElementById("wishlistCount");
-    if(cartBadge) cartBadge.textContent=cartCount;
-    if(wishlistBadge) wishlistBadge.textContent=wishlist.length;
-}
-
-function addToCart(id){
-	  // 🔥 SEKATAN UNTUK GUEST: Check user dah login ke belum
-	  let currentUser = JSON.parse(localStorage.getItem("customerAccount"));
-	  if (!currentUser) {
-	    alert("Oops! You need to login first to add items to the cart.");
-	    window.location.href = "login.html";
-	    return; // Stop fungsi daripada teruskan add to cart
-	  }
-
-	  // Kod asal kau di bawah (berjalan macam biasa kalau dah login)
-	  let existing = cart.find(item => item.id === id);
-	  if(existing){
-	    existing.qty++;
-	  }else{
-	    cart.push({ id: id, qty: 1 });
-	  }
-	  localStorage.setItem("cart", JSON.stringify(cart));
-	  updateCounts();
-	  alert("Added to cart successfully!");
-	}
-
-	function addToWishlist(id){
-	  // 🔥 SEKATAN UNTUK GUEST: Check user dah login ke belum
-	  let currentUser = JSON.parse(localStorage.getItem("customerAccount"));
-	  if (!currentUser) {
-	    alert("Oops! You need to login first to add items to your wishlist.");
-	    window.location.href = "login.html";
-	    return; // Stop fungsi daripada teruskan add to wishlist
-	  }
-
-	  // Kod asal kau di bawah (berjalan macam biasa kalau dah login)
-	  if(!wishlist.includes(id)){
-	    wishlist.push(id);
-	    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-	    updateCounts();
-	    alert("Added to wishlist!");
-	  } else {
-	    alert("Item is already in your wishlist.");
-	  }
-  updateCounts();
-}
-updateCounts();
-</script>
-<script>
-function sortProducts() {
-  const sortType = document.getElementById("sortSelect").value;
-  const grids = document.querySelectorAll(".product-grid");
-  grids.forEach(grid => {
-    const cards = Array.from(grid.querySelectorAll(".product-card"));
-    cards.sort((a, b) => {
-      const priceA = parseFloat(a.querySelector(".price").textContent.replace("From", "").replace("RM", "").trim());
-      const priceB = parseFloat(b.querySelector(".price").textContent.replace("From", "").replace("RM", "").trim());
-      const ratingA = parseFloat(a.querySelector(".rating").textContent.split("/")[0].trim());
-      const ratingB = parseFloat(b.querySelector(".rating").textContent.split("/")[0].trim());
-     
-      if (sortType === "low-high") {
-        return priceA - priceB; 
-      } else if (sortType === "high-low") {
-        return priceB - priceA; 
-      } else if (sortType === "popular") {
-        return ratingB - ratingA; 
-      }
-      return 0;
-    });
-    cards.forEach(card => grid.appendChild(card));
-  });
-}
-
-//REAL-TIME PRICE & SEARCH FILTER FUNCTION
-function filterByPrice() {
-  const maxPrice = parseFloat(document.getElementById("priceRange").value);
-  document.getElementById("priceValue").innerText = "RM " + maxPrice.toFixed(2);
-  
-  const productCards = document.querySelectorAll(".product-card");
-  const noResult = document.getElementById("noResult");
-  let visibleProducts = 0;
-
-  productCards.forEach(card => {
-    const priceText = card.querySelector(".price").textContent;
-    const priceValue = parseFloat(priceText.replace("RM", "").trim());
-    
-    // Ambil input dari search bar juga supaya filter tak bertembung
-    const keyword = document.getElementById("searchInput").value.toLowerCase().trim();
-    const productName = card.querySelector(".product-name").textContent.toLowerCase();
-
-    if (priceValue <= maxPrice && (productName.includes(keyword) || keyword === "")) {
-      card.style.display = "flex";
-      visibleProducts++;
-    } else {
-      card.style.display = "none";
+  // ADD TO CART WITH GUEST CHECK
+  function addToCart(id){
+    let currentUser = JSON.parse(localStorage.getItem("customerAccount"));
+    if (!currentUser) {
+      alert("Oops! You need to login first to add items to the cart.");
+      window.location.href = "login.html";
+      return; 
     }
-  });
 
-  noResult.style.display = (visibleProducts === 0) ? "block" : "none";
-}
+    let existing = cart.find(item => item.id === id);
+    if(existing){
+      existing.qty++;
+    }else{
+      cart.push({ id: id, qty: 1 });
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCounts();
+    alert("Added to cart successfully!");
+  }
 
-// Event listener untuk trigger filter bila user menaip dekat search bar
-document.getElementById("searchInput").addEventListener("keyup", filterByPrice);
+  // ADD TO WISHLIST WITH GUEST CHECK
+  function addToWishlist(id){
+    let currentUser = JSON.parse(localStorage.getItem("customerAccount"));
+    if (!currentUser) {
+      alert("Oops! You need to login first to add items to your wishlist.");
+      window.location.href = "login.html";
+      return; 
+    }
 
-function showSuggestions(val) {
-	  const box = document.getElementById("suggestionBox");
-	  if (!val || !val.trim()) {
-	    box.style.display = "none";
-	    return;
-	  }
-	  
-	  const query = val.toLowerCase();
-	  const matches = availableProducts.filter(p => p.name.toLowerCase().includes(query));
-	  
-	  if (matches.length === 0) {
-	    box.style.display = "none";
-	    return;
-	  }
-	  
-	  box.innerHTML = matches.map(p => `
-	    <div class="suggestion-item" onclick="selectSuggestion('${p.id}', '${p.name}')">
-	      <img src="${p.img}" alt="${p.name}">
-	      <span>${p.name}</span>
-	    </div>
-	  `).join("");
-	  
-	  box.style.display = "block";
-	}
+    if(!wishlist.includes(id)){
+      wishlist.push(id);
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      updateCounts();
+      alert("Added to wishlist!");
+    } else {
+      alert("Item is already in your wishlist.");
+    }
+  }
 
-	function selectSuggestion(id, name) {
-	  document.getElementById("searchBar").value = name;
-	  document.getElementById("suggestionBox").style.display = "none";
-	  window.location.href = `product-detail.html?id=${id}`;
-	}
+  // SORT PRODUCTS
+  function sortProducts() {
+    const sortType = document.getElementById("sortSelect").value;
+    const grids = document.querySelectorAll(".product-grid");
+    grids.forEach(grid => {
+      const cards = Array.from(grid.querySelectorAll(".product-card"));
+      cards.sort((a, b) => {
+        const priceA = parseFloat(a.querySelector(".price").textContent.replace("From", "").replace("RM", "").trim());
+        const priceB = parseFloat(b.querySelector(".price").textContent.replace("From", "").replace("RM", "").trim());
+        const ratingA = parseFloat(a.querySelector(".rating").textContent.split("/")[0].trim());
+        const ratingB = parseFloat(b.querySelector(".rating").textContent.split("/")[0].trim());
+       
+        if (sortType === "low-high") {
+          return priceA - priceB; 
+        } else if (sortType === "high-low") {
+          return priceB - priceA; 
+        } else if (sortType === "popular") {
+          return ratingB - ratingA; 
+        }
+        return 0;
+      });
+      cards.forEach(card => grid.appendChild(card));
+    });
+  }
 
-	document.addEventListener("click", function(e) {
-	  if (e.target.id !== "searchBar") {
-	    const box = document.getElementById("suggestionBox");
-	    if(box) box.style.display = "none";
-	  }
-	});
+  // REAL-TIME PRICE & SEARCH FILTER FUNCTION
+  function filterByPrice() {
+    const maxPrice = parseFloat(document.getElementById("priceRange").value);
+    document.getElementById("priceValue").innerText = "RM " + maxPrice.toFixed(2);
+    
+    const productCards = document.querySelectorAll(".product-card");
+    const noResult = document.getElementById("noResult");
+    let visibleProducts = 0;
 
-	function handleSearch(event) {
-	  if (event.key === "Enter") {
-	    let query = document.getElementById("searchBar").value.trim();
-	    if (query !== "") {
-	      const exactMatch = availableProducts.find(p => p.name.toLowerCase() === query.toLowerCase());
-	      if(exactMatch) {
-	         window.location.href = `product-detail.html?id=${exactMatch.id}`;
-	      } else {
-	         window.location.href = `Category.html?search=${encodeURIComponent(query)}`;
-	      }
-	    }
-	  }
-	}
+    // Baca nilai input dari searchBar untuk suggestion
+    const keyword = document.getElementById("searchBar").value.toLowerCase().trim();
+
+    productCards.forEach(card => {
+      const priceText = card.querySelector(".price").textContent;
+      const priceValue = parseFloat(priceText.replace("RM", "").trim());
+      const productName = card.querySelector(".product-name").textContent.toLowerCase();
+      const productTag = card.querySelector(".product-tag").textContent.toLowerCase();
+
+      if (priceValue <= maxPrice && (productName.includes(keyword) || productTag.includes(keyword) || keyword === "")) {
+        card.style.display = "flex";
+        visibleProducts++;
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+    noResult.style.display = (visibleProducts === 0) ? "block" : "none";
+  }
+
+  // Event listener untuk trigger penapisan masa menaip di search bar utama
+  document.getElementById("searchBar").addEventListener("keyup", filterByPrice);
 </script>
 </body>
 </html>
