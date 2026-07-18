@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* TEMA WARNA ALIGNED WITH CATEGORY.HTML */
+/* TEMA WARNA ALIGNED WITH WISHLIST.HTML & CATEGORY.HTML */
 :root {
   --navy: #071827;
   --navy2: #0b2438;
@@ -20,14 +20,15 @@
   --soft: #f7efe5;
   --text: #111827;
   --muted: #6b7280;
+  --red: #ff3b3b;
 }
 *{
   box-sizing: border-box;
 }
 body{
   margin: 0;
-  font-family: 'Plus Jakarta Sans', Arial, sans-serif;
-  background: linear-gradient(180deg,#fffaf4 0%,#ffffff 45%,#f8f1e7 100%);
+  font-family: Arial, sans-serif;
+  background: var(--cream);
   color: var(--text);
 }
 .top-bar{
@@ -38,21 +39,29 @@ body{
   padding: 8px;
   font-weight: 600;
 }
-.navbar {
-  background: transparent !important; 
-  padding: 20px 0;
-  border-bottom: none !important;
+.navbar{
+  background: white;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
 }
-.navbar-nav .nav-link {
-  color: var(--navy) !important;
+.navbar-nav .nav-link{
+  color: var(--navy);
   font-weight: 500;
   font-size: 16px;
   transition: .3s;
-  margin: 0 8px;
 }
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-  color: var(--gold) !important;
+  color: var(--gold);
+}
+.dropdown-menu .dropdown-item:hover {
+  background-color: var(--gold);
+  color: white !important;
+  transition: 0.2s;
+}
+.dropdown-toggle::after {
+  vertical-align: middle;
+  color: var(--gold); 
 }
 .brand-logo {
   display: flex;
@@ -71,69 +80,93 @@ body{
   font-weight: 700;
   letter-spacing: 1px;
   color: var(--navy);
-  line-height: 1 !important;
 }
-.navbar .form-control {
-  width: 25% !important;
-  border-radius: 25px !important;
-  padding: 10px 16px !important; 
-  font-size: 14px !important;
-  border: 1px solid #ddd !important;
-  height: 44px !important; 
+
+/* --- LOGIK CARIAN & SUGGESTIONS CSS --- */
+.search-container {
+  position: relative;
+  width: 100%;
 }
-.nav-icons {
+.search-box-premium {
+  border-radius: 50px !important;
+  padding: 8px 20px;
+  font-size: 14px;
+  border: 1px solid #ced4da;
+}
+.suggestion-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid rgba(201,155,59,0.25);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(7,24,39,0.08);
+  z-index: 1050;
+  max-height: 250px;
+  overflow-y: auto;
+  display: none;
+  margin-top: 5px;
+}
+.suggestion-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--navy);
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+.suggestion-item:hover {
+  background: var(--cream);
+  color: var(--gold);
+}
+.suggestion-item img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #fff;
+}
+
+/* --- NAV ICONS --- */
+.nav-icons{
   display: flex;
   align-items: center;
   gap: 15px;
   margin-left: 20px;
 }
-.icon-btn {
-  width: 50px !important;
-  height: 50px !important;
-  border-radius: 50% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  position: relative !important;
-  font-size: 22px !important;
-  text-decoration: none !important;
-  color: var(--navy) !important;
-  transition: .3s !important;
-  background: transparent !important;
-  border: none !important;
+.icon-btn{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: 22px;
+  text-decoration: none;
+  color: var(--navy);
+  transition: .3s;
 }
 .icon-btn:hover {
   background: var(--gold);
-  color: white !important;
+  color: white;
   transform: translateY(-4px) scale(1.1);
   box-shadow: 0 0 15px rgba(201,155,59,0.5);
 }
-.cart-count, .wishlist-count {
-  background: var(--gold) !important;
-  color: white !important;
-  font-size: 11px !important;
-  border-radius: 50% !important;
-  padding: 2px 6px !important;
-  position: absolute !important;
-  top: -2px !important; 
-  right: -4px !important;
-  font-weight: 700 !important;
-  line-height: 1 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-.dropdown-menu {
-  background-color: #fff7f3 !important; 
-  border: 0 !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06) !important;
-}
-.dropdown-menu .dropdown-item {
-  transition: 0.2s;
-}
-.dropdown-menu .dropdown-item:hover {
-  background-color: var(--gold) !important;
-  color: white !important;
+.cart-count,
+.wishlist-count{
+  background: var(--gold);
+  color: white;
+  font-size: 11px;
+  border-radius: 50%;
+  padding: 2px 6px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 /* TRACKING DASHBOARD STYLE */
@@ -143,18 +176,17 @@ body{
   margin-bottom: 30px;
 }
 .status-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: Georgia, serif;
   font-weight: 700;
   color: var(--navy);
 }
 .info-box {
   background: white;
-  border: 1px solid #f0e5d6;
+  border: 1px solid rgba(201,155,59,0.2);
   border-radius: 16px;
   padding: 12px 20px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.02);
 }
-
 .dashboard-card {
   background: var(--navy);
   border-radius: 24px;
@@ -260,7 +292,6 @@ body{
   background: var(--gold);
   color: white;
 }
-
 .metrics-footer {
   background: rgba(5, 18, 29, 0.6);
   padding: 24px;
@@ -273,14 +304,14 @@ body{
   border-radius: 24px;
   padding: 30px;
   box-shadow: 0 14px 35px rgba(0,0,0,.05);
-  border: 1px solid #f0e5d6;
+  border: 1px solid rgba(201,155,59,0.2);
 }
 .item-img-box {
   width: 85px;
   height: 85px;
-  background: #f9f5f0;
-  border: 1px solid #eee1cf;
-  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #f3e5d8;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -288,14 +319,14 @@ body{
   flex-shrink: 0;
 }
 .item-img-box img {
-  max-height: 100%;
-  max-width: 100%;
+  max-height: 75px;
+  max-width: 75px;
   object-fit: contain;
 }
 .item-price-display {
   font-size: 16px;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--gold);
   white-space: nowrap;
 }
 </style>
@@ -315,24 +346,34 @@ body{
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
     <div class="collapse navbar-collapse" id="nav">
       <ul class="navbar-nav mx-auto gap-3">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#story">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
+        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Products
           </a>
-          <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown" style="background-color: var(--cream);">
             <li><a class="dropdown-item py-2" href="Category.html?cat=food-beverages" style="color: var(--navy); font-weight: 500;">Food & Beverages</a></li>
             <li><a class="dropdown-item py-2" href="Category.html?cat=health" style="color: var(--navy); font-weight: 500;">Health</a></li>
             <li><a class="dropdown-item py-2" href="Category.html?cat=personal-care" style="color: var(--navy); font-weight: 500;">Personal Care & Wellness</a></li>
             <li><a class="dropdown-item py-2" href="Category.html?cat=packaging" style="color: var(--navy); font-weight: 500;">Food Packaging & Containers</a></li>
           </ul>
         </li>
+        
         <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
       </ul>
-      <input class="form-control d-none d-lg-block" id="searchInput" placeholder="Find sugarcane products...">
+      
+      <div class="d-none d-lg-block w-25">
+        <div class="search-container">
+          <input type="text" id="searchBar" class="form-control search-box-premium" placeholder="Find sugarcane products..." onkeypress="handleSearch(event)" oninput="showSuggestions(this.value)">
+          <div id="suggestionBox" class="suggestion-box"></div>
+        </div>
+      </div>
+      
       <div class="nav-icons">
         <a href="wishlist.html" class="icon-btn">
           <i class="bi bi-heart"></i>
@@ -378,12 +419,12 @@ body{
         <div class="row g-0">
           <div class="col-md-5 timeline-panel">
             <div class="timeline-line"></div>
-            <div id="timelineContainer">
-              </div>
+            <div id="timelineContainer"></div>
           </div>
 
           <div class="col-md-7 map-panel">
-            <div id="mapContainer" class="position-absolute h-100 w-100 map-zoom-element">
+            <!-- Elemen kontena peta yang boleh di-zoom menggunakan interaksi style transform -->
+            <div id="mapContainer" class="position-absolute h-100 w-100 map-zoom-element" style="transform: scale(1);">
               <div class="map-bg position-absolute h-100 w-100"></div>
               <div class="position-absolute h-100 w-100 d-flex flex-column justify-content-center">
                 <div class="position-relative w-100 h-24 my-auto">
@@ -435,15 +476,15 @@ body{
               <p id="metaDistance" class="m-0 fw-bold small text-white">-</p>
             </div>
             <div class="col-6 col-md-3 d-flex align-items-center gap-2">
-              <img class="rounded-circle border border-secondary" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" style="width:32px; height:32px; object-fit:cover;">
+              <img id="riderAvatar" class="rounded-circle border border-secondary" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" style="width:32px; height:32px; object-fit:cover;">
               <div>
                 <span class="text-uppercase text-muted d-block" style="font-size: 9px; font-weight:700;">Rider Partner</span>
-                <h6 class="m-0 text-white" style="font-size:11px;">Ahmad Faris <span class="text-warning"><i class="bi bi-star-fill"></i> 4.9</span></h6>
+                <h6 class="m-0 text-white" style="font-size:11px;"><span id="riderName">Ahmad Faris</span> <span class="text-warning"><i class="bi bi-star-fill"></i> <span id="riderRating">4.9</span></span></h6>
               </div>
             </div>
             <div class="col-6 col-md-3 text-md-end">
               <span class="text-uppercase text-muted d-block" style="font-size: 9px; font-weight:700;">Vehicle Plate</span>
-              <span class="badge bg-secondary text-warning font-monospace fw-bold mt-1">KFA 1234</span>
+              <span id="riderPlate" class="badge bg-secondary text-warning font-monospace fw-bold mt-1">KFA 1234</span>
             </div>
           </div>
         </div>
@@ -457,8 +498,7 @@ body{
           <a href="profile.html" class="small text-decoration-none fw-bold" style="color: var(--gold);">My Orders ›</a>
         </div>
         
-        <div id="orderItemsContainer" class="d-flex flex-column gap-3">
-           </div>
+        <div id="orderItemsContainer" class="d-flex flex-column gap-3"></div>
 
         <div class="border-top mt-4 pt-3">
           <div class="d-flex justify-content-between text-muted small mb-2">
@@ -478,35 +518,160 @@ body{
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// 🔥 BUKA KUNCI UTAMA DOMCONTENTLOADED SUPAYA KOD JALAN SELEPAS PAGE LOADED
-window.addEventListener("DOMContentLoaded", function() {
+// Pangkalan Data Carian 10 Produk (Sebijik Wishlist)
+const availableProducts = [
+  { id: "aha-toner", name: "Sugarcane Glow Toner", img: "images/AHA toner (L).png" },
+  { id: "sleep-mist", name: "Sugarcane Sleep Mist", img: "images/sleep-mist (L).png" },
+  { id: "energy-snack", name: "Sugarcane Energy Snack", img: "images/energy snack (L).png" },
+  { id: "juice", name: "QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage", img: "images/drink (L).jpeg" },
+  { id: "herbal-drink", name: "QASABE Herbal Drink | Traditional Wellness Beverage", img: "images/herbal drink (L).png" },
+  { id: "organic-cube", name: "QASABE Sugarcane Cube | Natural Cane Sweetener", img: "images/sugarcube (L).png" },
+  { id: "liquid-drop", name: "QASABE Liquid Sweetener Drops | Natural Extract", img: "images/liquid drop (L).jpeg" },
+  { id: "shampoo", name: "QASABE Nourishing Shampoo | Sugarcane Hair Care", img: "images/shampoo (L).png" },
+  { id: "body-scrub", name: "QASABE Body Scrub | Natural Sugarcane Exfoliator", img: "images/bscrub (L).jpeg" },
+  { id: "bagasse-packaging", name: "QASABE Eco Bagasse Packaging | Sustainable Food Container", img: "images/packaging (L).png" }
+];
 
-  // 1. Ambil orderId daripada URL (Contoh: delivery-status.html?orderId=QSB1234)
+const products = {
+  "juice": { name:"QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage", price:8.90, image:"images/drink (L).jpeg" },
+  "energy-snack": { name:"QASABE Sugarcane Energy Snack | Natural Quick Energy", price:19.90, image:"images/energy snack (L).png" },
+  "herbal-drink": { name:"QASABE Herbal Drink | Traditional Wellness Beverage", price:33.90, image:"images/herbal drink (L).png" },
+  "organic-cube": { name:"QASABE Sugarcane Cube | Natural Cane Sweetener", price:14.90, image:"images/sugarcube (L).png" },
+  "liquid-drop": { name:"QASABE Liquid Sweetener Drops | Natural Sugarcane Extract", price:16.90, image:"images/liquid drop (L).jpeg" },
+  "sleep-mist": { name:"QASABE Sleep Mist | Relaxing Aromatherapy Spray", price:24.90, image:"images/sleep-mist (L).png" },
+  "aha-toner": { name:"QASABE AHA Toner | Gentle Exfoliating Toner", price:26.90, image:"images/AHA toner (L).png" },
+  "shampoo": { name:"QASABE Nourishing Shampoo | Sugarcane Hair Care", price:49.00, image:"images/shampoo (L).png" },
+  "body-scrub": { name:"QASABE Body Scrub | Natural Sugarcane Exfoliator", price:28.90, image:"images/bscrub (L).jpeg" },
+  "bagasse-packaging": { name: "QASABE Eco Bagasse Packaging | Sustainable Container", price: 7.90, image: "images/packaging (L).png" }
+};
+
+// DATA KOLAM RIDER UNTUK DIPILIH SECARA RAWAK MENGIKUT ORDER
+const riderPool = [
+  { name: "Ahmad Faris", rating: "4.9", plate: "KFA 1234", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" },
+  { name: "Muhammad Khairul", rating: "4.8", plate: "WPP 8821", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" },
+  { name: "Shahrul Nizam", rating: "4.7", plate: "VBU 639", avatar: "https://images.unsplash.com/photo-1628157582853-a796fa650a6a?auto=format&fit=crop&w=100&q=80" },
+  { name: "Suresh Kumar", rating: "4.9", plate: "BMS 4772", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" },
+  { name: "Alif Izwan", rating: "4.6", plate: "JQX 9155", avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=100&q=80" }
+];
+
+const statusPool = ["Processing", "Shipped", "Delivered"];
+
+// --- FUNGSI INTERAKSI BUTTON KAWALAN ZOOM PETA ---
+let currentScale = 1;
+const mapContainer = document.getElementById("mapContainer");
+
+document.getElementById("btnZoomIn").addEventListener("click", () => {
+  if (currentScale < 2.5) {
+    currentScale += 0.25;
+    mapContainer.style.transform = `scale(${currentScale})`;
+  }
+});
+
+document.getElementById("btnZoomOut").addEventListener("click", () => {
+  if (currentScale > 0.75) {
+    currentScale -= 0.25;
+    mapContainer.style.transform = `scale(${currentScale})`;
+  }
+});
+
+document.getElementById("btnResetZoom").addEventListener("click", () => {
+  currentScale = 1;
+  mapContainer.style.transform = `scale(1)`;
+});
+
+// --- FUNGSI CARIAN & DROPDOWN SUGGESTIONS (SEBIJIK WISHLIST) ---
+function showSuggestions(val) {
+  const box = document.getElementById("suggestionBox");
+  if (!val || !val.trim()) {
+    box.style.display = "none";
+    return;
+  }
+  const query = val.toLowerCase();
+  const matches = availableProducts.filter(p => p.name.toLowerCase().includes(query));
+  if (matches.length === 0) {
+    box.style.display = "none";
+    return;
+  }
+  box.innerHTML = matches.map(p => `
+    <div class="suggestion-item" onclick="selectSuggestion('${p.id}', '${p.name}')">
+      <img src="${p.img}" alt="${p.name}">
+      <span>${p.name}</span>
+    </div>
+  `).join("");
+  box.style.display = "block";
+}
+
+function selectSuggestion(id, name) {
+  document.getElementById("searchBar").value = name;
+  document.getElementById("suggestionBox").style.display = "none";
+  window.location.href = `product-detail.html?id=${id}`;
+}
+
+function handleSearch(event) {
+  if (event.key === "Enter") {
+    let query = document.getElementById("searchBar").value.trim();
+    if (query !== "") {
+      const exactMatch = availableProducts.find(p => p.name.toLowerCase() === query.toLowerCase());
+      if(exactMatch) {
+         window.location.href = `product-detail.html?id=${exactMatch.id}`;
+      } else {
+         window.location.href = `Category.html?search=${encodeURIComponent(query)}`;
+      }
+    }
+  }
+}
+
+document.addEventListener("click", function(e) {
+  const box = document.getElementById("suggestionBox");
+  const searchBar = document.getElementById("searchBar");
+  if (box && e.target !== searchBar && !box.contains(e.target)) {
+    box.style.display = "none";
+  }
+});
+
+function updateBadges() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  const totalQty = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+  if (document.getElementById("cartCount")) document.getElementById("cartCount").innerText = totalQty;
+  if (document.getElementById("wishlistCount")) document.getElementById("wishlistCount").innerText = wishlist.length;
+}
+
+//--- LOGIK PELAKSANAAN PAPARAN DATA DELIVERY STATUS BILE PAGE DISERAHKAN ---
+window.addEventListener("DOMContentLoaded", function() {
+  // 1. Semak status login pengguna semasa daripada LocalStorage untuk sorok top-bar promo
+  const checkLogin = (localStorage.getItem("customerAccount") !== null || localStorage.getItem("userProfile") !== null);
+  const topBar = document.querySelector(".top-bar");
+  
+  if (topBar) {
+    if (checkLogin) {
+      topBar.style.display = "none"; // Sorok terus jika user dah login
+    } else {
+      topBar.style.display = "block"; // Papar jika user melawat sebagai guest
+    }
+  }
+
+  // 2. Meneruskan logik asal pemprosesan data tracking order
+  updateBadges();
+
   const urlParams = new URLSearchParams(window.location.search);
   let orderId = urlParams.get('orderId');
-  
-  // 2. Ambil senarai semua order daripada localStorage
   let recentOrders = JSON.parse(localStorage.getItem("recentOrders")) || [];
   let currentOrder = null;
   
-  // 3. Cari order yang sepadan dengan ID dalam URL
   if (orderId) {
     currentOrder = recentOrders.find(o => (o.orderId === orderId || o.id === orderId));
   } 
-  
-  // 4. Kalau tak jumpa atau URL kosong, ambil order yang paling baru (index 0)
   if (!currentOrder && recentOrders.length > 0) {
     currentOrder = recentOrders[0];
     orderId = currentOrder.orderId || currentOrder.id;
   }
-  
-  // 5. Fallback terakhir jika langsung tiada rekod order dalam sistem
   if (!currentOrder) {
     orderId = "QSB6541";
     currentOrder = {
       orderId: orderId,
       id: orderId,
-      date: "15 Jul 2026",
+      date: "18 Jul 2026",
       total: 13.90,
       subtotal: 8.90,
       shippingFee: 5.00,
@@ -516,7 +681,6 @@ window.addEventListener("DOMContentLoaded", function() {
     };
   }
   
-  // 6. Setkan nombor Order # pada tajuk card summary
   if (document.getElementById('displayOrderId')) {
     document.getElementById('displayOrderId').innerText = `Order #${orderId}`;
   }
@@ -524,98 +688,65 @@ window.addEventListener("DOMContentLoaded", function() {
     document.getElementById('orderPlacedTime').innerText = currentOrder.date || currentOrder.orderDate || "-";
   }
 
-// =================================================================
-// 🔥 [KOD ASAL KAU BERMULA DI SINI - JANGAN UBAH DARI SINI KE BAWAH]
-// =================================================================
-let cleanTotalNum = Number(currentOrder.total || currentOrder.totalPrice || 0);
-let fixedShippingFee = Number(currentOrder.shippingFee || 0);
-let computedSubtotal = 0;
-// 1. Kira dulu jumlah harga barang yang ada dalam list array
-let itemsTotalFromList = 0;
-let itemsHtml = "";
-if (currentOrder.items && Array.isArray(currentOrder.items) && currentOrder.items.length > 0) {
-  currentOrder.items.forEach(item => {
-    const pName = item.name || "Sugarcane Product";
-    const pQty = item.qty || 1;
-    const pPrice = Number(item.price || 0);
-    
-    itemsTotalFromList += (pPrice * pQty);
-    itemsHtml += `
-      <div class="d-flex align-items-center justify-content-between border-bottom pb-3 mb-2">
-        <div class="d-flex align-items-center gap-3">
-          <div class="item-img-box">
-            <img src="${currentOrder.image || 'images/logor.png'}" alt="${pName}">
-          </div>
-          <div>
-            <p class="fw-bold m-0 small text-dark" style="line-height:1.3; max-width:240px;">${pName}</p>
-            <p class="text-muted small m-0 mt-1">Qty: ${pQty}</p>
-          </div>
-        </div>
-        <span class="item-price-display">RM ${pPrice.toFixed(2)}</span>
-      </div>
-    `;
-  });
-}
-// 2. 🔥 LOGIK PINTAR: Semak kalau data shippingFee kosong (Order Lama)
-if (currentOrder.subtotal !== undefined && currentOrder.shippingFee !== undefined) {
-  // Untuk Order Baru: Ambil bulat-bulat apa yang disimpan dari shipping.html
-  computedSubtotal = Number(currentOrder.subtotal);
-  fixedShippingFee = Number(currentOrder.shippingFee);
-} else {
-  // Untuk Order Lama: Subtotal ikut harga barang (RM 8.90), bakinya adalah Shipping Fee!
-  if (itemsTotalFromList > 0) {
-    computedSubtotal = itemsTotalFromList;
-    fixedShippingFee = cleanTotalNum - computedSubtotal;
-  } else {
-    computedSubtotal = cleanTotalNum;
-    fixedShippingFee = 0.00;
-  }
-}
-// Papar ke skrin dengan data yang dah diperbetulkan
-document.getElementById("orderItemsContainer").innerHTML = itemsHtml || `
-  <div class="d-flex align-items-center justify-content-between border-bottom pb-3">
-    <div class="d-flex align-items-center gap-3">
-      <div class="item-img-box">
-        <img src="${currentOrder.image || 'images/logor.png'}" alt="${currentOrder.productName}">
-      </div>
-      <div>
-        <p class="fw-bold m-0 small text-dark" style="line-height:1.3; max-width:240px;">${currentOrder.productName || "Sugarcane Product"}</p>
-        <p class="text-muted small m-0 mt-1">Qty: 1</p>
-      </div>
-    </div>
-    <span class="item-price-display">RM ${computedSubtotal.toFixed(2)}</span>
-  </div>
-`;
-if (document.getElementById("summaryTotal")) document.getElementById("summaryTotal").innerText = `RM ${cleanTotalNum.toFixed(2)}`;
-if (document.getElementById("summaryShipping")) document.getElementById("summaryShipping").innerText = `RM ${fixedShippingFee.toFixed(2)}`;
-if (document.getElementById("summarySubtotal")) document.getElementById("summarySubtotal").innerText = `RM ${computedSubtotal.toFixed(2)}`;
-  // =================================================================
-  // 🔥 GENERATE LIST BARANG MENGIKUT FORMAT ARRAY PROFILE 🔥
-  // =================================================================
- const itemsContainer = document.getElementById("orderItemsContainer");
+  // --- LOGIK RIDER RAWAK (RANDOMIZED BASED ON ORDERID STRING) ---
+  let seed = 0;
+  for(let i=0; i<orderId.length; i++) { seed += orderId.charCodeAt(i); }
+  
+  let randomRiderIndex = seed % riderPool.length;
+  let randomRider = riderPool[randomRiderIndex];
+  
+  let currentStatus = currentOrder.status || statusPool[seed % statusPool.length];
+  
+  document.getElementById("riderName").innerText = randomRider.name;
+  document.getElementById("riderRating").innerText = randomRider.rating;
+  document.getElementById("riderPlate").innerText = randomRider.plate;
+  document.getElementById("riderAvatar").src = randomRider.avatar;
+  
+  let cleanTotalNum = Number(currentOrder.total || currentOrder.totalPrice || 0);
+  let fixedShippingFee = Number(currentOrder.shippingFee || 0);
+  let computedSubtotal = 0;
+  let itemsTotalFromList = 0;
+  const itemsContainer = document.getElementById("orderItemsContainer");
   
   if (currentOrder.items && Array.isArray(currentOrder.items) && currentOrder.items.length > 0) {
-    itemsContainer.innerHTML = currentOrder.items.map(item => {
-      const pName = item.name || "Sugarcane Product";
-      const pQty = item.qty || 1;
-      const pPrice = Number(item.price || 0);
-      return `
-        <div class="d-flex align-items-center justify-content-between border-bottom pb-3 mb-2">
-          <div class="d-flex align-items-center gap-3">
-            <div class="item-img-box">
-              <img src="${currentOrder.image || 'images/logor.png'}" alt="${pName}">
+    currentOrder.items.forEach(item => {
+      itemsTotalFromList += (Number(item.price || 0) * (item.qty || 1));
+    });
+    
+    if (currentOrder.subtotal !== undefined && currentOrder.shippingFee !== undefined) {
+      computedSubtotal = Number(currentOrder.subtotal);
+      fixedShippingFee = Number(currentOrder.shippingFee);
+    } else {
+      computedSubtotal = itemsTotalFromList;
+      fixedShippingFee = cleanTotalNum - computedSubtotal;
+    }
+    if (itemsContainer) {
+      itemsContainer.innerHTML = currentOrder.items.map(item => {
+        const pName = item.name || "Sugarcane Product";
+        const pQty = item.qty || 1;
+        const pPrice = Number(item.price || 0);
+        let matchingProd = products[item.id] || {};
+        let finalImg = currentOrder.image || matchingProd.image || 'images/logor.png';
+        
+        return `
+          <div class="d-flex align-items-center justify-content-between border-bottom pb-3 mb-2">
+            <div class="d-flex align-items-center gap-3">
+              <div class="item-img-box">
+                <img src="${finalImg}" alt="${pName}">
+              </div>
+              <div>
+                <p class="fw-bold m-0 small text-dark" style="line-height:1.3; max-width:240px;">${pName}</p>
+                <p class="text-muted small m-0 mt-1">Qty: ${pQty}</p>
+              </div>
             </div>
-            <div>
-              <p class="fw-bold m-0 small text-dark" style="line-height:1.3; max-width:240px;">${pName}</p>
-              <p class="text-muted small m-0 mt-1">Qty: ${pQty}</p>
-            </div>
+            <span class="item-price-display">RM ${pPrice.toFixed(2)}</span>
           </div>
-          <span class="item-price-display">RM ${pPrice.toFixed(2)}</span>
-        </div>
-      `;
-    }).join('');
+        `;
+      }).join('');
+    }
   } else {
-    // Fallback untuk support data flat versi lama
+    computedSubtotal = currentOrder.subtotal !== undefined ? Number(currentOrder.subtotal) : cleanTotalNum;
+    fixedShippingFee = currentOrder.shippingFee !== undefined ? Number(currentOrder.shippingFee) : 0;
     if (itemsContainer) {
       itemsContainer.innerHTML = `
         <div class="d-flex align-items-center justify-content-between border-bottom pb-3">
@@ -633,12 +764,13 @@ if (document.getElementById("summarySubtotal")) document.getElementById("summary
       `;
     }
   }
-  // =================================================================
-  // 🔥 SAMBUNGAN: TIMELINE & RIDER MAP LOGIC (JANGAN BAGI TERPUTUS)
-  // =================================================================
+  
+  if (document.getElementById("summaryTotal")) document.getElementById("summaryTotal").innerText = `RM ${cleanTotalNum.toFixed(2)}`;
+  if (document.getElementById("summaryShipping")) document.getElementById("summaryShipping").innerText = `RM ${fixedShippingFee.toFixed(2)}`;
+  if (document.getElementById("summarySubtotal")) document.getElementById("summarySubtotal").innerText = `RM ${computedSubtotal.toFixed(2)}`;
+  
   const timelineContainer = document.getElementById("timelineContainer");
   const riderMarker = document.getElementById("liveRiderMarker");
-  let status = currentOrder.status || "Processing";
   
   let step1Class = "checked", step1Icon = "✓";
   let step2Class = "pending", step2Icon = `<i class="bi bi-clock"></i>`;
@@ -646,7 +778,7 @@ if (document.getElementById("summarySubtotal")) document.getElementById("summary
   let step4Class = "pending", step4Icon = `<i class="bi bi-patch-check"></i>`;
   let op2 = "opacity-50", op3 = "opacity-50", op4 = "opacity-25";
   
-  if (status === "Processing") {
+  if (currentStatus === "Processing") {
     step2Class = "active animate-pulse"; step2Icon = `<i class="bi bi-gear-fill"></i>`; op2 = "";
     if (document.getElementById("metaArrival")) document.getElementById("metaArrival").innerText = "2 - 3 Days";
     if (document.getElementById("metaDistance")) document.getElementById("metaDistance").innerText = "Processing at Hub";
@@ -656,7 +788,7 @@ if (document.getElementById("summarySubtotal")) document.getElementById("summary
       riderMarker.classList.remove("d-none");
     }
   } 
-  else if (status === "Shipped" || status === "In Transit") {
+  else if (currentStatus === "Shipped" || currentStatus === "In Transit") {
     step2Class = "checked"; step2Icon = "✓"; op2 = "";
     step3Class = "active animate-pulse"; step3Icon = `<i class="bi bi-scooter"></i>`; op3 = "";
     if (document.getElementById("metaArrival")) document.getElementById("metaArrival").innerText = "15 - 25 Mins";
@@ -666,7 +798,7 @@ if (document.getElementById("summarySubtotal")) document.getElementById("summary
       riderMarker.classList.remove("d-none");
     }
   } 
-  else if (status === "Delivered") {
+  else if (currentStatus === "Delivered") {
     step2Class = "checked"; step2Icon = "✓"; op2 = "";
     step3Class = "checked"; step3Icon = "✓"; op3 = "";
     step4Class = "checked"; step4Icon = "✓"; op4 = "";
@@ -678,6 +810,7 @@ if (document.getElementById("summarySubtotal")) document.getElementById("summary
       riderMarker.classList.remove("d-none");
     }
   }
+  
   if(timelineContainer) {
     timelineContainer.innerHTML = `
       <div class="timeline-item">
@@ -690,27 +823,27 @@ if (document.getElementById("summarySubtotal")) document.getElementById("summary
       <div class="timeline-item ${op2}">
         <div class="status-circle ${step2Class}">${step2Icon}</div>
         <div>
-          <h6 class="small fw-bold m-0 ${status === 'Processing' ? 'text-warning' : 'text-light'}">Preparing & Packing</h6>
+          <h6 class="small fw-bold m-0 ${currentStatus === 'Processing' ? 'text-warning' : 'text-light'}">Preparing & Packing</h6>
           <p class="text-muted m-0" style="font-size: 10px;">Quality verified</p>
         </div>
       </div>
       <div class="timeline-item ${op3}">
         <div class="status-circle ${step3Class}">${step3Icon}</div>
         <div>
-          <h6 class="small fw-bold m-0 ${status === 'Shipped' || status === 'In Transit' ? 'text-warning' : 'text-light'}">Out for Delivery</h6>
+          <h6 class="small fw-bold m-0 ${currentStatus === 'Shipped' || currentStatus === 'In Transit' ? 'text-warning' : 'text-light'}">Out for Delivery</h6>
           <p class="text-muted m-0" style="font-size: 10px;">Courier on the way</p>
         </div>
       </div>
       <div class="timeline-item ${op4}">
         <div class="status-circle ${step4Class}">${step4Icon}</div>
         <div>
-          <h6 class="small fw-bold m-0 ${status === 'Delivered' ? 'text-success' : 'text-muted'}">Delivered</h6>
+          <h6 class="small fw-bold m-0 ${currentStatus === 'Delivered' ? 'text-success' : 'text-muted'}">Delivered</h6>
           <p class="text-muted m-0" style="font-size: 10px;">Received successfully</p>
         </div>
       </div>
     `;
   }
-}); // 🔥 SEKARANG BARU LOGIK DAN BETUL UNTUK TUTUP DOMCONTENTLOADED PADA AKHIR SEKALI!
+});
 </script>
 </body>
 </html>
