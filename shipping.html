@@ -12,9 +12,8 @@
 <style>
 :root{
   --navy:#071827;
+  --cream:#fff7f3;
   --gold:#c99b3b;
-  --cream:#fff7f3; 
-  --soft:#f7efe5;
   --text:#111827;
   --muted:#6b7280;
   --red:#ff3b3b;
@@ -24,25 +23,32 @@
 }
 body{
   margin:0;
-  font-family: Arial, sans-serif; /* Ikut wishlist font teks biasa */
+  font-family: Arial, sans-serif;
   background:var(--cream);
   color:var(--text);
 }
-.top-bar{
-  background:var(--navy);
-  color:white;
-  font-size:12px;
-  text-align:center;
-  padding:7px;
-}
-.top-bar a{
-  color:white;
-  text-decoration:underline;
-}
 .navbar{
   background:white;
-  padding:18px 0;
+  padding:10px 0;
   border-bottom:1px solid #eee;
+}
+.navbar-nav .nav-link{
+  color: var(--navy);
+  font-weight: 500;
+  font-size: 16px;
+  transition: .3s;
+}
+.navbar-nav .nav-link:hover{
+  color: var(--gold);
+}
+.dropdown-menu .dropdown-item:hover {
+  background-color: var(--gold);
+  color: white !important;
+  transition: 0.2s;
+}
+.dropdown-toggle::after {
+  vertical-align: middle;
+  color: var(--gold); 
 }
 .brand-logo{
   display:flex;
@@ -62,31 +68,30 @@ body{
   letter-spacing:1px;
   color:var(--navy);
 }
-.navbar-nav .nav-link{
-    color: var(--navy);
-    font-weight: 500;
-    font-size: 16px;
-    transition: .3s;
-    margin: 0 8px;
-}
-.navbar-nav .nav-link:hover{
-    color: var(--gold);
-}
+
+/* --- LOGIK CARIAN & SUGGESTIONS CSS (SEBIJIK WISHLIST) --- */
 .search-container {
   position: relative;
+  width: 100%;
 }
-.search-suggestions {
+.search-box-premium {
+  border-radius: 50px !important;
+  padding: 8px 20px;
+  font-size: 14px;
+  border: 1px solid #ced4da;
+}
+.suggestion-box {
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
   background: white;
   border: 1px solid rgba(201,155,59,0.25);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(7,24,39,0.08);
+  z-index: 1050;
   max-height: 250px;
   overflow-y: auto;
-  z-index: 1050;
   display: none;
   margin-top: 5px;
 }
@@ -98,7 +103,7 @@ body{
   transition: background 0.2s;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-align: left;
 }
 .suggestion-item:hover {
@@ -106,29 +111,32 @@ body{
   color: var(--gold);
 }
 .suggestion-item img {
-  width: 32px;
-  height: 32px;
+  width: 35px;
+  height: 35px;
   object-fit: contain;
-  border-radius: 4px;
+  border-radius: 6px;
   background: #fff;
 }
+
+/* --- NAV ICONS --- */
 .nav-icons{
   display:flex;
   align-items:center;
   gap:15px;
+  margin-left: 20px;
 }
 .icon-btn{
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    font-size:22px;
-    text-decoration:none;
-    color:var(--navy);
-    transition:.3s;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  font-size:22px;
+  text-decoration:none;
+  color:var(--navy);
+  transition:.3s;
 }
 .icon-btn:hover{
   background:var(--gold);
@@ -145,10 +153,10 @@ body{
   padding:2px 6px;
   position:absolute;
   top: 5px;
-  right: 2px;
+  right: 5px;
 }
+
 .page-section{
-  background:var(--cream); 
   min-height:100vh;
   padding-bottom: 60px;
 }
@@ -161,18 +169,17 @@ body{
 .shipping-layout {
   display: grid;
   grid-template-columns: 1.4fr .85fr;
-  gap: 10px;
+  gap: 35px;
   width: 100%;
   padding-bottom: 40px;
+  align-items: start;
 }
-
 .page-title {
-  font-family: Georgia, serif; /* Tajuk utama sebiji wishlist */
+  font-family: Georgia, serif;
   font-size: 38px;
   font-weight: 700;
   color: var(--navy);
   margin-bottom: 6px;
-  text-transform: none;
 }
 .page-subtitle {
   color: #555;
@@ -214,9 +221,6 @@ body{
   border-top:1px solid rgba(201,155,59,0.2);
   margin:28px 0 18px;
 }
-.payment-box{
-  margin-top:10px;
-}
 .payment-details{
   background:#fff;
   border:1px solid rgba(201,155,59,0.2);
@@ -241,19 +245,16 @@ body{
   font-size:12px;
   margin-top:8px;
 }
-
 .order-side{
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-/* ====== MINI CART & SUMMARY GLOW UP ====== */
 .mini-cart {
   background: white;
   border: 1px solid rgba(201,155,59,0.2);
   border-radius: 20px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.03);
-  margin-bottom: 20px;
   padding: 8px;
 }
 .mini-item {
@@ -284,10 +285,7 @@ body{
   object-fit: contain;
 }
 .mini-info-layout {
-  display: contents; /* Biar susunan grid dia kekal sebaris macam wishlist */
-}
-.mini-name-price {
-  display: block;
+  display: contents;
 }
 .mini-name {
   font-family: Georgia, serif;
@@ -346,8 +344,6 @@ body{
   font-size: 16px;
   cursor: pointer;
 }
-
-/* Summary Card */
 .summary-card {
   background: white;
   border: 1px solid rgba(201,155,59,0.2);
@@ -420,7 +416,7 @@ body{
 .place-btn {
   width: 100%;
   border: none;
-  background: var(--gold);
+  background:var(--gold);
   color: white;
   border-radius: 30px;
   padding: 12px;
@@ -445,7 +441,9 @@ body{
 .back-cart:hover{
   color:var(--gold);
 }
-.footer{
+
+/* --- FOOTER --- */
+footer{
   background:var(--navy);
   color:white;
   padding:50px 0 20px;
@@ -462,7 +460,7 @@ body{
   height: 52px;
   object-fit: contain;
 }
-.footer-brand h3{
+.footer-brand h4{
   font-family: 'Cormorant Garamond', serif;
   color: white;
   font-size:32px;
@@ -470,58 +468,14 @@ body{
   letter-spacing:1px;
   margin: 0;
 }
-.footer-brand p{
-  font-size:12px;
-  color:#666;
-  width:180px;
-}
-.socials i{
-  width:26px;
-  height:26px;
-  background:white;
-  border-radius:50%;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  margin-right:6px;
-  font-size:12px;
-  color:#111;
-}
-.footer h6{
-  font-size:14px;
-  letter-spacing:3px;
-  font-weight:900;
-  color:white;
-  margin-bottom:15px;
-}
-.footer a{
+footer a{
   display:block;
   color:rgba(255,255,255,0.7);
   text-decoration:none;
   margin-bottom:8px;
-  font-size:13px;
 }
-.footer a:hover {
+footer a:hover {
   color: var(--gold);
-}
-.footer-bottom{
-  border-top:1px solid rgba(255,255,255,0.15);
-  padding-top:18px;
-  margin-top:25px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:11px;
-  color:rgba(255,255,255,0.5);
-}
-.payment-icons span{
-  background:white;
-  border-radius:4px;
-  padding:5px 8px;
-  margin-left:5px;
-  font-size:10px;
-  font-weight:900;
-  color: #111;
 }
 .success-icon{
   width:78px;
@@ -540,15 +494,10 @@ body{
   font-weight:700;
   color:var(--navy);
 }
+
 @media(max-width:992px){
   .shipping-layout{
     grid-template-columns:1fr;
-  }
-  .order-side{
-    position:static;
-  }
-  .search-container{
-    width:100%;
   }
 }
 @media(max-width:576px){
@@ -563,18 +512,11 @@ body{
     grid-column: 1 / -1;
     justify-content: space-between;
   }
-  .footer-bottom{
-    flex-direction:column;
-    gap:12px;
-  }
 }
 </style>
 </head>
 <body>
 <div class="page-section">
-  <div class="top-bar">
-    Sign up and get 20% off your first order. <a href="#">Sign Up Now</a>
-  </div>
   
   <nav class="navbar navbar-expand-lg">
     <div class="container">
@@ -585,44 +527,46 @@ body{
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
       <div class="collapse navbar-collapse" id="nav">
-        <ul class="navbar-nav mx-auto align-items-center gap-3">
+        <ul class="navbar-nav mx-auto gap-3">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#story">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
           
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Products</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="Category.html?cat=drinks">Sugarcane Drinks</a></li>
-              <li><a class="dropdown-item" href="Category.html?cat=skincare">Sugarcane Skincare</a></li>
-              <li><a class="dropdown-item" href="Category.html?cat=wellness">Sugarcane Wellness</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="Category.html">All Products</a></li>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown" style="background-color: var(--cream);">
+              <li><a class="dropdown-item py-2" href="Category.html?cat=food-beverages" style="color: var(--navy); font-weight: 500;">Food & Beverages</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=health" style="color: var(--navy); font-weight: 500;">Health</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=personal-care" style="color: var(--navy); font-weight: 500;">Personal Care & Wellness</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=packaging" style="color: var(--navy); font-weight: 500;">Food Packaging & Containers</a></li>
             </ul>
           </li>
           
           <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
         </ul>
         
-        <div class="d-flex align-items-center gap-3 ms-auto">
-          <div class="d-none d-lg-block search-container">
-            <input type="text" id="searchBar" class="form-control rounded-pill" style="width:280px; padding:9px 16px; font-size:13px;" placeholder="Find sugarcane products..." onkeypress="handleSearch(event)" oninput="showSuggestions(this.value)">
-            <div id="suggestionBox" class="search-suggestions"></div>
+        <div class="d-none d-lg-block w-25">
+          <div class="search-container">
+            <input type="text" id="searchBar" class="form-control search-box-premium" placeholder="Find sugarcane products..." onkeypress="handleSearch(event)" oninput="showSuggestions(this.value)">
+            <div id="suggestionBox" class="suggestion-box"></div>
           </div>
-          
-          <div class="nav-icons">
-            <a href="wishlist.html" class="icon-btn">
-              <i class="bi bi-heart"></i>
-              <span id="wishCount" class="wishlist-count">0</span>
-            </a>
-            <a href="cart.html" class="icon-btn">
-              <i class="bi bi-cart"></i>
-              <span id="cartCount" class="cart-count">0</span>
-            </a>
-            <a href="profile.html" class="icon-btn">
-              <i class="bi bi-person-circle"></i>
-            </a>
-          </div>
+        </div>
+        
+        <div class="nav-icons">
+          <a href="wishlist.html" class="icon-btn">
+            <i class="bi bi-heart"></i>
+            <span id="wishCount" class="wishlist-count">0</span>
+          </a>
+          <a href="cart.html" class="icon-btn">
+            <i class="bi bi-cart"></i>
+            <span id="cartCount" class="cart-count">0</span>
+          </a>
+          <a href="profile.html" class="icon-btn">
+            <i class="bi bi-person-circle"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -673,19 +617,16 @@ body{
   	          </select>
             </div>
 
-            <!-- Dynamic Country Field for International -->
             <div class="form-group" id="internationalCountryGroup" style="display: none;">
               <label>Country Name</label>
               <input type="text" class="form-control" id="countryName" placeholder="e.g. Singapore">
             </div>
             
-            <!-- Dynamic State Field Container -->
             <div class="form-group" id="stateContainer">
               <label>State / Province</label>
               <select class="form-select" id="stateSelect" onchange="handleStateChange()" required></select>
             </div>
             
-            <!-- Dynamic City Field Container -->
             <div class="form-group" id="cityContainer">
               <label>City</label>
               <select class="form-select" id="citySelect" required></select>
@@ -711,7 +652,6 @@ body{
               <option value="cod">Cash on Delivery</option>
             </select>
             
-            <!-- FPX BOX DETAILED -->
             <div class="payment-details active" id="onlineBox">
               <h6><i class="bi bi-bank me-2 text-warning"></i> Online Banking / FPX</h6>
               <div class="row mb-3">
@@ -737,7 +677,6 @@ body{
               <p class="small-note"><i class="bi bi-shield-lock-fill text-success me-1"></i> Secured by FPX Payment Gateway. You will be redirected to the secure bank portal upon processing.</p>
             </div>
             
-            <!-- EWALLET BOX DETAILED -->
             <div class="payment-details" id="ewalletBox">
               <h6><i class="bi bi-wallet2 me-2 text-warning"></i> E-Wallet Gateway</h6>
               <div class="row mb-3">
@@ -758,7 +697,6 @@ body{
               <p class="small-note"><i class="bi bi-info-circle me-1"></i> Authorization request will be pushed immediately to your linked e-wallet account application.</p>
             </div>
             
-            <!-- CREDIT CARD BOX DETAILED -->
             <div class="payment-details" id="cardBox">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <h6 class="m-0"><i class="bi bi-credit-card me-2 text-warning"></i> Card Payment Gateway</h6>
@@ -790,11 +728,10 @@ body{
               <p class="small-note text-muted"><i class="bi bi-lock-fill text-success me-1"></i> 256-bit SSL Encrypted Connection. Your commercial payment credentials are handled securely via financial networks.</p>
             </div>
             
-            <!-- COD BOX DETAILED -->
             <div class="payment-details" id="codBox">
               <h6><i class="bi bi-cash-coin me-2 text-warning"></i> Cash on Delivery</h6>
               <p class="small-note mb-0 text-muted">
-                <i class="bi bi-truck me-1"></i> Pay directly to the distribution courier personnel when your package arrives at your designated threshold. Please hold exact token values or cash match shown in summary cards.
+                <i class="bi bi-truck me-1"></i> Pay directly to the distribution courier personnel when your package arrives at your designated threshold.
               </p>
             </div>
           </div>
@@ -843,13 +780,13 @@ body{
     </section>
   </main>
   
-  <footer class="footer">
+  <footer>
     <div class="container">
       <div class="row gy-4 text-start">
         <div class="col-md-4">
           <div class="footer-brand">
             <img src="images/logor.png" alt="QASABE Logo">
-            <h3>QASABE</h3>
+            <h4>QASABE</h4>
           </div>
           <p class="text-white-50">Sustainable choices for a better tomorrow.</p>
         </div>
@@ -873,7 +810,6 @@ body{
   </footer>
 </div>
 
-<!-- SUCCESS TRANSACTION MODAL -->
 <div class="modal fade" id="orderModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 rounded-4">
@@ -914,7 +850,7 @@ const malaysiaData = {
     "Selangor": ["Shah Alam", "Petaling Jaya", "Subang Jaya", "Klang", "Cheras", "Gombak"],
     "Kuala Lumpur": ["Kuala Lumpur City", "Setapak", "Wangsa Maju", "Bukit Jalil", "Kepong"],
     "Johor": ["Johor Bahru", "Skudai", "Batu Pahat", "Muar", "Kluang", "Pasir Gudang"],
-    "Penang": ["Georgetown", "Bayar Lepas", "Butterworth", "Bukit Mertajam"],
+    "Penang": ["Georgetown", "Bayan Lepas", "Butterworth", "Bukit Mertajam"],
     "Perak": ["Ipoh", "Taiping", "Teluk Intan", "Manjung"],
     "Negeri Sembilan": ["Seremban", "Port Dickson", "Nilai"],
     "Melaka": ["Melaka City", "Alor Gajah", "Jasin"],
@@ -945,14 +881,29 @@ const products = {
 };
 
 const availableProducts = [
-  { id: "aha-toner", name: "QASABE AHA Toner | Gentle Exfoliating Toner | Smooth & Radiant Skin", img: "images/AHA toner (L).png" },
-  { id: "sleep-mist", name: "QASABE Sleep Mist | Relaxing Aromatherapy Spray | Better Sleep & Calmness", img: "images/sleep-mist (L).png" },
-  { id: "energy-snack", name: "QASABE Sugarcane Energy Snack | Natural Quick Energy | Healthy On-The-Go Snack", img: "images/energy snack (L).png" }
+  { id: "aha-toner", name: "Sugarcane Glow Toner", img: "images/AHA toner (L).png" },
+  { id: "sleep-mist", name: "Sugarcane Sleep Mist", img: "images/sleep-mist (L).png" },
+  { id: "energy-snack", name: "Sugarcane Energy Snack", img: "images/energy snack (L).png" },
+  { id: "juice", name: "QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage", img: "images/drink (L).jpeg" },
+  { id: "herbal-drink", name: "QASABE Herbal Drink | Traditional Wellness Beverage", img: "images/herbal drink (L).png" },
+  { id: "organic-cube", name: "QASABE Sugarcane Cube | Natural Cane Sweetener", img: "images/sugarcube (L).png" },
+  { id: "liquid-drop", name: "QASABE Liquid Sweetener Drops | Natural Extract", img: "images/liquid drop (L).jpeg" },
+  { id: "shampoo", name: "QASABE Nourishing Shampoo | Sugarcane Hair Care", img: "images/shampoo (L).png" },
+  { id: "body-scrub", name: "QASABE Body Scrub | Natural Sugarcane Exfoliator", img: "images/bscrub (L).jpeg" },
+  { id: "bagasse-packaging", name: "QASABE Eco Bagasse Packaging | Sustainable Food Container", img: "images/packaging (L).png" }
 ];
 
+// --- VARIABLES KAWALAN GLOBAL ---
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let promoApplied = false; 
 let currentTotal = 0;
+let appliedVoucherData = null; // Menyimpan objek baucar aktif global
+
+const activeVouchers = [
+  { code: "WELCOME20", type: "percentage", value: 20, minSpend: 100 },
+  { code: "QASABEFREESHIP", type: "freeshipping", value: 0, minSpend: 40 }, 
+  { code: "TEBUCRAZE5", type: "flat", value: 5, minSpend: 0 },
+  { code: "PLATINUM30", type: "percentage", value: 30, minSpend: 150 }
+];
 
 function handleRegionChange() {
   const region = document.getElementById("country").value;
@@ -963,28 +914,13 @@ function handleRegionChange() {
   if (region === "international") {
     internationalGroup.style.display = "block";
     document.getElementById("countryName").required = true;
-
-    stateContainer.innerHTML = `
-      <label>State / Province / Region</label>
-      <input type="text" class="form-control" id="stateInput" placeholder="e.g. California / Singapore Region" required>
-    `;
-    cityContainer.innerHTML = `
-      <label>City</label>
-      <input type="text" class="form-control" id="cityInput" placeholder="e.g. Los Angeles / Downtown" required>
-    `;
+    stateContainer.innerHTML = `<label>State / Province / Region</label><input type="text" class="form-control" id="stateInput" placeholder="e.g. California" required>`;
+    cityContainer.innerHTML = `<label>City</label><input type="text" class="form-control" id="cityInput" placeholder="e.g. Los Angeles" required>`;
   } else {
     internationalGroup.style.display = "none";
     document.getElementById("countryName").required = false;
-
-    stateContainer.innerHTML = `
-      <label>State</label>
-      <select class="form-select" id="stateSelect" onchange="handleStateChange()" required></select>
-    `;
-    cityContainer.innerHTML = `
-      <label>City</label>
-      <select class="form-select" id="citySelect" required></select>
-    `;
-    
+    stateContainer.innerHTML = `<label>State</label><select class="form-select" id="stateSelect" onchange="handleStateChange()" required></select>`;
+    cityContainer.innerHTML = `<label>City</label><select class="form-select" id="citySelect" required></select>`;
     populateStates(region);
   }
   updateSummary();
@@ -993,7 +929,6 @@ function handleRegionChange() {
 function populateStates(region) {
   const stateSelect = document.getElementById("stateSelect");
   const states = Object.keys(malaysiaData[region]);
-  
   stateSelect.innerHTML = states.map(state => `<option value="${state}">${state}</option>`).join("");
   handleStateChange();
 }
@@ -1002,11 +937,9 @@ function handleStateChange() {
   const region = document.getElementById("country").value;
   const stateSelect = document.getElementById("stateSelect");
   if (!stateSelect) return;
-  
   const selectedState = stateSelect.value;
   const citySelect = document.getElementById("citySelect");
   const cities = malaysiaData[region][selectedState] || [];
-  
   citySelect.innerHTML = cities.map(city => `<option value="${city}">${city}</option>`).join("");
 }
 
@@ -1059,43 +992,42 @@ function updateBadges(){
 }
 
 function renderMiniCart(){
-	  const miniCart = document.getElementById("miniCart");
-	  if(!cart || cart.length === 0){
-	    miniCart.innerHTML = `<div class="text-center p-4"><i class="bi bi-bag-x fs-1 text-warning"></i><h6 class="fw-bold mt-2">Your cart is empty</h6><a href="Category.html" class="text-decoration-none fw-bold" style="color:#c99b3b;">Shop Now</a></div>`;
-	    updateSummary(); updateBadges(); return;
-	  }
-	  miniCart.innerHTML = cart.map((item, index) => {
-	    let product = products[item.id] || products[item.id.toLowerCase()] || {};
-	    return `
-	      <div class="mini-item">
-	        <button type="button" class="delete-btn" onclick="removeItem('${item.id}')">
-	          <i class="bi bi-trash-fill"></i>
-	        </button>
-	        <div class="mini-img-box">
-	          <img src="${item.image || product.image}" alt="${item.name || product.name}">
-	        </div>
-	        <div class="mini-info-layout">
-	          <div>
-	            <div class="mini-name-price">
-	              <h5 class="mini-name">${item.name || product.name}</h5>
-	              <div class="mini-detail">Size: ${item.size || "Standard"}</div>
-	              <div class="mini-detail">Color: ${item.color || "Default"}</div>
-	              <span class="mini-price">RM ${Number(item.price || product.price).toFixed(2)}</span>
-	            </div>
-	          </div>
-	          
-	          <div class="mini-actions">
-	            <div class="qty-box">
-	              <button type="button" onclick="changeQty('${item.id}', -1)">−</button>
-	              <span>${item.qty}</span>
-	              <button type="button" onclick="changeQty('${item.id}', 1)">+</button>
-	            </div>
-	          </div>
-	        </div>
-	      </div>`;
-	  }).join("");
-	  updateSummary(); updateBadges();
-	}
+  const miniCart = document.getElementById("miniCart");
+  if(!cart || cart.length === 0){
+    miniCart.innerHTML = `<div class="text-center p-4"><i class="bi bi-bag-x fs-1 text-warning"></i><h6 class="fw-bold mt-2">Your cart is empty</h6></div>`;
+    updateSummary(); updateBadges(); return;
+  }
+  miniCart.innerHTML = cart.map((item, index) => {
+    let product = products[item.id] || {};
+    return `
+      <div class="mini-item">
+        <button type="button" class="delete-btn" onclick="removeItem('${item.id}')">
+          <i class="bi bi-trash-fill"></i>
+        </button>
+        <div class="mini-img-box">
+          <img src="${product.image}" alt="${product.name}">
+        </div>
+        <div class="mini-info-layout">
+          <div>
+            <div class="mini-name-price">
+              <h5 class="mini-name">${product.name}</h5>
+              <div class="mini-detail">Size: ${item.size || "Standard"}</div>
+              <div class="mini-detail">Color: ${item.color || "Default"}</div>
+              <span class="mini-price">RM ${Number(product.price).toFixed(2)}</span>
+            </div>
+          </div>
+          <div class="mini-actions">
+            <div class="qty-box">
+              <button type="button" onclick="changeQty('${item.id}', -1)">−</button>
+              <span>${item.qty}</span>
+              <button type="button" onclick="changeQty('${item.id}', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }).join("");
+  updateSummary(); updateBadges();
+}
 
 function changeQty(id, amount){
   const item = cart.find(i => i.id === id); if(!item) return;
@@ -1105,36 +1037,79 @@ function changeQty(id, amount){
 
 function removeItem(id){ cart = cart.filter(i => i.id !== id); saveCart(); renderMiniCart(); }
 
+// --- FUNGSI UPDATE SUMMARY TERJAWAP DINAMIK ---
 function updateSummary(){
-	  const subtotal = cart.reduce((sum, item) => {
-	    let product = products[item.id] || products[item.id.toLowerCase()] || {};
-	    return sum + (Number(item.price || product.price) * item.qty);
-	  }, 0);
-	  const discount = promoApplied ? subtotal * 0.20 : 0;
-	  let delivery = 0;
-	  const region = document.getElementById("country").value;
-	  if(cart.length > 0){
-	    if(region === "west") delivery = 5;
-	    else if(region === "east") delivery = 12;
-	    else if(region === "international") delivery = 25;
-	  }
-	  currentTotal = subtotal - discount + delivery;
-	  document.getElementById("subtotal").textContent = "RM " + subtotal.toFixed(2);
-	  document.getElementById("discount").textContent = "-RM " + discount.toFixed(2);
-	  document.getElementById("delivery").textContent = "RM " + delivery.toFixed(2);
-	  document.getElementById("total").textContent = "RM " + currentTotal.toFixed(2);
+  const subtotal = cart.reduce((sum, item) => {
+    let product = products[item.id] || {};
+    return sum + (Number(product.price || 0) * item.qty);
+  }, 0);
+  
+  let delivery = 0;
+  const region = document.getElementById("country").value;
+  if(cart.length > 0){
+    if(region === "west") delivery = 5;
+    else if(region === "east") delivery = 12;
+    else if(region === "international") delivery = 25;
+  }
+  
+  let discount = 0;
+  if (appliedVoucherData) {
+    if (appliedVoucherData.type === "percentage") {
+      discount = subtotal * (appliedVoucherData.value / 100);
+    } else if (appliedVoucherData.type === "flat") {
+      discount = appliedVoucherData.value;
+    } else if (appliedVoucherData.type === "freeshipping") {
+      discount = delivery; 
+      delivery = 0; 
+    }
+  }
+  
+  currentTotal = subtotal - discount + delivery;
+  if (currentTotal < 0) currentTotal = 0; 
+  
+  document.getElementById("subtotal").textContent = "RM " + subtotal.toFixed(2);
+  
+  if (appliedVoucherData && appliedVoucherData.type === "freeshipping") {
+    document.getElementById("discount").textContent = "-RM " + discount.toFixed(2) + " (Free Ship)";
+  } else {
+    document.getElementById("discount").textContent = "-RM " + discount.toFixed(2);
+  }
+  
+  document.getElementById("delivery").textContent = "RM " + delivery.toFixed(2);
+  document.getElementById("total").textContent = "RM " + currentTotal.toFixed(2);
+  
+  if (document.getElementById("earnedPointsText")) {
+    document.getElementById("earnedPointsText").textContent = "+" + Math.floor(currentTotal) + " Points";
+  }
+}
 
-	  const livePoints = Math.floor(currentTotal);
-	  const pointsTextEl = document.getElementById("earnedPointsText");
-	  if (pointsTextEl) {
-	    pointsTextEl.textContent = "+" + livePoints + " Points";
-	  }
-	}
-
+//REPLACE THE applyPromo() FUNCTION IN shipping.html WITH THIS:
 function applyPromo(){
-  if(document.getElementById("promoCode").value.trim().toUpperCase() === "QASABE20"){
-    promoApplied = true; alert("Promo code applied! 20% discount added.");
-  }else{ promoApplied = false; alert("Invalid promo code."); }
+  const inputCode = document.getElementById("promoCode").value.trim().toUpperCase();
+  
+  const currentSubtotal = cart.reduce((sum, item) => {
+    let product = products[item.id] || {};
+    return sum + (Number(product.price || 0) * item.qty);
+  }, 0);
+
+  const foundVoucher = activeVouchers.find(v => v.code === inputCode);
+  
+  if (!foundVoucher) {
+    appliedVoucherData = null;
+    alert("Invalid promo code. Please check your voucher code and try again.");
+    updateSummary();
+    return;
+  }
+  
+  if (currentSubtotal < foundVoucher.minSpend) {
+    appliedVoucherData = null;
+    alert(`Failed! Voucher ${foundVoucher.code} requires a minimum spend of RM ${foundVoucher.minSpend.toFixed(2)}`);
+    updateSummary();
+    return;
+  }
+  
+  appliedVoucherData = foundVoucher;
+  alert(`Promo code ${foundVoucher.code} successfully applied!`);
   updateSummary();
 }
 
@@ -1144,79 +1119,56 @@ function showPaymentDetails(){
   document.getElementById(method + "Box").classList.add("active");
 }
 
-let isOrderProcessing = false;
+//GANTIKAN DUA FUNGSI INI DI DALAM shipping.html
 
+let pointsEarnedThisOrder = 0; // Pembolehubah global untuk memegang mata ganjaran order semasa
+
+let isOrderProcessing = false;
 function placeOrder(event) {
   if (event) event.preventDefault();
   if (isOrderProcessing || cart.length === 0) return false;
-
-  const form = document.getElementById("shippingForm");
-  if(!form.checkValidity()){ form.reportValidity(); return false; }
-
   isOrderProcessing = true;
-  const placeBtn = document.querySelector(".place-btn");
-  placeBtn.disabled = true; 
-  placeBtn.innerText = "Processing Transaction...";
-
-  const region = document.getElementById("country").value;
-  let stateStr = (region === "international") ? document.getElementById("stateInput").value : document.getElementById("stateSelect").value;
-  let cityStr = (region === "international") ? document.getElementById("cityInput").value : document.getElementById("citySelect").value;
-  let countryStr = (region === "international") ? document.getElementById("countryName").value : "Malaysia";
-
-  const earnedPoints = Math.floor(currentTotal); 
-
-  let account = JSON.parse(localStorage.getItem("customerAccount")) || 
-                JSON.parse(localStorage.getItem("userProfile")) || 
-                { name: "Guest User", email: "user@email.com", points: 0 };
   
-  account.points = (Number(account.points) || 0) + earnedPoints;
-  account.goldPoints = account.points; 
-  
-  localStorage.setItem("customerAccount", JSON.stringify(account));
-  
-  alert(`Congratulations! You have earned ${earnedPoints} Gold Points from this purchase.`);
-
   const orderId = "QSB" + Math.floor(1000 + Math.random() * 9000);
   document.getElementById("modalOrderId").textContent = orderId;
   document.getElementById("modalPayment").textContent = document.getElementById("paymentMethod").value.toUpperCase();
   document.getElementById("modalTotal").textContent = "RM " + currentTotal.toFixed(2);
 
-  let today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-  let recentOrders = JSON.parse(localStorage.getItem("recentOrders")) || [];
+  const subtotalAmt = cart.reduce((sum, item) => sum + (Number(products[item.id]?.price || 0) * item.qty), 0);
   
+  let baseDelivery = 5;
+  const region = document.getElementById("country").value;
+  if(region === "east") baseDelivery = 12;
+  else if(region === "international") baseDelivery = 25;
+  
+  const finalShipping = appliedVoucherData?.type === "freeshipping" ? 0 : baseDelivery;
+
+  // Kira point terkumpul (1 RM = 1 Point)
+  pointsEarnedThisOrder = Math.floor(currentTotal);
+
   let orderItems = cart.map(item => {
-    let product = products[item.id] || products[item.id.toLowerCase()] || {};
+    let product = products[item.id] || {};
     return {
-      name: item.name || product.name || "Sugarcane Product",
-      qty: item.qty || 1,
-      price: Number(item.price || product.price || 0)
+      id: item.id,
+      name: product.name || "Sugarcane Product",
+      qty: item.qty,
+      price: Number(product.price || 0)
     };
   });
 
-  const subtotalVal = cart.reduce((sum, item) => {
-    let product = products[item.id] || products[item.id.toLowerCase()] || {};
-    return sum + (Number(item.price || product.price) * item.qty);
-  }, 0);
-  const discountVal = promoApplied ? subtotalVal * 0.20 : 0;
+  let today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  let recentOrders = JSON.parse(localStorage.getItem("recentOrders")) || [];
   
-  let deliveryVal = 0;
-  if(cart.length > 0){
-    if(region === "west") deliveryVal = 5;
-    else if(region === "east") deliveryVal = 12;
-    else if(region === "international") deliveryVal = 25;
-  }
-
   recentOrders.unshift({ 
     orderId: orderId, 
-    id: orderId, 
-    total: currentTotal,
-    totalPrice: currentTotal, 
-    subtotal: (subtotalVal - discountVal),
-    shippingFee: deliveryVal,              
+    id: orderId,
+    total: currentTotal, 
+    subtotal: subtotalAmt,
+    shippingFee: finalShipping,
     date: today, 
-    orderDate: today, 
+    orderDate: today,
     status: "Processing",
-    items: orderItems 
+    items: orderItems
   });
   
   localStorage.setItem("recentOrders", JSON.stringify(recentOrders));
@@ -1227,12 +1179,43 @@ function placeOrder(event) {
 } 
 
 function finishOrder() {
+  // 1. Ambil data pengguna semasa daripada LocalStorage
+  let userAccount = JSON.parse(localStorage.getItem("customerAccount"));
+  
+  if (userAccount) {
+    // 2. Tambah mata ganjaran baharu ke dalam profil sedia ada
+    let currentPoints = Number(userAccount.points || userAccount.goldPoints || 0);
+    userAccount.points = currentPoints + pointsEarnedThisOrder;
+    
+    // 3. Simpan semula profil akaun yang dikemas kini
+    localStorage.setItem("customerAccount", JSON.stringify(userAccount));
+    
+    // 4. Papar English alert popup notifikasi mata ganjaran berjaya diterima
+    alert(`Congratulations! You have successfully earned +${pointsEarnedThisOrder} QASABE Reward Points from this purchase.`);
+  }
+
+  // 5. Bersihkan bakul dan sesi baucar lama
   cart = []; 
   saveCart();
+  sessionStorage.removeItem("activeCartVoucher"); 
+  
+  // 6. Redirect semula ke profile.html
   window.location.href = "profile.html"; 
 }
 
+//GANTIKAN DENGAN INI DI BAHAGIAN PALING BAWAH FAIL shipping.html
 document.addEventListener("DOMContentLoaded", () => {
+  // 1. Ambil data baucar yang diwarisi daripada cart.html
+  const savedVoucher = sessionStorage.getItem("activeCartVoucher");
+  if (savedVoucher) {
+    appliedVoucherData = JSON.parse(savedVoucher);
+    // Masukkan kod baucar ke dalam kotak input promoCode supaya user nampak kod tu terpasang
+    if(document.getElementById("promoCode")) {
+      document.getElementById("promoCode").value = appliedVoucherData.code;
+    }
+  }
+
+  // 2. Jalankan fungsi asal paparan skrin
   handleRegionChange();
   renderMiniCart();
 });
