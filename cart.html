@@ -12,9 +12,8 @@
 <style>
 :root{
   --navy:#071827;
+  --cream:#fff7f3;
   --gold:#c99b3b;
-  --cream:#fff7f3; 
-  --soft:#f7efe5;
   --text:#111827;
   --muted:#6b7280;
   --red:#ff3b3b;
@@ -28,21 +27,28 @@ body{
   background:var(--cream); 
   color:var(--text);
 }
-.top-bar{
-  background:var(--navy);
-  color:white;
-  font-size:12px;
-  text-align:center;
-  padding:8px;
-}
-.top-bar a{
-  color:white;
-  text-decoration:underline;
-}
 .navbar{
   background:white;
-  padding:18px 0;
+  padding:10px 0;
   border-bottom:1px solid #eee;
+}
+.navbar-nav .nav-link{
+  color: var(--navy);
+  font-weight: 500;
+  font-size: 16px;
+  transition: .3s;
+}
+.navbar-nav .nav-link:hover{
+  color: var(--gold);
+}
+.dropdown-menu .dropdown-item:hover {
+  background-color: var(--gold);
+  color: white !important;
+  transition: 0.2s;
+}
+.dropdown-toggle::after {
+  vertical-align: middle;
+  color: var(--gold); 
 }
 .brand-logo{
   display:flex;
@@ -62,31 +68,30 @@ body{
   letter-spacing:1px;
   color:var(--navy);
 }
-.navbar-nav .nav-link{
-    color: var(--navy);
-    font-weight: 500;
-    font-size: 16px;
-    transition: .3s;
-    margin: 0 8px;
-}
-.navbar-nav .nav-link:hover{
-    color: var(--gold);
-}
+
+/* --- LOGIK CARIAN & SUGGESTIONS CSS (SEBIJIK WISHLIST) --- */
 .search-container {
   position: relative;
+  width: 100%;
 }
-.search-suggestions {
+.search-box-premium {
+  border-radius: 50px !important;
+  padding: 8px 20px;
+  font-size: 14px;
+  border: 1px solid #ced4da;
+}
+.suggestion-box {
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
   background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: 1px solid rgba(201,155,59,0.25);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(7,24,39,0.08);
+  z-index: 1050;
   max-height: 250px;
   overflow-y: auto;
-  z-index: 1050;
   display: none;
   margin-top: 5px;
 }
@@ -98,37 +103,40 @@ body{
   transition: background 0.2s;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-align: left;
 }
 .suggestion-item:hover {
-  background: #f5f5f5;
+  background: var(--cream);
   color: var(--gold);
 }
 .suggestion-item img {
-  width: 32px;
-  height: 32px;
+  width: 35px;
+  height: 35px;
   object-fit: contain;
-  border-radius: 4px;
-  background: #fdfaf6;
+  border-radius: 6px;
+  background: #fff;
 }
+
+/* --- NAV ICONS --- */
 .nav-icons{
   display:flex;
   align-items:center;
   gap:15px;
+  margin-left: 20px;
 }
 .icon-btn{
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    font-size:22px;
-    text-decoration:none;
-    color:var(--navy);
-    transition:.3s;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  font-size:22px;
+  text-decoration:none;
+  color:var(--navy);
+  transition:.3s;
 }
 .icon-btn:hover{
   background:var(--gold);
@@ -145,10 +153,10 @@ body{
   padding:2px 6px;
   position:absolute;
   top: 5px;
-  right: 2px;
+  right: 5px;
 }
+
 .page-section{
-  background:var(--cream); 
   min-height:100vh;
   padding-bottom: 60px;
 }
@@ -314,6 +322,7 @@ body{
   border-radius:25px;
   font-size:12px;
   font-weight:800;
+  cursor: pointer;
 }
 .checkout-btn{
   width:100%;
@@ -325,6 +334,7 @@ body{
   font-size:13px;
   font-weight:900;
   transition:.3s;
+  cursor: pointer;
 }
 .checkout-btn:hover{
   background:var(--navy);
@@ -365,67 +375,43 @@ body{
   font-size:12px;
   font-weight:900;
 }
-.footer{
-  background:#f2f2f2;
-  padding:35px 0 25px;
+
+/* --- FOOTER --- */
+footer{
+  background:var(--navy);
+  color:white;
+  padding:50px 0 20px;
+  font-size:13px;
 }
-.footer-brand h3{
-  color:var(--navy);
-  font-size:26px;
-  font-weight:900;
-}
-.footer-brand p{
-  font-size:12px;
-  color:#666;
-  width:180px;
-}
-.socials i{
-  width:26px;
-  height:26px;
-  background:white;
-  border-radius:50%;
-  display:inline-flex;
+.footer-brand{
+  display:flex;
   align-items:center;
-  justify-content:center;
-  margin-right:6px;
-  font-size:12px;
-  color:#111;
-}
-.footer h6{
-  font-size:12px;
-  letter-spacing:3px;
-  font-weight:900;
-  color:#111;
+  gap:3px;
   margin-bottom:15px;
 }
-.footer a{
-  display:block;
-  color:#666;
-  text-decoration:none;
-  font-size:12px;
-  margin-bottom:9px;
+.footer-brand img{
+  width:52px;
+  height:52px;
+  object-fit:contain;
 }
-.footer a:hover{
+.footer-brand h4{
+  font-family:'Cormorant Garamond', serif;
+  font-size:32px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:white;
+  margin:0;
+}
+footer a{
+  display:block;
+  color:rgba(255,255,255,0.7);
+  text-decoration:none;
+  margin-bottom:8px;
+}
+footer a:hover{
   color:var(--gold);
 }
-.footer-bottom{
-  border-top:1px solid #ddd;
-  padding-top:18px;
-  margin-top:25px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:11px;
-  color:#777;
-}
-.payment-icons span{
-  background:white;
-  border-radius:4px;
-  padding:5px 8px;
-  margin-left:5px;
-  font-size:10px;
-  font-weight:900;
-}
+
 .empty-cart{
   text-align:center;
   padding:50px 20px;
@@ -450,15 +436,13 @@ body{
   padding:11px 23px;
   font-weight:800;
 }
+
 @media(max-width:992px){
   .cart-layout{
     grid-template-columns:1fr;
   }
   .newsletter{
     grid-template-columns:1fr;
-  }
-  .search-container{
-    width:100%;
   }
 }
 @media(max-width:576px){
@@ -475,18 +459,11 @@ body{
   .newsletter h2{
     font-size:24px;
   }
-  .footer-bottom{
-    flex-direction:column;
-    gap:12px;
-  }
 }
 </style>
 </head>
 <body>
 <div class="page-section">
-  <div class="top-bar" id="dynamicTopBar">
-    Sign up and get 20% off your first order. <a href="profile.html">Sign Up Now</a>
-  </div>
   
   <nav class="navbar navbar-expand-lg">
     <div class="container">
@@ -497,48 +474,51 @@ body{
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
       <div class="collapse navbar-collapse" id="nav">
-        <ul class="navbar-nav mx-auto align-items-center gap-3">
+        <ul class="navbar-nav mx-auto gap-3">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#story">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
           
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Products</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="Category.html?cat=drinks">Sugarcane Drinks</a></li>
-              <li><a class="dropdown-item" href="Category.html?cat=skincare">Sugarcane Skincare</a></li>
-              <li><a class="dropdown-item" href="Category.html?cat=wellness">Sugarcane Wellness</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="Category.html">All Products</a></li>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu border-0 shadow" aria-labelledby="navbarDropdown" style="background-color: var(--cream);">
+              <li><a class="dropdown-item py-2" href="Category.html?cat=food-beverages" style="color: var(--navy); font-weight: 500;">Food & Beverages</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=health" style="color: var(--navy); font-weight: 500;">Health</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=personal-care" style="color: var(--navy); font-weight: 500;">Personal Care & Wellness</a></li>
+              <li><a class="dropdown-item py-2" href="Category.html?cat=packaging" style="color: var(--navy); font-weight: 500;">Food Packaging & Containers</a></li>
             </ul>
           </li>
           
           <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
         </ul>
         
-        <div class="d-flex align-items-center gap-3 ms-auto">
-          <div class="d-none d-lg-block search-container">
-            <input type="text" id="searchBar" class="form-control rounded-pill" style="width:280px; padding:9px 16px; font-size:13px;" placeholder="Find sugarcane products..." onkeypress="handleSearch(event)" oninput="showSuggestions(this.value)">
-            <div id="suggestionBox" class="search-suggestions"></div>
+        <div class="d-none d-lg-block w-25">
+          <div class="search-container">
+            <input type="text" id="searchBar" class="form-control search-box-premium" placeholder="Find sugarcane products..." onkeypress="handleSearch(event)" oninput="showSuggestions(this.value)">
+            <div id="suggestionBox" class="suggestion-box"></div>
           </div>
-          
-          <div class="nav-icons">
-            <a href="wishlist.html" class="icon-btn">
-              <i class="bi bi-heart"></i>
-              <span id="wishCount" class="wishlist-count">0</span>
-            </a>
-            <a href="cart.html" class="icon-btn">
-              <i class="bi bi-cart"></i>
-              <span id="cartCount" class="cart-count">0</span>
-            </a>
-            <a href="profile.html" class="icon-btn">
-              <i class="bi bi-person-circle"></i>
-            </a>
-          </div>
+        </div>
+        
+        <div class="nav-icons">
+          <a href="wishlist.html" class="icon-btn">
+            <i class="bi bi-heart"></i>
+            <span id="wishlistCount" class="wishlist-count">0</span>
+          </a>
+          <a href="cart.html" class="icon-btn">
+            <i class="bi bi-cart-fill" style="color: var(--gold);"></i>
+            <span id="cartCount" class="cart-count">0</span>
+          </a>
+          <a href="profile.html" class="icon-btn">
+            <i class="bi bi-person-circle"></i>
+          </a>
         </div>
       </div>
     </div>
   </nav>
+
   <main class="container">
     <div class="breadcrumb-custom">
       Home &nbsp;›&nbsp; Cart
@@ -553,7 +533,7 @@ body{
           <strong id="subtotal">RM 0.00</strong>
         </div>
         <div class="summary-row">
-          <span>Discount (-20%)</span>
+          <span id="discountLabel">Discount</span>
           <strong class="discount-text" id="discount">-RM 0.00</strong>
         </div>
         <div class="summary-row">
@@ -581,357 +561,299 @@ body{
       </div>
     </section>
   </main>
-  <footer class="footer">
+
+  <footer>
     <div class="container">
-      <div class="row gy-4">
-        <div class="col-md-3 footer-brand">
-          <h3>QASABE</h3>
-          <p>The perfect fit for a healthier, greener you.</p>
-          <div class="socials">
-            <i class="bi bi-twitter-x"></i>
-            <i class="bi bi-facebook"></i>
-            <i class="bi bi-instagram"></i>
-            <i class="bi bi-github"></i>
+      <div class="row gy-4 text-start">
+        <div class="col-md-4">
+          <div class="footer-brand">
+            <img src="images/logor.png" alt="QASABE Logo">
+            <h4>QASABE</h4>
           </div>
+          <p class="text-white-50">Sustainable choices for a better tomorrow.</p>
         </div>
-        <div class="col-md-2">
-          <h6>COMPANY</h6>
-          <a href="#">About</a>
-          <a href="#">Features</a>
-          <a href="#">Works</a>
-          <a href="#">Career</a>
+        <div class="col-md-4">
+          <h5 class="text-uppercase tracking-wider text-white mb-3" style="font-size:14px;">Quick Links</h5>
+          <a href="index.html">Home</a>
+          <a href="about-us.html">About Us</a>
+          <a href="Category.html">Products</a>
         </div>
-        <div class="col-md-2">
-          <h6>HELP</h6>
-          <a href="#">Customer Support</a>
-          <a href="#">Delivery Details</a>
-          <a href="#">Terms & Conditions</a>
-          <a href="#">Privacy Policy</a>
-        </div>
-        <div class="col-md-2">
-          <h6>FAQ</h6>
-          <a href="#">Account</a>
-          <a href="#">Manage Deliveries</a>
-          <a href="#">Orders</a>
-          <a href="#">Payments</a>
-        </div>
-        <div class="col-md-3">
-          <h6>RESOURCES</h6>
-          <a href="#">Free eBooks</a>
-          <a href="#">Development Tutorial</a>
-          <a href="#">How to - Blog</a>
-          <a href="#">Youtube Playlist</a>
+        <div class="col-md-4">
+          <h5 class="text-uppercase tracking-wider text-white mb-3" style="font-size:14px;">Contact Us</h5>
+          <p class="text-white-50 mb-1">Email: helloqasabe@gmail.com</p>
+          <p class="text-white-50">WhatsApp: +60111223456</p>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>Qasabe.co © 2026–2027, All Rights Reserved</span>
-        <div class="payment-icons">
-          <span>VISA</span>
-          <span>MC</span>
-          <span>PayPal</span>
-          <span>Apple</span>
-          <span>GPay</span>
-        </div>
-      </div>
+      <hr style="border-color: rgba(255,255,255,0.15)">
+      <p class="text-center mb-0 text-white-50">
+        ©️ 2026 Qasabe. All Rights Reserved.
+      </p>
     </div>
   </footer>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 const products = {
-		  "juice": { name:"QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage | Natural Hydration & Wellness", category: "Refreshing Drink", price:8.90, image:"images/drink (P).jpeg" },
-		  "energy-snack": { name:"QASABE Sugarcane Energy Snack | Natural Quick Energy | Healthy On-The-Go Snack", price:19.90, image:"images/energy snack (P).png" },
-		  "herbal-drink": { name:"QASABE Herbal Drink | Traditional Wellness Beverage | Natural Daily Health Support", price:33.90, image:"images/herbal drink (P).png" },
-		  "organic-cube": { name:"QASABE Sugarcane Cube | Natural Cane Sweetener | Convenient Sugar Alternative", price:24.00, image:"images/sugarcube (P).png" },
-		  "liquid-drop": { name:"QASABE Liquid Sweetener Drops | Zero-Mess Sweetening Solution | Natural Sugarcane Extract", price:16.90, image:"images/liquid drop (P).jpeg" },
-		  "sleep-mist": { name:"QASABE Sleep Mist | Relaxing Aromatherapy Spray | Better Sleep & Calmness", price:24.90, image:"images/sleep-mist (P).png" },
-		  "aha-toner": { name:"QASABE AHA Toner | Gentle Exfoliating Toner | Smooth & Radiant Skin", price:26.90, image:"images/AHA toner (P).png" },
-		  "shampoo": { name:"QASABE Nourishing Shampoo | Sugarcane Hair Care | Healthy & Refreshed Hair", price:49.90, image:"images/shampoo (P).png" },
-		  "body-scrub": { name:"QASABE Body Scrub | Natural Sugarcane Exfoliator | Soft & Glowing Skin", price:28.90, image:"images/bscrub (P).jpeg" },
-		  "bagasse-packaging": { 
-		    name:"QASABE Eco Bagasse Packaging | Sustainable Food Container | Biodegradable & Plastic-Free", 
-		    image:"images/packaging (P).png",
-		    variations: {
-		      "eco-food-container": {
-		        name: "Eco Food Container",
-		        prices: { "25pcs": 7.90, "50pcs": 13.90, "100pcs": 24.90 }
-		      },
-		      "eco-packaging-box": {
-		        name: "Eco Packaging Box",
-		        prices: { "25pcs": 7.90, "50pcs": 13.90, "100pcs": 24.90 }
-		      }
-		    }
-		  }
-		};
+  "juice": { name:"QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage | Natural Hydration & Wellness", price:8.90, image:"images/drink (L).jpeg" },
+  "energy-snack": { name:"QASABE Sugarcane Energy Snack | Natural Quick Energy | Healthy On-The-Go Snack", price:19.90, image:"images/energy snack (L).png" },
+  "herbal-drink": { name:"QASABE Herbal Drink | Traditional Wellness Beverage | Natural Daily Health Support", price:33.90, image:"images/herbal drink (L).png" },
+  "organic-cube": { name:"QASABE Sugarcane Cube | Natural Cane Sweetener | Convenient Sugar Alternative", price:24.00, image:"images/sugarcube (L).png" },
+  "liquid-drop": { name:"QASABE Liquid Sweetener Drops | Zero-Mess Sweetening Solution | Natural Sugarcane Extract", price:16.90, image:"images/liquid drop (L).jpeg" },
+  "sleep-mist": { name:"QASABE Sleep Mist | Relaxing Aromatherapy Spray | Better Sleep & Calmness", price:24.90, image:"images/sleep-mist (L).png" },
+  "aha-toner": { name:"QASABE AHA Toner | Gentle Exfoliating Toner | Smooth & Radiant Skin", price:26.90, image:"images/AHA toner (L).png" },
+  "shampoo": { name:"QASABE Nourishing Shampoo | Sugarcane Hair Care | Healthy & Refreshed Hair", price:49.00, image:"images/shampoo (L).png" },
+  "body-scrub": { name:"QASABE Body Scrub | Natural Sugarcane Exfoliator | Soft & Glowing Skin", price:28.90, image:"images/bscrub (L).jpeg" },
+  "bagasse-packaging": { name:"QASABE Eco Bagasse Packaging | Sustainable Food Container | Biodegradable & Plastic-Free", image:"images/packaging (L).png", variations: { "eco-food-container": { name: "Eco Food Container", prices: { "25pcs": 7.90, "50pcs": 13.90, "100pcs": 24.90 } }, "eco-packaging-box": { name: "Eco Packaging Box", prices: { "25pcs": 7.90, "50pcs": 13.90, "100pcs": 24.90 } } } }
+};
 
-		const availableProducts = [
-		  { id: "aha-toner", name: "QASABE AHA Toner | Gentle Exfoliating Toner | Smooth & Radiant Skin", img: "images/AHA toner (L).png" },
-		  { id: "sleep-mist", name: "QASABE Sleep Mist | Relaxing Aromatherapy Spray | Better Sleep & Calmness", img: "images/sleep-mist (L).png" },
-		  { id: "energy-snack", name: "QASABE Sugarcane Energy Snack | Natural Quick Energy | Healthy On-The-Go Snack", img: "images/energy snack (L).png" }
-		];
+const availableProducts = [
+  { id: "aha-toner", name: "Sugarcane Glow Toner", img: "images/AHA toner (L).png" },
+  { id: "sleep-mist", name: "Sugarcane Sleep Mist", img: "images/sleep-mist (L).png" },
+  { id: "energy-snack", name: "Sugarcane Energy Snack", img: "images/energy snack (L).png" },
+  { id: "juice", name: "QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage", img: "images/drink (L).jpeg" },
+  { id: "herbal-drink", name: "QASABE Herbal Drink | Traditional Wellness Beverage", img: "images/herbal drink (L).png" },
+  { id: "organic-cube", name: "QASABE Sugarcane Cube | Natural Cane Sweetener", img: "images/sugarcube (L).png" },
+  { id: "liquid-drop", name: "QASABE Liquid Sweetener Drops | Natural Extract", img: "images/liquid drop (L).jpeg" },
+  { id: "shampoo", name: "QASABE Nourishing Shampoo | Sugarcane Hair Care", img: "images/shampoo (L).png" },
+  { id: "body-scrub", name: "QASABE Body Scrub | Natural Sugarcane Exfoliator", img: "images/bscrub (L).jpeg" },
+  { id: "bagasse-packaging", name: "QASABE Eco Bagasse Packaging | Sustainable Food Container", img: "images/packaging (L).png" }
+];
 
-		let cart = JSON.parse(localStorage.getItem("cart")) || [];
-		let promoApplied = false; 
+// DATA LIST VOUCHER GROUP (SEBIJIK PROFILE)
+const activeVouchers = [
+  { code: "WELCOME20", type: "percentage", value: 20, minSpend: 100 },
+  { code: "QASABEFREESHIP", type: "freeshipping", value: 0, minSpend: 40 }, 
+  { code: "TEBUCRAZE5", type: "flat", value: 5, minSpend: 0 },
+  { code: "PLATINUM30", type: "percentage", value: 30, minSpend: 150 }
+];
 
-		function showSuggestions(val) {
-		  const box = document.getElementById("suggestionBox");
-		  if (!val || !val.trim()) {
-		    box.style.display = "none";
-		    return;
-		  }
-		  
-		  const query = val.toLowerCase();
-		  const matches = availableProducts.filter(p => p.name.toLowerCase().includes(query));
-		  
-		  if (matches.length === 0) {
-		    box.style.display = "none";
-		    return;
-		  }
-		  
-		  box.innerHTML = matches.map(p => `
-		    <div class="suggestion-item" onclick="selectSuggestion('${p.id}', '${p.name}')">
-		      <img src="${p.img}" alt="${p.name}">
-		      <span>${p.name}</span>
-		    </div>
-		  `).join("");
-		  
-		  box.style.display = "block";
-		}
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let appliedVoucherData = null; // Menyimpan voucher yang dipasang aktif global
 
-		function selectSuggestion(id, name) {
-		  document.getElementById("searchBar").value = name;
-		  document.getElementById("suggestionBox").style.display = "none";
-		  window.location.href = `product-detail.html?id=${id}`;
-		}
+function showSuggestions(val) {
+  const box = document.getElementById("suggestionBox");
+  if (!val || !val.trim()) { box.style.display = "none"; return; }
+  const query = val.toLowerCase();
+  const matches = availableProducts.filter(p => p.name.toLowerCase().includes(query));
+  if (matches.length === 0) { box.style.display = "none"; return; }
+  box.innerHTML = matches.map(p => `
+    <div class="suggestion-item" onclick="selectSuggestion('${p.id}', '${p.name}')">
+      <img src="${p.img}" alt="${p.name}">
+      <span>${p.name}</span>
+    </div>
+  `).join("");
+  box.style.display = "block";
+}
 
-		function handleSearch(event) {
-		  if (event.key === "Enter") {
-		    let query = document.getElementById("searchBar").value.trim();
-		    if (query !== "") {
-		      const exactMatch = availableProducts.find(p => p.name.toLowerCase() === query.toLowerCase());
-		      if(exactMatch) {
-		         window.location.href = `product-detail.html?id=${exactMatch.id}`;
-		      } else {
-		         window.location.href = `Category.html?search=${encodeURIComponent(query)}`;
-		      }
-		    }
-		  }
-		}
+function selectSuggestion(id, name) {
+  document.getElementById("searchBar").value = name;
+  document.getElementById("suggestionBox").style.display = "none";
+  window.location.href = `product-detail.html?id=${id}`;
+}
 
-		document.addEventListener("click", function(e) {
-		  if (e.target.id !== "searchBar") {
-		    const box = document.getElementById("suggestionBox");
-		    if(box) box.style.display = "none";
-		  }
-		});
+function handleSearch(event) {
+  if (event.key === "Enter") {
+    let query = document.getElementById("searchBar").value.trim();
+    if (query !== "") {
+      const exactMatch = availableProducts.find(p => p.name.toLowerCase() === query.toLowerCase());
+      if(exactMatch) { window.location.href = `product-detail.html?id=${exactMatch.id}`; }
+      else { window.location.href = `Category.html?search=${encodeURIComponent(query)}`; }
+    }
+  }
+}
 
-		function saveCart(){
-		  localStorage.setItem("cart", JSON.stringify(cart));
-		}
+document.addEventListener("click", function(e) {
+  if (e.target.id !== "searchBar") {
+    const box = document.getElementById("suggestionBox");
+    if(box) box.style.display = "none";
+  }
+});
 
-		function updateBadges(){
-		  let totalQty = cart.reduce((sum,item) => sum + item.qty, 0);
-		  document.getElementById("cartCount").textContent = totalQty;
-		  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];  
-		  document.getElementById("wishCount").textContent = wishlist.length;
-		}
+function saveCart(){ localStorage.setItem("cart", JSON.stringify(cart)); }
 
-		function getItemPrice(item) {
-		  const product = products[item.id];
-		  if (!product) return 0;
-		  
-		  if (item.id === "bagasse-packaging") {
-		    if (item.variation && item.paxSize && product.variations[item.variation]) {
-		      return product.variations[item.variation].prices[item.paxSize] || 7.90;
-		    }
-		    return 7.90; 
-		  }
-		  return product.price || 0;
-		}
+function updateBadges(){
+  let totalQty = cart.reduce((sum,item) => sum + item.qty, 0);
+  document.getElementById("cartCount").textContent = totalQty;
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];  
+  if(document.getElementById("wishlistCount")) document.getElementById("wishlistCount").textContent = wishlist.length;
+}
 
-		function renderCart(){
-		  const cartList = document.getElementById("cartList");
-		  
-		  if(cart.length === 0){
-		    cartList.innerHTML = `
-		      <div class="empty-cart">
-		        <i class="bi bi-bag-x"></i>
-		        <h3>Your cart is empty</h3>
-		        <p class="text-muted">Add QASABE products to start shopping.</p>
-		        <a href="Category.html">Shop Now</a>
-		      </div>
-		    `;
-		    updateSummary();
-		    updateBadges();
-		    saveCart();
-		    return;
-		  }
-		  
-		  cartList.innerHTML = cart.map((item, index) => {
-		    const product = products[item.id];
-		    if (!product) return ''; 
-		    
-		    let displayName = product.name;
-		    let detailsHtml = '';
-		    let price = getItemPrice(item);
-		    
-		    if (item.id === "bagasse-packaging") {
-		      let varKey = item.variation || "eco-food-container";
-		      let pSize = item.paxSize || "25pcs";
-		      const varData = product.variations[varKey];
-		      
-		      displayName = varData ? varData.name : "Eco Food Container";
-		      detailsHtml = `
-		        <div class="item-detail">Pax Size: ${pSize}</div>
-		        <div class="item-detail">Color: Natural</div>
-		      `;
-		    } else {
-		      detailsHtml = `
-		        ${product.size ? `<div class="item-detail">Size: ${product.size}</div>` : ''}
-		        ${product.color ? `<div class="item-detail">Color: ${product.color}</div>` : ''}
-		      `;
-		    }
-		    
-		    return `
-		      <div class="cart-item">
-		        <div class="cart-img-box">
-		          <img src="${product.image}" alt="${displayName}">
-		        </div>
-		        <div>
-		          <div class="item-name">${displayName}</div>
-		          ${detailsHtml}
-		          <div class="item-price">RM ${price.toFixed(2)}</div>
-		        </div>
-		        <div>
-		          <button class="delete-btn" onclick="removeItemByIndex(${index})">
-		            <i class="bi bi-trash-fill"></i>
-		          </button>
-		          <div class="qty-box">
-		            <button onclick="changeQtyByIndex(${index}, -1)">−</button>
-		            <span>${item.qty}</span>
-		            <button onclick="changeQtyByIndex(${index}, 1)">+</button>
-		          </div>
-		        </div>
-		      </div>
-		    `;
-		  }).join("");
-		  
-		  updateSummary();
-		  updateBadges();
-		  saveCart();
-		}
+function getItemPrice(item) {
+  const product = products[item.id];
+  if (!product) return 0;
+  if (item.id === "bagasse-packaging") {
+    if (item.variation && item.paxSize && product.variations[item.variation]) {
+      return product.variations[item.variation].prices[item.paxSize] || 7.90;
+    }
+    return 7.90; 
+  }
+  return product.price || 0;
+}
 
-		function changeQtyByIndex(index, amount){
-		  if(cart[index]){
-		    cart[index].qty += amount;
-		    if(cart[index].qty <= 0){
-		      cart.splice(index, 1);
-		    }
-		    renderCart();
-		  }
-		}
+function renderCart(){
+  const cartList = document.getElementById("cartList");
+  if(cart.length === 0){
+    cartList.innerHTML = `
+      <div class="empty-cart">
+        <i class="bi bi-bag-x"></i>
+        <h3>Your cart is empty</h3>
+        <p class="text-muted">Add QASABE products to start shopping.</p>
+        <a href="Category.html">Shop Now</a>
+      </div>
+    `;
+    updateSummary(); updateBadges(); saveCart(); return;
+  }
+  
+  cartList.innerHTML = cart.map((item, index) => {
+    const product = products[item.id];
+    if (!product) return ''; 
+    let displayName = product.name;
+    let detailsHtml = '';
+    let price = getItemPrice(item);
+    
+    if (item.id === "bagasse-packaging") {
+      let varKey = item.variation || "eco-food-container";
+      let pSize = item.paxSize || "25pcs";
+      const varData = product.variations[varKey];
+      displayName = varData ? varData.name : "Eco Food Container";
+      detailsHtml = `
+        <div class="item-detail">Pax Size: ${pSize}</div>
+        <div class="item-detail">Color: Natural</div>
+      `;
+    } else {
+      detailsHtml = `
+        <div class="item-detail">Size: ${item.size || "Standard"}</div>
+        <div class="item-detail">Color: ${item.color || "Default"}</div>
+      `;
+    }
+    
+    return `
+      <div class="cart-item">
+        <div class="cart-img-box">
+          <img src="${product.image}" alt="${displayName}">
+        </div>
+        <div>
+          <div class="item-name">${displayName}</div>
+          ${detailsHtml}
+          <div class="item-price">RM ${price.toFixed(2)}</div>
+        </div>
+        <div>
+          <button class="delete-btn" onclick="removeItemByIndex(${index})">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+          <div class="qty-box">
+            <button onclick="changeQtyByIndex(${index}, -1)">−</button>
+            <span>${item.qty}</span>
+            <button onclick="changeQtyByIndex(${index}, 1)">+</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join("");
+  
+  updateSummary(); updateBadges(); saveCart();
+}
 
-		function removeItemByIndex(index){
-		  cart.splice(index, 1);
-		  renderCart();
-		}
+function changeQtyByIndex(index, amount){
+  if(cart[index]){
+    cart[index].qty += amount;
+    if(cart[index].qty <= 0){ cart.splice(index, 1); }
+    renderCart();
+  }
+}
 
-		function updateSummary(){
-		  const subtotal = cart.reduce((sum, item) => {
-		    return sum + (getItemPrice(item) * item.qty);
-		  }, 0);
-		  
-		  const discount = promoApplied ? subtotal * 0.20 : 0;
-		  const delivery = cart.length > 0 ? 5 : 0;
-		  const total = subtotal - discount + delivery;
-		  
-		  document.getElementById("subtotal").textContent = "RM " + subtotal.toFixed(2);
-		  document.getElementById("discount").textContent = "-RM " + discount.toFixed(2);
-		  document.getElementById("delivery").textContent = "RM " + delivery.toFixed(2);
-		  document.getElementById("total").textContent = "RM " + total.toFixed(2);
-		}
+function removeItemByIndex(index){
+  cart.splice(index, 1);
+  renderCart();
+}
 
-		function applyPromo(){
-		  const code = document.getElementById("promoCode").value.trim().toUpperCase();
-		  if(code === "QASABE20"){
-		    promoApplied = true;
-		    alert("Promo code applied! 20% discount added.");
-		  }else{
-		    promoApplied = false;
-		    alert("Invalid promo code.");
-		  }
-		  updateSummary();
-		}
+// --- FUNGSI UPDATE SUMMARY TERDAPAT PENGIRAAN VOUCHER DINAMIK ---
+function updateSummary(){
+  const subtotal = cart.reduce((sum, item) => {
+    return sum + (getItemPrice(item) * item.qty);
+  }, 0);
+  
+  let delivery = cart.length > 0 ? 5 : 0;
+  let discount = 0;
+  
+  if (appliedVoucherData) {
+    if (appliedVoucherData.type === "percentage") {
+      discount = subtotal * (appliedVoucherData.value / 100);
+      document.getElementById("discountLabel").textContent = `Discount (-${appliedVoucherData.value}%)`;
+    } else if (appliedVoucherData.type === "flat") {
+      discount = appliedVoucherData.value;
+      document.getElementById("discountLabel").textContent = `Discount (Cash Rebate)`;
+    } else if (appliedVoucherData.type === "freeshipping") {
+      discount = delivery;
+      delivery = 0;
+      document.getElementById("discountLabel").textContent = `Discount (Free Shipping)`;
+    }
+  } else {
+    document.getElementById("discountLabel").textContent = "Discount";
+  }
+  
+  const total = subtotal - discount + delivery;
+  
+  document.getElementById("subtotal").textContent = "RM " + subtotal.toFixed(2);
+  document.getElementById("discount").textContent = "-RM " + discount.toFixed(2);
+  document.getElementById("delivery").textContent = "RM " + delivery.toFixed(2);
+  document.getElementById("total").textContent = "RM " + Math.max(0, total).toFixed(2);
+}
 
-		function saveOrderToProfile() {
-		    let currentUser = JSON.parse(localStorage.getItem("customerAccount"));
-		    if (!currentUser) {
-		        alert("Please login to proceed with your shipping and payment.");
-		        window.location.href = "login.html";
-		        return;
-		    }
+/// REPLACE THE applyPromo() FUNCTION IN cart.html WITH THIS:
+function applyPromo(){
+  const code = document.getElementById("promoCode").value.trim().toUpperCase();
+  
+  const currentSubtotal = cart.reduce((sum, item) => {
+    return sum + (getItemPrice(item) * item.qty);
+  }, 0);
+  
+  const foundVoucher = activeVouchers.find(v => v.code === code);
+  
+  if(!foundVoucher){
+    appliedVoucherData = null;
+    alert("Invalid promo code. Please check your voucher code and try again.");
+    updateSummary();
+    return;
+  }
+  
+  if (currentSubtotal < foundVoucher.minSpend) {
+    appliedVoucherData = null;
+    alert(`Failed! Voucher ${foundVoucher.code} requires a minimum spend of RM ${foundVoucher.minSpend.toFixed(2)}`);
+    updateSummary();
+    return;
+  }
+  
+  appliedVoucherData = foundVoucher;
+  alert(`Promo code "${foundVoucher.code}" successfully applied!`);
+  updateSummary();
+}
+function saveOrderToProfile() {
+    let currentUser = JSON.parse(localStorage.getItem("customerAccount"));
+    if (!currentUser) {
+        alert("Please login to proceed with your shipping and payment.");
+        window.location.href = "login.html";
+        return;
+    }
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+    
+    // Simpan status baucar aktif ke sessionStorage supaya shipping.html boleh warisi nilai diskaun ini automatik
+    if (appliedVoucherData) {
+      sessionStorage.setItem("activeCartVoucher", JSON.stringify(appliedVoucherData));
+    } else {
+      sessionStorage.removeItem("activeCartVoucher");
+    }
+    
+    window.location.href = 'shipping.html';
+}
 
-		    let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-		    if (cartItems.length === 0) {
-		        alert("Your cart is empty!");
-		        return;
-		    }
-		    let recentOrders = JSON.parse(localStorage.getItem("recentOrders")) || [];
-		    let firstItem = cartItems[0];
-		    let firstProduct = products[firstItem.id];
-		    
-		    let displayName = "Qasabe Sugarcane Product";
-		    if (firstProduct) {
-		      if (firstItem.id === "bagasse-packaging") {
-		        let varKey = firstItem.variation || "eco-food-container";
-		        displayName = firstProduct.variations[varKey] ? firstProduct.variations[varKey].name : "Eco Food Container";
-		      } else {
-		        displayName = firstProduct.name;
-		      }
-		    }
-		    let today = new Date().toLocaleDateString('en-GB', {
-		        day: 'numeric', month: 'short', year: 'numeric'
-		    }); 
-		    let newOrder = {
-		        orderId: "QSB-" + Math.floor(100000 + Math.random() * 900000), 
-		        productName: displayName, 
-		        image: firstProduct ? firstProduct.image : "images/logor.png", 
-		        date: today,
-		        price: "RM " + calculateCartTotal(), 
-		        status: "Processing" 
-		    };
-		    recentOrders.unshift(newOrder);
-		    localStorage.setItem("recentOrders", JSON.stringify(recentOrders));
-		    window.location.href = 'shipping.html';
-		}
-
-		function calculateCartTotal() {
-		    let subtotal = 0;
-		    cart.forEach(item => {
-		        subtotal += getItemPrice(item) * item.qty;
-		    });
-		    const discount = promoApplied ? subtotal * 0.20 : 0;
-		    const delivery = cart.length > 0 ? 5 : 0;
-		    const total = subtotal - discount + delivery;
-		    return total.toFixed(2);
-		}
-
-		function checkLoginStatus() {
-		  const topBar = document.getElementById("dynamicTopBar");
-		  if (!topBar) return; 
-		  const userLoggedIn = localStorage.getItem("userLoggedIn");
-		  if (userLoggedIn === "true") {
-		   topBar.style.display = "none";  
-		  } else {
-		   topBar.style.display = "block"; 
-		  }
-		}
-
-		document.addEventListener("DOMContentLoaded", () => {
-		  renderCart();
-		  checkLoginStatus();
-		});
-		
+document.addEventListener("DOMContentLoaded", () => {
+  renderCart();
+});
 </script>
 </body>
 </html>
