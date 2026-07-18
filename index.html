@@ -1001,7 +1001,7 @@ html { scroll-behavior: smooth; }
           <img src="images/valuesmist.png" class="hover-img" alt="Sugarcane Sleep Mist Value Added">
         </div>
         <h6>Sugarcane Sleep Mist</h6>
-        <div class="stars">★★★★★ <span class="text-dark">4.5/5</span></div>
+        <div class="stars">★★★★★ <span class="text-dark">4.8/5</span></div>
         <b>RM 24.90</b>
         <div class="discount-row">
           <del class="text-muted">RM31.15</del>
@@ -1535,10 +1535,18 @@ let timer = setInterval(updateCountdown, 1000);
 </script>
 
 <script>
+//DATA PENUH 10 PRODUK UTK FUNGSI SEARCH SUGGESTION
 const availableProducts = [
   { id: "aha-toner", name: "Sugarcane Glow Toner", img: "images/AHA toner (L).png" },
   { id: "sleep-mist", name: "Sugarcane Sleep Mist", img: "images/sleep-mist (L).png" },
-  { id: "energy-snack", name: "Sugarcane Energy Snack", img: "images/energy snack (L).png" }
+  { id: "energy-snack", name: "Sugarcane Energy Snack", img: "images/energy snack (L).png" },
+  { id: "juice", name: "QASABE Refresh Juice | Cold-Pressed Sugarcane Beverage", img: "images/drink (L).jpeg" },
+  { id: "herbal-drink", name: "QASABE Herbal Drink | Traditional Wellness Beverage", img: "images/herbal drink (L).png" },
+  { id: "organic-cube", name: "QASABE Sugarcane Cube | Natural Cane Sweetener", img: "images/sugarcube (L).png" },
+  { id: "liquid-drop", name: "QASABE Liquid Sweetener Drops | Natural Extract", img: "images/liquid drop (L).jpeg" },
+  { id: "shampoo", name: "QASABE Nourishing Shampoo | Sugarcane Hair Care", img: "images/shampoo (L).png" },
+  { id: "body-scrub", name: "QASABE Body Scrub | Natural Sugarcane Exfoliator", img: "images/bscrub (L).jpeg" },
+  { id: "bagasse-packaging", name: "QASABE Eco Bagasse Packaging | Sustainable Food Container", img: "images/packaging (L).png" }
 ];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
