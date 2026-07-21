@@ -9,9 +9,7 @@
 <title>QASABE | Care Policy</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
 
 <style>
@@ -158,386 +156,224 @@ h1,h2,h3{
   background: #fdfaf6;
 }
 
-
 .policy-hero{
-
-height:520px;
-
-background:
-url("images/policy-bg.png");
-
-background-size:cover;
-background-position:center;
-
-background-repeat:no-repeat;
-
-
-/* CENTER CONTENT */
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
+  height:520px;
+  background: url("images/policy-bg.png");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-
 .hero-content{
-
-width:650px;
-
-margin:auto;
-
-text-align:center;
-
-color:white;
-
-position:relative;
-
-z-index:2;
-
+  width:650px;
+  margin:auto;
+  text-align:center;
+  color:white;
+  position:relative;
+  z-index:2;
 }
 
 .hero-content h1{
-
-font-family:'Cormorant Garamond',serif;
-
-font-size:72px;
-
-font-weight:700;
-
-line-height:.9;
-
+  font-family:'Cormorant Garamond',serif;
+  font-size:72px;
+  font-weight:700;
+  line-height:.9;
 }
-
 
 .hero-content span{
-
-color:var(--gold);
-
-font-size:80px;
-
+  color:var(--gold);
+  font-size:80px;
 }
-
 
 .hero-content p{
-
-margin-top:25px;
-
-font-size:17px;
-
-line-height:1.7;
-
+  margin-top:25px;
+  font-size:17px;
+  line-height:1.7;
 }
-
-
 
 /* BUTTON IKUT INDEX */
-
 .hero-btn{
-
-margin-top:30px;
-
-display:flex;
-
-justify-content:center;
-
-gap:20px;
-
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
 }
-
 
 .hero-btn a{
-
-text-decoration:none;
-
-border-radius:30px;
-
-padding:10px 28px;
-
-font-weight:600;
-
-transition:.3s;
-
+  text-decoration:none;
+  border-radius:30px;
+  padding:10px 28px;
+  font-weight:600;
+  transition:.3s;
 }
-
 
 .hero-btn a:first-child{
-
-background:var(--gold);
-
-color:white;
-
+  background:var(--gold);
+  color:white;
 }
-
 
 .hero-btn a:last-child{
-
-background:#e9e9e9;
-
-color:#333;
-
+  background:#e9e9e9;
+  color:#333;
 }
-
 
 .hero-btn a:hover{
-
-transform:translateY(-2px);
-
-opacity:.9;
-
+  transform:translateY(-2px);
+  opacity:.9;
 }
 
-
 /* POLICY SECTION */
-
-/* POLICY SECTION */
-
 .policy-section{
-
-padding:70px 0;
-
-background:#071827;
-
+  padding:70px 0;
+  background:#071827;
+  position: relative;
 }
 
-
-/* CARD */
-
+/* CARD FIX */
 .policy-card{
-
-height:100%;
-
-background:
-rgba(255,255,255,.04);
-
-border:1px solid var(--gold);
-
-border-radius:28px;
-
-padding:55px 35px 40px;
-
-text-align:center;
-
-color:white;
-
-box-shadow:
-0 15px 40px rgba(0,0,0,.3);
-
-transition:.3s;
-
+  height:100%;
+  background: rgba(255,255,255,.04);
+  border:1px solid var(--gold);
+  border-radius:28px;
+  padding:55px 35px 40px;
+  text-align:center;
+  color:white;
+  box-shadow: 0 15px 40px rgba(0,0,0,.3);
+  transition:.3s;
+  position: relative;
+  z-index: 1;
 }
-
 
 .policy-card:hover{
-
-transform:translateY(-8px);
-
-box-shadow:
-0 20px 40px rgba(201,155,59,.25);
-
+  transform:translateY(-8px);
+  box-shadow: 0 20px 40px rgba(201,155,59,.25);
 }
-
-
 
 /* ICON */
-
 .policy-icon{
-
-width:95px;
-height:95px;
-
-border-radius:50%;
-
-border:1.5px solid var(--gold);
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-size:42px;
-
-color:var(--gold);
-
-margin:0 auto 25px;
-
+  width:95px;
+  height:95px;
+  border-radius:50%;
+  border:1.5px solid var(--gold);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:42px;
+  color:var(--gold);
+  margin:0 auto 25px;
 }
-
-
 
 /* TITLE */
-
 .policy-card h3{
-
-font-family:'Cormorant Garamond',serif;
-
-font-size:34px;
-
-font-weight:700;
-
-color:white;
-
-margin-bottom:20px;
-
+  font-family:'Cormorant Garamond',serif;
+  font-size:34px;
+  font-weight:700;
+  color:white;
+  margin-bottom:20px;
 }
-
-
 
 /* DESCRIPTION */
-
 .policy-card p{
-
-color:#f2f2f2;
-
-font-size:15px;
-
-line-height:1.7;
-
-margin-bottom:25px;
-
+  color:#f2f2f2;
+  font-size:15px;
+  line-height:1.7;
+  margin-bottom:25px;
 }
-
-
 
 /* LIST */
-
 .policy-card ul{
-
-padding:0;
-
-margin:0;
-
-text-align:left;
-
+  padding:0;
+  margin:0;
+  text-align:left;
 }
-
 
 .policy-card li{
-
-list-style:none;
-
-display:flex;
-
-gap:12px;
-
-align-items:flex-start;
-
-color:#ddd;
-
-font-size:14px;
-
-line-height:1.6;
-
-margin-bottom:15px;
-
+  list-style:none;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  color:#ddd;
+  font-size:14px;
+  line-height:1.6;
+  margin-bottom:15px;
 }
-
 
 .policy-card li i{
-
-color:var(--gold);
-
-font-size:16px;
-
-margin-top:3px;
-
+  color:var(--gold);
+  font-size:16px;
+  margin-top:3px;
 }
 
-
-
-
-
-/* HELP BAR */
-
-
+/* HELP BAR SYSTEM OVERRIDE (SOLVES OVERLAPPING ISSUE) */
 .help-box{
-
-margin-top:60px;
-
-border:1px solid var(--gold);
-
-border-radius:50px;
-
-padding:20px 40px;
-
-display:flex;
-
-justify-content:center;
-
-gap:40px;
-
-flex-wrap:wrap;
-
+  margin-top:60px;
+  border:1px solid var(--gold);
+  border-radius:50px;
+  padding:22px 35px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:25px;
+  flex-wrap:wrap;
+  color:white;
+  position: relative !important;
+  z-index: 99999 !important;
+  background: #071827 !important;
 }
-
-
-
-.help-box{
-
-margin-top:60px;
-
-border:1px solid var(--gold);
-
-border-radius:50px;
-
-padding:22px 35px;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-gap:35px;
-
-flex-wrap:wrap;
-
-color:white;
-
-}
-
 
 .help-box div{
-
-color:white;
-
+  color:white;
 }
-
 
 .help-box i{
-
-color:var(--gold);
-
-font-size:22px;
-
-margin-right:10px;
-
+  color:var(--gold);
+  font-size:22px;
+  margin-right:6px;
 }
 
+/* DIRECT CLICKABLE LINK STYLING */
+.action-contact-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 18px !important;
+  border-radius: 30px !important;
+  background: rgba(201, 155, 59, 0.2) !important;
+  border: 1px solid var(--gold) !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  position: relative !important;
+  z-index: 100000 !important;
+}
 
+.action-contact-btn:hover {
+  background: var(--gold) !important;
+  color: var(--navy) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 5px 15px rgba(201, 155, 59, 0.5) !important;
+}
+
+.action-contact-btn:hover i {
+  color: var(--navy) !important;
+}
 
 /* FOOTER */
-
 footer{
-
-padding:30px;
-
-text-align:center;
-
-border-top:1px solid rgba(255,255,255,.1);
-
-color:#aaa;
-
+  padding:30px;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.1);
+  color:#aaa;
 }
-
-
-
 </style>
 
-
 </head>
-
-
 
 <body>
 <nav class="navbar navbar-expand-lg">
@@ -591,22 +427,14 @@ color:#aaa;
   </div>
 </nav>
 
-
-
-
 <!-- HERO -->
-
 <section class="policy-hero">
-
-
 <div class="hero-content">
-
 
 <h1>
 QASABE<br>
 <span>Care Policy</span>
 </h1>
-
 
 <p>
 Your trust matters to us. Learn about our refund,
@@ -614,269 +442,156 @@ shipping and product policies designed to provide
 a safe and sustainable shopping experience.
 </p>
 
-
 <div class="hero-btn">
-
 <a href="#policy">
 View Policies
 </a>
 
-
 <a href="Category.html">
 Shop Now
 </a>
-
-
 </div>
 
-
 </div>
-
-
 </section>
 
 <!-- POLICY CARD -->
-
-
 <section class="policy-section" id="policy">
-
-
 <div class="container">
-
-
 <div class="row g-4 align-items-stretch">
 
-
-
-
 <!-- REFUND -->
-
 <div class="col-md-4" id="refund-policy">
-
-
 <div class="policy-card">
-
-
 <div class="policy-icon">
-
 <i class="bi bi-arrow-counterclockwise"></i>
-
 </div>
 
-
 <h3>Refund Policy</h3>
-
 
 <p>
 We want every customer to be satisfied with
 their QASABE purchase.
 </p>
 
-
-
 <ul>
-
 <li>
 <i class="bi bi-check-circle-fill"></i>
 Refund within 7 days after receiving products.
 </li>
-
 
 <li>
 <i class="bi bi-check-circle-fill"></i>
 Applicable for damaged, leaking or incorrect items.
 </li>
 
-
 <li>
 <i class="bi bi-check-circle-fill"></i>
 Opened products cannot be returned for hygiene reasons.
 </li>
-
-
 </ul>
 
-
 </div>
-
 </div>
-
-
-
-
-
 
 <!-- TERMS -->
-
 <div class="col-md-4" id="terms-policy">
-
-
 <div class="policy-card">
-
-
 <div class="policy-icon">
-
 <i class="bi bi-shield-check"></i>
-
 </div>
 
-
 <h3>Terms & Conditions</h3>
-
 
 <p>
 Purchasing QASABE products means agreeing
 to our usage guidelines.
 </p>
 
-
 <ul>
-
-
 <li>
 <i class="bi bi-check-circle-fill"></i>
 Products must be stored properly.
 </li>
-
 
 <li>
 <i class="bi bi-check-circle-fill"></i>
 Results may vary between individuals.
 </li>
 
-
 <li>
 <i class="bi bi-check-circle-fill"></i>
 QASABE is not responsible for misuse.
 </li>
-
-
 </ul>
 
-
 </div>
-
 </div>
-
-
-
-
-
 
 <!-- SHIPPING -->
-
-
 <div class="col-md-4" id="shipping-policy">
-
-
 <div class="policy-card">
-
-
 <div class="policy-icon">
-
 <i class="bi bi-truck"></i>
-
 </div>
 
-
 <h3>Shipping Policy</h3>
-
 
 <p>
 Every order is packed carefully to maintain
 product quality.
 </p>
 
-
-
 <ul>
-
-
 <li>
 <i class="bi bi-check-circle-fill"></i>
 Delivery available across Malaysia.
 </li>
-
 
 <li>
 <i class="bi bi-check-circle-fill"></i>
 Processing within 1-3 working days.
 </li>
 
-
 <li>
 <i class="bi bi-check-circle-fill"></i>
 Tracking provided after shipment.
 </li>
-
-
 </ul>
 
-
+</div>
 </div>
 
 </div>
 
-
-
-</div>
-
-
-
-
+<!-- HELP BOX (DIRECT CLICKABLE LINKS) -->
 <div class="help-box">
+  <div>
+    <i class="bi bi-headset"></i>
+    Need help? Our customer care is here for you.
+  </div>
 
+  <div>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=helloqasabe@gmail.com" target="_blank" rel="noopener noreferrer" class="action-contact-btn">
+      <i class="bi bi-envelope"></i>
+      helloqasabe@gmail.com
+    </a>
+  </div>
 
-<div>
-
-<i class="bi bi-headset"></i>
-
-Need help? Our customer care is here for you.
-
+  <div>
+    <a href="https://wa.me/60179948746" target="_blank" rel="noopener noreferrer" class="action-contact-btn">
+      <i class="bi bi-phone"></i>
+      +60 17-994 8746
+    </a>
+  </div>
 </div>
-
-
-
-<div>
-
-<i class="bi bi-envelope"></i>
-
-support@qasabe.com
-
 </div>
-
-
-
-<div>
-
-<i class="bi bi-phone"></i>
-
-+60 12-345 6789
-
-</div>
-
-
-</div>
-
-
-
-</div>
-
-
 </section>
 
-
-
-
-
 <footer>
-
 © 2026 QASABE. All Rights Reserved.
-
 </footer>
 
-
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
